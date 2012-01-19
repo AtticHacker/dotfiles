@@ -74,4 +74,11 @@ noremap k gj
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 
+"If you'd like the output buffer to open below rather than above the input
+
+let g:RubyRunner_open_below = 1
+
+"If you'd like the output buffer's window to be a different size, do:
+
+let g:RubyRunner_window_size = 10
 
