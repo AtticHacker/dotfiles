@@ -1,9 +1,18 @@
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/.vim/bundle/vim-irblack"]
-	path = vim/.vim/bundle/vim-irblack
-	url = git://github.com/wgibbs/vim-irblack.git
 [submodule "vim/.vim/bundle/ctrlp.vim"]
 	path = vim/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/.vim/bundle/vim-commentary"]
+	path = vim/.vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/.vim/bundle/vim-surround"]
+	path = vim/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/bundle/vim-rails"]
+	path = vim/.vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/.vim/bundle/vim-repeat"]
+	path = vim/.vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
