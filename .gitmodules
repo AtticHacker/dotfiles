@@ -22,3 +22,21 @@
 [submodule "vim/.vim/bundle/vim-ruby-runner"]
 	path = vim/.vim/bundle/vim-ruby-runner
 	url = https://github.com/henrik/vim-ruby-runner.git
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/.vim/bundle/vim-snipmate"]
+	path = vim/.vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "vim/.vim/bundle/vim-addon-mw-utils"]
+	path = vim/.vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/.vim/bundle/tlib_vim"]
+	path = vim/.vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/.vim/bundle/snipmate-snippets"]
+	path = vim/.vim/bundle/snipmate-snippets
+	url = https://github.com/honza/snipmate-snippets.git
+[submodule "vim/.vim/bundle/Rename"]
+	path = vim/.vim/bundle/Rename
+	url = https://github.com/vim-scripts/Rename.git

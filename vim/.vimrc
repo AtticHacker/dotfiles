@@ -46,6 +46,8 @@ set laststatus=2                  " Show the status line all the time
 
 set encoding=utf-8                " Default encoding: UTF-8
 
+set foldmethod=syntax
+execute "normal zR"
 colorscheme default               " Default color scheme
 
 " Mappings
