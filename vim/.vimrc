@@ -60,7 +60,7 @@ au BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=r
 " Remove trailing whitespace before writing buffer to file
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Unbind arrow keys and swap J and K
+" Unbind arrow keys
 inoremap <Up> <nop>
 inoremap <Down> <nop>
 inoremap <Left> <nop>
@@ -69,8 +69,6 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
-noremap j gk
-noremap k gj
 
 " Start NERDtree at Vim startup, and go to second window
 autocmd VimEnter * NERDTree
