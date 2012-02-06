@@ -10,9 +10,9 @@ main = xmonad =<< xmobar myConfig
 myConfig =  defaultConfig
   { borderWidth         = 2
   , terminal            = "terminal"
-  , modMask             = controlMask
+  , modMask             = mod4Mask
   , normalBorderColor   = "#cccccc"
-  , layoutHook = spacing 2 $ Tall 1 (3/100) (1/2)
+--  , layoutHook = spacing 2 $ Tall 1 (3/100) (1/2)
   , focusedBorderColor  = "#ff0000" }
 
 -- Put 2 pixel space bewtween windows
