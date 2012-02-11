@@ -4,15 +4,31 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
-import XMonad.Layout.Spacing
 
-main = xmonad =<< xmobar myConfig
-myConfig =  defaultConfig
-  { borderWidth         = 2
-  , terminal            = "terminal"
-  , modMask             = mod4Mask
-  , normalBorderColor   = "#cccccc"
---  , layoutHook = spacing 2 $ Tall 1 (3/100) (1/2)
-  , focusedBorderColor  = "#ff0000" }
-
--- Put 2 pixel space bewtween windows
+myManageHook = composeAll[
+  className =? "Terminal"     --> doShift "1:dev",
+  className =? "Emesene"      --> doShift "2:com",
+  className =? "Skype"        --> doShift "2:com",
+  className =? "Chromium"     --> doShift "3:web",
+  className =? "Nautilus"     --> doShift "4:file",
+  className =? "Thunderbird"  --> doShift "9:mail"
+  ]
+main = do
+  xmproc <- spawnPipe "~/.xmobarrc"
+  xmonad $ defaultConfig{
+    workspaces = ["1:dev", "2:com", "3:web", "4:file",
+    "5:mail", "6", "7", "8", "9:mail", "0", "-", "="],
+    manageHook = myManageHook <+> manageHook defaultConfig,
+    layoutHook = avoidStruts $ layoutHook defaultConfig,
+    borderWidth         = 2,
+    terminal            = "terminal",
+    modMask             = mod4Mask,
+    normalBorderColor   = "#cccccc",
+    focusedBorderColor  = "#ff0000",
+    focusFollowsMouse   = False
+  } `additionalKeys`
+    [ ((mod4Mask, xK_w),  spawn "chromium")
+    , ((mod4Mask, xK_f),  spawn "nautilus")
+    , ((mod4Mask, xK_t),  spawn "terminal")
+    , ((0, xK_Print),     spawn "scrot")
+    ]
