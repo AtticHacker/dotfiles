@@ -11,10 +11,11 @@ myManageHook = composeAll[
   className =? "Skype"        --> doShift "2:com",
   className =? "Chromium"     --> doShift "3:web",
   className =? "Nautilus"     --> doShift "4:file",
-  className =? "Thunderbird"  --> doShift "9:mail"
+  className =? "Thunderbird"  --> doShift "9:mail",
+  className =? "Gitg"         --> doShift "8"
   ]
 main = do
-  xmproc <- spawnPipe "~/.xmobarrc"
+  xmproc <- spawnPipe "/usr/bin/xmobar $HOME/.xmobarrc"
   xmonad $ defaultConfig{
     workspaces = ["1:dev", "2:com", "3:web", "4:file",
     "5:mail", "6", "7", "8", "9:mail", "0", "-", "="],
@@ -29,6 +30,6 @@ main = do
   } `additionalKeys`
     [ ((mod4Mask, xK_w),  spawn "chromium")
     , ((mod4Mask, xK_f),  spawn "nautilus")
-    , ((mod4Mask, xK_t),  spawn "terminal")
+    , ((mod4Mask, xK_t),  spawn "urxvt")
     , ((0, xK_Print),     spawn "scrot")
     ]
