@@ -1,8 +1,11 @@
 #! /bin/bash
 
-ln -nfs "$(pwd)/vim/.vimrc" "$HOME/.vimrc"
-ln -nfs "$(pwd)/vim/.vim"   "$HOME/.vim"
-ln -nfs "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
-ln -nfs "$(pwd)/zsh/.zsh"   "$HOME/.zsh"
-ln -nfs "$(pwd)/xmonad/xmonad.hs"  "$HOME/.xmonad/xmonad.hs"
-ln -nfs "$(pwd)/xmonad/.xmobarrc" "$HOME/.xmobarrc"
+ln -nfs "$(pwd)/vim/.vimrc"          "$HOME/.vimrc"
+ln -nfs "$(pwd)/vim/.vim"            "$HOME/.vim"
+ln -nfs "$(pwd)/zsh/.zshrc"          "$HOME/.zshrc"
+ln -nfs "$(pwd)/zsh/.zsh"            "$HOME/.zsh"
+ln -nfs "$(pwd)/xmonad/xmonad.hs"    "$HOME/.xmonad/xmonad.hs"
+ln -nfs "$(pwd)/xmonad/.xmobarrc"    "$HOME/.xmobarrc"
+ln -nfs "$(pwd)/urxvt/.Xdefaults"    "$HOME/.Xdefaults"
+ln -nfs "$(pwd)/xmodmap/.xmodmaprc"  "$HOME/.xmodmaprc"
+ln -nfs "$(pwd)/xinit/.xinitrc"      "$HOME/.xinitrc"

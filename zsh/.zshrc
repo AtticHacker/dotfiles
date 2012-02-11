@@ -8,7 +8,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Swap Ctrl and Alt
-xmodmap $ZSH/custom/.xmodmaprc
+alias swapca="xmodmap $HOME/.xmodmaprc"
 
 XMO=$HOME/.xmonad/xmonad.hs
 

@@ -6,7 +6,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
 myManageHook = composeAll[
-  className =? "Terminal"     --> doShift "1:dev",
+  className =? "URxvt"        --> doShift "1:dev",
   className =? "Emesene"      --> doShift "2:com",
   className =? "Skype"        --> doShift "2:com",
   className =? "Chromium"     --> doShift "3:web",
@@ -21,7 +21,7 @@ main = do
     manageHook = myManageHook <+> manageHook defaultConfig,
     layoutHook = avoidStruts $ layoutHook defaultConfig,
     borderWidth         = 2,
-    terminal            = "terminal",
+    terminal            = "urxvt",
     modMask             = mod4Mask,
     normalBorderColor   = "#cccccc",
     focusedBorderColor  = "#ff0000",
