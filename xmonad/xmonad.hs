@@ -10,7 +10,7 @@ myManageHook = composeAll[
   className =? "Emesene"      --> doShift "2:com",
   className =? "Skype"        --> doShift "2:com",
   className =? "Chromium"     --> doShift "3:web",
-  className =? "Nautilus"     --> doShift "4:file",
+  className =? "Thunar"       --> doShift "4:file",
   className =? "Thunderbird"  --> doShift "9:mail",
   className =? "Gitg"         --> doShift "8"
   ]
@@ -29,7 +29,7 @@ main = do
     focusFollowsMouse   = False
   } `additionalKeys`
     [ ((mod4Mask, xK_w),  spawn "chromium")
-    , ((mod4Mask, xK_f),  spawn "nautilus")
+    , ((mod4Mask, xK_f),  spawn "thunar")
     , ((mod4Mask, xK_t),  spawn "urxvt")
     , ((0, xK_Print),     spawn "scrot")
     ]

@@ -1,5 +1,10 @@
+/* urxvt*transparent: true */
+/* urxvt*shading: 30 */
+/* urxvt*fading: 10 */
+urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=bold:pixelsize=13
+urxvt*scrollBar: false
 urxvt*foreground: #f2f2f2
-urxvt*background: #101010
+urxvt*background: #242424
 urxvt*color0: #101010
 urxvt*color1: #f13a21
 urxvt*color2: #93f91d
@@ -16,12 +21,8 @@ urxvt*color12: #0071ff
 urxvt*color13: #ef0051
 urxvt*color14: #4bb8fd
 urxvt*color15: #a020f0
-urxvt*transparent: true
-urxvt*shading: 30
-urxvt*fading: 10
-urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=bold:pixelsize=13
-urxvt*scrollBar: false
 
 URxvt.perl-ext-common: clipboard
-URxvt.keysym.Mod4-c:   perl:clipboard:copy
-URxvt.keysym.Mod4-v:   perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy

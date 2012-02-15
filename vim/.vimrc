@@ -46,9 +46,16 @@ set laststatus=2                  " Show the status line all the time
 
 set encoding=utf-8                " Default encoding: UTF-8
 
-set foldmethod=syntax
-execute "normal zR"
-colorscheme default               " Default color scheme
+" set foldmethod=syntax
+colorscheme plain                 " Default color scheme
+
+set noswapfile
+
+" Tell CtrlP to always use the base directory that VIM initialized with
+" as the starting point for finding files, rather than scoping it down to the
+" " current buffer's directory level.
+let g:ctrlp_working_path_mode = 0
+
 
 " Mappings
 vmap < <gv
