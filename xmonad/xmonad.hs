@@ -4,11 +4,13 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
+import XMonad.Actions.FindEmptyWorkspace
 
 myManageHook = composeAll[
   className =? "URxvt"        --> doShift "1:dev",
   className =? "Emesene"      --> doShift "2:com",
-  className =? "Skype"        --> doShift "2:com",
+  className =? "skype"        --> doShift "2:com",
+  className =? "Choqok"      --> doShift "2:com",
   className =? "Chromium"     --> doShift "3:web",
   className =? "Thunar"       --> doShift "4:file",
   className =? "Thunderbird"  --> doShift "9:mail",
@@ -28,8 +30,10 @@ main = do
     focusedBorderColor  = "#ff0000",
     focusFollowsMouse   = False
   } `additionalKeys`
-    [ ((mod4Mask, xK_w),  spawn "chromium")
-    , ((mod4Mask, xK_f),  spawn "thunar")
-    , ((mod4Mask, xK_t),  spawn "urxvt")
-    , ((0, xK_Print),     spawn "scrot")
+    [ ((mod4Mask,               xK_w),      spawn "chromium")
+    , ((mod4Mask,               xK_f),      spawn "thunar")
+    , ((mod4Mask,               xK_t),      spawn "urxvt")
+    , ((0,                      xK_Print),  spawn "scrot")
+    , ((mod4Mask,               xK_n),      viewEmptyWorkspace)
+    , ((mod4Mask .|. shiftMask, xK_n),      tagToEmptyWorkspace)
     ]

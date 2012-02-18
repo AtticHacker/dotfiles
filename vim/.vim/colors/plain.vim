@@ -55,7 +55,7 @@ endif
 "hi Folded
 "hi FoldColumn
 "hi IncSearch
-hi LineNr ctermfg=Green
+hi LineNr ctermbg=DarkGray ctermfg=Green
 "hi ModeMsg
 "hi MoreMsg
 "hi NonText

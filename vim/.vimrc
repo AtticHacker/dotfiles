@@ -78,8 +78,8 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 " Start NERDtree at Vim startup, and go to second window
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
 
 "If you'd like the output buffer to open below rather than above the input
 
