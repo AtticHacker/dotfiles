@@ -11,9 +11,8 @@ source $ZSH/oh-my-zsh.sh
 alias swapca="xmodmap $HOME/.xmodmaprc"
 
 XMO=$HOME/.xmonad/xmonad.hs
-GAME=$HOME/Dropbox/Projects/GameProject/Game/
+alias runjruby="ruby -J-Djava.library.path=."
 
-alias vimgame='cd $GAME && vim'
 alias smouse='hcitool scan'
 alias cmouse='sudo hidd -i hci0 --connect 20:11:11:02:4c:10'
 alias cmmouse='sudo hidd -i hci0 --connect C4:2C:03:B8:A4:57'
