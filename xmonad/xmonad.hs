@@ -32,7 +32,7 @@ main = do
     focusedBorderColor  = "#ff0000",
     focusFollowsMouse   = False
   }`additionalKeys`
-    [ ((mod4Mask,               xK_w),      spawn "opera")
+    [ ((mod4Mask,               xK_w),      spawn "chromium")
     , ((mod4Mask,               xK_f),      spawn "thunar")
     , ((mod4Mask,               xK_t),      spawn "urxvt")
     , ((0,                      xK_Print),  spawn "scrot")
