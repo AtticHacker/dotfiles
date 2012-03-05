@@ -5,6 +5,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 import XMonad.Actions.FindEmptyWorkspace
+import XMonad.Config.Gnome
 
 myManageHook = composeAll[
   className =? "URxvt"        --> doShift "1:dev",
