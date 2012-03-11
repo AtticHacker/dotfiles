@@ -47,6 +47,9 @@ alias reseed='rake db:migrate:reset && rake db:seed'
 # Shutdown
 alias shutdown='sudo shutdown -h now'
 
+# Reboot
+alias reboot='sudo reboot'
+
 # Connect to my iPhone using MyWi
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 

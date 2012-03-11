@@ -29,8 +29,8 @@ main = do
     borderWidth         = 1,
     terminal            = "urxvt",
     modMask             = mod4Mask,
-    normalBorderColor   = "#cccccc",
-    focusedBorderColor  = "#ff0000",
+    normalBorderColor   = "#000000",
+    focusedBorderColor  = "#9d9d9d",
     focusFollowsMouse   = False
   }`additionalKeys`
     [ ((mod4Mask,               xK_w),      spawn "chromium")
