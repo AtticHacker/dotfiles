@@ -73,7 +73,7 @@ function compile_run_destroy {
   then
     echo "Please select a C file."
   else
-    gcc $1 -o myfile && ./myfile
+    gcc $1 -o sdiuf8hf83h2gh97dj2037f && ./sdiuf8hf83h2gh97dj2037f ${@:2}
     remove_output_file "78c3r4t67rfg7grf7g27hxr8f27rgfx82rtfb82"
   fi
 }
@@ -83,11 +83,13 @@ function remove_output_file {
   # called outside of 'compile_run_destroy' / 'alias runc'
   if [[ $1 == "78c3r4t67rfg7grf7g27hxr8f27rgfx82rtfb82" ]]
   then
-    rm myfile
+    if [ -f sdiuf8hf83h2gh97dj2037f ]
+    then
+      rm sdiuf8hf83h2gh97dj2037f
+    fi
   else
     echo "This function can only be run through the alias 'runc'"
   fi
 }
-
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
