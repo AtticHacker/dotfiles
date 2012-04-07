@@ -40,3 +40,6 @@
 [submodule "vim/.vim/bundle/Rename"]
 	path = vim/.vim/bundle/Rename
 	url = https://github.com/vim-scripts/Rename.git
+[submodule "vim/.vim/bundle/ack"]
+	path = vim/.vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
