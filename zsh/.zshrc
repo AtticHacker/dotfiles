@@ -59,8 +59,19 @@ alias reboot='sudo reboot'
 # Connect to my iPhone using MyWi
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
-# Compile, run and delete the compiled version of a C file
-alias runc='compile_run_destroy'
+# Vagrant
+alias vagrant='~/.vagrant/bin/vagrant'
+
+# Kvm Aliases
+alias newkvm='qemu-img create -f qcow2'
+
+function installkvm {
+  qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
+}
+
+function runkvm {
+  qemu-kvm -hda $1 -m 512 -vga std
+}
 
 
 ## Functions
@@ -68,28 +79,37 @@ alias runc='compile_run_destroy'
 # I compile the C file into an output file and then run it, afterwards I call the
 # remove_output_file to remove it. I do this because the file doesn't exist yet when
 # running the first function, which is why I'm using 2 functions.
-function compile_run_destroy {
+function runc {
   if [ -z "$1" ]
   then
     echo "Please select a C file."
   else
     gcc $1 -o sdiuf8hf83h2gh97dj2037f && ./sdiuf8hf83h2gh97dj2037f ${@:2}
-    remove_output_file "78c3r4t67rfg7grf7g27hxr8f27rgfx82rtfb82"
+    remove sdiuf8hf83h2gh97dj2037f
   fi
 }
 
-function remove_output_file {
-  # The string is used to prevent this function from being
-  # called outside of 'compile_run_destroy' / 'alias runc'
-  if [[ $1 == "78c3r4t67rfg7grf7g27hxr8f27rgfx82rtfb82" ]]
-  then
-    if [ -f sdiuf8hf83h2gh97dj2037f ]
-    then
-      rm sdiuf8hf83h2gh97dj2037f
-    fi
-  else
-    echo "This function can only be run through the alias 'runc'"
-  fi
+# function get_paclist {
+#   pacman -Qqe > crtb467tb8tgfrf486c2g
+#   (tr "\n" " " < crtb467tb8tgfrf486c2g) > my_pacman_list
+#   remove crtb467tb8tgfrf486c2g
+#   substract_yaourt my_pacman_list
+# }
+
+# function substract_yaourt {
+#   cat $1 > my_pacman_list_0
+#   yaourt=( dropbox esound msn-pecan package-query spark urxvt-clipboard yaourt youtube-downloader )
+#   (sed -e "s/${yaourt[0]}//g" my_pacman_list_0) > my_pacman_list_1
+
+  # for ((i=0; i<${#yaourt[*]}; i++)) do
+  #   o=($i + 1)
+  #   cat my_pacman_list_$i > my_pacman_list_$o
+  #   sed -e "s/${yaourt[$i]}//g" > my_pacman_list_$i
+  # done
+# }
+
+function remove {
+ rm $1
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
