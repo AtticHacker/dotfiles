@@ -62,17 +62,8 @@ alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 # Vagrant
 alias vagrant='~/.vagrant/bin/vagrant'
 
-# Kvm Aliases
+# Create a new kvm machine (without installing an os)
 alias newkvm='qemu-img create -f qcow2'
-
-function installkvm {
-  qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
-}
-
-function runkvm {
-  qemu-kvm -hda $1 -m 512 -vga std
-}
-
 
 ## Functions
 
@@ -85,14 +76,36 @@ function runc {
     echo "Please select a C file."
   else
     gcc $1 -o sdiuf8hf83h2gh97dj2037f && ./sdiuf8hf83h2gh97dj2037f ${@:2}
-    remove sdiuf8hf83h2gh97dj2037f
+    remove_selected_file sdiuf8hf83h2gh97dj2037f
   fi
+}
+
+# Install a new kvm machine
+function installkvm {
+  qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
+}
+
+# Run a rvm machine
+function runkvm {
+  qemu-kvm -hda $1 -m 512 -vga std
+}
+
+# The next two functions are meant to be able to start and stop multiple rails servers in one window.
+# Start rails server with custom port as background process
+function ras {
+  rails s -p $1 &
+}
+
+# Kill the rails server background process, by giving the port it kills that server
+function killrails {
+  the_rails_server=`ps | grep 'rails s -p' | grep $1 | awk '{print $1}' | head -1`
+  kill -9 $the_rails_server
 }
 
 # function get_paclist {
 #   pacman -Qqe > crtb467tb8tgfrf486c2g
 #   (tr "\n" " " < crtb467tb8tgfrf486c2g) > my_pacman_list
-#   remove crtb467tb8tgfrf486c2g
+#   remove_selected_file crtb467tb8tgfrf486c2g
 #   substract_yaourt my_pacman_list
 # }
 
@@ -108,7 +121,10 @@ function runc {
   # done
 # }
 
-function remove {
+# This function is meant to remove files that are created in a function
+# When trying to remove a file that was created in the same function it won't find it.
+# This is why we need a seperate function to remove a file.
+function remove_selected_file {
  rm $1
 }
 
