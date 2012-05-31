@@ -60,6 +60,27 @@ let g:ctrlp_working_path_mode = 0
 " Mappings
 vmap < <gv
 vmap > >gv
+vmap <BS> <left>
+map ` <C-P>
+map <C-n> :noh<CR>
+map <F1> <C-W>s
+map <F2> <C-W>v
+map <F3><F3> <C-W>q
+
+if bufwinnr(1)
+  nmap + <C-W>+
+  nmap - <C-W>+
+  nmap _ <C-W>=
+  nmap ] <C-W>>
+  nmap [ <C-W><
+  nmap <tab> <C-W><C-W>
+endif
+
+:command WQ wq
+:command Wq wq
+:command W  wq
+:command Q  wq
+
 
 " Flag certain files as certain language files
 au BufRead,BufNewFile {Rakefile,Gemfile,config.ru,Vagrantfile,Thorfile} set ft=ruby

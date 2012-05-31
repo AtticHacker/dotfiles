@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.zsh
+ZSHRC=$HOME/.zshrc
 
 # Zsh Theme
 ZSH_THEME="kevin"
@@ -11,14 +12,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
 ## Aliases
 
 # Shortcut for xmonad.hs
 XMO=$HOME/.xmonad/xmonad.hs
-
-# Swap Ctrl and Alt
-alias swapca="xmodmap $HOME/.xmodmaprc"
 
 # Clear
 alias c='clear'
@@ -126,6 +123,11 @@ function killrails {
 # This is why we need a seperate function to remove a file.
 function remove_selected_file {
  rm $1
+}
+
+function cd {
+  prev=`pwd`
+  chdir $1
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
