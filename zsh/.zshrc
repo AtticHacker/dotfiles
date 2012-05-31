@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.zsh
+ZSHRC=$HOME/.zshrc
 
 # Zsh Theme
 ZSH_THEME="kevin"
@@ -63,9 +64,20 @@ alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 alias vagrant='~/.vagrant/bin/vagrant'
 
 # Create a new kvm machine (without installing an os)
+# arguments: Name, size (Arch_linux 10G)
 alias newkvm='qemu-img create -f qcow2'
 
 ## Functions
+
+# Install a new kvm machine
+function installkvm {
+  qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
+}
+
+# Run a rvm machine
+function runkvm {
+  qemu-kvm -hda $1 -m 512 -vga std
+}
 
 # I compile the C file into an output file and then run it, afterwards I call the
 # remove_output_file to remove it. I do this because the file doesn't exist yet when
@@ -78,16 +90,6 @@ function runc {
     gcc $1 -o sdiuf8hf83h2gh97dj2037f && ./sdiuf8hf83h2gh97dj2037f ${@:2}
     remove_selected_file sdiuf8hf83h2gh97dj2037f
   fi
-}
-
-# Install a new kvm machine
-function installkvm {
-  qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
-}
-
-# Run a rvm machine
-function runkvm {
-  qemu-kvm -hda $1 -m 512 -vga std
 }
 
 # The next two functions are meant to be able to start and stop multiple rails servers in one window.
