@@ -9,13 +9,17 @@ ZSH_THEME="kevin"
 JAVA_HOME='/usr/lib/jvm/java-6-openjdk'
 
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
-## Aliases
+## Initializers ##
+
+## Aliases ##
 
 # Shortcut for xmonad.hs
 XMO=$HOME/.xmonad/xmonad.hs
+
+# Swaps a few keys
+alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
 
 # Clear
 alias c='clear'
