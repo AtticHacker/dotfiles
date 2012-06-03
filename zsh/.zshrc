@@ -5,10 +5,10 @@ ZSHRC=$HOME/.zshrc
 # Zsh Theme
 ZSH_THEME="kevin"
 
-# Needed if the system thinks JAVA_HOME is java-7
-JAVA_HOME='/usr/lib/jvm/java-6-openjdk'
-
 plugins=(git)
+
+## OH MY ZSH options ##
+DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
