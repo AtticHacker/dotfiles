@@ -1,45 +1,59 @@
-# Path to your oh-my-zsh configuration.
+##           ##
+## CONSTANTS ##
+##           ##
+
+# Shortcut for xmonad.hs
+XMO=$HOME/.xmonad/xmonad.hs
+
+# Shortcut for .zsh
 ZSH=$HOME/.zsh
+
+# Shortcut for .zshrc
 ZSHRC=$HOME/.zshrc
 
 # Zsh Theme
 ZSH_THEME="kevin"
 
-plugins=(git)
+# plugins=(git)
 
 ## OH MY ZSH options ##
 DISABLE_AUTO_UPDATE="true"
 
+##        ##
+## SOURCE ##
+##        ##
+
 source $ZSH/oh-my-zsh.sh
 
-## Aliases
+##          ##
+## SETTINGS ##
+##          ##
 
-# Shortcut for xmonad.hs
-XMO=$HOME/.xmonad/xmonad.hs
+
+# Check if X window is running.
+if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];then
+  # Everything in here will only be executed when X window is running.
+  alias emacs='emacs -nw'
+else
+  # Everything in here will only be executed when X window is NOT running.
+fi
+
+##         ##
+## ALIASES ##
+##         ##
+
+
+# Git pull
+alias pull='git pull'
+
+# Git push
+alias push='git push'
 
 # Clear
 alias c='clear'
 
-# Copy a new Jruby app
-alias newjruby='cp -R .jruby-game'
-
-# Execute ruby program without dependency error
-alias runjruby='ruby -J-Djava.library.path=.'
-
-# Start Tiled Map Editor
-alias tiled='~/.tiled/bin/tiled'
-
 # Scan for bluetooth devices
 alias sblue='hcitool scan'
-
-# Connect to my Meenee Mouse
-alias cmouse='sudo hidd -i hci0 --connect 20:11:11:02:4c:10'
-
-# Connect to my Apple Mouse
-alias cmmouse='sudo hidd -i hci0 --connect C4:2C:03:B8:A4:57'
-
-# Start Photoshop
-alias photoshop='wine ~/.wine/PS/PhotoshopPortable'
 
 # Reset database and seed
 alias reseed='rake db:migrate:reset && rake db:seed'
@@ -63,7 +77,9 @@ alias vagrant='~/.vagrant/bin/vagrant'
 # arguments: Name, size (Arch_linux 10G)
 alias newkvm='qemu-img create -f qcow2'
 
-## Functions
+##           ##
+## FUNCTIONS ##
+##           ##
 
 # Install a new kvm machine
 function installkvm {
