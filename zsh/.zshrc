@@ -29,7 +29,6 @@ source $ZSH/oh-my-zsh.sh
 ## SETTINGS ##
 ##          ##
 
-
 # Check if X window is running.
 if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];then
   # Everything in here will only be executed when X window is running.
@@ -42,6 +41,8 @@ fi
 ## ALIASES ##
 ##         ##
 
+# Swaps a few keys
+alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
 
 # Git pull
 alias pull='git pull'

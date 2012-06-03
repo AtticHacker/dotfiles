@@ -29,13 +29,15 @@ main = do
     layoutHook = avoidStruts $ layoutHook defaultConfig,
     borderWidth         = 1,
     terminal            = "urxvt",
+    modMask             = mod4Mask,
     normalBorderColor   = "#000000",
     focusedBorderColor  = "#9d9d9d",
     focusFollowsMouse   = False
   }`additionalKeys`[
-      ((mod1Mask,               xK_f),      spawn "thunar"),
+      ((mod4Mask,               xK_f),      spawn "thunar"),
       ((0,                      xK_Print),  spawn "scrot"),
-      ((mod1Mask,               xK_n),      viewEmptyWorkspace),
-      ((mod1Mask .|. shiftMask, xK_n),      tagToEmptyWorkspace),
-      ((mod1Mask,               xK_w),      nextScreen)
+      ((mod4Mask,               xK_n),      viewEmptyWorkspace),
+      ((mod4Mask .|. shiftMask, xK_n),      tagToEmptyWorkspace),
+      ((mod4Mask,               xK_w),      nextScreen)
     ]
+
