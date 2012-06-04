@@ -32,17 +32,29 @@ source $ZSH/oh-my-zsh.sh
 # Check if X window is running.
 if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];then
   # Everything in here will only be executed when X window is running.
+
+  ##                  ##
+  ## X WINDOW ALIASES ##
+  ##                  ##
+
   alias emacs='emacs -nw'
 else
   # Everything in here will only be executed when X window is NOT running.
+
+  ##                 ##
+  ## CONSOLE ALIASES ##
+  ##                 ##
+
+  # Swaps a few keys
+  alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
 fi
 
 ##         ##
 ## ALIASES ##
 ##         ##
 
-# Swaps a few keys
-alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
+# Suspend
+alias suspend='sudo pm-suspend'
 
 # Git pull
 alias pull='git pull'
@@ -144,3 +156,5 @@ function remove_selected_file {
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
