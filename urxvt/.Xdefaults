@@ -1,10 +1,10 @@
-urxvt*transparent: true
-urxvt*shading: 30
-urxvt*fading: 10
+/* urxvt*transparent: true */
+/* urxvt*shading: 30 */
+/* urxvt*fading: 10 */
 urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=bold:pixelsize=13
 urxvt*scrollBar: false
 urxvt*foreground: #f2f2f2
-urxvt*background: #0f0f0f
+urxvt*background: #000000
 urxvt*color0: #101010
 urxvt*color1: #f13a21
 urxvt*color2: #93f91d
