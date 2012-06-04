@@ -43,3 +43,6 @@
 [submodule "vim/.vim/bundle/ack"]
 	path = vim/.vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "emacs/.emacs.d/plugins/eproject"]
+	path = emacs/.emacs.d/plugins/eproject
+	url = git@github.com:jrockway/eproject

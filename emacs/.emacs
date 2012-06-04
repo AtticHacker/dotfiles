@@ -2,6 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/themes")
 (require 'bitlbee)
+(load-file "~/.emacs.d/plugins/eproject/eproject.el")
 (global-linum-mode 1)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
