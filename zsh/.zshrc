@@ -143,9 +143,4 @@ function remove_selected_file {
  rm $1
 }
 
-function cd {
-  prev=`pwd`
-  chdir $1
-}
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
