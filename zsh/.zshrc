@@ -46,7 +46,9 @@ else
   ##                 ##
 
   # Swaps a few keys
+  echo "Password to swap keys\n"
   alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
+  sudo loadkeys ~/.dotfiles/keymap/keymap.map
 fi
 
 ##         ##
@@ -155,9 +157,9 @@ function remove_selected_file {
  rm $1
 }
 
-function cd {
-  prev=`pwd`
-  chdir $1
+function store_emacs_backups {
+  mkdir emacs_backup_files
+  find ./* | grep "#" | while read line;do mv $line ./emacs_backup_files/;done
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
