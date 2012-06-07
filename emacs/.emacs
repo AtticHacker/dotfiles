@@ -10,6 +10,7 @@
 (require 'eproject-extras)
 (require 'ido)
 (require 'icicles)
+
 ;; Enable line numbering
 (global-linum-mode 1)
 
@@ -62,4 +63,11 @@
 (.emacs-eproject-key "b" eproject-ibuffer)
 (.emacs-eproject-key "o" eproject-open-all-project-files)
 
+(setq cua-enable-cua-keys nil) ;; only for rectangles
+(cua-mode t)
 
+(global-set-key (kbd "C-SPC")
+  '(lambda(&optional arg) (interactive "P")
+    (if (or (not mark-active) arg)
+      (cua-set-mark arg)
+        (cua-set-rectangle-mark))))
