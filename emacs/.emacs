@@ -5,16 +5,26 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/eproject")
 (add-to-list 'load-path "~/.emacs.d/plugins/icicles")
 (add-to-list 'load-path "~/.emacs.d/plugins/find-file-in-project")
+(add-to-list 'load-path "~/.emacs.d/plugins/dirtree")
+(add-to-list 'load-path "~/.emacs.d/plugins/anything")
+(add-to-list 'load-path "~/.emacs.d/plugins/color-theme")
+
+(require 'color-theme)
 (require 'bitlbee)
 (require 'eproject)
 (require 'eproject-extras)
 (require 'ido)
-(require 'icicles)
-
+;;(require 'icicles)
+(require 'redo+)
+(require 'dirtree)
+(require 'textmate)
+(require 'zenburn)
+ 
 ;; Enable line numbering
 (global-linum-mode 1)
 
-(icicle-mode)
+(color-theme-zenburn)
+;;(icicle-mode)
 ;; Enable Ino mode
 ;;(ido-mode)
 
@@ -39,11 +49,47 @@
   ;; If there is more than one, they won't work right.
  )
 
+
+(defun newline-up ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line)
+)
+
+(defun newline-down ()
+  (interactive)
+  (end-of-line)
+  (newline)
+)
+
+
+(global-set-key (kbd "C-o") 'newline-down)
+(global-set-key (kbd "M-o") 'newline-up)
+
+(global-set-key (kbd "M-SPC") 'cua-set-rectangle-mark)
+(global-set-key (kbd "C-d") 'kill-whole-line)
+
+(global-set-key (kbd "M-`") 'eproject-ifind-file)
+(global-set-key (kbd "C-`") 'eproject-ifind-file)
+
+(global-set-key (kbd "<f1>") 'split-window-vertically)
+(global-set-key (kbd "<f2>") 'split-window-horizontally)
+(global-set-key (kbd "<f3>") 'delete-window)
+
+(global-set-key (kbd "M--") 'other-window)
+
+(global-set-key (kbd "C--") 'undo)
+(global-set-key (kbd "C-x C-_") 'redo)
+
+(tool-bar-mode)
+(scroll-bar-mode)
+(menu-bar-mode)
+
 ;; eproject global bindings
 (defmacro .emacs-curry (function &rest args)
   `(lambda () (interactive)
      (,function ,@args)))
-
 
 ;; eproject global bindings
 (defmacro .emacs-curry (function &rest args)
@@ -70,4 +116,4 @@
   '(lambda(&optional arg) (interactive "P")
     (if (or (not mark-active) arg)
       (cua-set-mark arg)
-        (cua-set-rectangle-mark))))
+        (cua-set-rectangle-mark arg))))
