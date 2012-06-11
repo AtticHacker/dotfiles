@@ -13,6 +13,7 @@
 (require 'bitlbee)
 (require 'eproject)
 (require 'eproject-extras)
+(require 'icicles)
 (require 'ido)
 (require 'redo+)
 (require 'dirtree)
@@ -21,8 +22,10 @@
  
 ;; SETTINGS
 
-;; Tab width
+;; Tab width and use spaces
 (setq c-basic-offset 2)
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
@@ -32,7 +35,6 @@
  '(vc-follow-symlinks t))
 (custom-set-faces
 )
-
 
 ;; CUSTOM FUNCTIONS
 (defun newline-up ()
@@ -66,6 +68,7 @@
 (global-set-key (kbd "M--") 'other-window)
 
 (global-set-key (kbd "C--") 'undo)
+(global-set-key (kbd "S-C--") 'redo)
 (global-set-key (kbd "C-x C-_") 'redo)
 (global-set-key "\M-\d" 'comment-or-uncomment-region)
 
@@ -88,15 +91,15 @@
 ;; eproject global bindings
 (defmacro .emacs-curry (function &rest args)
   `(lambda () (interactive)
-    (,function ,@args)))
+     (,function ,@args)))
 
 (defmacro .emacs-eproject-key (key command)
   (cons 'progn
-    (loop for (k . p) in (list (cons key 4) (cons (upcase key) 1))
-      collect
-        `(global-set-key
-          (kbd ,(format "C-x p %s" k))
-           (.emacs-curry ,command ,p)))))
+        (loop for (k . p) in (list (cons key 4) (cons (upcase key) 1))
+              collect
+              `(global-set-key
+                (kbd ,(format "C-x p %s" k))
+                (.emacs-curry ,command ,p)))))
 
 (.emacs-eproject-key "k" eproject-kill-project-buffers)
 (.emacs-eproject-key "v" eproject-revisit-project)
