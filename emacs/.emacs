@@ -56,6 +56,10 @@
 (global-set-key (kbd "<f1>") 'split-window-vertically)
 (global-set-key (kbd "<f2>") 'split-window-horizontally)
 (global-set-key (kbd "<f3>") 'delete-window)
+(global-set-key (kbd "C-<f1>") 'enlarge-window)
+(global-set-key (kbd "C-<f2>") 'shrink-window)
+(global-set-key (kbd "C-<f3>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-<f4>") 'shrink-window-horizontally)
 
 (global-set-key (kbd "M--") 'other-window)
 
@@ -63,6 +67,7 @@
 (global-set-key (kbd "S-C--") 'redo)
 (global-set-key (kbd "C-x C-_") 'redo)
 (global-set-key "\M-\d" 'comment-or-uncomment-region)
+
 
 ;; ENABLE MODES AT STARTUP
 
