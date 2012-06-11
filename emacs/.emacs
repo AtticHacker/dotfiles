@@ -14,19 +14,12 @@
 (require 'eproject)
 (require 'eproject-extras)
 (require 'ido)
-;;(require 'icicles)
 (require 'redo+)
 (require 'dirtree)
 (require 'textmate)
 (require 'zenburn)
  
-;; Enable line numbering
-(global-linum-mode 1)
-
-(color-theme-zenburn)
-;;(icicle-mode)
-;; Enable Ino mode
-;;(ido-mode)
+;; SETTINGS
 
 ;; Tab width
 (setq c-basic-offset 2)
@@ -34,22 +27,14 @@
 ;; Don't create ~ files
 (setq make-backup-files nil)
 
-
 ;; Follows file links without asking
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(vc-follow-symlinks t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+)
 
 
+;; CUSTOM FUNCTIONS
 (defun newline-up ()
   (interactive)
   (beginning-of-line)
@@ -63,6 +48,7 @@
   (newline)
 )
 
+;; KEY BINDINGS
 
 (global-set-key (kbd "C-o") 'newline-down)
 (global-set-key (kbd "M-o") 'newline-up)
@@ -81,11 +67,19 @@
 
 (global-set-key (kbd "C--") 'undo)
 (global-set-key (kbd "C-x C-_") 'redo)
+(global-set-key "\M-\d" 'comment-or-uncomment-region)
+
+;; ENABLE MODES AT STARTUP
 
 (tool-bar-mode)
 (scroll-bar-mode)
 (menu-bar-mode)
+(global-linum-mode 1)
+(color-theme-zenburn)
+(cua-mode t)
 
+
+;; EPROJECT CHANGES
 ;; eproject global bindings
 (defmacro .emacs-curry (function &rest args)
   `(lambda () (interactive)
@@ -108,12 +102,3 @@
 (.emacs-eproject-key "v" eproject-revisit-project)
 (.emacs-eproject-key "b" eproject-ibuffer)
 (.emacs-eproject-key "o" eproject-open-all-project-files)
-
-(setq cua-enable-cua-keys nil) ;; only for rectangles
-(cua-mode t)
-
-(global-set-key (kbd "C-SPC")
-  '(lambda(&optional arg) (interactive "P")
-    (if (or (not mark-active) arg)
-      (cua-set-mark arg)
-        (cua-set-rectangle-mark arg))))
