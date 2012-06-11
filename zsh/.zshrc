@@ -131,25 +131,6 @@ function killrails {
   kill -9 $the_rails_server
 }
 
-# function get_paclist {
-#   pacman -Qqe > crtb467tb8tgfrf486c2g
-#   (tr "\n" " " < crtb467tb8tgfrf486c2g) > my_pacman_list
-#   remove_selected_file crtb467tb8tgfrf486c2g
-#   substract_yaourt my_pacman_list
-# }
-
-# function substract_yaourt {
-#   cat $1 > my_pacman_list_0
-#   yaourt=( dropbox esound msn-pecan package-query spark urxvt-clipboard yaourt youtube-downloader )
-#   (sed -e "s/${yaourt[0]}//g" my_pacman_list_0) > my_pacman_list_1
-
-  # for ((i=0; i<${#yaourt[*]}; i++)) do
-  #   o=($i + 1)
-  #   cat my_pacman_list_$i > my_pacman_list_$o
-  #   sed -e "s/${yaourt[$i]}//g" > my_pacman_list_$i
-  # done
-# }
-
 # This function is meant to remove files that are created in a function
 # When trying to remove a file that was created in the same function it won't find it.
 # This is why we need a seperate function to remove a file.
@@ -157,6 +138,9 @@ function remove_selected_file {
  rm $1
 }
 
+function agit {
+  ruby ~/.dotfiles/helpers/attic-git/ruby.rb ${@}
+}
 
 function store_emacs_backups {
   mkdir emacs_backup_files
