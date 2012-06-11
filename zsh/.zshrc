@@ -58,6 +58,8 @@ fi
 # Suspend
 alias suspend='sudo pm-suspend'
 
+# Git pull all submodules
+alias pullsubmodules='git submodule update --init'
 # Git pull
 alias pull='git pull'
 
