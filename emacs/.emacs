@@ -12,10 +12,10 @@
 (require 'textmate)
 (require 'zenburn)
 (require 'ido)
- 
+
 ;; SETTINGS
 
-;; Tab width and use spaces
+;;(setq c-basic-offset 2)
 (setq c-basic-offset 2)
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
@@ -44,30 +44,54 @@
 )
 
 ;; KEY BINDINGS
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
-(global-set-key (kbd "C-o") 'newline-down)
-(global-set-key (kbd "M-o") 'newline-up)
+(setq my-keys-minor-mode-map (delq '(kp-tab . [9]) my-keys-minor-mode-map))
+(define-key my-keys-minor-mode-map (kbd "C-j") 'forward-char)
+(define-key my-keys-minor-mode-map (kbd "C-i") 'backward-char)
+(define-key my-keys-minor-mode-map (kbd "M-j") 'forward-word)
+(define-key my-keys-minor-mode-map (kbd "M-i") 'backward-word)
+(define-key my-keys-minor-mode-map (kbd "M-C-j") 'forward-word)
+(define-key my-keys-minor-mode-map (kbd "M-C-i") 'backward-word)
+(define-key my-keys-minor-mode-map (kbd "M-p") 'previous-line)
+(define-key my-keys-minor-mode-map (kbd "M-n") 'next-line)
+(define-key my-keys-minor-mode-map (kbd "M-C-p") 'previous-line)
+(define-key my-keys-minor-mode-map (kbd "M-C-n") 'next-line)
+(define-key my-keys-minor-mode-map (kbd "C-o") 'newline-down)
+(define-key my-keys-minor-mode-map (kbd "S-C-o") 'newline-up)
+(define-key my-keys-minor-mode-map (kbd "M-SPC") 'cua-set-rectangle-mark)
+(define-key my-keys-minor-mode-map (kbd "C-d") 'kill-whole-line)
+(define-key my-keys-minor-mode-map (kbd "C-<escape>") 'kill-buffer)
+(define-key my-keys-minor-mode-map (kbd "M-`") 'textmate-goto-file)
+(define-key my-keys-minor-mode-map (kbd "C-`") 'find-file)
+(define-key my-keys-minor-mode-map (kbd "C-=") 'switch-to-buffer)
+(define-key my-keys-minor-mode-map (kbd "<f1>") 'split-window-vertically)
+(define-key my-keys-minor-mode-map (kbd "<f2>") 'split-window-horizontally)
+(define-key my-keys-minor-mode-map (kbd "<f3>") 'delete-window)
+(define-key my-keys-minor-mode-map (kbd "C-<f1>") 'enlarge-window)
+(define-key my-keys-minor-mode-map (kbd "C-<f2>") 'shrink-window)
+(define-key my-keys-minor-mode-map (kbd "C-<f3>") 'enlarge-window-horizontally)
+(define-key my-keys-minor-mode-map (kbd "C-<f4>") 'shrink-window-horizontally)
+(define-key my-keys-minor-mode-map (kbd "M--") 'other-window)
+(define-key my-keys-minor-mode-map (kbd "C--") 'undo)
+(define-key my-keys-minor-mode-map (kbd "S-C--") 'redo)
+(define-key my-keys-minor-mode-map (kbd "C-x C-_") 'redo)
+(define-key my-keys-minor-mode-map (kbd "C-u") 'delete-backward-char)
+(define-key my-keys-minor-mode-map (kbd "S-C-u") 'backward-delete-char)
+(define-key my-keys-minor-mode-map (kbd "M-u") 'backward-kill-word)
+(define-key my-keys-minor-mode-map (kbd "S-M-u") 'kill-word)
+;;(define-key my-keys-minor-mode-map "\M-\d" 'comment-or-uncomment-region)
 
-(global-set-key (kbd "M-SPC") 'cua-set-rectangle-mark)
-(global-set-key (kbd "C-d") 'kill-whole-line)
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
 
-(global-set-key (kbd "M-`") 'textmate-goto-file)
+(defun my-minibuffer-setup-hook ()
+  (my-keys-minor-mode 0))
 
-(global-set-key (kbd "<f1>") 'split-window-vertically)
-(global-set-key (kbd "<f2>") 'split-window-horizontally)
-(global-set-key (kbd "<f3>") 'delete-window)
-(global-set-key (kbd "C-<f1>") 'enlarge-window)
-(global-set-key (kbd "C-<f2>") 'shrink-window)
-(global-set-key (kbd "C-<f3>") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-<f4>") 'shrink-window-horizontally)
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 
-(global-set-key (kbd "M--") 'other-window)
-
-(global-set-key (kbd "C--") 'undo)
-(global-set-key (kbd "S-C--") 'redo)
-(global-set-key (kbd "C-x C-_") 'redo)
-(global-set-key "\M-\d" 'comment-or-uncomment-region)
-
+(my-keys-minor-mode 1)
 
 ;; ENABLE MODES AT STARTUP
 
@@ -77,3 +101,4 @@
 (global-linum-mode 1)
 (color-theme-zenburn)
 (cua-mode t)
+(auto-fill-mode)
