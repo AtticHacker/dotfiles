@@ -32,6 +32,7 @@
 )
 
 ;; CUSTOM FUNCTIONS
+
 (defun newline-up ()
   (interactive)
   (beginning-of-line)
@@ -40,10 +41,16 @@
   (control-lock-disable)
 )
 
+
 (defun newline-down ()
   (interactive)
   (end-of-line)
   (newline)
+  (control-lock-disable)
+)
+
+(defun kevin-up ()
+	(delete-char)
   (control-lock-disable)
 )
 
@@ -91,10 +98,13 @@
 (define-key attic-minor-mode-map (kbd "C--")        'control-lock-disable)
 
 ; Editing
-(define-key attic-minor-mode-map (kbd "C-u")        'undo)
+(define-key attic-minor-mode-map (kbd "C-u")        'kevin-up)
 (define-key attic-minor-mode-map (kbd "C-M-u")      'redo)
+(define-key attic-minor-mode-map (kbd "C-M-d")      'kill-line)
 
-(define-key attic-minor-mode-map (kbd "C-M-<RET>")  'execute-extended-command)
+
+; Custom
+(define-key attic-minor-mode-map (kbd "M-<RET>")  'execute-extended-command)
 
 (define-minor-mode attic-minor-mode
   "A minor mode so that my key settings override annoying major modes."
@@ -105,10 +115,10 @@
 
 (add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
 
+
+;; ENABLE / DISABLE MODES AT STARTUP
+
 (attic-minor-mode 1)
-
-;; ENABLE MODES AT STARTUP
-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
