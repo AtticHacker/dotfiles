@@ -54,29 +54,8 @@ it just returns the key."
 (defun control-lock-enabled-p ()
   "Returns whether control lock should be enabled at a given point"
   (and control-lock-mode-p
-    ; If not disable once (turning off if set)
-    (if control-lock-disable-once
-      (progn
-        (setq control-lock-disable-once nil)
-        nil  ; Not enabled this time
-        )
-      t  ; It's enabled as far as we know here
-      )
     (not isearch-mode)
     (not (string-match "\\*Minibuf" (buffer-name)))))
-
-; Make ctrl-lock be off by default
-(setq control-lock-mode-p nil)
-
-(defun control-lock-quote (p)
-  "Make ' disable ctrl-lock for next key"
-  (if (control-lock-enabled-p)
-    (progn
-      (setq control-lock-disable-once t)
-      "")
-    "'"))
-(setq control-lock-disable-once nil)
-(define-key key-translation-map "'" 'control-lock-quote)
 
 (defun control-lock-map-key (l ch fun)
   "Makes function to handle one key, and maps it to that key"
@@ -126,14 +105,8 @@ it just returns the key."
 ;(control-lock-map-key "\\r" "C-<return>" "return")
 
 
-(defun control-lock-keys ()
-  "Sets default keys - C-z enables control lock."
-  (global-set-key (kbd "C-z") 'control-lock-enable)
-  (global-set-key (kbd "C-,") 'control-lock-enable)
-)
 
-
-(defun control-lock-enable () (interactive)
+(defun control-lock-disable () (interactive)
   "Enable control lock.  This function should be mapped to the key the
 user uses to enable control-lock."
   (if control-lock-mode-p
@@ -141,14 +114,17 @@ user uses to enable control-lock."
       (setq control-lock-mode-p nil)
       ; Set cursor color back to orig
       (set-face-background 'cursor control-lock-orig-cursor-color)
-      (customize-set-variable 'cursor-type 'box))
-    ; Else
-    (progn
+      (customize-set-variable 'cursor-type 'box))))
+
+
+(defun control-lock-enable () (interactive)
+  "Enable control lock.  This function should be mapped to the key the
+user uses to enable control-lock."
       (setq control-lock-mode-p t)
       ; Save orig color and set to orange
-      (setq control-lock-orig-cursor-color 
-        (face-background 'cursor nil 'default))
+      (setq control-lock-orig-cursor-color
+            (face-background 'cursor nil 'default))
       (set-face-background 'cursor "#ff3300")
-      (customize-set-variable 'cursor-type '(hbar . 3)))))
+      (customize-set-variable 'cursor-type '(hbar . 3)))
 
 (provide 'control-lock)

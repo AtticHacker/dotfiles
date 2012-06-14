@@ -19,17 +19,15 @@
 
 ;; SETTINGS
 
-;;(setq c-basic-offset 2)
-(setq c-basic-offset 2)
+;; Tab size
 (setq-default tab-width 2)
-(setq-default indent-tabs-mode nil)
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
 
 ;; Follows file links without asking
 (custom-set-variables
-'(vc-follow-symlinks t))
+  '(vc-follow-symlinks t))
 (custom-set-faces
 )
 
@@ -39,17 +37,21 @@
   (beginning-of-line)
   (newline)
   (previous-line)
+  (control-lock-disable)
 )
 
 (defun newline-down ()
   (interactive)
   (end-of-line)
   (newline)
+  (control-lock-disable)
 )
 
 ;; KEY BINDINGS
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
+
+; Navigation
 (define-key attic-minor-mode-map (kbd "C-k")        'backward-char)
 (define-key attic-minor-mode-map (kbd "C-p")        'forward-char)
 (define-key attic-minor-mode-map (kbd "C-o")        'previous-line)
@@ -57,21 +59,24 @@
 (define-key attic-minor-mode-map (kbd "M-o")        'previous-line)
 (define-key attic-minor-mode-map (kbd "M-l")        'next-line)
 (define-key attic-minor-mode-map (kbd "M-p")        'forward-to-word)
-(define-key attic-minor-mode-map (kbd "M-k")        'backward-to-word)
+(define-key attic-minor-mode-map (kbd "M-k")        'backward-word)
 (define-key attic-minor-mode-map (kbd "M-C-p")      'forward-to-word)
-(define-key attic-minor-mode-map (kbd "M-C-k")      'backward-to-word)
+(define-key attic-minor-mode-map (kbd "M-C-k")      'backward-word)
 (define-key attic-minor-mode-map (kbd "M-C-o")      'previous-line)
 (define-key attic-minor-mode-map (kbd "M-C-l")      'next-line)
 
-;;(define-key attic-minor-mode-map (kbd "<tab>")      'indent-for-tab-command)
-;;(define-key attic-minor-mode-map (kbd "C-o")        'newline-down)
-;;(define-key attic-minor-mode-map (kbd "M-o")        'newline-up)
-(define-key attic-minor-mode-map (kbd "M-SPC")      'cua-set-rectangle-mark)
+; Advanced navigation
+(define-key attic-minor-mode-map (kbd "C-j")        'newline-down)
+(define-key attic-minor-mode-map (kbd "C-M-j")      'newline-up)
+(define-key attic-minor-mode-map (kbd "C-M-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-d")        'kill-whole-line)
-(define-key attic-minor-mode-map (kbd "C-M-d")      'kill-line)
-(define-key attic-minor-mode-map (kbd "C-<escape>") 'kill-buffer)
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
+(define-key attic-minor-mode-map (kbd "C-d")        'kill-whole-line)
+(define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
+(define-key attic-minor-mode-map (kbd "C-`")        'find-file)
+
+; Window manipulation
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
 (define-key attic-minor-mode-map (kbd "<f2>")       'split-window-horizontally)
 (define-key attic-minor-mode-map (kbd "<f3>")       'delete-window)
@@ -79,24 +84,17 @@
 (define-key attic-minor-mode-map (kbd "C-<f2>")     'shrink-window)
 (define-key attic-minor-mode-map (kbd "C-<f3>")     'enlarge-window-horizontally)
 (define-key attic-minor-mode-map (kbd "C-<f4>")     'shrink-window-horizontally)
-(define-key attic-minor-mode-map (kbd "C--")        'control-lock-enable)
+
+; Control-mode-swapping
+(define-key attic-minor-mode-map (kbd "<escape>")   'control-lock-enable) ; TODO: Doesn`t work in terminal
 (define-key attic-minor-mode-map (kbd "M--")        'control-lock-enable)
+(define-key attic-minor-mode-map (kbd "C--")        'control-lock-disable)
 
+; Editing
 (define-key attic-minor-mode-map (kbd "C-u")        'undo)
-(define-key attic-minor-mode-map (kbd "S-C-u")      'redo)
-(define-key attic-minor-mode-map (kbd "M-u")        'redo)
+(define-key attic-minor-mode-map (kbd "C-M-u")      'redo)
 
-(define-key attic-minor-mode-map (kbd "M-]")        'indent-for-tab-command)
-(define-key attic-minor-mode-map (kbd "M-<RET>")    'execute-extended-command)
-
-;; Unbind these fawkers for training
-(define-key attic-minor-mode-map (kbd "C-f")        'keyboard-quit)
-(define-key attic-minor-mode-map (kbd "C-b")        'keyboard-quit)
-(define-key attic-minor-mode-map (kbd "M-f")        'keyboard-quit)
-(define-key attic-minor-mode-map (kbd "M-b")        'keyboard-quit)
-(define-key attic-minor-mode-map (kbd "C-M-f")      'keyboard-quit)
-(define-key attic-minor-mode-map (kbd "C-M-b")      'keyboard-quit)
-
+(define-key attic-minor-mode-map (kbd "C-M-<RET>")  'execute-extended-command)
 
 (define-minor-mode attic-minor-mode
   "A minor mode so that my key settings override annoying major modes."
@@ -119,3 +117,4 @@
 (cua-mode t)
 (auto-fill-mode)
 (global-auto-complete-mode t)
+(control-lock-enable)
