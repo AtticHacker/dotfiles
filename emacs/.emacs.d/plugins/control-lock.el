@@ -124,7 +124,7 @@ user uses to enable control-lock."
       ; Save orig color and set to orange
       (setq control-lock-orig-cursor-color
             (face-background 'cursor nil 'default))
-      (set-face-background 'cursor "#ff3300")
-      (customize-set-variable 'cursor-type '(hbar . 3)))
+			(set-face-background 'cursor "#ff3300")
+      )
 
 (provide 'control-lock)

@@ -12,6 +12,7 @@ myManageHook = composeAll[
   className =? "Emesene"      --> doShift "2:com",
   className =? "Choqok"       --> doShift "2:com",
   className =? "Iceweasel"	  --> doShift "3:web",
+  className =? "Chromium"	    --> doShift "3:web",
   className =? "Thunar"       --> doShift "4:file",
   className =? "Thunderbird"  --> doShift "9:mail",
   className =? "Gitg"         --> doShift "8"

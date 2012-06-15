@@ -89,6 +89,7 @@
 (define-key attic-minor-mode-map (kbd "M-j")        'newline-up)
 (define-key attic-minor-mode-map (kbd "C-M-j")      'newline-up)
 (define-key attic-minor-mode-map (kbd "C-M-SPC")    'cua-set-rectangle-mark)
+(define-key attic-minor-mode-map (kbd "M-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-`")      'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
@@ -101,6 +102,9 @@
 (define-key attic-minor-mode-map (kbd "C-e C-k")    'move-beginning-of-line)
 (define-key attic-minor-mode-map (kbd "C-e C-l")    'end-of-buffer)
 (define-key attic-minor-mode-map (kbd "C-f")        'isearch-forward)
+(define-key attic-minor-mode-map (kbd "C-v")        'scroll-up-command)
+(define-key attic-minor-mode-map (kbd "C-M-v")      'scroll-down-command)
+(define-key attic-minor-mode-map (kbd "M-v")        'scroll-down-command)
 
 ; Window manipulation
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
@@ -135,6 +139,7 @@
 (define-key attic-minor-mode-map (kbd "C-d C-e C-k")'kill-backward-line)
 (define-key attic-minor-mode-map (kbd "C-d C-p")    'kill-word)
 (define-key attic-minor-mode-map (kbd "C-d C-k")    'backward-kill-word)
+(define-key attic-minor-mode-map (kbd "C-c C-r")    'query-replace)
 
 ; Custom
 (define-key attic-minor-mode-map (kbd "M-<RET>")    'execute-extended-command)
@@ -142,17 +147,16 @@
 (define-key attic-minor-mode-map (kbd "C-M-x")      'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "C-=")        'tabify)
 
-(define-minor-mode attic-minor-mode
-	"A minor mode so that my key settings override annoying major modes."
-  t " attic" 'attic-minor-mode-map)
+;; ENABLE / DISABLE MODES AT STARTUP
 
+(define-minor-mode attic-minor-mode
+"A minor mode so that my key settings override annoying major modes."
+
+  t " attic" 'attic-minor-mode-map)
 (defun attic-minibuffer-setup-hook ()
   (attic-minor-mode 0))
 
 (add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
-
-
-;; ENABLE / DISABLE MODES AT STARTUP
 
 (attic-minor-mode 1)
 (tool-bar-mode 0)
