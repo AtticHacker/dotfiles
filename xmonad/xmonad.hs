@@ -14,7 +14,7 @@ myManageHook = composeAll[
   className =? "Iceweasel"	  --> doShift "3:web",
   className =? "Chromium"	    --> doShift "3:web",
   className =? "Thunar"       --> doShift "4:file",
-  className =? "Thunderbird"  --> doShift "9:mail",
+  className =? "Icedove"      --> doShift "5:mail",
   className =? "Gitg"         --> doShift "8"
   ]
 
@@ -22,7 +22,7 @@ main = do
   xmproc <- spawnPipe "/usr/bin/xmobar $HOME/.xmobarrc"
   xmonad $ defaultConfig{
     workspaces = ["1:dev", "2:com", "3:web", "4:file",
-    "5:mail", "6", "7", "8", "9:mail", "0", "-", "="],
+    "5:mail", "6", "7", "8", "9", "0", "-", "="],
 
     manageHook = myManageHook <+> manageHook defaultConfig,
     layoutHook = avoidStruts $ layoutHook defaultConfig,

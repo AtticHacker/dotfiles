@@ -99,6 +99,7 @@ alias newkvm='qemu-img create -f qcow2'
 ##           ##
 
 # Install a new kvm machine
+# arguments: Partition, iso
 function installkvm {
   qemu-kvm -hda $1 -m 512 -cdrom $2 -boot d -vga std
 }
@@ -106,6 +107,14 @@ function installkvm {
 # Run a rvm machine
 function runkvm {
   qemu-kvm -hda $1 -m 512 -vga std
+}
+
+function runsshkvm {
+  qemu-system-x86_64 -m 400 -hda $1 -redir tcp:$2::22
+}
+
+function sshkvm {
+  ssh -l root -p $1 localhost 
 }
 
 # I compile the C file into an output file and then run it, afterwards I call the
