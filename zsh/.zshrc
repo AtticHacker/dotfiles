@@ -88,7 +88,7 @@ alias reboot='sudo reboot'
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
 # Vagrant
-alias vagrant='~/.vagrant/bin/vagrant'
+# alias vagrant='~/.vagrant/bin/vagrant'
 
 # Create a new kvm machine (without installing an os)
 # arguments: Name, size (Arch_linux 10G)
@@ -109,12 +109,12 @@ function runkvm {
   qemu-kvm -hda $1 -m 512 -vga std
 }
 
-function runsshkvm {
-  qemu-system-x86_64 -m 400 -hda $1 -redir tcp:$2::22
+function runportkvm {
+  qemu-system-x86_64 -m 400 -hda $1 -redir tcp:$2::3000 -redir tcp:$3::22
 }
 
 function sshkvm {
-  ssh -l root -p $1 localhost 
+  ssh -l $1 -p $2 localhost 
 }
 
 # I compile the C file into an output file and then run it, afterwards I call the

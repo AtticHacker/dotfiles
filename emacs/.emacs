@@ -20,7 +20,21 @@
 ;; SETTINGS
 
 ;; Tab size
-(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;;; And I have tried
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
+
+(customize-variable (quote tab-stop-list))
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50))))
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
@@ -30,6 +44,9 @@
   '(vc-follow-symlinks t))
 (custom-set-faces
 )
+
+(dolist (key '("\C-b"))
+  (global-unset-key key))
 
 ;; CUSTOM FUNCTIONS
 
@@ -88,12 +105,12 @@
 (define-key attic-minor-mode-map (kbd "C-j")        'newline-down)
 (define-key attic-minor-mode-map (kbd "M-j")        'newline-up)
 (define-key attic-minor-mode-map (kbd "C-M-j")      'newline-up)
-(define-key attic-minor-mode-map (kbd "C-M-SPC")    'cua-set-rectangle-mark)
-(define-key attic-minor-mode-map (kbd "M-SPC")    'cua-set-rectangle-mark)
+(define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
+(define-key attic-minor-mode-map (kbd "M-SPC")      'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-`")      'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
-(define-key attic-minor-mode-map (kbd "C-b")        'switch-to-buffer)
+;(define-key attic-minor-mode-map (kbd "C-b")        'switch-to-buffer)
 (define-key attic-minor-mode-map (kbd "M-b")        'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-b")      'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-g C-M-g")'goto-line)
@@ -152,9 +169,9 @@
 (define-minor-mode attic-minor-mode
 "A minor mode so that my key settings override annoying major modes."
 
-  t " attic" 'attic-minor-mode-map)
+t " attic" 'attic-minor-mode-map)
 (defun attic-minibuffer-setup-hook ()
-  (attic-minor-mode 0))
+	(attic-minor-mode 0))
 
 (add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
 
