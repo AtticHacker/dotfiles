@@ -12,11 +12,16 @@
 (require 'dirtree)
 (require 'textmate)
 (require 'zenburn)
+(require 'color-theme-solarized)
 (require 'ido)
 (require 'auto-complete)
 (require 'misc)
 (require 'control-lock)
-
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 ;; SETTINGS
 
 ;; Tab size
@@ -26,7 +31,7 @@
 ;;; And I have tried
 (setq indent-tabs-mode nil)
 (setq tab-width 4)
-
+(setq cua-enable-cua-keys nil)
 (customize-variable (quote tab-stop-list))
 
 (custom-set-variables
@@ -45,7 +50,13 @@
 (custom-set-faces
 )
 
+
+;; A few modes and such
+
+
 (dolist (key '("\C-b"))
+  (global-unset-key key))
+(dolist (key '("\C-z"))
   (global-unset-key key))
 
 ;; CUSTOM FUNCTIONS
@@ -110,8 +121,8 @@
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-`")      'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
-;(define-key attic-minor-mode-map (kbd "C-b")        'switch-to-buffer)
-(define-key attic-minor-mode-map (kbd "M-b")        'buffer-menu-other-window)
+(define-key attic-minor-mode-map (kbd "C-v")        'switch-to-buffer)
+(define-key attic-minor-mode-map (kbd "M-v")        'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-b")      'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-g C-M-g")'goto-line)
 (define-key attic-minor-mode-map (kbd "C-e C-o")    'beginning-of-buffer)
@@ -119,9 +130,7 @@
 (define-key attic-minor-mode-map (kbd "C-e C-k")    'move-beginning-of-line)
 (define-key attic-minor-mode-map (kbd "C-e C-l")    'end-of-buffer)
 (define-key attic-minor-mode-map (kbd "C-f")        'isearch-forward)
-(define-key attic-minor-mode-map (kbd "C-v")        'scroll-up-command)
-(define-key attic-minor-mode-map (kbd "C-M-v")      'scroll-down-command)
-(define-key attic-minor-mode-map (kbd "M-v")        'scroll-down-command)
+(define-key attic-minor-mode-map (kbd "C-z")        'pop-global-mark)
 
 ; Window manipulation
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
@@ -174,14 +183,13 @@ t " attic" 'attic-minor-mode-map)
 	(attic-minor-mode 0))
 
 (add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
-
-(attic-minor-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (global-linum-mode 1)
-(color-theme-zenburn)
+(color-theme-solarized-dark)
 (cua-mode t)
 (auto-fill-mode)
 (global-auto-complete-mode t)
 (control-lock-enable)
+(attic-minor-mode 1)
