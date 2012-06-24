@@ -109,12 +109,22 @@ function runkvm {
   qemu-kvm -hda $1 -m 512 -vga std
 }
 
+# Arguments: 'kvm machine', 'rails port forward', 'ssh port forward'
 function runportkvm {
   qemu-system-x86_64 -m 400 -hda $1 -redir tcp:$2::3000 -redir tcp:$3::22
 }
 
+# Arguments: 'user', 'kvm forwarded port'
 function sshkvm {
   ssh -l $1 -p $2 localhost 
+}
+
+function kvmhelp {
+  echo "newkvm:     'name' 'size'"
+  echo "installkvm: 'kvm-machine' 'iso'"
+  echo "runkvm:     'kvm-machine'"
+  echo "runportkvm: 'kvm machine' 'rails post forward' 'ssh port forward'"
+  echo "sshkvm:     'user' 'kvm ssh port'"
 }
 
 # I compile the C file into an output file and then run it, afterwards I call the
