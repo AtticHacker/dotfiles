@@ -10,9 +10,11 @@ import XMonad.Actions.CycleWS
 
 myManageHook = composeAll[
   className =? "Emesene"      --> doShift "2:com",
+  className =? "Skype"        --> doShift "2:com",
+  className =? "Pidgin"       --> doShift "2:com",
   className =? "Choqok"       --> doShift "2:com",
   className =? "Iceweasel"	  --> doShift "3:web",
-  className =? "Chromium"	    --> doShift "3:web",
+  className =? "Chromium"	  --> doShift "3:web",
   className =? "Thunar"       --> doShift "4:file",
   className =? "Icedove"      --> doShift "5:mail",
   className =? "Gitg"         --> doShift "8"
