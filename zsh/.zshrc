@@ -4,6 +4,7 @@
 
 # Shortcut for xmonad.hs
 XMO=$HOME/.xmonad/xmonad.hs
+XMOD=$HOME/.xmodmaprc
 
 # Shortcut for .zsh
 ZSH=$HOME/.zsh

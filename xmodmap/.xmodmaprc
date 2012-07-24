@@ -3,3 +3,22 @@ remove Lock = Caps_Lock
 keysym Caps_Lock = Control_L
 
 add Control = Control_L
+
+
+remove mod3 = KP_6
+remove mod3 = KP_2
+remove mod3 = KP_3
+remove mod3 = KP_Multiply
+remove mod3 = KP_0
+
+keysym KP_6        = Up
+keysym KP_2        = Left
+keysym KP_3        = Down
+keysym KP_Multiply = Right
+keysym KP_0        = Return
+
+add mod3 = Up
+add mod3 = Left
+add mod3 = Down
+add mod3 = Right
+add mod3 = Return
