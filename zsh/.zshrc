@@ -47,7 +47,6 @@ else
   ##                 ##
 
   # Swaps a few keys
-  echo "Password to swap keys\n"
   alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
   sudo loadkeys ~/.dotfiles/keymap/keymap.map
 fi

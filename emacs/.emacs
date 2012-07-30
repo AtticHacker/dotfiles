@@ -7,13 +7,13 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/plugins/haskell-mode")
 (add-to-list 'load-path "~/.emacs.d/plugins/erc")
+(add-to-list 'load-path "~/.emacs.d/plugins/eap")
 
 (require 'color-theme)
 (require 'bitlbee)
 (require 'redo+)
 (require 'dirtree)
 (require 'textmate)
-(require 'zenburn)
 (require 'color-theme-solarized)
 (require 'ido)
 (require 'auto-complete)
@@ -21,16 +21,21 @@
 (require 'org-install)
 (require 'haskell-mode)
 (require 'erc)
+(require 'eap)
+
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+
 ;; SETTINGS
 
 ;; Tab size
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+
+(setq auto-mode-alist (cons '(".hs" . haskell-mode) auto-mode-alist))
 
 ;; And I have tried
 (setq indent-tabs-mode nil)
@@ -39,20 +44,26 @@
 (customize-variable (quote tab-stop-list))
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-hoogle-command "")
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode imenu-add-menubar-index)))
+ '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50)))
+ '(vc-follow-symlinks t))
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
 
 ;; Follows file links without asking
-(custom-set-variables
-  '(vc-follow-symlinks t))
+
 (custom-set-faces
-)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 
 ;; A few modes and such
@@ -173,7 +184,7 @@
 (define-key attic-minor-mode-map (kbd "C-<f2>")     'shrink-window)
 (define-key attic-minor-mode-map (kbd "C-<f3>")     'enlarge-window-horizontally)
 (define-key attic-minor-mode-map (kbd "C-<f4>")     'shrink-window-horizontally)
-(define-key attic-lock-minor-mode-map (kbd "<tab>") 'other-window)
+(define-key attic-minor-mode-map (kbd "M-<tab>") 'other-window)
 (define-key attic-lock-minor-mode-map (kbd "C-<tab>") 'other-window)
 
 ; Control-mode-swapping
@@ -225,6 +236,7 @@
 (define-key attic-minor-mode-map (kbd "M-x")        'execute-extended-command)
 (define-key attic-lock-minor-mode-map (kbd "x s")   'save-buffer)
 (define-key attic-lock-minor-mode-map (kbd "x c")   'save-buffers-kill-terminal)
+(define-key attic-lock-minor-mode-map (kbd "M-\\")  'tmm-menubar)
 
 ;; ENABLE / DISABLE MODES AT STARTUP
 
@@ -249,8 +261,9 @@ t " attic-lock" 'attic-lock-minor-mode-map)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (global-linum-mode 1)
-(color-theme-solarized-dark)
+(color-theme-ld-dark)
 (cua-mode t)
-(global-auto-complete-mode t)
+(global-auto-complete-mode 1)
+;(auto-complete-mode 1)
 
 ;wrt
