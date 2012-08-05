@@ -1,6 +1,7 @@
 #!/bin/sh
 
 xmodmap ~/.xmodmaprc
+unclutter -idle 3&
 xsetroot -cursor_name left_ptr
 feh --bg-scale ~/.bg.png
 xrandr --output DVI-1 --auto --left-of DVI-0

@@ -79,7 +79,13 @@ alias reseed='rake db:migrate:reset && rake db:seed'
 alias hereseed='heroku pg:reset SHARED_DATABASE_URL --confirm && heroku run rake db:migrate && heroku run rake db:seed'
 
 # Shutdown
-alias shutdown='sudo shutdown -h now'
+function shutdown {
+  echo "Are you sure you want to shutdown? [y/n]"
+  read ans
+  if [[ $ans == 'y' ]];then
+    `sudo /sbin/shutdown -h now`  
+  fi
+}
 
 # Reboot
 alias reboot='sudo reboot'
@@ -97,6 +103,9 @@ alias newkvm='qemu-img create -f qcow2'
 ##           ##
 ## FUNCTIONS ##
 ##           ##
+
+
+cconverter() { wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g'; }
 
 # Install a new kvm machine
 # arguments: Partition, iso
