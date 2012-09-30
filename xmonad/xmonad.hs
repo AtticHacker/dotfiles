@@ -42,7 +42,7 @@ main = do
     , terminal           = "terminal"
     , modMask            = mod4Mask
     , normalBorderColor  = "#000000"
-    , focusedBorderColor = "#9d9d9d"
+--    , focusedBorderColor = "#9d9d9d"
     , focusFollowsMouse  = False
   }`additionalKeys`[ ((0,   xF86XK_AudioRaiseVolume),      spawn "amixer --quiet set Master 1+")
                    , ((0,   xF86XK_AudioLowerVolume),      spawn "amixer --quiet set Master 1-")
