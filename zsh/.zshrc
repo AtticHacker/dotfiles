@@ -79,13 +79,7 @@ alias reseed='rake db:migrate:reset && rake db:seed'
 alias hereseed='heroku pg:reset SHARED_DATABASE_URL --confirm && heroku run rake db:migrate && heroku run rake db:seed'
 
 # Shutdown
-function shutdown {
-  echo "Are you sure you want to shutdown? [y/n]"
-  read ans
-  if [[ $ans == 'y' ]];then
-    `sudo /sbin/shutdown -h now`  
-  fi
-}
+alias shutdown='sudo /sbin/shutdown -h now'
 
 # Reboot
 alias reboot='sudo reboot'

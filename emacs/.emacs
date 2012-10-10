@@ -189,15 +189,19 @@
 (define-key attic-minor-mode-map (kbd "C-M-h")      'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
 (define-key attic-lock-minor-mode-map (kbd "g")     'goto-line)
-(define-key attic-minor-mode-map (kbd "C-e C-p")    'beginning-of-buffer)
-(define-key attic-minor-mode-map (kbd "C-e C-f")    'move-end-of-line)
-(define-key attic-minor-mode-map (kbd "C-e C-b")    'move-beginning-of-line)
-(define-key attic-minor-mode-map (kbd "C-e C-n")    'end-of-buffer)
-(define-key attic-lock-minor-mode-map (kbd "e p")   'beginning-of-buffer)
-(define-key attic-lock-minor-mode-map (kbd "e f")   'move-end-of-line)
-(define-key attic-lock-minor-mode-map (kbd "e b")   'move-beginning-of-line)
-(define-key attic-lock-minor-mode-map (kbd "e n")   'end-of-buffer)
+;(define-key attic-minor-mode-map (kbd "C-e C-p")    'beginning-of-buffer)
+;(define-key attic-minor-mode-map (kbd "C-e C-f")    'move-end-of-line)
+;(define-key attic-minor-mode-map (kbd "C-e C-b")    'move-beginning-of-line)
+;(define-key attic-minor-mode-map (kbd "C-e C-n")    'end-of-buffer)
+;(define-key attic-lock-minor-mode-map (kbd "e p")   'beginning-of-buffer)
+;(define-key attic-lock-minor-mode-map (kbd "e f")   'move-end-of-line)
+;(define-key attic-lock-minor-mode-map (kbd "e b")   'move-beginning-of-line)
+;(define-key attic-lock-minor-mode-map (kbd "e n")   'end-of-buffer)
+
+(define-key attic-lock-minor-mode-map (kbd "e")     'move-end-of-line)
+(define-key attic-lock-minor-mode-map (kbd "a")     'move-beginning-of-line)
 (define-key attic-lock-minor-mode-map (kbd "s")     'isearch-forward)
+(define-key attic-lock-minor-mode-map (kbd "r")     'isearch-backward)
 
 ; Window manipulation
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
@@ -206,7 +210,7 @@
 (define-key attic-minor-mode-map (kbd "C-<f1>")     'enlarge-window)
 (define-key attic-minor-mode-map (kbd "C-<f2>")     'shrink-window)
 (define-key attic-minor-mode-map (kbd "C-<f3>")     'enlarge-window-horizontally)
-(define-key attic-lock-minor-mode-map (kbd "w")       'other-window)
+(define-key attic-lock-minor-mode-map (kbd "w")     'other-window)
 
 ; Control-mode-swapping
 (define-key attic-minor-mode-map (kbd "M-i")        'attic-lock-enable)
@@ -233,12 +237,6 @@
 (define-key attic-minor-mode-map (kbd "M-q")        'yank-pop)
 (define-key attic-lock-minor-mode-map (kbd "z")		'delete-char-and-insert)
 (define-key attic-minor-mode-map (kbd "C-z")        'delete-char-and-insert)
-(define-key attic-minor-mode-map (kbd "C-a")        'forward-char-and-insert)
-(define-key attic-minor-mode-map (kbd "C-d C-d")    'kill-whole-line)
-(define-key attic-minor-mode-map (kbd "C-d C-e C-f")'kill-line)
-(define-key attic-minor-mode-map (kbd "C-d C-e C-b")'kill-backward-line)
-(define-key attic-minor-mode-map (kbd "C-d C-f")    'kill-word)
-(define-key attic-minor-mode-map (kbd "C-d C-b")    'backward-kill-word)
 (define-key attic-lock-minor-mode-map (kbd "m")     'newline)
 (define-key attic-minor-mode-map (kbd "M-m")        'newline)
 (define-key attic-minor-mode-map (kbd "M--")        'comment-or-uncomment-region)
@@ -250,13 +248,11 @@
 (define-key attic-minor-mode-map (kbd "M-x s")		'save-buffer)
 (define-key attic-minor-mode-map (kbd "M-x C-s")	'save-buffer)
 
-(define-key attic-lock-minor-mode-map (kbd "a")		'forward-char-and-insert)
-(define-key attic-lock-minor-mode-map (kbd "d d")	'kill-whole-line)
-(define-key attic-lock-minor-mode-map (kbd "d e f")	'kill-line)
-(define-key attic-lock-minor-mode-map (kbd "d e b")	'kill-backward-line)
-(define-key attic-lock-minor-mode-map (kbd "d f")	'kill-word)
-(define-key attic-lock-minor-mode-map (kbd "d b")	'backward-kill-word)
+(define-key attic-lock-minor-mode-map (kbd "d")	    'delete-char)
 (define-key attic-lock-minor-mode-map (kbd "c r")	'query-replace)
+
+(define-key attic-lock-minor-mode-map (kbd "k")	    'kill-line)
+
 
 ; Custom
 (define-key attic-minor-mode-map (kbd "M-m")        'execute-extended-command)
@@ -265,7 +261,6 @@
 (define-key attic-lock-minor-mode-map (kbd "x s")   'save-buffer)
 (define-key attic-lock-minor-mode-map (kbd "x c")   'save-buffers-kill-terminal)
 (define-key attic-lock-minor-mode-map (kbd "M-\\")  'tmm-menubar)
-
 
 ; cmus
 (define-key attic-minor-mode-map (kbd "M-x M-u")	'cmus-pause)

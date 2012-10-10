@@ -8,6 +8,7 @@ import XMonad.Actions.FindEmptyWorkspace
 import XMonad.Config.Gnome
 import XMonad.Actions.CycleWS
 import Graphics.X11.ExtraTypes.XF86
+import qualified XMonad.StackSet as W
 
 myManageHook = composeAll [ className =? "Emesene"      --> doShift "2:com"
                           , className =? "Skype"        --> doShift "2:com"
@@ -37,7 +38,8 @@ main = do
                  ],
 
     manageHook = myManageHook <+> manageHook defaultConfig,
-    layoutHook = avoidStruts $ layoutHook defaultConfig
+    layoutHook = avoidStruts $ layoutHook defaultConfig,
+
     , borderWidth        = 1
     , terminal           = "terminal"
     , modMask            = mod4Mask
@@ -54,4 +56,5 @@ main = do
                    , ((mod4Mask .|. shiftMask, xK_n),      tagToEmptyWorkspace)
                    , ((mod4Mask,               xK_b),      spawn "toggleXmobar")
                    , ((mod4Mask,               xK_w),      nextScreen)
+                   , ((mod1Mask,               xK_Tab),    windows W.focusDown)
                    ]
