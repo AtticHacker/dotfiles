@@ -35,26 +35,26 @@ main = do
                  , "0"
                  , "-"
                  , "=" 
-                 ],
+                 ]
 
-    manageHook = myManageHook <+> manageHook defaultConfig,
-    layoutHook = avoidStruts $ layoutHook defaultConfig,
-
+    , manageHook = myManageHook <+> manageHook defaultConfig
+    , layoutHook = avoidStruts $ layoutHook defaultConfig
     , borderWidth        = 1
     , terminal           = "terminal"
     , modMask            = mod4Mask
     , normalBorderColor  = "#000000"
---    , focusedBorderColor = "#9d9d9d"
     , focusFollowsMouse  = False
-  }`additionalKeys`[ ((0,   xF86XK_AudioRaiseVolume),      spawn "amixer --quiet set Master 1+")
-                   , ((0,   xF86XK_AudioLowerVolume),      spawn "amixer --quiet set Master 1-")
-                   , ((0,   xF86XK_AudioMute),             spawn "amixer --quiet set Master toggle")
-                   , ((mod4Mask,               xK_f),      spawn "thunar")
-                   , ((mod4Mask .|. shiftMask, xK_m),      spawn "terminal")
-                   , ((0,                   xK_Print),     spawn "scrot")
-                   , ((mod4Mask,               xK_n),      viewEmptyWorkspace)
-                   , ((mod4Mask .|. shiftMask, xK_n),      tagToEmptyWorkspace)
-                   , ((mod4Mask,               xK_b),      spawn "toggleXmobar")
-                   , ((mod4Mask,               xK_w),      nextScreen)
-                   , ((mod1Mask,               xK_Tab),    windows W.focusDown)
-                   ]
+    }
+    `additionalKeys`[ ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer --quiet set Master 1+")
+		    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer --quiet set Master 1-")
+		    , ((0, xF86XK_AudioMute          ), spawn "amixer --quiet set Master toggle")
+		    , ((mod4Mask, xK_f               ), spawn "thunar")
+		    , ((mod4Mask .|. shiftMask, xK_m ), spawn "terminal")
+		    , ((0, xK_Print                  ), spawn "scrot")
+		    , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
+		    , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
+		    , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
+		    , ((mod4Mask, xK_w               ), nextScreen)
+		    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
+		    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
+                    ]
