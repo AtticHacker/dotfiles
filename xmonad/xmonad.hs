@@ -14,8 +14,8 @@ myManageHook = composeAll [ className =? "Emesene"      --> doShift "2:com"
                           , className =? "Skype"        --> doShift "2:com"
                           , className =? "Pidgin"       --> doShift "2:com"
                           , className =? "Choqok"       --> doShift "2:com"
-                          , className =? "Iceweasel"	--> doShift "3:web"
-                          , className =? "Chromium"	--> doShift "3:web"
+                          , className =? "Firefox"	    --> doShift "3:web"
+                          , className =? "Chromium"	    --> doShift "3:web"
                           , className =? "Thunar"       --> doShift "4:file"
                           , className =? "Icedove"      --> doShift "5:mail"
                           , className =? "Gitg"         --> doShift "8"
@@ -34,27 +34,26 @@ main = do
                  , "9"
                  , "0"
                  , "-"
-                 , "=" 
+                 , "="
                  ]
 
     , manageHook = myManageHook <+> manageHook defaultConfig
     , layoutHook = avoidStruts $ layoutHook defaultConfig
     , borderWidth        = 1
-    , terminal           = "terminal"
+    , terminal           = "urxvt"
     , modMask            = mod4Mask
     , normalBorderColor  = "#000000"
     , focusFollowsMouse  = False
     }
-    `additionalKeys`[ ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer --quiet set Master 1+")
-		    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer --quiet set Master 1-")
-		    , ((0, xF86XK_AudioMute          ), spawn "amixer --quiet set Master toggle")
-		    , ((mod4Mask, xK_f               ), spawn "thunar")
-		    , ((mod4Mask .|. shiftMask, xK_m ), spawn "terminal")
-		    , ((0, xK_Print                  ), spawn "scrot")
-		    , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
-		    , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
-		    , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
-		    , ((mod4Mask, xK_w               ), nextScreen)
-		    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
-		    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
+    `additionalKeys`[ ((mod4Mask, xK_o               ), spawn "amixer --quiet set Master 1+")
+                    , ((mod4Mask, xK_i               ), spawn "amixer --quiet set Master 1-")
+                    , ((0, xF86XK_AudioMute          ), spawn "amixer --quiet set Master toggle")
+                    , ((mod4Mask, xK_f               ), spawn "thunar")
+                    , ((mod4Mask .|. shiftMask, xK_m ), spawn "terminal")
+                    , ((0, xK_Print                  ), spawn "scrot")
+                    , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
+                    , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
+                    , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
+                    , ((mod4Mask, xK_w               ), nextScreen)
+                    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
                     ]

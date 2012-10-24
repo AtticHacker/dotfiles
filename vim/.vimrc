@@ -61,11 +61,21 @@ let g:ctrlp_working_path_mode = 0
 vmap < <gv
 vmap > >gv
 vmap <BS> <left>
-map ` <C-P>
-map <C-n> :noh<CR>
+"map <C-n> :noh<CR>
 map <F1> <C-W>s
 map <F2> <C-W>v
 map <F3><F3> <C-W>q
+map ; :
+
+" Crazy emacs bindings
+
+nmap <C-K> v$hd
+nmap <C-E> $
+nmap <C-A> 0
+vmap <C-E> $
+vmap <C-A> 0
+nmap <C-D> <del>
+nmap <M-D> dw
 
 if bufwinnr(1)
   nmap + <C-W>+
@@ -78,8 +88,6 @@ endif
 
 :command WQ wq
 :command Wq wq
-:command W  wq
-:command Q  wq
 
 
 " Flag certain files as certain language files
@@ -110,3 +118,21 @@ let g:RubyRunner_open_below = 1
 
 let g:RubyRunner_window_size = 10
 
+let mapleader = ","
+
+function IndentHash()
+  '<,'>Tabularize /:\zs
+endfunction
+
+function IndentRocket()
+  '<,'>Tabularize /^[^=>]*\zs=>/l1
+endfunction
+
+function IndentEquals()
+  '<,'>Tabularize /=
+endfunction
+
+map <Leader>i= :call IndentEquals()<cr>
+map <Leader>ih :call IndentHash()<cr>
+map <Leader>ir :call IndentRocket()<cr>
+map <A-Tab> :tabNext<cr>

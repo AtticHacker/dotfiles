@@ -38,7 +38,7 @@ if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];th
   ## X WINDOW ALIASES ##
   ##                  ##
 
-  alias emacs='emacs -nw'
+  alias emacs='emacs-24.2 -nw'
 else
   # Everything in here will only be executed when X window is NOT running.
 
@@ -47,7 +47,7 @@ else
   ##                 ##
 
   # Swaps a few keys
-  alias loadall='sudo loadkeys ~/.dotfiles/keymap/keymap.map'
+  alias loadall='sudo usr/bin/loadkeys /home/kevin/.dotfiles/keymap/keymap.map'
   sudo loadkeys ~/.dotfiles/keymap/keymap.map
 fi
 
@@ -87,6 +87,16 @@ alias reboot='sudo reboot'
 # Connect to my iPhone using MyWi
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
+alias glade='./home/kevin/.glade/src/glade-e'
+
+# Kill process
+function killit {
+  itis1=`ps aux | grep $1 | awk '{print $2}' | head -1`
+  itis2=`ps aux | grep $1 | awk '{print $2}' | tail -1`
+  kill -9 $itis1
+  kill -9 $itis2
+}
+
 # Vagrant
 # alias vagrant='~/.vagrant/bin/vagrant'
 
@@ -97,7 +107,6 @@ alias newkvm='qemu-img create -f qcow2'
 ##           ##
 ## FUNCTIONS ##
 ##           ##
-
 
 cconverter() { wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=$3&hl=es" | sed '/res/!d;s/<[^>]*>//g'; }
 
@@ -119,7 +128,7 @@ function runportkvm {
 
 # Arguments: 'user', 'kvm forwarded port'
 function sshkvm {
-  ssh -l $1 -p $2 localhost 
+  ssh -l $1 -p $2 localhost
 }
 
 function kvmhelp {
@@ -173,4 +182,4 @@ function store_emacs_backups {
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+

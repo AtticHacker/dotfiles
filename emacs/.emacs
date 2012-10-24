@@ -301,3 +301,4 @@ t " attic-lock" 'attic-lock-minor-mode-map)
 
 ;wr
 (put 'downcase-region 'disabled nil)
+(modify-frame-parameters nil '((wait-for-wm . nil)))
