@@ -15,6 +15,8 @@ ZSHRC=$HOME/.zshrc
 # Zsh Theme
 ZSH_THEME="kevin"
 
+
+export PATH=$PATH:$HOME/.cabal/bin/
 # plugins=(git)
 
 ## OH MY ZSH options ##
@@ -38,7 +40,6 @@ if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];th
   ## X WINDOW ALIASES ##
   ##                  ##
 
-  alias emacs='emacs-24.2 -nw'
 else
   # Everything in here will only be executed when X window is NOT running.
 
@@ -47,8 +48,8 @@ else
   ##                 ##
 
   # Swaps a few keys
-  alias loadall='sudo usr/bin/loadkeys /home/kevin/.dotfiles/keymap/keymap.map'
-  sudo loadkeys ~/.dotfiles/keymap/keymap.map
+  #alias loadall='sudo usr/bin/loadkeys /home/kevin/.dotfiles/keymap/keymap.map'
+  #sudo loadkeys ~/.dotfiles/keymap/keymap.map
 fi
 
 ##         ##
@@ -57,6 +58,8 @@ fi
 
 # Suspend
 alias suspend='sudo pm-suspend'
+
+alias emacs='emacs-24.2 -nw'
 
 # Git pull all submodules
 alias pullsubmodules='git submodule update --init'
@@ -180,6 +183,11 @@ function store_emacs_backups {
   find ./* | grep "#" | while read line;do mv $line ./emacs_backup_files/;done
 }
 
+function ogv2avi {
+  ffmpeg -i $1 -vcodec mpeg4 -sameq -acodec libmp3lame $2
+}
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

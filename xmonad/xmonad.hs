@@ -10,24 +10,28 @@ import XMonad.Actions.CycleWS
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 
-myManageHook = composeAll [ className =? "Emesene"      --> doShift "2:com"
-                          , className =? "Skype"        --> doShift "2:com"
-                          , className =? "Pidgin"       --> doShift "2:com"
-                          , className =? "Choqok"       --> doShift "2:com"
-                          , className =? "Firefox"	    --> doShift "3:web"
-                          , className =? "Chromium"	    --> doShift "3:web"
-                          , className =? "Thunar"       --> doShift "4:file"
-                          , className =? "Icedove"      --> doShift "5:mail"
+import qualified DBus as D
+import qualified DBus.Client as D
+import qualified Codec.Binary.UTF8.String as UTF8
+
+myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
+                          , className =? "Skype"        --> doShift "2"
+                          , className =? "Pidgin"       --> doShift "2"
+                          , className =? "Choqok"       --> doShift "2"
+                          , className =? "Firefox"	--> doShift "3"
+                          , className =? "Chromium"	--> doShift "3"
+                          , className =? "Thunar"       --> doShift "4"
+                          , className =? "Icedove"      --> doShift "5"
                           , className =? "Gitg"         --> doShift "8"
                           ]
 
 main = do
   xmonad $ defaultConfig{
-    workspaces = [ "1:dev"
-                 , "2:com"
-                 , "3:web"
-                 , "4:file"
-                 , "5:mail"
+    workspaces = [ "1"
+                 , "2"
+                 , "3"
+                 , "4"
+                 , "5"
                  , "6"
                  , "7"
                  , "8"
@@ -57,3 +61,43 @@ main = do
                     , ((mod4Mask, xK_w               ), nextScreen)
                     , ((mod1Mask, xK_Tab             ), windows W.focusDown)
                     ]
+
+prettyPrinter :: D.Client -> PP
+prettyPrinter dbus = defaultPP
+    { ppOutput   = dbusOutput dbus
+    , ppTitle    = pangoSanitize
+    , ppCurrent  = pangoColor "green" . wrap "[" "]" . pangoSanitize
+    , ppVisible  = pangoColor "yellow" . wrap "(" ")" . pangoSanitize
+    , ppHidden   = const ""
+    , ppUrgent   = pangoColor "red"
+    , ppLayout   = const ""
+    , ppSep      = " "
+    }
+
+getWellKnownName :: D.Client -> IO ()
+getWellKnownName dbus = do
+  D.requestName dbus (D.busName_ "org.xmonad.Log")
+                [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+  return ()
+  
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal "/org/xmonad/Log" "org.xmonad.Log" "Update") {
+            D.signalBody = [D.toVariant ("<b>" ++ (UTF8.decodeString str) ++ "</b>")]
+        }
+    D.emit dbus signal
+
+pangoColor :: String -> String -> String
+pangoColor fg = wrap left right
+  where
+    left  = "<span foreground=\"" ++ fg ++ "\">"
+    right = "</span>"
+
+pangoSanitize :: String -> String
+pangoSanitize = foldr sanitize ""
+  where
+    sanitize '>'  xs = "&gt;" ++ xs
+    sanitize '<'  xs = "&lt;" ++ xs
+    sanitize '\"' xs = "&quot;" ++ xs
+    sanitize '&'  xs = "&amp;" ++ xs
+    sanitize x    xs = x:xs

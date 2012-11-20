@@ -7,6 +7,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/plugins/haskell-mode")
 (add-to-list 'load-path "~/.emacs.d/plugins/erc")
+(add-to-list 'load-path "~/.cabal/share/ghc-mod-1.11.2")
 
 (require 'color-theme)
 (require 'bitlbee)
@@ -144,6 +145,11 @@
   (shell-command "cmus-remote -v -5")
 )
 
+(defun attic-rock-lock () (interactive)
+ (setq attic-lock-minor-mode t)
+ (keyboard-quit)
+)
+
 ;; KEY BINDINGS
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -162,8 +168,6 @@
 
 (define-key attic-minor-mode-map (kbd "M-f")		'forward-to-word)
 (define-key attic-minor-mode-map (kbd "M-b")		'backward-word)
-(define-key attic-minor-mode-map (kbd "M-p")		'previous-line-two)
-(define-key attic-minor-mode-map (kbd "M-n")		'next-line-two)
 
 (define-key attic-minor-mode-map (kbd "M-C-f")	    'forward-to-word)
 (define-key attic-minor-mode-map (kbd "M-C-b")	    'backward-word-two)
@@ -207,18 +211,14 @@
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
 (define-key attic-minor-mode-map (kbd "<f2>")       'split-window-horizontally)
 (define-key attic-minor-mode-map (kbd "<f3>")       'delete-window)
-(define-key attic-minor-mode-map (kbd "C-<f1>")     'enlarge-window)
-(define-key attic-minor-mode-map (kbd "C-<f2>")     'shrink-window)
-(define-key attic-minor-mode-map (kbd "C-<f3>")     'enlarge-window-horizontally)
+;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window)
+;(define-key attic-minor-mode-map (kbd "C-]")     'shrink-window)
+;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window-horizontally)
 (define-key attic-lock-minor-mode-map (kbd "w")     'other-window)
 
 ; Control-mode-swapping
-(define-key attic-minor-mode-map (kbd "M-i")        'attic-lock-enable)
-(define-key attic-minor-mode-map (kbd "C-M-i")      'attic-lock-enable)
 (define-key attic-lock-minor-mode-map (kbd "i")     'attic-lock-disable)
-(define-key attic-minor-mode-map (kbd "M-[")        'attic-lock-enable)
-(define-key attic-minor-mode-map (kbd "C-M-[")      'attic-lock-enable)
-(define-key attic-lock-minor-mode-map (kbd "[")     'attic-lock-disable)
+(define-key attic-minor-mode-map (kbd "C-g")        'attic-rock-lock)
 
 ; Editing
 (define-key attic-lock-minor-mode-map (kbd "u")     'undo)
@@ -301,3 +301,37 @@ t " attic-lock" 'attic-lock-minor-mode-map)
 ;wr
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
+
+
+
+;haskell mode configuration
+(setq auto-mode-alist
+      (append auto-mode-alist
+              '(("\\.[hg]s$"  . haskell-mode)
+                ("\\.hic?$"     . haskell-mode)
+                ("\\.hsc$"     . haskell-mode)
+  ("\\.chs$"    . haskell-mode)
+                ("\\.l[hg]s$" . literate-haskell-mode))))
+(autoload 'haskell-mode "haskell-mode"
+   "Major mode for editing Haskell scripts." t)
+(autoload 'literate-haskell-mode "haskell-mode"
+   "Major mode for editing literate Haskell scripts." t)
+
+;adding the following lines according to which modules you want to use:
+(require 'inf-haskell)
+
+(add-hook 'haskell-mode-hook 'turn-on-font-lock)
+;(add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
+;(add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-hugs)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
+(add-hook 'haskell-mode-hook 
+   (function
+    (lambda ()
+      (setq haskell-program-name "ghci")
+      (setq haskell-ghci-program-name "ghci6"))))
+
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
