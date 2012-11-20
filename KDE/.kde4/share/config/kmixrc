@@ -2,15 +2,15 @@
 AllowDocking=true
 AutoUseMultimediaKeys=true
 ConfigVersion=3
-DefaultCardOnStart=ALSA.HDA_Intel_PCH.1.default
+DefaultCardOnStart=PulseAudio.Capture_Devices.1.default
 Labels=true
 MasterMixer=PulseAudio::Playback_Devices:1
 MasterMixerDevice=alsa_output.pci-0000_01_00.1.hdmi-stereo
 Menubar=true
 MixerIgnoreExpression=Modem
 Orientation=Vertical
-Position=2637,271
-Size=660,282
+Position=2501,210
+Size=660,363
 Tickmarks=true
 TrayVolumeControl=true
 Visible=false
@@ -21,6 +21,7 @@ startkdeRestore=true
 ALSA::HD-Audio_Generic:1=ALSA.HD-Audio_Generic.1.default
 ALSA::HDA_Intel_PCH:1=ALSA.HDA_Intel_PCH.1.default
 ALSA::USB_Device_0x46d_0x8c1:1=
+ALSA::Yeti_Stereo_Microphone:1=ALSA.Yeti_Stereo_Microphone.1.default
 
 [View.ALSA.HD-Audio_Generic.1.default.ALSA::HD-Audio_Generic:1.IEC958:0]
 Show=true
@@ -111,10 +112,37 @@ Split=false
 Show=true
 Split=false
 
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Bass:0]
+Show=false
+Split=false
+
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Bass_Boost:0]
+Show=false
+Split=false
+
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Loudness:0]
+Show=false
+Split=false
+
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Mic:0]
+Show=true
+Split=false
+
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Speaker:0]
+Show=false
+Split=false
+
+[View.ALSA.Yeti_Stereo_Microphone.1.default.ALSA::Yeti_Stereo_Microphone:1.Treble:0]
+Show=false
+Split=false
+
 [View.PulseAudio.Capture_Devices.1.default.PulseAudio::Capture_Devices:1.alsa_input.pci-0000_00_1b.0.analog-stereo]
 Split=false
 
 [View.PulseAudio.Capture_Devices.1.default.PulseAudio::Capture_Devices:1.alsa_input.usb-046d_08c1_02721591-02-U0x46d0x8c1.analog-mono]
+Split=false
+
+[View.PulseAudio.Capture_Devices.1.default.PulseAudio::Capture_Devices:1.alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone-00-Microphone.analog-stereo]
 Split=false
 
 [View.PulseAudio.Playback_Devices.1.default.PulseAudio::Playback_Devices:1.alsa_output.pci-0000_00_1b.0.analog-stereo]
@@ -123,7 +151,13 @@ Split=false
 [View.PulseAudio.Playback_Devices.1.default.PulseAudio::Playback_Devices:1.alsa_output.pci-0000_01_00.1.hdmi-stereo]
 Split=false
 
+[View.PulseAudio.Playback_Devices.1.default.PulseAudio::Playback_Devices:1.alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone-00-Microphone.analog-stereo]
+Split=false
+
 [View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.restore:sink-input-by-media-role:event]
+Split=false
+
+[View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.stream:6]
 Split=false
 
 [View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.stream:99]

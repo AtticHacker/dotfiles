@@ -1,4 +1,4 @@
-# created by KDE, Tue Nov 20 09:47:56 2012
+# created by KDE, Tue Nov 20 16:09:59 2012
 #
 # If you do not want KDE to override your GTK settings, select
 # Appearance -> Colors in the System Settings and disable the checkbox
@@ -40,7 +40,7 @@ class "*" style "default"
 style "ToolTip"
 {
   bg[NORMAL] = { 0.188, 0.184, 0.184 }
-  base[NORMAL] = { 0.475, 0.475, 0.475 }
+  base[NORMAL] = { 0.690, 0.690, 0.690 }
   text[NORMAL] = { 0.000, 0.000, 0.000 }
   fg[NORMAL] = { 0.878, 0.871, 0.859 }
 }

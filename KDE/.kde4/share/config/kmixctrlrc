@@ -19,15 +19,15 @@ name=Auto-Mute Mode
 is_muted=false
 is_recsrc=true
 name=Capture
-volumeLCapture=18
-volumeRCapture=18
+volumeLCapture=41
+volumeRCapture=41
 
 [MixerALSA::HDA_Intel_PCH:1.DevCapture:1]
 is_muted=false
 is_recsrc=false
 name=Capture 2
-volumeLCapture=0
-volumeRCapture=0
+volumeLCapture=27
+volumeRCapture=27
 
 [MixerALSA::HDA_Intel_PCH:1.DevCenter:0]
 is_muted=false
@@ -53,17 +53,17 @@ volumeR=64
 is_muted=true
 is_recsrc=false
 name=Front Mic
-volumeL=0
-volumeR=0
+volumeL=22
+volumeR=22
 
 [MixerALSA::HDA_Intel_PCH:1.DevFront_Mic_Boost:0]
 is_muted=false
 is_recsrc=false
 name=Front Mic Boost
-volumeL=0
-volumeLCapture=0
-volumeR=0
-volumeRCapture=0
+volumeL=2
+volumeLCapture=2
+volumeR=2
+volumeRCapture=2
 
 [MixerALSA::HDA_Intel_PCH:1.DevHeadphone:0]
 is_muted=false
@@ -83,7 +83,7 @@ is_recsrc=false
 name=IEC958 Default PCM
 
 [MixerALSA::HDA_Intel_PCH:1.DevInput_Source:0.cenum]
-enum_id=0
+enum_id=1
 is_muted=false
 is_recsrc=false
 name=Input Source
@@ -111,7 +111,7 @@ volumeR=0
 is_muted=false
 is_recsrc=false
 name=Master
-volumeL=47
+volumeL=64
 
 [MixerALSA::HDA_Intel_PCH:1.DevPCM:0]
 is_muted=false
@@ -158,6 +158,48 @@ is_muted=false
 is_recsrc=true
 name=Mic
 volumeLCapture=1536
+
+[MixerALSA::Yeti_Stereo_Microphone:1]
+name=
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevBass:0]
+is_muted=false
+is_recsrc=false
+name=Bass
+volumeL=45
+volumeLCapture=45
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevBass_Boost:0]
+is_muted=true
+is_recsrc=false
+name=Bass Boost
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevLoudness:0]
+is_muted=true
+is_recsrc=false
+name=Loudness
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevMic:0]
+is_muted=false
+is_recsrc=true
+name=Mic
+volumeL=41
+volumeLCapture=13
+volumeRCapture=13
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevSpeaker:0]
+is_muted=false
+is_recsrc=false
+name=Speaker
+volumeL=30
+volumeR=30
+
+[MixerALSA::Yeti_Stereo_Microphone:1.DevTreble:0]
+is_muted=false
+is_recsrc=false
+name=Treble
+volumeL=48
+volumeLCapture=48
 
 [MixerPulseAudio::Capture_Devices:1]
 name=

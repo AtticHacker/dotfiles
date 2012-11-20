@@ -8,13 +8,33 @@ index=-3
 initialPreference=33
 isAdvanced=true
 
+[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4/1-1.4:1.0/sound/card2/pcmC2D0c:capture]
+cardName=Yeti Stereo Microphone (USB Audio)
+deleted=false
+deviceNumber=0
+hotpluggable=true
+iconName=audio-card
+index=-15
+initialPreference=36
+isAdvanced=false
+
+[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4/1-1.4:1.0/sound/card2/pcmC2D0p:playback]
+cardName=Yeti Stereo Microphone (USB Audio)
+deleted=false
+deviceNumber=0
+hotpluggable=true
+iconName=audio-card
+index=-14
+initialPreference=36
+isAdvanced=false
+
 [AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1b.0/sound/card0/pcmC0D0c:capture]
 cardName=HDA Intel PCH (ALC887-VD Analog)
 deleted=false
 deviceNumber=0
 hotpluggable=false
 iconName=audio-card
-index=-8
+index=-9
 initialPreference=36
 isAdvanced=false
 
@@ -44,31 +64,31 @@ deleted=false
 deviceNumber=2
 hotpluggable=false
 iconName=audio-card
-index=-9
+index=-10
 initialPreference=34
 isAdvanced=true
 
-[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb3/3-1/3-1.4/3-1.4:1.2/sound/card2/pcmC2D0c:capture]
-cardName=USB Device 0x46d:0x8c1 (USB Audio)
+[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.5/4-1.5:1.0/sound/card3/pcmC3D0c:capture]
+cardName=Yeti Stereo Microphone (USB Audio)
 deleted=false
 deviceNumber=0
 hotpluggable=true
 iconName=audio-card
-index=-12
+index=-18
 initialPreference=36
 isAdvanced=false
 
-[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.4/4-1.4:1.0/video4linux/video0]
-cardName=UVC Camera (046d:08c1)
+[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.5/4-1.5:1.0/sound/card3/pcmC3D0p:playback]
+cardName=Yeti Stereo Microphone (USB Audio)
 deleted=false
-deviceNumber=-1
+deviceNumber=0
 hotpluggable=true
-iconName=camera-web
-index=-22
-initialPreference=50
+iconName=audio-card
+index=-17
+initialPreference=36
 isAdvanced=false
 
-[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.4/4-1.4:1.2/sound/card2/pcmC2D0c:capture]
+[AudioDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.6/4-1.6:1.2/sound/card2/pcmC2D0c:capture]
 cardName=USB Device 0x46d:0x8c1 (USB Audio)
 deleted=false
 deviceNumber=0
@@ -84,7 +104,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-10
+index=-11
 initialPreference=30
 isAdvanced=false
 
@@ -104,7 +124,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-7
+index=-5
 initialPreference=30
 isAdvanced=false
 
@@ -114,7 +134,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-11
+index=-13
 initialPreference=30
 isAdvanced=false
 
@@ -124,7 +144,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-5
+index=-6
 initialPreference=30
 isAdvanced=false
 
@@ -134,7 +154,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-6
+index=-8
 initialPreference=30
 isAdvanced=true
 
@@ -144,7 +164,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-17
+index=-12
 initialPreference=30
 isAdvanced=false
 
@@ -154,7 +174,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=false
 iconName=audio-card
-index=-15
+index=-7
 initialPreference=30
 isAdvanced=false
 
@@ -164,7 +184,7 @@ deleted=false
 deviceNumber=-1
 hotpluggable=true
 iconName=audio-card-usb
-index=-13
+index=-19
 initialPreference=20
 isAdvanced=false
 
@@ -174,19 +194,9 @@ deleted=false
 deviceNumber=-1
 hotpluggable=true
 iconName=audio-card-usb
-index=-14
+index=-20
 initialPreference=20
 isAdvanced=true
 
 [Globals]
-nextIndex=23
-
-[VideoDevice_/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:1d.0/usb4/4-1/4-1.4/4-1.4:1.0/video4linux/video0]
-cardName=UVC Camera (046d:08c1)
-deleted=false
-deviceNumber=-1
-hotpluggable=true
-iconName=camera-web
-index=-18
-initialPreference=50
-isAdvanced=false
+nextIndex=21

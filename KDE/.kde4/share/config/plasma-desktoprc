@@ -44,8 +44,8 @@ performed=/usr/share/apps/plasma-desktop/updates/addShowActivitiesManagerPlasmoi
 
 [ViewIds]
 53=6
-8=3
-9=4
+8=13
+9=14
 
 [remove]
 Id=91b28e3b-c7c0-4b45-a50a-bd885779f0b9
@@ -58,4 +58,7 @@ __file=
 __file=
 
 [toggleActivityManager]
+__file=
+
+[updateFreespace]
 __file=

@@ -23,8 +23,11 @@ Number=4
 Rows=2
 
 [Effect-BoxSwitch]
-TabBox=false
+TabBox=true
 TabBoxAlternative=false
+
+[Effect-CoverSwitch]
+TabBox=false
 
 [Effect-Cube]
 BorderActivate=9
@@ -37,6 +40,7 @@ BorderActivate=9
 [Effect-FlipSwitch]
 BorderActivate=9
 BorderActivateAll=9
+TabBox=false
 
 [Effect-MouseMark]
 Color=255,0,0
@@ -52,7 +56,7 @@ DrawWindowCaptions=true
 DrawWindowIcons=true
 FillGaps=true
 IgnoreMinimized=false
-LayoutMode=0
+LayoutMode=1
 LeftButtonDesktop=2
 LeftButtonWindow=1
 MiddleButtonDesktop=0
@@ -60,6 +64,7 @@ MiddleButtonWindow=0
 RightButtonDesktop=0
 RightButtonWindow=2
 ShowPanel=false
+TabBox=false
 
 [Effect-Zoom]
 EnableFocusTracking=false
@@ -105,7 +110,7 @@ kwin4_effect_lookingglassEnabled=false
 kwin4_effect_magiclampEnabled=false
 kwin4_effect_magnifierEnabled=false
 kwin4_effect_minimizeanimationEnabled=true
-kwin4_effect_mousemarkEnabled=true
+kwin4_effect_mousemarkEnabled=false
 kwin4_effect_outlineEnabled=true
 kwin4_effect_presentwindowsEnabled=true
 kwin4_effect_resizeEnabled=false
@@ -135,7 +140,7 @@ TextOnly=false
 BorderSize=1
 ButtonsOnLeft=MS
 ButtonsOnRight=HIAX
-CustomButtonPositions=false
+CustomButtonPositions=true
 PluginLib=kwin3_oxygen
 ShowToolTips=true
 
@@ -144,9 +149,11 @@ DesktopMode=1
 ShowTabBox=true
 
 [Windows]
+BorderlessMaximizedWindows=false
 ElectricBorderCooldown=350
 ElectricBorderDelay=150
 ElectricBorderMaximize=true
 ElectricBorderTiling=true
 ElectricBorders=0
+Placement=Smart
 RollOverDesktops=true

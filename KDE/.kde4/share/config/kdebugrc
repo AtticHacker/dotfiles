@@ -97,6 +97,9 @@ InfoOutput=2
 [klipper]
 InfoOutput=2
 
+[kmix]
+InfoOutput=4
+
 [knotify]
 InfoOutput=4
 
@@ -128,6 +131,9 @@ InfoOutput=4
 InfoOutput=4
 
 [plasma-desktop]
+InfoOutput=4
+
+[plasma-netbook]
 InfoOutput=4
 
 [systemsettings]

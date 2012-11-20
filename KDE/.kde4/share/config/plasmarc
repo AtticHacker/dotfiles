@@ -1,2 +1,8 @@
+[PlasmaToolTips]
+Delay=0.7
+
 [Theme]
 name=slim-glow
+
+[Theme-plasma-netbook]
+name=air-netbook
