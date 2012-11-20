@@ -2,7 +2,7 @@
 update_info=mouse_cursor_theme.upd:kde3.4.99,kded.upd:kde3.0,kaccel.upd:kde3.3/r1
 
 [ColorEffects:Disabled]
-Color=56,56,56
+Color=212,168,105
 ColorAmount=-0.8
 ColorEffect=0
 ContrastAmount=0.65
@@ -65,7 +65,7 @@ ForegroundVisited=142,121,165
 
 [Colors:View]
 BackgroundAlternate=36,35,35
-BackgroundNormal=32,31,31
+BackgroundNormal=176,176,176
 DecorationFocus=39,94,160
 DecorationHover=87,129,176
 ForegroundActive=150,191,240
@@ -73,7 +73,7 @@ ForegroundInactive=120,119,117
 ForegroundLink=80,142,216
 ForegroundNegative=232,88,72
 ForegroundNeutral=192,162,95
-ForegroundNormal=212,210,207
+ForegroundNormal=0,0,0
 ForegroundPositive=120,183,83
 ForegroundVisited=142,121,165
 
@@ -135,7 +135,7 @@ History Items[$e]=file://$HOME/Downloads/cashew
 
 [General]
 BrowserApplication=chromium.desktop
-ColorScheme=Obsidian Coast
+ColorScheme=Current
 XftHintStyle=hintmedium
 shadeSortColumn=true
 

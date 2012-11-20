@@ -33,7 +33,7 @@ source $ZSH/oh-my-zsh.sh
 ##          ##
 
 # Check if X window is running.
-if [ "`ps aux | grep startx | head -n -1 | tail -c 16`" = "/usr/bin/startx" ];then
+if [ "`ps aux | grep startx | grep -v grep | tail -c 16`" = "/usr/bin/startx" ];then
   # Everything in here will only be executed when X window is running.
 
   ##                  ##
@@ -59,7 +59,9 @@ fi
 # Suspend
 alias suspend='sudo pm-suspend'
 
-alias emacs='emacs-24.2 -nw'
+alias emacsserver='/usr/bin/emacs --daemon'
+alias emacs='emacsclient -t'
+alias slowmacs='/usr/bin/emacs -nw'
 
 # Git pull all submodules
 alias pullsubmodules='git submodule update --init'

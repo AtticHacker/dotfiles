@@ -146,9 +146,8 @@
 )
 
 (defun attic-rock-lock () (interactive)
- (setq attic-lock-minor-mode t)
- (keyboard-quit)
-)
+  (setq attic-lock-minor-mode t)
+  (keyboard-escape-quit))
 
 ;; KEY BINDINGS
 
@@ -234,7 +233,9 @@
 (define-key attic-lock-minor-mode-map (kbd "y")     'copy-region-as-kill)
 (define-key attic-lock-minor-mode-map (kbd "q")     'yank)
 (define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
-(define-key attic-minor-mode-map (kbd "M-q")        'yank-pop)
+(define-key attic-minor-mode-map (kbd "M-p")        'kmacro-start-macro)
+(define-key attic-minor-mode-map (kbd "M-n")        'kmacro-end-macro)
+(define-key attic-minor-mode-map (kbd "M-q")        'kmacro-end-and-call-macro)
 (define-key attic-lock-minor-mode-map (kbd "z")		'delete-char-and-insert)
 (define-key attic-minor-mode-map (kbd "C-z")        'delete-char-and-insert)
 (define-key attic-lock-minor-mode-map (kbd "m")     'newline)
