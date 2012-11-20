@@ -1,0 +1,27 @@
+[Devices][/org/freedesktop/UDisks/devices/sda1]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=93.1 GiB Hard Drive
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks/devices/sda2]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=37.3 GiB Hard Drive
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks/devices/sda3]
+Icon=drive-harddisk
+LastNameSeen=37.3 GiB Hard Drive
+LastSeenMounted=false
+
+[Devices][/org/freedesktop/UDisks/devices/sdb1]
+Icon=drive-harddisk
+LastNameSeen=46.6 GiB Hard Drive
+LastSeenMounted=false
+
+[Devices][/org/freedesktop/UDisks/devices/sdc1]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=KEVINBACKUP
+LastSeenMounted=false

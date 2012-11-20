@@ -1,0 +1,31 @@
+[Desktop Entry]
+DefaultProfile=Shell.profile
+
+[Favorite Profiles]
+Favorites=
+
+[General]
+Version=200
+ViewPropsTimestamp=2012,11,4,12,10,51
+
+[KPropertiesDialog]
+Height 1050=404
+Width 1680=460
+
+[MainWindow]
+Height 1024=510
+Height 1050=757
+Height 1080=419
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAADfAAACGPwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAgBAAAF+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAeAAACGAAAAFABAAAFAAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAACAEAAAUAAAADAAADxwAAALz8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawEAAAAAAAADxwAAAAgBAAAFAAAC5QAAAhgAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+Width 1280=677
+Width 1680=967
+Width 1920=967
+
+[Notification Messages]
+ConfirmTrash=true
+
+[Open-with settings]
+CompletionMode=5
+History=openshot,dragon %u,vlc

@@ -1,0 +1,12 @@
+[General]
+PassiveResourceKeys=
+ResourceKeys=ojaiM8AtIb
+Standard=ojaiM8AtIb
+
+[Resource_ojaiM8AtIb]
+FileFormat=vcard
+ResourceIdentifier=ojaiM8AtIb
+ResourceIsActive=true
+ResourceIsReadOnly=false
+ResourceName=Default Address Book
+ResourceType=file

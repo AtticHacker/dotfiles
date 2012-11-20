@@ -1,0 +1,113 @@
+[KFileDialog Settings]
+Height 1050=523
+Height 1080=525
+Recent Files[$e]=out.avi,$HOME/out.ogv
+Width 1680=840
+Width 1920=840
+
+[MainWindow]
+Height 1050=619
+Height 1080=619
+State=AAAA/wAAAAD9AAAAAQAAAAIAAAObAAAA//wBAAAAC/wAAAAAAAABGQAAAH8A////+gAAAAABAAAAAvsAAAAYAHAAcgBvAGoAZQBjAHQAXwB0AHIAZQBlAQAAAAD/////AAAAfgEAAAX7AAAAGABuAG8AdABlAHMAXwB3AGkAZABnAGUAdAEAAAAA/////wAAAFIBAAAF/AAAARwAAAGbAAABfQD////6AAAAAQEAAAAD+wAAABYAZQBmAGYAZQBjAHQAXwBsAGkAcwB0AQAAAAD/////AAAAhAEAAAX7AAAAGABlAGYAZgBlAGMAdABfAHMAdABhAGMAawEAAAAA/////wAAAE4BAAAF+wAAABQAdAByAGEAbgBzAGkAdABpAG8AbgEAAAAA/////wAAAX0BAAAF+wAAABYAVgBlAGMAdABvAHIAcwBjAG8AcABlAAAAAAD/////AAABGgEAAAX7AAAAEABXAGEAdgBlAGYAbwByAG0AAAAAAP////8AAACdAQAABfsAAAAUAFIARwBCACAAUABhAHIAYQBkAGUAAAAAAP////8AAACWAQAABfsAAAASAEgAaQBzAHQAbwBnAHIAYQBtAAAAAAD/////AAABIgEAAAX7AAAAFgBhAHUAZABpAG8AcwBpAGcAbgBhAGwAAAAAAP////8AAABNAQAABfsAAAAaAEEAdQBkAGkAbwBTAHAAZQBjAHQAcgB1AG0AAAAAAP////8AAAFRAQAABfsAAAAWAFMAcABlAGMAdAByAG8AZwByAGEAbQAAAAAA/////wAAAU0BAAAF/AAAAroAAADhAAAATQD////6AAAAAAEAAAAD+wAAABgAYwBsAGkAcABfAG0AbwBuAGkAdABvAHIBAAAAAP////8AAABNAQAABfsAAAAeAHAAcgBvAGoAZQBjAHQAXwBtAG8AbgBpAHQAbwByAgAABHUAAAA5AAABWgAAAOT7AAAAHAByAGUAYwBvAHIAZABfAG0AbwBuAGkAdABvAHIAAAAAAP////8AAAEeAQAABfsAAAAYAHUAbgBkAG8AXwBoAGkAcwB0AG8AcgB5AAAAAAD/////AAAAUgEAAAUAAAObAAABGwAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABgAZQB4AHQAcgBhAFQAbwBvAGwAQgBhAHIBAAAB/f////8AAAAAAAAAAA==
+ToolBarsMovable=Disabled
+Width 1680=923
+Width 1920=923
+
+[Project Tree]
+columns=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x0c\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x00\x02\x00\x00\x00d\x00\x00\x01\x13\x00\x00\x00\x04\x00\x01\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00Ø\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00
+
+[Recent Dirs]
+clipfolder[$e]=file://$HOME/,$HOME/Documents
+projectfolder[$e]=file://$HOME/,$HOME/Documents
+
+[Recent Files]
+File1[$e]=$HOME/out.ogv
+Name1[$e]=out.ogv
+
+[Scope_AudioSpectrum]
+autoRefresh=true
+dBmax=0
+dBmin=-70
+freqMax=0
+realtime=false
+showMax=true
+trackMouse=true
+windowFunction=0
+windowSize=0
+
+[Scope_Histogram]
+autoRefresh=true
+bEnabled=true
+gEnabled=true
+rEnabled=true
+realtime=false
+rec601=false
+sEnabled=false
+yEnabled=true
+
+[Scope_RGB Parade]
+autoRefresh=true
+axis=false
+gradref=false
+paintmode=0
+realtime=false
+
+[Scope_Spectrogram]
+autoRefresh=true
+dBmax=0
+dBmin=-70
+drawGrid=true
+freqMax=0
+highlightPeaks=true
+realtime=false
+trackMouse=true
+windowFunction=0
+windowSize=0
+
+[Scope_Vectorscope]
+75PBox=false
+autoRefresh=true
+axis=false
+backgroundmode=0
+colorspace_ypbpr=false
+gain=1
+iqlines=false
+paintmode=0
+realtime=false
+
+[Scope_Waveform]
+autoRefresh=true
+paintmode=0
+realtime=false
+rec601=false
+
+[Scope_audioSignal]
+autoRefresh=true
+realtime=false
+
+[capture]
+decklink_extension=mov
+decklink_parameters=vcodec=dnxhd vb=145000k acodec=pcm_s16le threads=%threads
+v4l_extension=mpg
+v4l_parameters=f=mpeg acodec=mp2 ab=128k ar=48000 vcodec=mpeg2video minrate=0 vb=4000k
+
+[env]
+defaultaudioapp=/usr/bin/audacity
+defaultimageapp=/usr/bin/gimp
+defaultplayerapp=audacity
+mltpath[$e]=/usr/share/mlt/profiles/
+rendererpath[$e]=/usr/bin/melt
+
+[project]
+proxyextension=ts
+proxyparams=-f mpegts -acodec libmp3lame -ac 2 -ab 128k -ar 48000 -vcodec mpeg2video -g 5 -deinterlace -s 480x270 -vb 400k
+
+[unmanaged]
+current_profile=hdv_1080_30p
+default_profile=hdv_1080_30p
+producerslist=sdl_image,slowmotion,qimage,kdenlivetitle,kino,frei0r.ising0r,frei0r.lissajous0r,frei0r.nois0r,frei0r.onecol0r,frei0r.partik0l,frei0r.plasma,frei0r.test_pat_B,frei0r.test_pat_C,frei0r.test_pat_G,frei0r.test_pat_I,frei0r.test_pat_L,frei0r.test_pat_R,abnormal,color,colour,consumer,hold,loader,melt,melt_file,noise,ppm,libdv,xml,xml-string,pango,pixbuf,decklink,framebuffer,pgm,vorbis
+project_display_ratio=1.77777777777778
+project_fps=29.97002997003
+
+[version]
+version=0.9.2
