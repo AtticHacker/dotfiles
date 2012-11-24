@@ -50,7 +50,7 @@ zvalue=0
 Order=1
 
 [Containments][53][Applets][56]
-geometry=76,1,112,34
+geometry=76,1,167,34
 immutability=2
 plugin=pager
 zvalue=0
@@ -59,7 +59,7 @@ zvalue=0
 Order=2
 
 [Containments][53][Applets][57]
-geometry=192,1,1313,34
+geometry=247,1,1229,34
 immutability=2
 plugin=tasks
 zvalue=0
@@ -72,7 +72,7 @@ filemanager=preferred://filemanager, , ,\s
 Order=3
 
 [Containments][53][Applets][58]
-geometry=1509,1,99,34
+geometry=1480,1,128,34
 immutability=2
 plugin=systemtray
 zvalue=0
@@ -91,7 +91,7 @@ DialogHeight=356
 DialogWidth=306
 
 [Containments][53][Applets][58][Configuration][Applets][61]
-geometry=4,88,24,24
+geometry=0,5,24,24
 immutability=1
 plugin=notifications
 zvalue=0
@@ -107,14 +107,14 @@ sourceAppletId=61
 sourceAppletPluginName=notifications
 
 [Containments][53][Applets][58][Configuration][Applets][61][PopupApplet]
-DialogHeight=72
-DialogWidth=142
+DialogHeight=166
+DialogWidth=469
 
 [Containments][53][Applets][58][LayoutInformation]
 Order=4
 
 [Containments][53][Applets][58][PopupApplet]
-DialogHeight=132
+DialogHeight=104
 DialogWidth=237
 
 [Containments][53][Applets][59]
