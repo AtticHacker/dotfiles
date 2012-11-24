@@ -1,7 +1,6 @@
 [ActionPlugins]
 MidButton;NoModifier=paste
 RightButton;NoModifier=contextmenu
-wheel:Vertical;NoModifier=switchdesktop
 
 [Containments][1][Applets][6][Configuration][Applets][12][Configuration][ExtenderItems][1]
 extenderItemPosition=0
@@ -60,7 +59,7 @@ zvalue=0
 Order=2
 
 [Containments][53][Applets][57]
-geometry=192,1,1256,34
+geometry=192,1,1313,34
 immutability=2
 plugin=tasks
 zvalue=0
@@ -73,7 +72,7 @@ filemanager=preferred://filemanager, , ,\s
 Order=3
 
 [Containments][53][Applets][58]
-geometry=1452,1,156,34
+geometry=1509,1,99,34
 immutability=2
 plugin=systemtray
 zvalue=0

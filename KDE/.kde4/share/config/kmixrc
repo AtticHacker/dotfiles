@@ -2,14 +2,14 @@
 AllowDocking=true
 AutoUseMultimediaKeys=true
 ConfigVersion=3
-DefaultCardOnStart=PulseAudio.Capture_Devices.1.default
+DefaultCardOnStart=PulseAudio.Capture_Streams.1.default
 Labels=true
-MasterMixer=PulseAudio::Playback_Devices:1
-MasterMixerDevice=alsa_output.pci-0000_01_00.1.hdmi-stereo
+MasterMixer=PulseAudio::Capture_Devices:1
+MasterMixerDevice=alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone-00-Microphone.analog-stereo
 Menubar=true
 MixerIgnoreExpression=Modem
 Orientation=Vertical
-Position=2501,210
+Position=316,147
 Size=660,363
 Tickmarks=true
 TrayVolumeControl=true
@@ -155,6 +155,12 @@ Split=false
 Split=false
 
 [View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.restore:sink-input-by-media-role:event]
+Split=false
+
+[View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.stream:1]
+Split=false
+
+[View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.stream:11]
 Split=false
 
 [View.PulseAudio.Playback_Streams.1.default.PulseAudio::Playback_Streams:1.stream:6]

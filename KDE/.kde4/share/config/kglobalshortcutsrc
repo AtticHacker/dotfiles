@@ -321,4 +321,4 @@ manage activities=Meta+Q,Meta+Q,Activities...
 
 [plasma-netbook]
 Systemtray-Klipper-4=,Ctrl+Alt+V,
-_k_friendly_name=Plasma Netbook Shell
+_k_friendly_name=plasma-netbook

@@ -2,13 +2,13 @@
 Offset=0.5
 
 [General]
-PastQueries=skype,pidgin,spot,,pid,aud,sky,chrom,d,screen,spotify,playonlin,blueman-applet,u,openshot,L,cheese,spo,dmenu,blue,pidg,p,scre,urxvt,urx,chro,urxv,dolph,gim,p,screenke,gedit,kdenlive,lives,dolp,kino,chromium,dol,dolphin,istanbul
+PastQueries=audacit,aud,,spot,chromiu,chrom,skype,pidgin,pid,sky,d,screen,spotify,playonlin,blueman-applet,u,openshot,L,cheese,spo,dmenu,blue,pidg,p,scre,urxvt,urx,chro,urxv,dolph,gim,p,screenke,gedit,kdenlive,lives,dolp,kino,chromium,dol,dolphin,istanbul
 
 [Interface]
 Size=420,500
 
 [PlasmaRunnerManager]
-LaunchCounts=19 services_urxvt.desktop,4 shell_pidgin,3 shell_blueman-applet,2 services_audacity.desktop,1 windows_0_75497481,4 services_kde4-dolphin.desktop,2 shell_kdenlive,4 services_pidgin.desktop,3 shell_urxvt,3 shell_kino,2 shell_lives,1 shell_dmenu,4 shell_cheese,1 services_gimp.desktop,2 services_blueman-manager.desktop,1 shell_istanbul,10 services_skype.desktop,1 windows_0_12582921,2 shell_openshot,2 shell_screenkey,1 services_urxvtc.desktop,1 windows_0_79691785,2 services_gedit.desktop,1 services_playonlinux.desktop,10 services_spotify.desktop,2 shell_screen,4 services_screenkey.desktop,12 services_chromium.desktop
+LaunchCounts=19 services_urxvt.desktop,4 shell_pidgin,3 shell_blueman-applet,5 services_audacity.desktop,1 windows_0_75497481,4 services_kde4-dolphin.desktop,2 shell_kdenlive,4 services_pidgin.desktop,3 shell_urxvt,3 shell_kino,2 shell_lives,1 shell_dmenu,4 shell_cheese,1 services_gimp.desktop,2 services_blueman-manager.desktop,1 shell_istanbul,10 services_skype.desktop,1 windows_0_12582921,2 shell_openshot,2 shell_screenkey,1 services_urxvtc.desktop,1 windows_0_79691785,2 services_gedit.desktop,1 services_playonlinux.desktop,11 services_spotify.desktop,2 shell_screen,4 services_screenkey.desktop,14 services_chromium.desktop
 
 [TaskDialog]
 Height 1080=419
