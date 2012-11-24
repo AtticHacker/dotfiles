@@ -7,10 +7,11 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/plugins/haskell-mode")
 (add-to-list 'load-path "~/.emacs.d/plugins/erc")
-(add-to-list 'load-path "~/.cabal/share/ghc-mod-1.11.2")
+(add-to-list 'load-path "~/.emacs-ghc-mod/.cabal/share/ghc-mod-1.11.2")
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/plugins/ghc")
 
 (require 'color-theme)
-(require 'bitlbee)
 (require 'redo+)
 (require 'dirtree)
 (require 'textmate)
@@ -19,8 +20,11 @@
 (require 'misc)
 (require 'org-install)
 (require 'haskell-mode)
+(require 'haskell-ghci)
 (require 'erc)
 (require 'zenburn-theme)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
@@ -149,6 +153,10 @@
   (setq attic-lock-minor-mode t)
   (keyboard-escape-quit))
 
+(defun attic-save () (interactive)
+  (setq attic-lock-minor-mode t)
+  (save-buffer))
+
 ;; KEY BINDINGS
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -233,8 +241,8 @@
 (define-key attic-lock-minor-mode-map (kbd "y")     'copy-region-as-kill)
 (define-key attic-lock-minor-mode-map (kbd "q")     'yank)
 (define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
-(define-key attic-minor-mode-map (kbd "M-p")        'kmacro-start-macro)
-(define-key attic-minor-mode-map (kbd "M-n")        'kmacro-end-macro)
+;(define-key attic-minor-mode-map (kbd "M-p")        'kmacro-start-macro)
+;(define-key attic-minor-mode-map (kbd "M-n")        'kmacro-end-macro)
 (define-key attic-minor-mode-map (kbd "M-q")        'kmacro-end-and-call-macro)
 (define-key attic-lock-minor-mode-map (kbd "z")		'delete-char-and-insert)
 (define-key attic-minor-mode-map (kbd "C-z")        'delete-char-and-insert)
@@ -245,9 +253,7 @@
 (define-key attic-lock-minor-mode-map (kbd "-")     'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-=")        'align-regexp)
 
-(define-key attic-minor-mode-map (kbd "M-x M-s")    'save-buffer)
-(define-key attic-minor-mode-map (kbd "M-x s")		'save-buffer)
-(define-key attic-minor-mode-map (kbd "M-x C-s")	'save-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-s")    'attic-save)
 
 (define-key attic-lock-minor-mode-map (kbd "d")	    'delete-char)
 (define-key attic-lock-minor-mode-map (kbd "c r")	'query-replace)
@@ -259,17 +265,10 @@
 (define-key attic-minor-mode-map (kbd "M-m")        'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "C-M-<RET>")  'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "C-M-x")      'execute-extended-command)
-(define-key attic-lock-minor-mode-map (kbd "x s")   'save-buffer)
+(define-key attic-lock-minor-mode-map (kbd "x s")   'attic-save)
 (define-key attic-lock-minor-mode-map (kbd "x c")   'save-buffers-kill-terminal)
 (define-key attic-lock-minor-mode-map (kbd "M-\\")  'tmm-menubar)
-
-; cmus
-(define-key attic-minor-mode-map (kbd "M-x M-u")	'cmus-pause)
-(define-key attic-minor-mode-map (kbd "M-x M-f")	'cmus-next)
-(define-key attic-minor-mode-map (kbd "M-x M-b")	'cmus-prev)
-(define-key attic-minor-mode-map (kbd "M-x M-p")	'cmus-vol-up)
-(define-key attic-minor-mode-map (kbd "M-x M-n")	'cmus-vol-down)
-
+(define-key attic-lock-minor-mode-map (kbd "C-c C-l")  'haskell-ghci-load-file)
 
 ;; ENABLE / DISABLE MODES AT STARTUP
 
@@ -303,36 +302,34 @@ t " attic-lock" 'attic-lock-minor-mode-map)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 
-
-
 ;haskell mode configuration
 (setq auto-mode-alist
       (append auto-mode-alist
               '(("\\.[hg]s$"  . haskell-mode)
                 ("\\.hic?$"     . haskell-mode)
                 ("\\.hsc$"     . haskell-mode)
-  ("\\.chs$"    . haskell-mode)
+                ("\\.chs$"    . haskell-mode)
                 ("\\.l[hg]s$" . literate-haskell-mode))))
 (autoload 'haskell-mode "haskell-mode"
-   "Major mode for editing Haskell scripts." t)
+  "Major mode for editing Haskell scripts." t)
 (autoload 'literate-haskell-mode "haskell-mode"
-   "Major mode for editing literate Haskell scripts." t)
+  "Major mode for editing literate Haskell scripts." t)
 
 ;adding the following lines according to which modules you want to use:
 (require 'inf-haskell)
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
-;(add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
-;(add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
+                                        ;(add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
+                                        ;(add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-hugs)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
-(add-hook 'haskell-mode-hook 
-   (function
-    (lambda ()
-      (setq haskell-program-name "ghci")
-      (setq haskell-ghci-program-name "ghci6"))))
+                                        ;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+                                        ;(add-hook 'haskell-mode-hook 'turn-on-haskell-hugs)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
+;; (add-hook 'haskell-mode-hook
+;;           (function
+;;            (lambda ()
+;;              (setq haskell-program-name "ghci")
+;;              (setq haskell-ghci-program-name "ghci6"))))
 
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))

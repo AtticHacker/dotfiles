@@ -17,6 +17,7 @@ ZSH_THEME="kevin"
 
 
 export PATH=$PATH:$HOME/.cabal/bin/
+export PATH=$PATH:$HOME/.emacs-ghc-mod/.cabal/bin/
 # plugins=(git)
 
 ## OH MY ZSH options ##
@@ -59,9 +60,9 @@ fi
 # Suspend
 alias suspend='sudo pm-suspend'
 
-alias emacsserver='/usr/bin/emacs --daemon'
-alias emacs='emacsclient -t'
-alias slowmacs='/usr/bin/emacs -nw'
+#alias emacsserver='/usr/bin/emacs --daemon'
+#alias emacs='emacsclient -t'
+alias emacs='/usr/bin/emacs -nw'
 
 # Git pull all submodules
 alias pullsubmodules='git submodule update --init'
