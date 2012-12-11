@@ -1,6 +1,0 @@
-[$Version]
-update_info=kded.upd:kde3.0
-
-[Notification Messages]
-phonon_forget_devices_Capture: HDA Intel PCH, ALC887-VD Analog (Default Audio Device)_Output: HD-Audio Generic, HDMI 0 (HDMI Audio Output)_Output: HDA Intel PCH, ALC887-VD Analog (Default Audio Device)=false
-phonon_forget_devices_Capture: PulseAudio Sound Server_Output: PulseAudio Sound Server=false

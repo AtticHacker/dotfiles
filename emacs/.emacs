@@ -33,6 +33,20 @@
 
 ;; SETTINGS
 
+
+(global-set-key [tab] 'indent-or-expand)
+(defun indent-or-expand ()
+  "Either indent according to mode, or expand the word preceding point."
+  (interactive)
+  (if (or
+       (eq last-command 'self-insert-command)
+       (eq last-command 'dabbrev-expand))
+      (progn
+        (setq this-command 'dabbrev-expand)
+        (dabbrev-expand nil))
+    (indent-according-to-mode)))
+
+
 ;; Tab size
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -70,6 +84,11 @@
  ;; If there is more than one, they won't work right.
  )
 
+
+(mapc  
+ (lambda (face)    
+   (set-face-attribute face nil :weight 'bold))
+ (face-list))
 
 ;; A few modes and such
 
@@ -116,6 +135,10 @@
 
 (defun attic-lock-disable () (interactive)
   (setq attic-lock-minor-mode nil)
+  ;(shell-command (format "echo -ne '\\033]12;green\\007' > /proc/%d/fd/1" (emacs-pid)))
+  (send-string-to-terminal "\033]12;green\007")
+  ;(send-string-to-terminal "echo -ne '\033]12;green\007'")
+  ;(redraw-display)
 )
 
 (defun previous-line-two ()
@@ -151,11 +174,21 @@
 
 (defun attic-rock-lock () (interactive)
   (setq attic-lock-minor-mode t)
-  (keyboard-escape-quit))
+  ;(shell-command (format "echo -ne '\\033]12;white\\007' > /proc/%d/fd/1" (emacs-pid)))
+  (send-string-to-terminal "\033]12;white\007")
+  ;(send-string-to-terminal "echo -ne '\033]12;white\007'")
+  ;(redraw-display)
+  (keyboard-quit))
+
 
 (defun attic-save () (interactive)
   (setq attic-lock-minor-mode t)
+  ;(shell-command (format "echo -ne '\\033]12;white\\007' > /proc/%d/fd/1" (emacs-pid)))
+  (send-string-to-terminal "\033]12;white\007")
+  ;(send-string-to-terminal "echo -ne '\033]12;white\007'")
+  ;(redraw-display)
   (save-buffer))
+
 
 ;; KEY BINDINGS
 
@@ -218,6 +251,7 @@
 (define-key attic-minor-mode-map (kbd "<f1>")       'split-window-vertically)
 (define-key attic-minor-mode-map (kbd "<f2>")       'split-window-horizontally)
 (define-key attic-minor-mode-map (kbd "<f3>")       'delete-window)
+(define-key attic-lock-minor-mode-map (kbd "x o")   'other-window)
 ;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window)
 ;(define-key attic-minor-mode-map (kbd "C-]")     'shrink-window)
 ;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window-horizontally)
@@ -232,17 +266,17 @@
 (define-key attic-minor-mode-map (kbd "C-u")        'undo)
 (define-key attic-minor-mode-map (kbd "C-M-u")      'redo)
 (define-key attic-minor-mode-map (kbd "M-u")        'redo)
-(define-key attic-minor-mode-map (kbd "C-j")        'delete-backward-char)
+(define-key attic-minor-mode-map (kbd "C-j")        'backward-delete-char)
+(define-key attic-minor-mode-map (kbd "M-j")        'backward-kill-word)
 (define-key attic-minor-mode-map (kbd "C-M-j")      'delete-forward-char)
 (define-key attic-lock-minor-mode-map (kbd "j")     'delete-backward-char)
-(define-key attic-minor-mode-map (kbd "M-j")        'delete-forward-char)
 (define-key attic-minor-mode-map (kbd "C-y")        'copy-region-as-kill)
 (define-key attic-minor-mode-map (kbd "C-q")        'yank)
 (define-key attic-lock-minor-mode-map (kbd "y")     'copy-region-as-kill)
 (define-key attic-lock-minor-mode-map (kbd "q")     'yank)
-(define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
-;(define-key attic-minor-mode-map (kbd "M-p")        'kmacro-start-macro)
-;(define-key attic-minor-mode-map (kbd "M-n")        'kmacro-end-macro)
+;(define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
+(define-key attic-minor-mode-map (kbd "M-a")      'kmacro-start-macro)
+(define-key attic-minor-mode-map (kbd "M-s")      'kmacro-end-macro)
 (define-key attic-minor-mode-map (kbd "M-q")        'kmacro-end-and-call-macro)
 (define-key attic-lock-minor-mode-map (kbd "z")		'delete-char-and-insert)
 (define-key attic-minor-mode-map (kbd "C-z")        'delete-char-and-insert)
@@ -252,12 +286,9 @@
 (define-key attic-minor-mode-map (kbd "C--")        'comment-or-uncomment-region)
 (define-key attic-lock-minor-mode-map (kbd "-")     'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-=")        'align-regexp)
-
 (define-key attic-minor-mode-map (kbd "C-x C-s")    'attic-save)
-
 (define-key attic-lock-minor-mode-map (kbd "d")	    'delete-char)
 (define-key attic-lock-minor-mode-map (kbd "c r")	'query-replace)
-
 (define-key attic-lock-minor-mode-map (kbd "k")	    'kill-line)
 
 
@@ -269,6 +300,8 @@
 (define-key attic-lock-minor-mode-map (kbd "x c")   'save-buffers-kill-terminal)
 (define-key attic-lock-minor-mode-map (kbd "M-\\")  'tmm-menubar)
 (define-key attic-lock-minor-mode-map (kbd "C-c C-l")  'haskell-ghci-load-file)
+(define-key attic-minor-mode-map (kbd "M-r")        'yas-expand)
+(define-key attic-minor-mode-map (kbd "<ESC> <ESC>")'keyboard-escape-quit)
 
 ;; ENABLE / DISABLE MODES AT STARTUP
 
