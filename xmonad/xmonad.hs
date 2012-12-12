@@ -9,9 +9,9 @@ import XMonad.Config.Gnome
 import XMonad.Actions.CycleWS
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
-
-import qualified DBus as D
-import qualified DBus.Client as D
+import XMonad.Layout.ToggleLayouts
+import XMonad.Layout.Grid
+import XMonad.Layout.NoBorders
 
 myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Skype"        --> doShift "2"
@@ -42,12 +42,13 @@ main = do
                  ]
 
     , manageHook = myManageHook <+> manageHook defaultConfig
-    , layoutHook = avoidStruts $ layoutHook defaultConfig
     , borderWidth        = 1
     , terminal           = "urxvt"
     , modMask            = mod4Mask
     , normalBorderColor  = "#000000"
     , focusFollowsMouse  = False
+    , layoutHook         = toggleLayouts (noBorders Full) $
+                           avoidStruts $ layoutHook defaultConfig
     }
     `additionalKeys`[ ((mod4Mask, xK_o               ), spawn "amixer --quiet set Master 1+")
                     , ((mod4Mask, xK_i               ), spawn "amixer --quiet set Master 1-")
@@ -60,4 +61,5 @@ main = do
                     , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
                     , ((mod4Mask, xK_w               ), nextScreen)
                     , ((mod1Mask, xK_Tab             ), windows W.focusDown)
+                    , ((mod4Mask, xK_x               ), sendMessage ToggleLayout)
                     ]

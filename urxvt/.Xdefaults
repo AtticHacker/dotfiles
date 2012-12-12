@@ -1,8 +1,7 @@
 /* urxvt*transparent: true */
 /* urxvt*shading: 5 */
 /* urxvt*fading: 30 */
-/* urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=bold:pixelsize=15 */
-urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15
+urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15:antialias=true
 urxvt*pixelsize: 33
 urxvt*scrollBar: false
 urxvt*foreground: #f2f2f2
@@ -23,6 +22,12 @@ urxvt*color12: #0071ff
 urxvt*color13: #ef0051
 urxvt*color14: #4bb8fd
 urxvt*color15: #a020f0
+
+Xft.dpi       : 100
+Xft.antialias : true
+Xft.rgba      : rgb
+!Xft.hinting   : true
+!Xft.hintstyle : hintslight
 
 URxvt.perl-ext-common: clipboard
 URxvt.iso14755: False
