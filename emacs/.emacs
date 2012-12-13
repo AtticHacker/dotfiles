@@ -330,6 +330,7 @@
 (define-key attic-minor-mode-map (kbd "<ESC> <ESC>")'keyboard-escape-quit)
 
 (define-key attic-term-mode-map (kbd "C-h")        'switch-to-buffer)
+(define-key attic-term-mode-map (kbd "M-x")        'execute-extended-command)
 
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."  
@@ -355,19 +356,11 @@
   ido-use-url-at-point nil         ; don't use url at point (annoying)
 
   ido-enable-flex-matching t       ; YES BE SMART HOLY SHIT! --don't try to be too smart
-  ido-max-prospects 8              ; don't spam my minibuffer
+  ido-max-prospects 15              ; don't spam my minibuffer
   ido-confirm-unique-completion t) ; wait for RET, even with unique completion
 
 ;; when using ido, the confirmation is rather annoying...
  (setq confirm-nonexistent-file-or-buffer nil)
-
-
-
-
-
-
-
-
 
 ;; ENABLE / DISABLE MODES AT STARTUP
 
