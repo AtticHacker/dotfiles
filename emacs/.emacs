@@ -25,11 +25,14 @@
 (require 'zenburn-theme)
 (require 'yasnippet)
 (require 'sr-speedbar)
-(require 'window-number)
+(require 'window-numbering)
 
-(window-number-mode 1)
+(window-numbering-mode 1)
 (ido-mode 1)
 (yas-global-mode 1)
+
+(custom-set-variables
+ '(speedbar-show-unknown-files t))
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
@@ -257,6 +260,7 @@
 (define-key attic-minor-mode-map (kbd "M-h")        'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-h")      'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
+(define-key attic-minor-mode-map (kbd "M-g")      'goto-line)
 (define-key attic-lock-minor-mode-map (kbd "g")     'goto-line)
 ;(define-key attic-minor-mode-map (kbd "C-e C-p")    'beginning-of-buffer)
 ;(define-key attic-minor-mode-map (kbd "C-e C-f")    'move-end-of-line)
@@ -370,7 +374,7 @@
 (define-minor-mode attic-term-mode
 "term description"
 
-t " attic-term" 'attic-term-mode-map)
+t " AT" 'attic-term-mode-map)
 
 
 (define-minor-mode attic-minor-mode
@@ -383,15 +387,17 @@ t " attic" 'attic-minor-mode-map)
 (define-minor-mode attic-lock-minor-mode
 "A minor mode so that my key settings override annoying major modes."
 
-t " attic-lock" 'attic-lock-minor-mode-map)
+t " A-lock" 'attic-lock-minor-mode-map)
 (defun attic-lock-minibuffer-setup-hook ()
 	(attic-lock-minor-mode 0))
+
+
+(setq sr-speedbar-right-side nil)
 
 ;(add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
 (add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 
 (tool-bar-mode 0)
-(attic-term-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (global-linum-mode 1)

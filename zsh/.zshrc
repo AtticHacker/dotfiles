@@ -95,6 +95,8 @@ alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
 alias glade='./home/kevin/.glade/src/glade-e'
 
+alias toclip='xclip -sel clip'
+
 # Kill process
 function killit {
   itis1=`ps aux | grep $1 | awk '{print $2}' | head -1`
