@@ -58,6 +58,8 @@ main = do
                     , ((0, xK_Print                  ), spawn "scrot")
                     , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
                     , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
+                    -- , ((mod4Mask .|. shiftMask, xK_3 ), spawn "scrot")
+                    -- , ((mod4Mask .|. shiftMask, xK_4 ), spawn "shutter -s")  
                     , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
                     , ((mod4Mask, xK_w               ), nextScreen)
                     , ((mod1Mask, xK_Tab             ), windows W.focusDown)

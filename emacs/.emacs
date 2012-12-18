@@ -32,7 +32,18 @@
 (yas-global-mode 1)
 
 (custom-set-variables
- '(speedbar-show-unknown-files t))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(dirtree-windata (quote (frame left 0.15 delete)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode imenu-add-menubar-index)))
+ '(speedbar-default-position (quote left))
+ '(speedbar-show-unknown-files t)
+ '(sr-speedbar-right-side nil)
+ '(sr-speedbar-skip-other-window-p t)
+ '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50)))
+ '(vc-follow-symlinks t))
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
@@ -58,18 +69,17 @@
              (set (make-local-variable 'attic-term-mode) 1)
              ))
 
-(global-set-key [tab] 'indent-or-expand)
-(defun indent-or-expand ()
-  "Either indent according to mode, or expand the word preceding point."
-  (interactive)
-  (if (or
-       (eq last-command 'self-insert-command)
-       (eq last-command 'dabbrev-expand))
-      (progn
-        (setq this-command 'dabbrev-expand)
-        (dabbrev-expand nil))
-    (indent-according-to-mode)))
-
+;; (global-set-key [tab] 'indent-or-expand)
+;; (defun indent-or-expand ()
+;;   "Either indent according to mode, or expand the word preceding point."
+;;   (interactive)
+;;   (if (or
+;;        (eq last-command 'self-insert-command)
+;;        (eq last-command 'dabbrev-expand))
+;;       (progn
+;;         (setq this-command 'dabbrev-expand)
+;;         (dabbrev-expand nil))
+;;     (indent-according-to-mode)))
 
 ;; Tab size
 (setq-default indent-tabs-mode nil)
@@ -85,16 +95,7 @@
 (setq cua-enable-cua-keys nil)
 (customize-variable (quote tab-stop-list))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(haskell-hoogle-command "")
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode imenu-add-menubar-index)))
- '(send-mail-function (quote smtpmail-send-it))
- '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50)))
- '(vc-follow-symlinks t))
+
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
@@ -159,10 +160,7 @@
 
 (defun attic-lock-disable () (interactive)
   (setq attic-lock-minor-mode nil)
-  ;(shell-command (format "echo -ne '\\033]12;green\\007' > /proc/%d/fd/1" (emacs-pid)))
   (send-string-to-terminal "\033]12;green\007")
-  ;(send-string-to-terminal "echo -ne '\033]12;green\007'")
-  ;(redraw-display)
 )
 
 (defun previous-line-two ()
@@ -217,6 +215,12 @@
   (send-string-to-terminal "\033]12;white\007")
   (save-buffer))
 
+(defun delete-all-sr-toggle () (interactive)
+  (delete-other-windows)
+  (sr-speedbar
+   -toggle)
+  (sr-speedbar-toggle)
+  (select-window-2))
 
 ;; KEY BINDINGS
 (defvar attic-term-mode-map (make-keymap) "attic-term-mode keymap.")
@@ -257,7 +261,7 @@
 (define-key attic-lock-minor-mode-map (kbd "`")     'find-file)
 (define-key attic-minor-mode-map (kbd "C-h")        'switch-to-buffer)
 (define-key attic-lock-minor-mode-map (kbd "h")     'switch-to-buffer)
-(define-key attic-minor-mode-map (kbd "M-h")        'buffer-menu-other-window)
+(define-key attic-minor-mode-map (kbd "M-h")        'ido-switch-buffer-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-h")      'buffer-menu-other-window)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
 (define-key attic-minor-mode-map (kbd "M-g")      'goto-line)
@@ -278,6 +282,21 @@
 
 ; Window manipulation
 (define-key attic-lock-minor-mode-map (kbd "x o")   'other-window)
+(define-key attic-minor-mode-map (kbd "C-x M-o")   'other-frame)
+(define-key attic-minor-mode-map (kbd "C-x 1")   'delete-all-sr-toggle)
+
+(define-key attic-minor-mode-map (kbd "C-c 1")   'select-window-1)
+(define-key attic-minor-mode-map (kbd "C-c 2")   'select-window-2)
+(define-key attic-minor-mode-map (kbd "C-c 3")   'select-window-3)
+(define-key attic-minor-mode-map (kbd "C-c 4")   'select-window-4)
+(define-key attic-minor-mode-map (kbd "C-c 5")   'select-window-5)
+(define-key attic-minor-mode-map (kbd "C-c 6")   'select-window-6)
+(define-key attic-minor-mode-map (kbd "C-c 7")   'select-window-7)
+(define-key attic-minor-mode-map (kbd "C-c 8")   'select-window-8)
+(define-key attic-minor-mode-map (kbd "C-c 9")   'select-window-9)
+
+
+
 ;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window)
 ;(define-key attic-minor-mode-map (kbd "C-]")     'shrink-window)
 ;(define-key attic-minor-mode-map (kbd "C-")     'enlarge-window-horizontally)
@@ -300,7 +319,7 @@
 (define-key attic-minor-mode-map (kbd "C-q")        'yank)
 (define-key attic-lock-minor-mode-map (kbd "y")     'copy-region-as-kill)
 (define-key attic-lock-minor-mode-map (kbd "q")     'yank)
-;(define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
+(define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
 (define-key attic-minor-mode-map (kbd "M-a")      'kmacro-start-macro)
 (define-key attic-minor-mode-map (kbd "M-s")      'kmacro-end-macro)
 (define-key attic-minor-mode-map (kbd "M-q")        'kmacro-end-and-call-macro)
@@ -384,8 +403,6 @@ t " A-lock" 'attic-lock-minor-mode-map)
 (defun attic-lock-minibuffer-setup-hook ()
 	(attic-lock-minor-mode 0))
 
-
-(setq sr-speedbar-right-side nil)
 
 ;(add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
 (add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
