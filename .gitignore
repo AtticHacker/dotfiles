@@ -2,10 +2,4 @@
 emacs/.emacs.d/ac-comphist.dat
 .netrwhist
 auto-save-list/
-KDE/.kde4/cache-Attic
-KDE/.kde4/Autostart
-KDE/.kde4/socket-Attic
-KDE/.kde4/tmp-Attic
-KDE/.kde4/share/apps
-KDE/.kde4/share/autostart
-KDE/.kde4/share/kde4
+*#
