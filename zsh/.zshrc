@@ -16,7 +16,7 @@ ZSHRC=$HOME/.zshrc
 ZSH_THEME="kevin"
 
 
-export PATH=/usr/local/bin:$PATH:$HOME/.emacs-ghc-mod/.cabal/bin/:$HOME/.cabal/bin/
+export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.ghc-mod/bin/:$HOME/.cabal/bin/
 
 # plugins=(git)
 
