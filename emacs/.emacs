@@ -10,6 +10,7 @@
 (add-to-list 'load-path "~/.ghc-mod/share/ghc-mod-1.11.3")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
+(add-to-list 'load-path "~/.emacs.d/plugins/gnus/lisp")
 
 (require 'color-theme)
 (require 'redo+)
@@ -26,7 +27,9 @@
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
-(require 'attic-lock)
+(require 'gnus-load)
+(require 'epa-file)
+(epa-file-enable)
 
 (window-numbering-mode 1)
 (ido-mode 1)
@@ -46,57 +49,26 @@
  '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50)))
  '(vc-follow-symlinks t))
 
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-
 ;; SETTINGS
 
 
 (add-hook 'haskell-ghci-mode-hook 
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
-             (set (make-local-variable 'attic-lock-minor-mode) nil)
-             (set (make-local-variable 'attic-minor-mode) nil)
-             (set (make-local-variable 'attic-term-mode) 1)
              ))
 
 (add-hook 'term-mode-hook 
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
-             (set (make-local-variable 'attic-lock-minor-mode) nil)
-             (set (make-local-variable 'attic-minor-mode) nil)
-             (set (make-local-variable 'attic-term-mode) 1)
              ))
-
-;; (global-set-key [tab] 'indent-or-expand)
-;; (defun indent-or-expand ()
-;;   "Either indent according to mode, or expand the word preceding point."
-;;   (interactive)
-;;   (if (or
-;;        (eq last-command 'self-insert-command)
-;;        (eq last-command 'dabbrev-expand))
-;;       (progn
-;;         (setq this-command 'dabbrev-expand)
-;;         (dabbrev-expand nil))
-;;     (indent-according-to-mode)))
 
 ;; Tab size
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-
-;; (setq auto-mode-alist (cons '(".hs" . haskell-mode) auto-mode-alist))
-;; (setq auto-mode-alist (cons '("*terminal*" . (linum-mode 0)) auto-mode-alist))
-;; (setq auto-mode-alist (cons '("*terminal*" . (attic-lock-mode 0)) auto-mode-alist))
-
-;; And I have tried
 (setq indent-tabs-mode nil)
 (setq tab-width 4)
 (setq cua-enable-cua-keys nil)
 (customize-variable (quote tab-stop-list))
-
-
 
 ;; Don't create ~ files
 (setq make-backup-files nil)
@@ -121,147 +93,23 @@
 (dolist (key '("\C-z"))
   (global-unset-key key))
 
-;; CUSTOM FUNCTIONS
-
-(defun newline-up ()
-  (interactive)
-  (beginning-of-line)
-  (newline)
-  (previous-line)
-  (attic-lock-disable)
-)
-
-(defun newline-down ()
-  (interactive)
-  (end-of-line)
-  (newline)
-  (attic-lock-disable)
-)
-
-(defun delete-char-and-insert ()
-	(interactive)
-	(delete-char 1)
-  (attic-lock-disable)
-)
-
-(defun forward-char-and-insert ()
-	(interactive)
-	(forward-char 1)
-  (attic-lock-disable)
-)
-
-(defun kill-backward-line (arg)
-	(interactive "p")
-	(kill-line 0)
-)
-
-(defun attic-lock-enable () (interactive)
-  (setq attic-lock-minor-mode t)
-)
-
-(defun attic-lock-disable () (interactive)
-  (setq attic-lock-minor-mode nil)
-  (send-string-to-terminal "\033]12;green\007")
-)
-
-(defun previous-line-two ()
-  (interactive)
-  (previous-line 2)
-)
-
-(defun next-line-two ()
-  (interactive)
-  (next-line 2)
-)
-
-(defun cmus-pause ()
-  (interactive)
-  (shell-command "cmus-remote -u")
-)
-(defun cmus-next ()
-  (interactive)
-  (shell-command "cmus-remote -n")
-)
-(defun cmus-prev ()
-  (interactive)
-  (shell-command "cmus-remote -r")
-)
-(defun cmus-vol-up ()
-  (interactive)
-  (shell-command "cmus-remote -v +5")
-)
-(defun cmus-vol-down ()
-  (interactive)
-  (shell-command "cmus-remote -v -5")
-)
-
-(defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
-  (let (orig-one-window-p)
-    (fset 'orig-one-window-p (symbol-function 'one-window-p))
-    (fset 'one-window-p (lambda (&optional nomini all-frames) t))
-    (unwind-protect
-        ad-do-it
-      (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
-
-
-(defun attic-rock-lock () (interactive)
-  (setq attic-lock-minor-mode t)
-  (send-string-to-terminal "\033]12;white\007")
-  (keyboard-escape-quit)
-)
-
-
-(defun attic-save () (interactive)
-  (setq attic-lock-minor-mode t)
-  (send-string-to-terminal "\033]12;white\007")
-  (save-buffer))
-
-(defun delete-all-sr-toggle () (interactive)
-  (delete-other-windows)
-  (sr-speedbar
-   -toggle)
-  (sr-speedbar-toggle)
-  (select-window-2))
-
 ;; KEY BINDINGS
-(defvar attic-term-mode-map (make-keymap) "attic-term-mode keymap.")
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 
-; Navigation
-;(define-key attic-minor-mode-map (kbd "C-f")        'forward-char)
-;(define-key attic-minor-mode-map (kbd "C-b")        'backward-char)
-;(define-key attic-minor-mode-map (kbd "C-p")        'previous-line)
-;(define-key attic-minor-mode-map (kbd "C-n")        'next-line)
-
-
-(define-key attic-minor-mode-map (kbd "M-f")		'forward-to-word)
-(define-key attic-minor-mode-map (kbd "M-b")		'backward-word)
-(define-key attic-minor-mode-map (kbd "M-C-f")	    'forward-to-word)
-(define-key attic-minor-mode-map (kbd "M-C-b")	    'backward-word-two)
-(define-key attic-minor-mode-map (kbd "M-C-p")	    'previous-line-two)
-(define-key attic-minor-mode-map (kbd "M-C-n")	    'next-line)
-
-; Advanced navigation
-(define-key attic-minor-mode-map (kbd "C-o")        'newline-down)
-(define-key attic-minor-mode-map (kbd "M-o")        'newline-up)
-(define-key attic-minor-mode-map (kbd "C-M-o")      'newline-up)
 (define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-SPC")      'cua-set-rectangle-mark)
-(define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-c C-f")        'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-M-`")      'textmate-goto-file)
+(define-key attic-minor-mode-map (kbd "C-c C-f")    'textmate-goto-file)
+
+; For term
+(define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
+(define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
+
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
-(define-key attic-minor-mode-map (kbd "C-h")        'switch-to-buffer)
-(define-key attic-minor-mode-map (kbd "M-h")        'ido-switch-buffer-other-window)
-(define-key attic-minor-mode-map (kbd "C-M-h")      'buffer-menu-other-window)
+(define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
-(define-key attic-minor-mode-map (kbd "M-g")      'goto-line)
 
 ; Window manipulation
-(define-key attic-minor-mode-map (kbd "C-x M-o")   'other-frame)
-(define-key attic-minor-mode-map (kbd "C-x 1")   'delete-all-sr-toggle)
-
 (define-key attic-minor-mode-map (kbd "C-c 1")   'select-window-1)
 (define-key attic-minor-mode-map (kbd "C-c 2")   'select-window-2)
 (define-key attic-minor-mode-map (kbd "C-c 3")   'select-window-3)
@@ -272,50 +120,12 @@
 (define-key attic-minor-mode-map (kbd "C-c 8")   'select-window-8)
 (define-key attic-minor-mode-map (kbd "C-c 9")   'select-window-9)
 
-; Control-mode-swapping
-
-(define-key attic-minor-mode-map (kbd "C-g")        'attic-rock-lock)
-
 ; Editing
 
-(define-key attic-minor-mode-map (kbd "C-u")        'undo)
-(define-key attic-minor-mode-map (kbd "C-M-u")      'redo)
-(define-key attic-minor-mode-map (kbd "M-u")        'redo)
-(define-key attic-minor-mode-map (kbd "C-j")        'backward-delete-char)
-(define-key attic-minor-mode-map (kbd "M-j")        'backward-kill-word)
-(define-key attic-minor-mode-map (kbd "C-M-j")      'delete-forward-char)
-(define-key attic-minor-mode-map (kbd "C-y")        'copy-region-as-kill)
-(define-key attic-minor-mode-map (kbd "C-q")        'yank)
-
-(define-key attic-minor-mode-map (kbd "C-M-q")      'yank-pop)
-(define-key attic-minor-mode-map (kbd "M-a")      'kmacro-start-macro)
-(define-key attic-minor-mode-map (kbd "M-s")      'kmacro-end-macro)
-(define-key attic-minor-mode-map (kbd "M-q")        'kmacro-end-and-call-macro)
-
-(define-key attic-minor-mode-map (kbd "C-z")        'delete-char-and-insert)
-
-(define-key attic-minor-mode-map (kbd "M-m")        'newline)
-(define-key attic-minor-mode-map (kbd "M--")        'comment-or-uncomment-region)
-(define-key attic-minor-mode-map (kbd "C--")        'comment-or-uncomment-region)
-
-(define-key attic-minor-mode-map (kbd "M-=")        'align-regexp)
-(define-key attic-minor-mode-map (kbd "C-x C-s")    'attic-save)
-
-; Custom
-(define-key attic-minor-mode-map (kbd "M-m")        'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "C-M-<RET>")  'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "C-M-x")      'execute-extended-command)
-
-
-(define-key attic-minor-mode-map (kbd "M-r")        'yas-expand)
-(define-key attic-minor-mode-map (kbd "<ESC> <ESC>")'keyboard-escape-quit)
-
-
-; terminal
-(define-key attic-term-mode-map (kbd "C-h")        'switch-to-buffer)
-(define-key attic-term-mode-map (kbd "M-x")        'execute-extended-command)
-(define-key attic-term-mode-map (kbd "C-x C-f")    'ido-find-file)
-(define-key attic-term-mode-map (kbd "C-c C-f")    'textmate-goto-file)
+(define-key attic-minor-mode-map (kbd "M--")    'comment-or-uncomment-region)
+(define-key attic-minor-mode-map (kbd "M-+")    'align-regexp)
+(define-key attic-minor-mode-map (kbd "C-q")    'cua-paste)
+(define-key attic-minor-mode-map (kbd "M-q")    'cua-paste-pop)
 
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."  
@@ -348,12 +158,6 @@
 
 ;; ENABLE / DISABLE MODES AT STARTUP
 
-(define-minor-mode attic-term-mode
-"term description"
-
-t " AT" 'attic-term-mode-map)
-
-
 (define-minor-mode attic-minor-mode
 "A minor mode so that my key settings override annoying major modes."
 
@@ -361,21 +165,13 @@ t " attic" 'attic-minor-mode-map)
 (defun attic-minibuffer-setup-hook ()
 	(attic-minor-mode 0))
 
-
-
-;(add-hook 'minibuffer-setup-hook 'attic-minibuffer-setup-hook)
-(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (global-linum-mode 1)
-;(color-theme-ld-dark)
 (cua-mode t)
 (global-auto-complete-mode 1)
-;(auto-complete-mode 1)
 
-;wr
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 
@@ -395,9 +191,6 @@ t " attic" 'attic-minor-mode-map)
 ;adding the following lines according to which modules you want to use:
 (require 'inf-haskell)
 
-
-;(add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
-;(add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
