@@ -96,9 +96,11 @@ alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 alias glade='./home/kevin/.glade/src/glade-e'
 
 alias toclip='xclip -sel clip'
+alias pwdc='pwd | xclip -sel clip'
 
 
 alias bl='asus-kbd-backlight'
+alias xbl='xbacklight'
 
 # Kill process
 function killit {
