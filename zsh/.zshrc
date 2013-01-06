@@ -185,7 +185,7 @@ function remove_selected_file {
 }
 
 function agit {
-  ruby ~/.dotfiles/helpers/attic-git/ruby.rb ${@}
+  ruby ~/.dotfiles/utils/attic-git/ruby.rb ${@}
 }
 
 function store_emacs_backups {
