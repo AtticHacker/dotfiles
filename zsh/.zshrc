@@ -93,11 +93,11 @@ alias reboot='sudo reboot'
 # Connect to my iPhone using MyWi
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
-alias glade='./home/kevin/.glade/src/glade-e'
 
 alias toclip='xclip -sel clip'
 alias pwdc='pwd | xclip -sel clip'
 
+alias cabal-setup='$HOME/.dotfiles/utils/cabal-setup'
 
 alias bl='asus-kbd-backlight'
 alias xbl='xbacklight'
