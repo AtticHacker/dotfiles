@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<smileys version='1.0'>
+	<profile name='Default'>
+		<smiley_set>
+			<smiley shortcut=';;' checksum='e440a2a20466fdae582381d6fdb4eeef3f835f6f' filename='e440a2a20466fdae582381d6fdb4eeef3f835f6f.gif'/>
+			<smiley shortcut='hug1' checksum='cd1bf232c9f0e280a8bfbcc1b5aa671616caf178' filename='cd1bf232c9f0e280a8bfbcc1b5aa671616caf178.gif'/>
+			<smiley shortcut='hohoho' checksum='f3bbb02013e60307cccc08567bf043decb78b955' filename='f3bbb02013e60307cccc08567bf043decb78b955.png'/>
+			<smiley shortcut='hug2' checksum='41666082f6ac10007b37dde222269ae90638710b' filename='41666082f6ac10007b37dde222269ae90638710b.gif'/>
+			<smiley shortcut='kiss1' checksum='b50c8226fb1176500b973eb0ade208eb9ec20406' filename='b50c8226fb1176500b973eb0ade208eb9ec20406.gif'/>
+			<smiley shortcut='^^' checksum='cb35a4365d596d5659a8b4a07e861237b37b3b89' filename='cb35a4365d596d5659a8b4a07e861237b37b3b89.gif'/>
+			<smiley shortcut='=(' checksum='a141ba0e785e5c9aec094edb439bfcc294c1ea46' filename='a141ba0e785e5c9aec094edb439bfcc294c1ea46.png'/>
+			<smiley shortcut='lick1' checksum='9e8ab29c7aa0e7ae02efba88ab997df964af4098' filename='9e8ab29c7aa0e7ae02efba88ab997df964af4098.gif'/>
+			<smiley shortcut='&lt;3' checksum='e0d2bbd5f3525356e02dded05ca1409e4e04da5e' filename='e0d2bbd5f3525356e02dded05ca1409e4e04da5e.png'/>
+			<smiley shortcut='&lt;4' checksum='a3c53fd3b8e3a7bc40a236fff0bcb07c02b7dab1' filename='a3c53fd3b8e3a7bc40a236fff0bcb07c02b7dab1.png'/>
+			<smiley shortcut='&lt;5' checksum='c1d27e8ad8d0021a62fa71aa8f8c6a03c5e914a0' filename='c1d27e8ad8d0021a62fa71aa8f8c6a03c5e914a0.gif'/>
+			<smiley shortcut='&lt;6' checksum='1902f014916abcc3387927004a63435df642cfcb' filename='1902f014916abcc3387927004a63435df642cfcb.png'/>
+		</smiley_set>
+	</profile>
+</smileys>
