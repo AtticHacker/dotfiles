@@ -20,6 +20,7 @@ ln -nfs "$(pwd)/xinit/.xinitrc"      "$HOME/.xinitrc"
 ln -nfs "$(pwd)/purple/custom_smiley" "$HOME/.purple/custom_smiley"
 ln -nfs "$(pwd)/purple/smileys.xml"    "$HOME/.purple/smileys.xml"
 ln -nfs "$(pwd)/purple/prefs.xml"      "$HOME/.purple/prefs.xml"
+ln -nfs "$(pwd)/purple/plugins"      "$HOME/.purple/plugins"
 
 ln -nfs "$(pwd)/elinks/elinks.conf"      "$HOME/.elinks/elinks.conf"
 
