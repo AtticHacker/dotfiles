@@ -23,7 +23,7 @@
 (require 'haskell-mode)
 (require 'haskell-ghci)
 (require 'erc)
-(require 'zenburn-theme)
+;(require 'zenburn-theme)
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
@@ -31,6 +31,7 @@
 (require 'epa-file)
 (epa-file-enable)
 
+;(color-theme-midnight 1)
 (window-numbering-mode 1)
 (ido-mode 1)
 (yas-global-mode 1)
@@ -123,6 +124,7 @@
 (define-key attic-minor-mode-map (kbd "C-c 7")   'select-window-7)
 (define-key attic-minor-mode-map (kbd "C-c 8")   'select-window-8)
 (define-key attic-minor-mode-map (kbd "C-c 9")   'select-window-9)
+(define-key attic-minor-mode-map (kbd "C-c C-n")   'redraw-display)
 
 ; Editing
 
@@ -175,9 +177,12 @@ t " attic" 'attic-minor-mode-map)
 (global-linum-mode 1)
 (cua-mode t)
 (global-auto-complete-mode 1)
-
+(color-theme-midnight)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
+(set-face-background 'region "blue")
+(set-face-foreground 'region "black")
+
 
 ;haskell mode configuration
 (setq auto-mode-alist
@@ -202,3 +207,6 @@ t " attic" 'attic-minor-mode-map)
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 (put 'upcase-region 'disabled nil)
+(require 'flymake)
+(set-face-foreground 'flymake-errline "white")
+(set-face-foreground 'flymake-warnline "white")

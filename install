@@ -17,9 +17,10 @@ ln -nfs "$(pwd)/urxvt/.Xdefaults"    "$HOME/.Xdefaults"
 ln -nfs "$(pwd)/xmodmap/.xmodmaprc"  "$HOME/.xmodmaprc"
 ln -nfs "$(pwd)/xinit/.xinitrc"      "$HOME/.xinitrc"
 
-ln -nfs "$(pwd)/purple/custom_smileys" "$HOME/.purple/custom_smileys"
+ln -nfs "$(pwd)/purple/custom_smiley" "$HOME/.purple/custom_smiley"
 ln -nfs "$(pwd)/purple/smileys.xml"    "$HOME/.purple/smileys.xml"
 ln -nfs "$(pwd)/purple/prefs.xml"      "$HOME/.purple/prefs.xml"
 
+ln -nfs "$(pwd)/elinks/elinks.conf"      "$HOME/.elinks/elinks.conf"
 
 sudo cp "$(pwd)/urxvt/clipboard" "/usr/lib/urxvt/perl/clipboard"

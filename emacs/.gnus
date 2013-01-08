@@ -4,6 +4,7 @@
 			  (nnimap-stream ssl)
               (nnimap-authinfo-file "~/.authinfo.gpg")))
 (setq gnus-use-dribble-file 1)
+
 (defcustom auth-source-save-behavior 'ask
   "If set, auth-source will respect it for save behavior."
   :group 'auth-source
@@ -13,3 +14,5 @@
           (const :tag "Always save" t)
           (const :tag "Never save" nil)
 		  (const :tag "Ask" ask)))
+
+; List all groups with L
