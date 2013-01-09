@@ -1,4 +1,4 @@
-module Pidgin where
+module Main where
 
 import Data.List.Split
 

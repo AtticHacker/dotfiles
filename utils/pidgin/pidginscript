@@ -1,7 +1,9 @@
+sleep 0.1
 location=$HOME/.purple/logs/msn/kevin.van.rooijen@gmail.com/sapsik123@hotmail.com
 foobar=`ls $location | tail -1`
 
 catfoobar=`cat $location/$foobar | tail -1`
-foek=`echo $catfoobar | runghc $HOME/pidgin.hs`
-echo "Inga:" $foek | $HOME/wall
-
+foek=`echo $catfoobar | $HOME/.dotfiles/utils/pidgin/extract`
+echo "Inga:" $foek | $HOME/.dotfiles/utils/pidgin/wall
+sleep 2.5
+tmux refresh-client

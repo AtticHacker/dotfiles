@@ -95,8 +95,8 @@ alias reboot='sudo reboot'
 alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
 
 
-alias toclip='xclip -sel clip'
-alias pwdc='pwd | xclip -sel clip'
+alias toclip='tr -d '\n' | xclip -sel clip'
+alias pwdc='tr -d '\n' | pwd | xclip -sel clip'
 
 alias cabal-setup='$HOME/.dotfiles/utils/cabal-setup'
 

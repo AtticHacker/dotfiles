@@ -29,6 +29,9 @@
 (require 'window-numbering)
 (require 'gnus-load)
 (require 'epa-file)
+(require 'inf-haskell)
+(require 'flymake)
+
 (epa-file-enable)
 
 ;(color-theme-midnight 1)
@@ -180,9 +183,6 @@ t " attic" 'attic-minor-mode-map)
 (color-theme-midnight)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
-(set-face-background 'region "blue")
-(set-face-foreground 'region "black")
-(set-face-foreground 'isearch "white")
 
 
 ;haskell mode configuration
@@ -199,7 +199,6 @@ t " attic" 'attic-minor-mode-map)
   "Major mode for editing literate Haskell scripts." t)
 
 ;adding the following lines according to which modules you want to use:
-(require 'inf-haskell)
 
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
@@ -208,6 +207,14 @@ t " attic" 'attic-minor-mode-map)
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 (put 'upcase-region 'disabled nil)
-(require 'flymake)
+
+
 (set-face-foreground 'flymake-errline "white")
+(set-face-background 'flymake-errline "red")
+(set-face-background 'flymake-warnline "yellow")
 (set-face-foreground 'flymake-warnline "white")
+
+(set-face-foreground 'font-lock-string-face "orange")
+(set-face-background 'region "blue")
+(set-face-foreground 'region "black")
+(set-face-foreground 'isearch "white")
