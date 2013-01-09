@@ -182,6 +182,7 @@ t " attic" 'attic-minor-mode-map)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 (set-face-background 'region "blue")
 (set-face-foreground 'region "black")
+(set-face-foreground 'isearch "white")
 
 
 ;haskell mode configuration
