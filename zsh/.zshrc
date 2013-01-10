@@ -18,7 +18,7 @@ ZSH_THEME="kevin"
 
 export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.ghc-mod/bin/:$HOME/.cabal/bin/
 export EDITOR="emacs -nw"
-export DISPLAY=:1
+
 # plugins=(git)
 
 ## OH MY ZSH options ##

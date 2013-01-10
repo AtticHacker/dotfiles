@@ -1,3 +1,0 @@
-#! /bin/bash
-
-ln -nfs "$(pwd)/xmodmap/.xmodmaprcmac"  "$HOME/.xmodmaprc"

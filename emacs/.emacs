@@ -27,7 +27,7 @@
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
-(require 'gnus-load)
+;(require 'gnus-load)
 (require 'epa-file)
 (require 'inf-haskell)
 (require 'flymake)
@@ -60,6 +60,8 @@
 ;; SETTINGS
 
 
+
+
 (add-hook 'haskell-ghci-mode-hook 
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
@@ -69,6 +71,15 @@
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
              ))
+(add-hook 'speedbar-mode-hook
+          '(lambda()
+             (set (make-local-variable 'linum-mode) nil)
+             ))
+(add-hook 'shell-mode-hook
+          '(lambda()
+             (set (make-local-variable 'linum-mode) nil)
+             ))
+
 
 ;; Tab size
 (setq-default indent-tabs-mode nil)
@@ -101,6 +112,7 @@
 (dolist (key '("\C-z"))
   (global-unset-key key))
 
+
 ;; KEY BINDINGS
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
@@ -108,12 +120,13 @@
 (define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-SPC")      'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")    'textmate-goto-file)
+(define-key attic-minor-mode-map (kbd "C-x C-a")    'ido-switch-buffer)
 
 ; For term
 (define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
-
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
+(define-key attic-minor-mode-map (kbd "M-x")        'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
 
@@ -133,13 +146,21 @@
 
 (define-key attic-minor-mode-map (kbd "M--")    'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")    'align-regexp)
-(define-key attic-minor-mode-map (kbd "C-q")    'cua-paste)
-(define-key attic-minor-mode-map (kbd "M-q")    'cua-paste-pop)
+(define-key attic-minor-mode-map (kbd "M-q")    'cua-paste)
+(define-key attic-minor-mode-map (kbd "C-M-q")  'cua-paste-pop)
+
+
+
+;; (defun zsh (buffer-name)
+;;   "Start a terminal and rename buffer."  
+;;   (interactive "sbuffer name: ")
+;;   (term "/bin/zsh")
+;;   (rename-buffer (format "%s%s" "$" buffer-name) t))
 
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."  
   (interactive "sbuffer name: ")
-  (term "/bin/zsh")
+  (shell)
   (rename-buffer (format "%s%s" "$" buffer-name) t))
 
 (ido-mode 'both) ;; for buffers and files
@@ -218,3 +239,6 @@ t " attic" 'attic-minor-mode-map)
 (set-face-background 'region "blue")
 (set-face-foreground 'region "black")
 (set-face-foreground 'isearch "white")
+(set-face-foreground 'linum "black")
+(set-face-background 'linum "gray")
+(color-theme-midnight)
