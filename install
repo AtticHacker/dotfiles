@@ -14,7 +14,7 @@ ln -nfs "$(pwd)/zsh/.zsh"            "$HOME/.zsh"
 ln -nfs "$(pwd)/xmonad/xmonad.hs"    "$HOME/.xmonad/xmonad.hs"
 ln -nfs "$(pwd)/xmonad/.xmobarrc"    "$HOME/.xmobarrc"
 ln -nfs "$(pwd)/urxvt/.Xdefaults"    "$HOME/.Xdefaults"
-ln -nfs "$(pwd)/xmodmap/.xmodmaprc"  "$HOME/.xmodmaprc"
+ln -nfs "$(pwd)/xmodmap/xmodmaprc"  "$HOME/.xmodmaprc"
 ln -nfs "$(pwd)/xinit/.xinitrc"      "$HOME/.xinitrc"
 
 ln -nfs "$(pwd)/purple/custom_smiley" "$HOME/.purple/custom_smiley"

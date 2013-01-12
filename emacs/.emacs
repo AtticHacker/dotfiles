@@ -62,6 +62,11 @@
 
 
 
+(add-hook 'inferior-haskell-ghci-mode-hook 
+          '(lambda() 
+             (set (make-local-variable 'linum-mode) nil)
+             ))
+
 (add-hook 'haskell-ghci-mode-hook 
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
@@ -118,7 +123,7 @@
 
 
 (define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
-(define-key attic-minor-mode-map (kbd "M-SPC")      'cua-set-rectangle-mark)
+(define-key attic-minor-mode-map (kbd "M-#")      'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")    'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a")    'ido-switch-buffer)
 
@@ -149,6 +154,7 @@
 (define-key attic-minor-mode-map (kbd "M-q")    'cua-paste)
 (define-key attic-minor-mode-map (kbd "C-M-q")  'cua-paste-pop)
 
+;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
 
 
 ;; (defun zsh (buffer-name)
@@ -169,7 +175,8 @@
 
   ido-ignore-buffers ;; ignore these guys
   '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
-    "^\*compilation" "^\*GTAGS" "^session\.*" "^\*" ".newsrc-dribble")
+    "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
+    "^\*scr" "^\*")
   ;ido-work-directory-list '("~/" "~/Desktop" "~/Documents" "~src")
   ido-case-fold  t                 ; be case-insensitive
 
@@ -241,4 +248,5 @@ t " attic" 'attic-minor-mode-map)
 (set-face-foreground 'isearch "white")
 (set-face-foreground 'linum "black")
 (set-face-background 'linum "gray")
-(color-theme-midnight)
+(set-face-foreground 'comint-highlight-prompt "white")
+;(color-theme-midnight)
