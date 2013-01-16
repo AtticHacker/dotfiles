@@ -17,7 +17,7 @@ ZSH_THEME="kevin"
 
 export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.ghc-mod/bin/:$HOME/.cabal/bin/
 export EDITOR="emacs -nw"
-
+source $HOME/.lazyVault/binPaths
 # plugins=(git)
 
 ## OH MY ZSH options ##
@@ -103,6 +103,9 @@ alias bl='asus-kbd-backlight'
 alias xbl='xbacklight'
 
 alias finch='DISPLAY=:0 /usr/bin/finch'
+
+alias lv='/usr/bin/lazyvault'
+
 # Kill process
 function killit {
   itis1=`ps aux | grep $1 | awk '{print $2}' | head -1`

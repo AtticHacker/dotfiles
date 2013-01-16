@@ -11,6 +11,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
 (add-to-list 'load-path "~/.emacs.d/plugins/gnus/lisp")
+(add-to-list 'load-path "~/.emacs.d/plugins/magit")
 
 (require 'color-theme)
 (require 'redo+)
@@ -23,7 +24,6 @@
 (require 'haskell-mode)
 (require 'haskell-ghci)
 (require 'erc)
-;(require 'zenburn-theme)
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
@@ -31,6 +31,9 @@
 (require 'epa-file)
 (require 'inf-haskell)
 (require 'flymake)
+(require 'org-install)
+(require 'magit)
+(setq org-log-done t)
 
 (epa-file-enable)
 
@@ -60,9 +63,12 @@
 ;; SETTINGS
 
 
+(setq org-agenda-files 
+      (list "~/org/todos.org"
+            "~/org/notes.org"))
 
 
-(add-hook 'inferior-haskell-ghci-mode-hook 
+(add-hook 'inferior-haskell-ghci-mode-hook
           '(lambda() 
              (set (make-local-variable 'linum-mode) nil)
              ))
@@ -81,6 +87,11 @@
              (set (make-local-variable 'linum-mode) nil)
              ))
 (add-hook 'shell-mode-hook
+          '(lambda()
+             (set (make-local-variable 'linum-mode) nil)
+             ))
+
+(add-hook 'magit-mode-hook
           '(lambda()
              (set (make-local-variable 'linum-mode) nil)
              ))
@@ -117,7 +128,6 @@
 (dolist (key '("\C-z"))
   (global-unset-key key))
 
-
 ;; KEY BINDINGS
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
@@ -125,13 +135,16 @@
 (define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-#")      'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")    'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a")    'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-a")    'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-o")    'org-agenda)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-c")    'org-cycle-agenda-files)
+(define-key attic-minor-mode-map (kbd "C-x C-a <RET>")    'magit-status)
 
 ; For term
 (define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-`")        'find-file)
-(define-key attic-minor-mode-map (kbd "M-x")        'execute-extended-command)
+;(define-key attic-minor-mode-map (kbd "M-x")        'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
 
@@ -149,10 +162,15 @@
 
 ; Editing
 
-(define-key attic-minor-mode-map (kbd "M--")    'comment-or-uncomment-region)
+(define-key attic-minor-mode-map (kbd "M-_")    'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")    'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-q")    'cua-paste)
 (define-key attic-minor-mode-map (kbd "C-M-q")  'cua-paste-pop)
+
+;;(define-key attic-minor-mode-map (kbd "M-?") 'help-command)
+(define-key attic-minor-mode-map (kbd "C-h") 'delete-backward-char)
+(define-key attic-minor-mode-map (kbd "M-h") 'backward-kill-word)
+
 
 ;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
 
@@ -250,3 +268,4 @@ t " attic" 'attic-minor-mode-map)
 (set-face-background 'linum "gray")
 (set-face-foreground 'comint-highlight-prompt "white")
 ;(color-theme-midnight)
+(put 'set-goal-column 'disabled nil)

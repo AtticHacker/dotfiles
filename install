@@ -23,5 +23,6 @@ ln -nfs "$(pwd)/purple/prefs.xml"      "$HOME/.purple/prefs.xml"
 ln -nfs "$(pwd)/purple/plugins"      "$HOME/.purple/plugins"
 
 ln -nfs "$(pwd)/elinks/elinks.conf"      "$HOME/.elinks/elinks.conf"
+ln -nfs "$(pwd)/org"      "$HOME/org"
 
 sudo cp "$(pwd)/urxvt/clipboard" "/usr/lib/urxvt/perl/clipboard"
