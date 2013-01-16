@@ -266,6 +266,10 @@ t " attic" 'attic-minor-mode-map)
 (set-face-foreground 'isearch "white")
 (set-face-foreground 'linum "black")
 (set-face-background 'linum "gray")
+
 (set-face-foreground 'comint-highlight-prompt "white")
+(set-face-background 'magit-section-title "black")
+(set-face-background 'magit-branch "black")
+
 ;(color-theme-midnight)
 (put 'set-goal-column 'disabled nil)
