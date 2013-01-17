@@ -5,7 +5,8 @@
     C-x r Space : Set registry
     C-x r j     : Go to registry
     C-u C-space : Got to last position
-    M-s         : {Custom} iy-go-to-char
+    M-s         : iy-go-to-char
     C-M-n/p     : Go to ending or beginning bracket
 *** Editing
     C-x r t : Replace rectangle
+    
