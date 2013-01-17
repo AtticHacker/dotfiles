@@ -12,6 +12,9 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
 (add-to-list 'load-path "~/.emacs.d/plugins/gnus/lisp")
 (add-to-list 'load-path "~/.emacs.d/plugins/magit")
+(add-to-list 'load-path "~/.emacs.d/plugins/expand-region")
+(add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
+(add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 
 (require 'color-theme)
 (require 'redo+)
@@ -33,6 +36,29 @@
 (require 'flymake)
 (require 'org-install)
 (require 'magit)
+(require 'iy-go-to-char)
+(require 'key-chord)
+(require 'expand-region)
+(require 'ace-jump-mode)
+(require 'mark-multiple)
+(require 'inline-string-rectangle)
+(require 'mark-more-like-this)
+(require 'multiple-cursors)
+; Mark Multiple
+
+(global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-N") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-*") 'mc/mark-all-like-this)
+
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (require 'rename-sgml-tag)
+            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
+
+;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
 (setq org-log-done t)
 
 (epa-file-enable)
@@ -64,8 +90,8 @@
 
 
 (setq org-agenda-files 
-      (list "~/org/todos.org"
-            "~/org/notes.org"))
+      (list "~/org/notes.org"
+            "~/org/todos.org"))
 
 
 (add-hook 'inferior-haskell-ghci-mode-hook
@@ -141,25 +167,17 @@
 (define-key attic-minor-mode-map (kbd "C-x C-a <RET>")    'magit-status)
 
 ; For term
-(define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
-(define-key attic-minor-mode-map (kbd "C-x C-f")    'ido-find-file)
-(define-key attic-minor-mode-map (kbd "C-`")        'find-file)
-;(define-key attic-minor-mode-map (kbd "M-x")        'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "M-`")        'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-M-g")      'goto-line)
-
-; Window manipulation
-(define-key attic-minor-mode-map (kbd "C-c 1")   'select-window-1)
-(define-key attic-minor-mode-map (kbd "C-c 2")   'select-window-2)
-(define-key attic-minor-mode-map (kbd "C-c 3")   'select-window-3)
-(define-key attic-minor-mode-map (kbd "C-c 4")   'select-window-4)
-(define-key attic-minor-mode-map (kbd "C-c 5")   'select-window-5)
-(define-key attic-minor-mode-map (kbd "C-c 6")   'select-window-6)
-(define-key attic-minor-mode-map (kbd "C-c 7")   'select-window-7)
-(define-key attic-minor-mode-map (kbd "C-c 8")   'select-window-8)
-(define-key attic-minor-mode-map (kbd "C-c 9")   'select-window-9)
-(define-key attic-minor-mode-map (kbd "C-c C-n")   'redraw-display)
-
+(define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
+(define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
+(define-key attic-minor-mode-map (kbd "C-`")     'find-file)
+;(define-key attic-minor-mode-map (kbd "M-x")    'execute-extended-command)
+(define-key attic-minor-mode-map (kbd "M-`")     'textmate-goto-file)
+(define-key attic-minor-mode-map (kbd "C-M-g")   'goto-line)
+(define-key attic-minor-mode-map (kbd "C-M-s")   'ace-jump-mode)
+(define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
+(define-key attic-minor-mode-map (kbd "M-S")     'iy-go-to-char-backward)
+(key-chord-define-global "fg"                    'iy-go-to-char)
+(key-chord-define-global "df"                    'iy-go-to-char-backward)
 ; Editing
 
 (define-key attic-minor-mode-map (kbd "M-_")    'comment-or-uncomment-region)
@@ -169,7 +187,7 @@
 
 ;;(define-key attic-minor-mode-map (kbd "M-?") 'help-command)
 (define-key attic-minor-mode-map (kbd "C-h") 'delete-backward-char)
-(define-key attic-minor-mode-map (kbd "M-h") 'backward-kill-word)
+(define-key attic-minor-mode-map (kbd "M-@") 'er/expand-region)
 
 
 ;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
@@ -226,6 +244,8 @@ t " attic" 'attic-minor-mode-map)
 (global-linum-mode 1)
 (cua-mode t)
 (global-auto-complete-mode 1)
+(key-chord-mode 1)
+(multiple-cursors-mode 1)
 (color-theme-midnight)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
@@ -270,6 +290,9 @@ t " attic" 'attic-minor-mode-map)
 (set-face-foreground 'comint-highlight-prompt "white")
 (set-face-background 'magit-section-title "black")
 (set-face-background 'magit-branch "black")
+(set-face-foreground 'magit-section-title "white")
+(set-face-foreground 'magit-branch "white")
 
-;(color-theme-midnight)
+(set-face-foreground 'mc/cursor-face "white")
+(set-face-background 'mc/cursor-face "black")
 (put 'set-goal-column 'disabled nil)
