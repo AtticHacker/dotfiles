@@ -173,9 +173,10 @@
 ;(define-key attic-minor-mode-map (kbd "M-x")    'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-`")     'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")   'goto-line)
-(define-key attic-minor-mode-map (kbd "C-M-s")   'ace-jump-mode)
-(define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
-(define-key attic-minor-mode-map (kbd "M-S")     'iy-go-to-char-backward)
+(define-key attic-minor-mode-map (kbd "M-s")     'ace-jump-mode)
+(define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
+;(define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
+;(define-key attic-minor-mode-map (kbd "M-S")     'iy-go-to-char-backward)
 (key-chord-define-global "fg"                    'iy-go-to-char)
 (key-chord-define-global "df"                    'iy-go-to-char-backward)
 ; Editing
@@ -188,7 +189,7 @@
 ;;(define-key attic-minor-mode-map (kbd "M-?") 'help-command)
 (define-key attic-minor-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key attic-minor-mode-map (kbd "M-@") 'er/expand-region)
-
+(define-key attic-minor-mode-map (kbd "C-M-_") 'redo)
 
 ;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
 
