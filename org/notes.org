@@ -9,4 +9,3 @@
     C-M-n/p     : Go to ending or beginning bracket
 *** Editing
     C-x r t : Replace rectangle
-    

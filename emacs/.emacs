@@ -30,7 +30,6 @@
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
-;(require 'gnus-load)
 (require 'epa-file)
 (require 'inf-haskell)
 (require 'flymake)
@@ -50,23 +49,19 @@
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
 
-(add-hook 'sgml-mode-hook
-          (lambda ()
-            (require 'rename-sgml-tag)
-            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
-
-;;;;;;;;;;;;;;;;;;;;;;;
-
+;; (add-hook 'sgml-mode-hook
+;;          (lambda ()
+;;            (require 'rename-sgml-tag)
+;;            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
 
 
 (setq org-log-done t)
-
 (epa-file-enable)
-
-;(color-theme-midnight 1)
 (window-numbering-mode 1)
 (ido-mode 1)
 (yas-global-mode 1)
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -104,10 +99,10 @@
              (set (make-local-variable 'linum-mode) nil)
              ))
 
-(add-hook 'term-mode-hook 
-          '(lambda() 
-             (set (make-local-variable 'linum-mode) nil)
-             ))
+(add-hook 'term-mode-hook 'speedbar-mode-hook
+	  '(lambda() 
+	     (set (make-local-variable 'linum-mode) nil)
+	     ))
 (add-hook 'speedbar-mode-hook
           '(lambda()
              (set (make-local-variable 'linum-mode) nil)
@@ -173,12 +168,14 @@
 ;(define-key attic-minor-mode-map (kbd "M-x")    'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-`")     'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")   'goto-line)
-(define-key attic-minor-mode-map (kbd "M-s")     'ace-jump-mode)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
-;(define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
-;(define-key attic-minor-mode-map (kbd "M-S")     'iy-go-to-char-backward)
-(key-chord-define-global "fg"                    'iy-go-to-char)
-(key-chord-define-global "df"                    'iy-go-to-char-backward)
+
+(define-key attic-minor-mode-map (kbd "M-S")     'ace-jump-mode)
+(define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
+(define-key attic-minor-mode-map (kbd "C-M-s")   'iy-go-to-char-backward)
+
+(key-chord-define-global "df"                    'ace-jump-mode)
+
 ; Editing
 
 (define-key attic-minor-mode-map (kbd "M-_")    'comment-or-uncomment-region)
@@ -190,6 +187,12 @@
 (define-key attic-minor-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key attic-minor-mode-map (kbd "M-@") 'er/expand-region)
 (define-key attic-minor-mode-map (kbd "C-M-_") 'redo)
+
+(define-key attic-minor-mode-map (kbd "M-t") 'transpose-words)
+(define-key attic-minor-mode-map (kbd "M-T") 'ghc-insert-template)
+
+
+(define-key attic-minor-mode-map (kbd "M-E") 'mc/edit-lines)
 
 ;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
 
@@ -296,4 +299,7 @@ t " attic" 'attic-minor-mode-map)
 
 (set-face-foreground 'mc/cursor-face "white")
 (set-face-background 'mc/cursor-face "black")
+
+(set-face-foreground 'magit-diff-file-header "black")
 (put 'set-goal-column 'disabled nil)
+

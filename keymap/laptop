@@ -92,7 +92,8 @@ keycode  15 = Tab
 
 keycode  16 = q               
 keycode  17 = w               
-keycode  18 = +e               +E               Hex_E            Control_e        Control_e        Meta_e           Meta_Control_e  
+#keycode  18 = +e               +E               Hex_E            Control_e        Control_e        Meta_e           Meta_Control_e  
+keycode  18 = e
 keycode  19 = r               
 keycode  20 = t               
 keycode  21 = y               
