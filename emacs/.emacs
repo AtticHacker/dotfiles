@@ -15,6 +15,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/expand-region")
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
+(add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
 
 (require 'color-theme)
 (require 'redo+)
@@ -43,6 +44,10 @@
 (require 'inline-string-rectangle)
 (require 'mark-more-like-this)
 (require 'multiple-cursors)
+(require 'rainbow-delimiters)
+(require 'wrap-region)
+
+
 ; Mark Multiple
 
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
@@ -61,8 +66,6 @@
 (ido-mode 1)
 (yas-global-mode 1)
 
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -70,7 +73,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(dirtree-windata (quote (frame left 0.15 delete)))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode imenu-add-menubar-index)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -118,11 +121,10 @@
              ))
 
 
-;; Tab size
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 (setq indent-tabs-mode nil)
-(setq tab-width 4)
+(setq tab-width 2)
 (setq cua-enable-cua-keys nil)
 (customize-variable (quote tab-stop-list))
 
@@ -174,13 +176,14 @@
 (define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
 (define-key attic-minor-mode-map (kbd "C-M-s")   'iy-go-to-char-backward)
 
-(key-chord-define-global "df"                    'ace-jump-mode)
+
+(key-chord-define-global "sd"                    'ace-jump-mode)
 
 ; Editing
 
 (define-key attic-minor-mode-map (kbd "M-_")    'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")    'align-regexp)
-(define-key attic-minor-mode-map (kbd "M-q")    'cua-paste)
+(define-key attic-minor-mode-map (kbd "C-q")    'cua-paste)
 (define-key attic-minor-mode-map (kbd "C-M-q")  'cua-paste-pop)
 
 ;;(define-key attic-minor-mode-map (kbd "M-?") 'help-command)
@@ -216,7 +219,7 @@
   ido-ignore-buffers ;; ignore these guys
   '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
     "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
-    "^\*scr" "^\*")
+    "^\*scr" "^\*" "notes.org" "todos.org")
   ;ido-work-directory-list '("~/" "~/Desktop" "~/Documents" "~src")
   ido-case-fold  t                 ; be case-insensitive
 
@@ -253,7 +256,7 @@ t " attic" 'attic-minor-mode-map)
 (color-theme-midnight)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
-
+(global-rainbow-delimiters-mode)
 
 ;haskell mode configuration
 (setq auto-mode-alist

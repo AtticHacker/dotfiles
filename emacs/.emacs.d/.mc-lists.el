@@ -5,6 +5,7 @@
       '(
         ace-jump-mode
         ace-jump-move
+        cua-cut-region
         cua-delete-region
         cua-paste
         iy-go-to-char
@@ -12,6 +13,8 @@
         org-delete-char
         org-end-of-line
         org-self-insert-command
+        tab-to-tab-stop
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
