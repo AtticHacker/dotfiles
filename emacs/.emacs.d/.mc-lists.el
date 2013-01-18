@@ -8,6 +8,7 @@
         cua-cut-region
         cua-delete-region
         cua-paste
+        haskell-indentation-delete-char
         iy-go-to-char
         org-beginning-of-line
         org-delete-char
