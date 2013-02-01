@@ -153,7 +153,7 @@
 
 ;; KEY BINDINGS
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
-(defvar hakyll-minor-mode-map (make-keymap) "hakyll-minor-mode keymap.")
+;(defvar hakyll-minor-mode-map (make-keymap) "hakyll-minor-mode keymap.")
 
 (define-key attic-minor-mode-map (kbd "M-C-SPC")    'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-#")      'cua-set-rectangle-mark)
@@ -176,8 +176,9 @@
 (define-key attic-minor-mode-map (kbd "M-s")     'iy-go-to-char)
 (define-key attic-minor-mode-map (kbd "C-M-s")   'iy-go-to-char-backward)
 
+(define-key ac-completing-map "\C-m" nil)
 
-(key-chord-define-global "sd"                    'ace-jump-mode)
+(define-key attic-minor-mode-map (kbd "M-q")      'ace-jump-mode)
 
 ; Editing
 
@@ -208,28 +209,28 @@
   (setq serverBinFile name)
 )
 
-(defun buffer-file-name-body ()
-  (interactive
-   (list(file-name-nondirectory "DA DAFT")))
-)
+;; (defun buffer-file-name-body ()
+;;   (interactive
+;;    (list(file-name-nondirectory "DA DAFT")))
+;; )
 
-(defun hakyll-build-server()
-  "Build and restart server"
-  (interactive)
-  (setq newVar (substring serverBinFile 0 0))
-  (shell-command 
-    (format "id=`ps aux | grep '%s server' | 
-             grep -v grep | awk '{print $2}'`; 
-             kill -9 $id;" newVar))
-  (sleep-for 1)
-  (dired (format "%s" serverBinFile))
-  (async-shell-command 
-    (format "loc=%s;
-             $loc build;
-             $loc server;" serverBinFile))
-  (previous-buffer)
-  (save-buffer)
-)
+;; (defun hakyll-build-server()
+;;   "Build and restart server"
+;;   (interactive)
+;;   (setq newVar (substring serverBinFile 0 0))
+;;   (shell-command 
+;;     (format "id=`ps aux | grep '%s server' | 
+;;              grep -v grep | awk '{print $2}'`; 
+;;              kill -9 $id;" newVar))
+;;   (sleep-for 1)
+;;   (dired (format "%s" serverBinFile))
+;;   (async-shell-command 
+;;     (format "loc=%s;
+;;              $loc build;
+;;              $loc server;" serverBinFile))
+;;   (previous-buffer)
+;;   (save-buffer)
+;; )
 
 (defun zsht (buffer-name)
   "Start a terminal and rename buffer."  
@@ -277,12 +278,12 @@ t " attic" 'attic-minor-mode-map)
 	(attic-minor-mode 0))
 
 
-(define-minor-mode hakyll-minor-mode
-"A minor mode to make hakyll feel more sexy?"
+;; (define-minor-mode hakyll-minor-mode
+;; "A minor mode to make hakyll feel more sexy?"
 
-0 " hakyll" 'hakyll-minor-mode-map)
-(defun hakyll-minibuffer-setup-hook ()
-	(hakyll-minor-mode 0))
+;; t " hakyll" 'hakyll-minor-mode-map)
+;(defun hakyll-minibuffer-setup-hook ()
+;	(hakyll-minor-mode 0))
 
 
 (tool-bar-mode 0)
@@ -297,7 +298,6 @@ t " attic" 'attic-minor-mode-map)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 (global-rainbow-delimiters-mode)
-;(hakyll-minor-mode nil)
 
 ;haskell mode configuration
 (setq auto-mode-alist

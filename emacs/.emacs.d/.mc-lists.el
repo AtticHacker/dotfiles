@@ -6,16 +6,19 @@
         ace-jump-mode
         ace-jump-move
         align-regexp
+        cua-copy-region
         cua-cut-region
         cua-delete-region
         cua-paste
         ghc-save-buffer
         haskell-indentation-delete-char
+        inferior-haskell-load-file
         iy-go-to-char
         org-beginning-of-line
         org-delete-char
         org-end-of-line
         org-self-insert-command
+        select-window-1
         tab-to-tab-stop
         transpose-words
         yas-expand
