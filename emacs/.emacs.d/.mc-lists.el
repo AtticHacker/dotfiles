@@ -5,9 +5,11 @@
       '(
         ace-jump-mode
         ace-jump-move
+        align-regexp
         cua-cut-region
         cua-delete-region
         cua-paste
+        ghc-save-buffer
         haskell-indentation-delete-char
         iy-go-to-char
         org-beginning-of-line
@@ -15,6 +17,7 @@
         org-end-of-line
         org-self-insert-command
         tab-to-tab-stop
+        transpose-words
         yas-expand
         ))
 
