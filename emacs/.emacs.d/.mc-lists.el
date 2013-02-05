@@ -5,6 +5,7 @@
       '(
         ace-jump-mode
         ace-jump-move
+        comment-or-uncomment-region
         cua-copy-region
         cua-cut-region
         cua-delete-region
