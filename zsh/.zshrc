@@ -99,12 +99,14 @@ alias pwdc='tr -d '\n' | pwd | xclip -sel clip'
 
 alias cabal-setup='$HOME/.dotfiles/utils/cabal-setup'
 
-alias bl='asus-kbd-backlight'
-alias xbl='xbacklight'
+alias bl='asus-screen-brightness'
+alias kbl='asus-kbd-backlight'
 
 alias finch='DISPLAY=:0 /usr/bin/finch'
 
-alias lv='/usr/bin/lazyvault'
+alias lv='/usr/bin/lv2'
+
+alias htag='hasktags -e . > TAGS'
 
 # Kill process
 function killit {

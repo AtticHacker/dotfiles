@@ -167,7 +167,7 @@
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-`")     'find-file)
-;(define-key attic-minor-mode-map (kbd "M-x")    'execute-extended-command)
+(define-key attic-minor-mode-map (kbd "M-x")    'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-`")     'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-M-g")   'goto-line)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)

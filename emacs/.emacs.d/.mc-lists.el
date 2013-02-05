@@ -6,6 +6,7 @@
         ace-jump-mode
         ace-jump-move
         comment-or-uncomment-region
+        align-regexp
         cua-copy-region
         cua-cut-region
         cua-delete-region
@@ -20,6 +21,7 @@
         org-self-insert-command
         select-window-1
         tab-to-tab-stop
+        transpose-words
         yas-expand
         ))
 
