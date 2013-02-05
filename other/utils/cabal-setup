@@ -1,0 +1,32 @@
+#!/bin/bash
+
+mkdir $1
+mkdir $1/src $1/testsuite $1/doc $1/util $1/dist
+
+# src
+
+src=$(pwd)/$1/src
+mkdir $src/App $src/cbits
+mkdir $src/App/Win32 $src/App/Unix
+touch $src/Main.lhs
+
+
+# testsuite
+
+testsuite=$(pwd)/$1/testsuite
+mkdir $testsuite/tests $testsuite/benchmarks
+ln -nfs "$src/App" "$testsuite/tests/App"
+touch $testsuite/runtests.sh
+
+
+# doc
+
+mkdir $1/doc/examples $1/doc/dev
+
+
+# dist
+
+mkdir $1/dist/build $1/dist/doc $1/dist/resources
+
+touch $1/README $1/INSTALL $1/TODO $1/AUTHORS $1/LICENSE $1/$1.cabal $1/Setup.hs
+
