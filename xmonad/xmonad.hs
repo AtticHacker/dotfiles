@@ -22,9 +22,11 @@ myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Thunar"       --> doShift "4"
                           , className =? "Icedove"      --> doShift "5"
                           , className =? "Gitg"         --> doShift "8"
-                          , className =? "Spotify"      --> doShift "4"                            
+                          , className =? "Spotify"      --> doShift "4"
+                          , className =? "Screenkey"      --> doIgnore
                           ]
 
+main :: IO ()
 main = do
   xmonad $ defaultConfig{
     workspaces = [ "1"
@@ -66,7 +68,7 @@ main = do
                     , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
                     , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
                     -- , ((mod4Mask .|. shiftMask, xK_3 ), spawn "scrot")
-                    -- , ((mod4Mask .|. shiftMask, xK_4 ), spawn "shutter -s")  
+                    -- , ((mod4Mask .|. shiftMask, xK_4 ), spawn "shutter -s")
                     , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
                     , ((mod4Mask, xK_w               ), nextScreen)
                     , ((mod1Mask, xK_Tab             ), windows W.focusDown)
@@ -250,4 +252,3 @@ main = do
 -- > <XF86_ClearGrab>
 -- > <XF86_Next_VMode>
 -- > <XF86_Prev_VMode>
-
