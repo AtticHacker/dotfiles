@@ -1,4 +1,4 @@
-; Require plugins
+1; Require plugins
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/themes")
@@ -202,8 +202,15 @@
 
 ;(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-ghci-load-file)
 
-(define-key hakyll-minor-mode-map (kbd "C-c C-s") 'hakyll-build-server)
+;(define-key hakyll-minor-mode-map (kbd "C-c C-s") 'hakyll-build-server)
 (define-key attic-minor-mode-map  (kbd "C-x C-a C-w") 'load-haskell-workgroups)
+
+(define-key attic-minor-mode-map  (kbd "C-w")       'backward-delete-char)
+(define-key attic-minor-mode-map  (kbd "M-w")       'backward-kill-word)
+(define-key attic-minor-mode-map  (kbd "C-c C-k")   'kill-region)
+(define-key attic-minor-mode-map  (kbd "C-c M-k")   'kill-ring-save)
+(define-key attic-minor-mode-map  (kbd "C-c <RET>") 'execute-extended-command)
+
 
 (defun set-server(name)
   (interactive
