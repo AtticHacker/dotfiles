@@ -39,7 +39,7 @@ xfceLayout = xfceConfig
              , terminal           = "urxvt"
              , normalBorderColor  = "#000000"
              , focusFollowsMouse  = False
-             , layoutHook = toggleLayouts (noBorders Grid) $
+             , layoutHook = toggleLayouts (noBorders Full) $
                             avoidStruts $ layoutHook xfceConfig
              } `additionalKeys` addKeys
 
