@@ -12,10 +12,9 @@ import qualified XMonad.StackSet as W
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
+import XMonad.Actions.NoBorders
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Config.Xfce
-
-import Data.Map as M
 
 myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Skype"        --> doShift "2"
@@ -30,23 +29,22 @@ myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Screenkey"      --> doIgnore
                           ]
 main :: IO ()
-main = xmonad $ mainLayout 1
+main = xmonad $ xfceLayout
 
-mainLayout width = xfceConfig
+xfceLayout = xfceConfig
              { modMask = mod4Mask
              , workspaces = [ "1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "0" , "-" , "=" ]
              , manageHook = myManageHook <+> manageHook xfceConfig --myManageDocks <+> manageHook defaultConfig
-             , borderWidth        = width
+             , borderWidth        = 1
              , terminal           = "urxvt"
              , normalBorderColor  = "#000000"
              , focusFollowsMouse  = False
-             -- , layoutHook = toggleLayouts (withBorder 0 Full) $
-             --                avoidStruts $ layoutHook xfceConfig
              , layoutHook = toggleLayouts (noBorders Grid) $
                             avoidStruts $ layoutHook xfceConfig
              } `additionalKeys` addKeys
 
 
+addKeys :: [((KeyMask, KeySym), X ())]
 addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master 1+")
           , ((0, xF86XK_AudioLowerVolume     ), spawn "amixer --quiet set Master 1-")
           , ((0, xF86XK_AudioMute            ), spawn "amixer --quiet set Master toggle")
@@ -67,7 +65,8 @@ addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master
           , ((mod4, xK_b                     ), spawn "toggleXmobar")
           , ((mod4, xK_w                     ), nextScreen)
           , ((mod1Mask, xK_Tab               ), windows W.focusDown)
-          , ((mod4, xK_x                     ), sendMessage ToggleLayout)
+          , ((mod4 .|. shiftMask, xK_x       ), sendMessage ToggleLayout)
+          , ((mod4, xK_x                     ), withFocused toggleBorder)
           , ((mod4, xK_q                     ), undefined)
 --          , ((mod4, xK_p                     ), undefined)
           ] where mod4 = mod4Mask
@@ -107,6 +106,19 @@ addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master
 -- > <KP_F1>
 -- > <KP_F2>
 -- > <KP_F3>
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- > <KP_F4>
 -- > <KP_Home>
 -- > <KP_Left>
