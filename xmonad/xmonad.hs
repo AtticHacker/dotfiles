@@ -68,7 +68,7 @@ addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master
           , ((mod4 .|. shiftMask, xK_x       ), sendMessage ToggleLayout)
           , ((mod4, xK_x                     ), withFocused toggleBorder)
           , ((mod4, xK_q                     ), undefined)
---          , ((mod4, xK_p                     ), undefined)
+          , ((mod4, xK_p                     ), spawn "dmenu_run")
           ] where mod4 = mod4Mask
 
 
