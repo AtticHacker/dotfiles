@@ -38,7 +38,6 @@
 (require 'org-install)
 (require 'magit)
 (require 'iy-go-to-char)
-(require 'key-chord)
 (require 'expand-region)
 (require 'ace-jump-mode)
 (require 'mark-multiple)
@@ -48,6 +47,7 @@
 (require 'rainbow-delimiters)
 (require 'wrap-region)
 (require 'workgroups)
+(require 'smex)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Modes
@@ -57,7 +57,6 @@
 (global-linum-mode 1)
 (cua-mode t)
 (global-auto-complete-mode 1)
-(key-chord-mode 1)
 (multiple-cursors-mode 1)
 (color-theme-midnight)
 (put 'downcase-region 'disabled nil)
@@ -71,7 +70,7 @@
 (window-numbering-mode 1)
 (ido-mode 1)
 (yas-global-mode 1)
-
+(smex-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Custom functions
@@ -207,7 +206,7 @@
 (define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
 (define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
 (define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
-(define-key attic-lock-minor-mode-map (kbd "x a <RET>")	'magit-status)
+(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
 (define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
 (define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
 (define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
@@ -249,6 +248,8 @@
 (define-key attic-minor-mode-map (kbd "M-t")	     'transpose-words)
 (define-key attic-minor-mode-map (kbd "M-T")	     'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
+(define-key attic-minor-mode-map (kbd "M-x")	     'smex)
+(define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
