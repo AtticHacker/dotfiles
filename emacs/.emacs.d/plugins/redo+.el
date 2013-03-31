@@ -1,4 +1,4 @@
-;;; redo+.el -- Redo/undo system for Emacs
+;;; redo+.el --- Redo/undo system for Emacs
 
 ;; Copyright (C) 1985, 1986, 1987, 1993-1995 Free Software Foundation, Inc.
 ;; Copyright (C) 1995 Tinker Systems and INS Engineering Corp.
@@ -8,6 +8,7 @@
 ;; Author: Kyle E. Jones, February 1997
 ;;         S. Irie, March 2008
 ;; Keywords: lisp, extensions
+;; Version: 1.14
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -261,17 +262,17 @@ A numeric argument serves as a repeat count."
 ;; Modify menu-bar and tool-bar item of GNU Emacs
 (unless (featurep 'xemacs)
   ;; condition to undo
-  (mapc (lambda (map)
-	  (setcar (cdr (memq :enable (assq 'undo (cdr map))))
-		  '(and (not buffer-read-only)
-			(consp buffer-undo-list)
-			(or (not (or (eq last-buffer-undo-list
-					 buffer-undo-list)
-				     (eq last-buffer-undo-list
-					 (cdr buffer-undo-list))))
-			    (listp pending-undo-list)))))
-	(append (list menu-bar-edit-menu)
-		(if window-system (list tool-bar-map))))
+  ;; (mapc (lambda (map)
+  ;; 	  (setcar (cdr (memq :enable (assq 'undo (cdr map))))
+  ;; 		  '(and (not buffer-read-only)
+  ;; 			(consp buffer-undo-list)
+  ;; 			(or (not (or (eq last-buffer-undo-list
+  ;; 					 buffer-undo-list)
+  ;; 				     (eq last-buffer-undo-list
+  ;; 					 (cdr buffer-undo-list))))
+  ;; 			    (listp pending-undo-list)))))
+  ;; 	(append (list menu-bar-edit-menu)
+  ;; 		(if window-system (list tool-bar-map))))
   ;; redo's menu-bar entry
   (define-key-after menu-bar-edit-menu [redo]
     '(menu-item "Redo" redo

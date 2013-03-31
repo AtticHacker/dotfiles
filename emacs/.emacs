@@ -18,7 +18,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
 
 (require 'color-theme)
-;(require 'redo+)
+(require 'redo+)
 (require 'attic-lock)
 (require 'dirtree)
 (require 'textmate)
@@ -245,7 +245,7 @@
 (define-key attic-minor-mode-map (kbd "M-_")	     'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")	     'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-@")	     'er/expand-region)
-;(define-key attic-minor-mode-map (kbd "C-M-_")	     'redo)
+(define-key attic-minor-mode-map (kbd "C-M-_")	     'redo)
 (define-key attic-minor-mode-map (kbd "M-t")	     'transpose-words)
 (define-key attic-minor-mode-map (kbd "M-T")	     'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
