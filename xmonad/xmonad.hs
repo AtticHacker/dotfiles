@@ -12,6 +12,10 @@ import qualified XMonad.StackSet as W
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Config.Xfce
+
+import Data.Map as M
 
 myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Skype"        --> doShift "2"
@@ -25,55 +29,56 @@ myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Spotify"      --> doShift "4"
                           , className =? "Screenkey"      --> doIgnore
                           ]
-
 main :: IO ()
-main = do
-  xmonad $ defaultConfig{
-    workspaces = [ "1"
-                 , "2"
-                 , "3"
-                 , "4"
-                 , "5"
-                 , "6"
-                 , "7"
-                 , "8"
-                 , "9"
-                 , "0"
-                 , "-"
-                 , "="
-                 ]
+main = xmonad $ mainLayout 1
 
-    , manageHook = myManageHook <+> manageHook defaultConfig
-    , borderWidth        = 1
-    , terminal           = "urxvt"
-    , modMask            = mod4Mask
-    , normalBorderColor  = "#000000"
-    , focusFollowsMouse  = False
-    , layoutHook         = toggleLayouts (noBorders Full) $
-                           avoidStruts $ layoutHook defaultConfig
-    }
-    `additionalKeys`[ ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer --quiet set Master 1+")
-                    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer --quiet set Master 1-")
-                    , ((0, xF86XK_AudioMute          ), spawn "amixer --quiet set Master toggle")
-                    , ((0, xF86XK_KbdBrightnessUp    ), spawn "asus-kbd-backlit up")
-                    , ((0, xF86XK_KbdBrightnessUp    ), spawn "asus-kbd-backlit up")
-                    , ((mod4Mask, xK_F3              ), spawn "asus-kbd-backlit down")
-                    , ((mod4Mask, xK_F4              ), spawn "asus-kbd-backlit down")
-                    , ((mod4Mask, xK_F9              ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
-                    , ((mod4Mask, xK_F5              ), spawn "xbacklight -10")
-                    , ((mod4Mask, xK_F6              ), spawn "xbacklight +10")
-                    , ((mod4Mask, xK_f               ), spawn "thunar")
-                    , ((mod4Mask .|. shiftMask, xK_m ), spawn "terminal")
-                    , ((0, xK_Print                  ), spawn "scrot")
-                    , ((mod4Mask, xK_n               ), viewEmptyWorkspace)
-                    , ((mod4Mask .|. shiftMask, xK_n ), tagToEmptyWorkspace)
-                    -- , ((mod4Mask .|. shiftMask, xK_3 ), spawn "scrot")
-                    -- , ((mod4Mask .|. shiftMask, xK_4 ), spawn "shutter -s")
-                    , ((mod4Mask, xK_b               ), spawn "toggleXmobar")
-                    , ((mod4Mask, xK_w               ), nextScreen)
-                    , ((mod1Mask, xK_Tab             ), windows W.focusDown)
-                    , ((mod4Mask, xK_x               ), sendMessage ToggleLayout)
-                    ]
+mainLayout width = xfceConfig
+             { modMask = mod4Mask
+             , workspaces = [ "1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "0" , "-" , "=" ]
+             , manageHook = myManageHook <+> manageHook xfceConfig --myManageDocks <+> manageHook defaultConfig
+             , borderWidth        = width
+             , terminal           = "urxvt"
+             , normalBorderColor  = "#000000"
+             , focusFollowsMouse  = False
+             -- , layoutHook = toggleLayouts (withBorder 0 Full) $
+             --                avoidStruts $ layoutHook xfceConfig
+             , layoutHook = toggleLayouts (noBorders Grid) $
+                            avoidStruts $ layoutHook xfceConfig
+             } `additionalKeys` addKeys
+
+
+addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master 1+")
+          , ((0, xF86XK_AudioLowerVolume     ), spawn "amixer --quiet set Master 1-")
+          , ((0, xF86XK_AudioMute            ), spawn "amixer --quiet set Master toggle")
+          , ((0, xF86XK_KbdBrightnessUp      ), spawn "asus-kbd-backlit up")
+          , ((0, xF86XK_KbdBrightnessUp      ), spawn "asus-kbd-backlit up")
+          , ((mod4, xK_F3                    ), spawn "asus-kbd-backlit down")
+          , ((mod4, xK_F4                    ), spawn "asus-kbd-backlit down")
+          , ((mod4, xK_F9                    ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
+          , ((mod4, xK_F5                    ), spawn "xbacklight -10")
+          , ((mod4, xK_F6                    ), spawn "xbacklight +10")
+          , ((mod4, xK_f                     ), spawn "thunar")
+          , ((mod4 .|. shiftMask, xK_m       ), spawn "terminal")
+          , ((0, xK_Print                    ), spawn "scrot")
+          , ((mod4, xK_n                     ), viewEmptyWorkspace)
+          , ((mod4 .|. shiftMask, xK_n       ), tagToEmptyWorkspace)
+          -- , ((modMask .|. shiftMask, xK_3 ), spawn "scrot")
+          -- , ((modMask .|. shiftMask, xK_4 ), spawn "shutter -s")
+          , ((mod4, xK_b                     ), spawn "toggleXmobar")
+          , ((mod4, xK_w                     ), nextScreen)
+          , ((mod1Mask, xK_Tab               ), windows W.focusDown)
+          , ((mod4, xK_x                     ), sendMessage ToggleLayout)
+          , ((mod4, xK_q                     ), undefined)
+--          , ((mod4, xK_p                     ), undefined)
+          ] where mod4 = mod4Mask
+
+
+
+
+    -- , layoutHook         = toggleLayouts (noBorders Full) $
+    --                        avoidStruts $ layoutHook defaultConfig
+    -- }
+--myKeys conf@(XConfig { XMonad.modMask = modMask } ) = M.fromList $
 
 -- > <Backspace>
 -- > <Tab>
