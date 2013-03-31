@@ -1,6 +1,6 @@
-/* urxvt*transparent: true */
-/* urxvt*shading: 5 */
-/* urxvt*fading: 30 */
+urxvt*transparent: true
+urxvt*shading: 50
+urxvt*fading: 60
 urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15:antialias=true
 urxvt*pixelsize: 33
 urxvt*scrollBar: false
@@ -29,7 +29,7 @@ Xft.rgba      : rgb
 Xft.hinting   : true
 Xft.hintstyle : hintslight
 
-URxvt.perl-ext-common: clipboard 
+URxvt.perl-ext-common: clipboard
 URxvt.iso14755: False
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
