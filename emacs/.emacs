@@ -71,6 +71,7 @@
 (ido-mode 1)
 (yas-global-mode 1)
 (smex-initialize)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Custom functions
@@ -113,7 +114,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(dirtree-windata (quote (frame left 0.15 delete)))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
+ '(haskell-mode-hook (quote (turn-on-orgtbl turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -241,7 +242,7 @@
 (define-key attic-minor-mode-map (kbd "M-s")           'iy-go-to-char)
 (define-key attic-minor-mode-map (kbd "M-q")           'ace-jump-mode)
 (define-key attic-minor-mode-map (kbd "M-x")       'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "M-_")	     'comment-or-uncomment-region)
+(define-key attic-minor-mode-map (kbd "C-c C-C") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")	     'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-@")	     'er/expand-region)
 (define-key attic-minor-mode-map (kbd "C-M-_")	     'redo)
@@ -250,6 +251,9 @@
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
 (define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
+
+
+
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
