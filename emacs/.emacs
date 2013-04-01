@@ -213,6 +213,7 @@
 (define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
 (define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
 (define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
+(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
 
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -232,7 +233,7 @@
 (define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
 (define-key attic-minor-mode-map (kbd "C-g")		'attic-rock-lock)
 (define-key attic-minor-mode-map (kbd "C-x C-s")        'save-and-lock2)
-
+(define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
 ; Alt hotkeys
 
 (define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
@@ -242,7 +243,6 @@
 (define-key attic-minor-mode-map (kbd "M-s")           'iy-go-to-char)
 (define-key attic-minor-mode-map (kbd "M-q")           'ace-jump-mode)
 (define-key attic-minor-mode-map (kbd "M-x")       'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "C-c C-C") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "M-+")	     'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-@")	     'er/expand-region)
 (define-key attic-minor-mode-map (kbd "C-M-_")	     'redo)

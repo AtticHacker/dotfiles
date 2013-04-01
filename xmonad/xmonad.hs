@@ -16,6 +16,10 @@ import XMonad.Actions.NoBorders
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Config.Xfce
 
+xF86XK_TouchpadToggle :: KeySym
+xF86XK_TouchpadToggle = 0x1008ffa9
+
+
 myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Skype"        --> doShift "2"
                           , className =? "Pidgin"       --> doShift "2"
@@ -23,10 +27,8 @@ myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
                           , className =? "Firefox"	--> doShift "3"
                           , className =? "Chromium"	--> doShift "3"
                           , className =? "Thunar"       --> doShift "4"
-                          , className =? "Icedove"      --> doShift "5"
-                          , className =? "Gitg"         --> doShift "8"
                           , className =? "Spotify"      --> doShift "4"
-                          , className =? "Screenkey"      --> doIgnore
+                          , className =? "Screenkey"    --> doIgnore
                           ]
 main :: IO ()
 main = xmonad $ xfceLayout
@@ -48,13 +50,12 @@ addKeys :: [((KeyMask, KeySym), X ())]
 addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master 1+")
           , ((0, xF86XK_AudioLowerVolume     ), spawn "amixer --quiet set Master 1-")
           , ((0, xF86XK_AudioMute            ), spawn "amixer --quiet set Master toggle")
-          , ((0, xF86XK_KbdBrightnessUp      ), spawn "asus-kbd-backlit up")
-          , ((0, xF86XK_KbdBrightnessUp      ), spawn "asus-kbd-backlit up")
-          , ((mod4, xK_F3                    ), spawn "asus-kbd-backlit down")
-          , ((mod4, xK_F4                    ), spawn "asus-kbd-backlit down")
+          , ((0, xF86XK_KbdBrightnessUp      ), spawn "asus-kbd-backlight up")
+          , ((0, xF86XK_KbdBrightnessDown    ), spawn "asus-kbd-backlight down")
+--          , ((0, xF86XK_TouchpadToggle       ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
           , ((mod4, xK_F9                    ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
-          , ((mod4, xK_F5                    ), spawn "xbacklight -10")
-          , ((mod4, xK_F6                    ), spawn "xbacklight +10")
+          , ((mod4, xK_F5                    ), spawn "asus-screen-brightness down")
+          , ((mod4, xK_F6                    ), spawn "asus-screen-brightness up")
           , ((mod4, xK_f                     ), spawn "thunar")
           , ((mod4 .|. shiftMask, xK_m       ), spawn "terminal")
           , ((0, xK_Print                    ), spawn "scrot")
