@@ -78,9 +78,7 @@
 
 (defun load-haskell-workgroups ()
   (interactive)
-  (wg-load "~/.emacs.d/workgroups/Haskell")
-  (select-window-2)
-  (previous-buffer))
+  (wg-load "~/.emacs.d/workgroups/Haskell"))
 
 (defun ido-find-file-pane-3 ()
   "Open file in panel 3"
@@ -105,6 +103,25 @@
   (shell)
   (rename-buffer (format "%s%s" "$" buffer-name) t))
 
+(defun get-current-buffer-major-mode ()
+  (interactive)
+  (message "%s" major-mode))
+
+(defun hoogle-search (query)
+  "Search with hoogle commandline"
+  (interactive "sHoogle query: ")
+  ; get the version of hoogle so I don't have to manually adjust it for each update
+  (shell-command (format "version=`hoogle --version | head -n 1 | awk '{print $2}' | cut -c 2- | rev | cut -c 2- | rev`;
+                          data=\"/databases\";
+                          two=$version$data;
+                          hoogle \"%s\" --data=$HOME/.lazyVault/sandboxes/hoogle/cabal/share/hoogle-$two" query))
+  (switch-to-buffer "*Shell Command Output*")
+  (haskell-mode)
+  (linum-mode 0)
+  (previous-buffer)
+)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
@@ -128,9 +145,7 @@
 
 
 ; Hooks
-(add-hook 'inferior-haskell-ghci-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
-(add-hook 'haskell-ghci-mode-hook
+(add-hook 'inferior-haskell-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)))
 (add-hook 'term-mode-hook
 	  '(lambda() (set (make-local-variable 'linum-mode) nil)))
@@ -140,6 +155,14 @@
           '(lambda() (set (make-local-variable 'linum-mode) nil)))
 (add-hook 'magit-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)))
+(add-hook 'shell-command-mode-hook
+          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+(add-hook 'lisp-interaction-mode-hook
+          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+(add-hook 'fundamental-mode-hook
+          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+
+
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -150,6 +173,7 @@
 
 ; Settings
 (setq cua-enable-cua-keys nil)
+(setq-default indent-tabs-mode nil)
 ;; Don't create ~ files
 (setq make-backup-files nil)
 (setq org-agenda-files
@@ -214,6 +238,7 @@
 (define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
 (define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
 (define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
+(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
 
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -234,6 +259,7 @@
 (define-key attic-minor-mode-map (kbd "C-g")		'attic-rock-lock)
 (define-key attic-minor-mode-map (kbd "C-x C-s")        'save-and-lock2)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
+(define-key attic-minor-mode-map (kbd "C-c C-o")        'hoogle-search)
 ; Alt hotkeys
 
 (define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
