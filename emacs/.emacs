@@ -78,7 +78,9 @@
 
 (defun load-haskell-workgroups ()
   (interactive)
-  (wg-load "~/.emacs.d/workgroups/Haskell"))
+  (defvar b (current-buffer))
+  (wg-load "~/.emacs.d/workgroups/Haskell")
+  (switch-to-buffer b))
 
 (defun ido-find-file-pane-3 ()
   "Open file in panel 3"
@@ -110,12 +112,15 @@
 (defun hoogle-search (query)
   "Search with hoogle commandline"
   (interactive "sHoogle query: ")
+  (if (get-buffer "*Hoogle*")
+      (kill-buffer "*Hoogle*"))
   ; get the version of hoogle so I don't have to manually adjust it for each update
   (shell-command (format "version=`hoogle --version | head -n 1 | awk '{print $2}' | cut -c 2- | rev | cut -c 2- | rev`;
                           data=\"/databases\";
                           two=$version$data;
                           hoogle \"%s\" --data=$HOME/.lazyVault/sandboxes/hoogle/cabal/share/hoogle-$two" query))
   (switch-to-buffer "*Shell Command Output*")
+  (rename-buffer "*Hoogle*")
   (haskell-mode)
   (linum-mode 0)
   (previous-buffer)
