@@ -78,7 +78,8 @@
 
 (defun load-haskell-workgroups ()
   (interactive)
-  (defvar b (current-buffer))
+  (setq b (current-buffer))
+  (message "%s" b)
   (wg-load "~/.emacs.d/workgroups/Haskell")
   (switch-to-buffer b))
 
