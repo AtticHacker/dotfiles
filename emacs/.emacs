@@ -154,23 +154,38 @@
 
 ; Hooks
 (add-hook 'inferior-haskell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+
 (add-hook 'term-mode-hook
-	  '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'speedbar-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'shell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'magit-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'shell-command-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'lisp-interaction-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 (add-hook 'fundamental-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)))
-
-
+          '(lambda() (set (make-local-variable 'linum-mode) nil)
+                     (set (make-local-variable 'attic-minor-mode) nil)
+                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
