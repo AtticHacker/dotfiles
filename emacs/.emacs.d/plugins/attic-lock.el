@@ -128,6 +128,16 @@
 (define-key attic-lock-minor-mode-map (kbd "x N") (key-binding (kbd "\C-x\C-N")))
 (define-key attic-lock-minor-mode-map (kbd "x M") (key-binding (kbd "\C-x\C-M")))
 
+(define-key attic-lock-minor-mode-map (kbd "x 1") (key-binding (kbd "\C-x 1")))
+(define-key attic-lock-minor-mode-map (kbd "x 2") (key-binding (kbd "\C-x 2")))
+(define-key attic-lock-minor-mode-map (kbd "x 3") (key-binding (kbd "\C-x 3")))
+(define-key attic-lock-minor-mode-map (kbd "x 4") (key-binding (kbd "\C-x 4")))
+(define-key attic-lock-minor-mode-map (kbd "x 5") (key-binding (kbd "\C-x 5")))
+(define-key attic-lock-minor-mode-map (kbd "x 6") (key-binding (kbd "\C-x 6")))
+(define-key attic-lock-minor-mode-map (kbd "x 7") (key-binding (kbd "\C-x 7")))
+(define-key attic-lock-minor-mode-map (kbd "x 8") (key-binding (kbd "\C-x 8")))
+(define-key attic-lock-minor-mode-map (kbd "x 9") (key-binding (kbd "\C-x 9")))
+
 (define-key attic-lock-minor-mode-map (kbd "c q") (key-binding (kbd "\C-c\C-q")))
 (define-key attic-lock-minor-mode-map (kbd "c w") (key-binding (kbd "\C-c\C-w")))
 (define-key attic-lock-minor-mode-map (kbd "c e") (key-binding (kbd "\C-c\C-e")))
