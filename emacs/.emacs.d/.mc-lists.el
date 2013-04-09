@@ -5,21 +5,35 @@
       '(
         ace-jump-mode
         ace-jump-move
-        comment-or-uncomment-region
         align-regexp
+        attic-lock-disable
+        attic-rock-lock
+        backward-delete-char
+        comment-or-uncomment-region
+        control-lock-enable
         cua-copy-region
         cua-cut-region
         cua-delete-region
         cua-paste
+        cua-paste-pop
+        delete-trailing-whitespace-and-save
+        end-of-buffer
         ghc-save-buffer
         haskell-indentation-delete-char
+        ido-switch-buffer
         inferior-haskell-load-file
         iy-go-to-char
+        kbd-macro-query
+        keyboard-escape-quit
         org-beginning-of-line
         org-delete-char
         org-end-of-line
         org-self-insert-command
+        orgtbl-self-insert-command
+        pop-to-mark-command
+        save-and-lock2
         select-window-1
+        shrink-window-if-larger-than-buffer
         tab-to-tab-stop
         transpose-words
         yas-expand
