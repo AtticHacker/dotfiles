@@ -140,7 +140,7 @@
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
- '(haskell-mode-hook (quote (turn-on-orgtbl turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
