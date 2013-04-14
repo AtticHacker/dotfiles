@@ -90,23 +90,22 @@ alias shutdown='sudo /sbin/shutdown -h now'
 # Reboot
 alias reboot='sudo reboot'
 
-# Connect to my iPhone using MyWi
-alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
-
-
 alias toclip='tr -d '\n' | xclip -sel clip'
 alias pwdc='tr -d '\n' | pwd | xclip -sel clip'
-
-alias cabal-setup='$HOME/.dotfiles/utils/cabal-setup'
 
 alias bl='asus-screen-brightness'
 alias kbl='asus-kbd-backlight'
 
-alias finch='DISPLAY=:0 /usr/bin/finch'
+#alias finch='DISPLAY=:0 /usr/bin/finch'
 
 alias lv='LazyVault'
 
 alias htag='hasktags -e . > TAGS'
+
+function ignorefile {
+    echo "*#\n.#*\n*~\n.*.swp" > .gitignore
+}
+
 
 # Kill process
 function killit {
