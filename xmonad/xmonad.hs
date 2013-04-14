@@ -20,14 +20,13 @@ xF86XK_TouchpadToggle :: KeySym
 xF86XK_TouchpadToggle = 0x1008ffa9
 
 
-myManageHook = composeAll [ className =? "Emesene"      --> doShift "2"
-                          , className =? "Skype"        --> doShift "2"
+myManageHook = composeAll [ className =? "Skype"        --> doShift "2"
                           , className =? "Pidgin"       --> doShift "2"
-                          , className =? "Choqok"       --> doShift "2"
                           , className =? "Firefox"	--> doShift "3"
                           , className =? "Chromium"	--> doShift "3"
                           , className =? "Thunar"       --> doShift "4"
-                          , className =? "Spotify"      --> doShift "4"
+                          , className =? "Thunderbird"	--> doShift "5"
+                          , className =? "Turpial"	--> doShift "5"
                           , className =? "Screenkey"    --> doIgnore
                           ]
 main :: IO ()
@@ -70,6 +69,8 @@ addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master
           , ((mod4, xK_x                     ), withFocused toggleBorder)
           , ((mod4, xK_q                     ), undefined)
           , ((mod4, xK_p                     ), spawn "dmenu_run")
+          , ((mod4, xK_d                     ), spawn "xfce4-dict")
+
           ] where mod4 = mod4Mask
 
 
