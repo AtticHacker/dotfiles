@@ -303,7 +303,9 @@
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
 (define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
-
+(define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
+                                                       (interactive)
+                                                       (join-line -1)))
 
 ; Globals
 (global-set-key (kbd "C-x C-a C-a")	'ido-switch-buffer)
