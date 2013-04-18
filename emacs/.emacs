@@ -271,9 +271,6 @@
 ; Control hotkeys
 ;(define-key attic-minor-mode-map (kbd "") 'keyboard-escape)
 (define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
 (define-key attic-minor-mode-map (kbd "C-x C-a <RET>")	'magit-status)
 (define-key attic-minor-mode-map (kbd "C-M-s")		'iy-go-to-char-backward)
 (define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
@@ -282,8 +279,14 @@
 (define-key attic-minor-mode-map (kbd "C-g")		'attic-rock-lock)
 (define-key attic-minor-mode-map (kbd "C-x C-s")        'save-and-lock2)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
+
+(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
+
 (define-key attic-minor-mode-map (kbd "C-c C-o")        'hoogle-search)
 ; Alt hotkeys
+
 
 (define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")       'textmate-goto-file)
@@ -300,6 +303,12 @@
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
 (define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
+
+
+; Globals
+(global-set-key (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(global-set-key (kbd "C-x C-a C-o")	'org-agenda)
+(global-set-key (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
 
 
 
