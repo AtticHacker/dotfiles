@@ -300,7 +300,9 @@
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
 (define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
-
+(define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
+                                                       (interactive)
+                                                       (join-line -1)))
 
 
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
