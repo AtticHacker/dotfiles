@@ -19,7 +19,7 @@
 
 (require 'color-theme)
 (require 'redo+)
-(require 'attic-lock)
+;(require 'attic-lock)
 (require 'dirtree)
 (require 'textmate)
 (require 'ido)
@@ -95,15 +95,16 @@
   (delete-trailing-whitespace)
   (save-buffer))
 
-(defun save-and-lock2 () (interactive)
-  (setq attic-lock-minor-mode t)
-  (delete-trailing-whitespace)
-  (save-buffer))
-
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."
   (interactive "sbuffer name: ")
   (shell)
+  (rename-buffer (format "%s%s" "$" buffer-name) t))
+
+(defun zsht (buffer-name)
+  "Start a terminal and rename buffer."
+  (interactive "sbuffer name: ")
+  (term "/bin/zsh")
   (rename-buffer (format "%s%s" "$" buffer-name) t))
 
 (defun get-current-buffer-major-mode ()
@@ -155,42 +156,50 @@
 ; Hooks
 (add-hook 'inferior-haskell-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 
 (add-hook 'term-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'speedbar-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'shell-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'magit-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'shell-command-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'lisp-interaction-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 (add-hook 'fundamental-mode-hook
           '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
+;                     (set (make-local-variable 'attic-minor-mode) nil)
+                     ))
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
-(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
+;(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -252,18 +261,18 @@
 
 ;; attic-lock
 
-(define-key attic-lock-minor-mode-map (kbd "c f")	'textmate-goto-file)
-(define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
-(define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
-(define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
-(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
-(define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
-(define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
-(define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
-(define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
-(define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
-(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
-(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
+;(define-key attic-lock-minor-mode-map (kbd "c f")	'textmate-goto-file)
+;(define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
+;(define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
+;(define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
+;(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
+;(define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
+;(define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
+;(define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
+;(define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
+;(define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
+;(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
+;(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
 
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -273,19 +282,24 @@
 ; Control hotkeys
 ;(define-key attic-minor-mode-map (kbd "") 'keyboard-escape)
 (define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
 (define-key attic-minor-mode-map (kbd "C-x C-a <RET>")	'magit-status)
 (define-key attic-minor-mode-map (kbd "C-M-s")		'iy-go-to-char-backward)
 (define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a C-w")	'load-haskell-workgroups)
 (define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
-(define-key attic-minor-mode-map (kbd "C-g")		'attic-rock-lock)
-(define-key attic-minor-mode-map (kbd "C-x C-s")        'save-and-lock2)
+;(define-key attic-minor-mode-map (kbd "C-g")		')
+(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
+
+
+
+(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
+
 (define-key attic-minor-mode-map (kbd "C-c C-o")        'hoogle-search)
 ; Alt hotkeys
+
 
 (define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")       'textmate-goto-file)
@@ -305,6 +319,12 @@
 (define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
                                                        (interactive)
                                                        (join-line -1)))
+
+; Globals
+(global-set-key (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(global-set-key (kbd "C-x C-a C-o")	'org-agenda)
+(global-set-key (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
+
 
 
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
