@@ -201,7 +201,9 @@
 (setq make-backup-files nil)
 (setq org-agenda-files
       (list "~/org/notes.org"
-            "~/org/todos.org"))
+            "~/org/todos.org"
+            "~/org/LazyCasts.org"
+            ))
 
 ; Unset C-z
 (dolist (key '("\C-z"))
