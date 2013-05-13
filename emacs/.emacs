@@ -19,7 +19,7 @@
 
 (require 'color-theme)
 (require 'redo+)
-;(require 'attic-lock)
+(require 'attic-lock)
 (require 'dirtree)
 (require 'textmate)
 (require 'ido)
@@ -154,52 +154,24 @@
 
 
 ; Hooks
-(add-hook 'inferior-haskell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
 
-(add-hook 'term-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'speedbar-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'shell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'magit-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'shell-command-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'lisp-interaction-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
-(add-hook 'fundamental-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-;                     (set (make-local-variable 'attic-lock-minor-mode) nil)
-;                     (set (make-local-variable 'attic-minor-mode) nil)
-                     ))
+(defun raw-modes ()
+  (set (make-local-variable 'linum-mode) nil)
+  (set (make-local-variable 'attic-lock-minor-mode) nil))
 
+(add-hook 'inferior-haskell-mode-hook 'raw-modes)
+(add-hook 'term-mode-hook             'raw-modes)
+(add-hook 'speedbar-mode-hook         'raw-modes)
+(add-hook 'shell-mode-hook            'raw-modes)
+(add-hook 'magit-mode-hook            'raw-modes)
+(add-hook 'shell-command-mode-hook    'raw-modes)
+(add-hook 'lisp-interaction-mode-hook 'raw-modes)
+(add-hook 'fundamental-mode-hook      'raw-modes)
+(add-hook 'dired-mode-hook            'raw-modes)
+
+(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-;(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -261,18 +233,18 @@
 
 ;; attic-lock
 
-;(define-key attic-lock-minor-mode-map (kbd "c f")	'textmate-goto-file)
-;(define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
-;(define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
-;(define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
-;(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
-;(define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
-;(define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
-;(define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
-;(define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
-;(define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
-;(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
-;(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
+(define-key attic-lock-minor-mode-map (kbd "c f")	'textmate-goto-file)
+(define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
+(define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
+(define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
+(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
+(define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
+(define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
+(define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
+(define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
+(define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
+(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
+(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
 
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
@@ -287,8 +259,7 @@
 (define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a C-w")	'load-haskell-workgroups)
 (define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
-;(define-key attic-minor-mode-map (kbd "C-g")		')
-(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
+;(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
 
 
@@ -315,7 +286,6 @@
 (define-key attic-minor-mode-map (kbd "M-T")	     'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
-(define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
 (define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
                                                        (interactive)
                                                        (join-line -1)))
