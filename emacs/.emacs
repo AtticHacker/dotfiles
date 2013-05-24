@@ -16,6 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
+(add-to-list 'load-path "~/.emacs.d/plugins/evil")
 
 (require 'color-theme)
 (require 'redo+)
@@ -48,6 +49,7 @@
 (require 'wrap-region)
 (require 'workgroups)
 (require 'smex)
+(require 'evil)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Modes
@@ -142,6 +144,8 @@
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
+ '(ido-separator "
+           ")
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -157,7 +161,8 @@
 
 (defun raw-modes ()
   (set (make-local-variable 'linum-mode) nil)
-  (set (make-local-variable 'attic-lock-minor-mode) nil))
+  (set (make-local-variable 'attic-lock-minor-mode) nil)
+  (set (make-local-variable 'attic-locker-minor-mode) nil))
 
 (add-hook 'inferior-haskell-mode-hook 'raw-modes)
 (add-hook 'term-mode-hook             'raw-modes)
@@ -207,6 +212,7 @@
   ido-confirm-unique-completion t)		; wait for RET, even with unique completion
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ; Some custom colors
 (set-face-foreground 'flymake-errline		"white"	)

@@ -67,7 +67,7 @@
 ;;; Minor mode
 
 (defvar *textmate-gf-exclude*
-  "(/|^)(\\.+[^/]+|vendor|fixtures|tmp|log|classes|build)($|/)|(\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\dist|\\log|\\.xcodeproj|\\.bundle|\\.pyc)(/|$)"
+  "(/|^)(\\.+[^/]+|vendor|fixtures|tmp|log|classes|build)($|/)|(\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\dist/|\\log/|\\.xcodeproj|\\.bundle|\\.pyc)(/|$)"
   "Regexp of files to exclude from `textmate-goto-file'.")
 
 (defvar *textmate-project-roots*
