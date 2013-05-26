@@ -133,6 +133,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -215,10 +217,19 @@
 
 
 ; Some custom colors
-(set-face-foreground 'flymake-errline		"white"	)
-(set-face-background 'flymake-errline		"red"	)
-(set-face-background 'flymake-warnline		"yellow")
-(set-face-foreground 'flymake-warnline		"white"	)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-errline ((t (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
+(set-face-foreground 'flymake-errline		"red"	)
+;(set-face-background 'flymake-errline		"red"	)
+;(set-face-background 'flymake-warnline		"yellow")
+(set-face-foreground 'flymake-warnline		"yellow")
+
+
 (set-face-foreground 'font-lock-string-face	"orange")
 (set-face-background 'region			"blue"	)
 (set-face-foreground 'region			"black"	)
@@ -252,14 +263,14 @@
 (define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
 (define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
 
-
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 ; Customs
 
 ; Control hotkeys
 ;(define-key attic-minor-mode-map (kbd "") 'keyboard-escape)
-(define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
+(
+ define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a <RET>")	'magit-status)
 (define-key attic-minor-mode-map (kbd "C-M-s")		'iy-go-to-char-backward)
 (define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
@@ -267,6 +278,7 @@
 (define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
 ;(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
+;(define-key attic-minor-mode-map (kbd "C-v C-v")	'cua-scroll-up)
 
 
 
@@ -342,9 +354,3 @@ t " attic" 'attic-minor-mode-map)
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
