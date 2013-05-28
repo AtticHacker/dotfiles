@@ -108,6 +108,8 @@ alias lv='LazyVault'
 
 alias htag='hasktags -e . > TAGS'
 
+alias rcd='recordmydesktop --no-cursor --width 1920 --height 1080 --device iec958:CARD=Microphone,DEV=0'
+
 # Kill process
 function killit {
   itis1=`ps aux | grep $1 | awk '{print $2}' | head -1`
