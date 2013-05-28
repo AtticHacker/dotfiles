@@ -15,7 +15,7 @@ ZSHRC=$HOME/.zshrc
 # Zsh Theme
 ZSH_THEME="kevin"
 
-export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.ghc-mod/bin/:$HOME/.cabal/bin/
+export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.cabal/bin/
 export EDITOR="emacs -nw"
 source $HOME/.lazyVault/binPaths
 # plugins=(git)
@@ -90,25 +90,23 @@ alias shutdown='sudo /sbin/shutdown -h now'
 # Reboot
 alias reboot='sudo reboot'
 
-# Connect to my iPhone using MyWi
-alias cphone='/lib/udev/ipheth-pair && sudo dhcpcd eth1'
-
-
 alias toclip='tr -d '\n' | xclip -sel clip'
 alias pwdc='tr -d '\n' | pwd | xclip -sel clip'
-
-alias cabal-setup='$HOME/.dotfiles/utils/cabal-setup'
 
 alias bl='asus-screen-brightness'
 alias kbl='asus-kbd-backlight'
 
-alias finch='DISPLAY=:0 /usr/bin/finch'
+#alias finch='DISPLAY=:0 /usr/bin/finch'
 
 alias lv='LazyVault'
 
 alias htag='hasktags -e . > TAGS'
 
 alias rcd='recordmydesktop --no-cursor --width 1920 --height 1080 --device iec958:CARD=Microphone,DEV=0'
+
+function ignorefile {
+    echo "*#\n.#*\n*~\n.*.swp" > .gitignore
+}
 
 # Kill process
 function killit {

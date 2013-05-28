@@ -16,6 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
+(add-to-list 'load-path "~/.emacs.d/plugins/evil")
 
 (require 'color-theme)
 (require 'redo+)
@@ -48,6 +49,7 @@
 (require 'wrap-region)
 (require 'workgroups)
 (require 'smex)
+(require 'evil)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Modes
@@ -95,15 +97,16 @@
   (delete-trailing-whitespace)
   (save-buffer))
 
-(defun save-and-lock2 () (interactive)
-  (setq attic-lock-minor-mode t)
-  (delete-trailing-whitespace)
-  (save-buffer))
-
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."
   (interactive "sbuffer name: ")
   (shell)
+  (rename-buffer (format "%s%s" "$" buffer-name) t))
+
+(defun zsht (buffer-name)
+  "Start a terminal and rename buffer."
+  (interactive "sbuffer name: ")
+  (term "/bin/zsh")
   (rename-buffer (format "%s%s" "$" buffer-name) t))
 
 (defun get-current-buffer-major-mode ()
@@ -130,6 +133,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -141,6 +146,8 @@
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
+ '(ido-separator "
+           ")
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -153,44 +160,25 @@
 
 
 ; Hooks
-(add-hook 'inferior-haskell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
 
-(add-hook 'term-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'speedbar-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'shell-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'magit-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'shell-command-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'lisp-interaction-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
-(add-hook 'fundamental-mode-hook
-          '(lambda() (set (make-local-variable 'linum-mode) nil)
-                     (set (make-local-variable 'attic-minor-mode) nil)
-                     (set (make-local-variable 'attic-lock-minor-mode) nil)))
+(defun raw-modes ()
+  (set (make-local-variable 'linum-mode) nil)
+  (set (make-local-variable 'attic-lock-minor-mode) nil)
+  (set (make-local-variable 'attic-locker-minor-mode) nil))
 
-(add-hook 'haskell-mode-hook 'turn-on-font-lock)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'inferior-haskell-mode-hook 'raw-modes)
+(add-hook 'term-mode-hook             'raw-modes)
+(add-hook 'speedbar-mode-hook         'raw-modes)
+(add-hook 'shell-mode-hook            'raw-modes)
+(add-hook 'magit-mode-hook            'raw-modes)
+(add-hook 'shell-command-mode-hook    'raw-modes)
+(add-hook 'lisp-interaction-mode-hook 'raw-modes)
+(add-hook 'fundamental-mode-hook      'raw-modes)
+(add-hook 'dired-mode-hook            'raw-modes)
 
 (add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
+(add-hook 'haskell-mode-hook 'turn-on-font-lock)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -201,7 +189,9 @@
 (setq make-backup-files nil)
 (setq org-agenda-files
       (list "~/org/notes.org"
-            "~/org/todos.org"))
+            "~/org/todos.org"
+            "~/org/LazyCasts.org"
+            ))
 
 ; Unset C-z
 (dolist (key '("\C-z"))
@@ -225,11 +215,21 @@
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 ; Some custom colors
-(set-face-foreground 'flymake-errline		"white"	)
-(set-face-background 'flymake-errline		"red"	)
-(set-face-background 'flymake-warnline		"yellow")
-(set-face-foreground 'flymake-warnline		"white"	)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-errline ((t (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
+(set-face-foreground 'flymake-errline		"red"	)
+;(set-face-background 'flymake-errline		"red"	)
+;(set-face-background 'flymake-warnline		"yellow")
+(set-face-foreground 'flymake-warnline		"yellow")
+
+
 (set-face-foreground 'font-lock-string-face	"orange")
 (set-face-background 'region			"blue"	)
 (set-face-foreground 'region			"black"	)
@@ -263,27 +263,32 @@
 (define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
 (define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
 
-
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 ; Customs
 
 ; Control hotkeys
 ;(define-key attic-minor-mode-map (kbd "") 'keyboard-escape)
-(define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
+(
+ define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a <RET>")	'magit-status)
 (define-key attic-minor-mode-map (kbd "C-M-s")		'iy-go-to-char-backward)
 (define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-x C-a C-w")	'load-haskell-workgroups)
 (define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
-(define-key attic-minor-mode-map (kbd "C-g")		'attic-rock-lock)
-(define-key attic-minor-mode-map (kbd "C-x C-s")        'save-and-lock2)
+;(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
 (define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
+;(define-key attic-minor-mode-map (kbd "C-v C-v")	'cua-scroll-up)
+
+
+
+(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
+(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
+
 (define-key attic-minor-mode-map (kbd "C-c C-o")        'hoogle-search)
 ; Alt hotkeys
+
 
 (define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "C-c C-f")       'textmate-goto-file)
@@ -299,7 +304,14 @@
 (define-key attic-minor-mode-map (kbd "M-T")	     'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x")	     'smex)
-(define-key attic-minor-mode-map (kbd "M-X")	     'smex-major-mode-commands)
+(define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
+                                                       (interactive)
+                                                       (join-line -1)))
+
+; Globals
+(global-set-key (kbd "C-x C-a C-a")	'ido-switch-buffer)
+(global-set-key (kbd "C-x C-a C-o")	'org-agenda)
+(global-set-key (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
 
 
 
@@ -342,9 +354,3 @@ t " attic" 'attic-minor-mode-map)
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -67,7 +67,7 @@
 ;;; Minor mode
 
 (defvar *textmate-gf-exclude*
-  "(/|^)(\\.+[^/]+|vendor|fixtures|tmp|log|classes|build)($|/)|(\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\.xcodeproj|\\.bundle|\\.pyc)(/|$)"
+  "(/|^)(\\.+[^/]+|vendor|fixtures|tmp|log|classes|build)($|/)|(\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\dist/|\\log/|\\.xcodeproj|\\.bundle|\\.pyc)(/|$)"
   "Regexp of files to exclude from `textmate-goto-file'.")
 
 (defvar *textmate-project-roots*
@@ -295,12 +295,12 @@ Symbols matching the text at point are put first in the completion list."
   "Uses your completing read to quickly jump to a file in a project."
   (interactive)
   (let ((root (textmate-project-root)))
-    (when (null root) 
+    (when (null root)
       (error "Can't find any .git directory"))
-    (find-file 
-     (concat 
+    (find-file
+     (concat
       (expand-file-name root) "/"
-      (textmate-completing-read 
+      (textmate-completing-read
        "Find file: "
        (mapcar
 	(lambda (e)

@@ -1,4 +1,5 @@
 (defvar attic-lock-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
+(defvar attic-locker-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 (defun save-and-lock () (interactive)
   (delete-trailing-whitespace)
@@ -17,6 +18,9 @@
     (unwind-protect
         ad-do-it
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
+
+(define-key attic-locker-minor-mode-map (kbd "C-g")  'attic-rock-lock)
+(define-key attic-locker-minor-mode-map (kbd "C-x C-s")  'save-and-lock)
 
 (define-key attic-lock-minor-mode-map (kbd "q")   (key-binding (kbd "\C-q")))
 (define-key attic-lock-minor-mode-map (kbd "w")   (key-binding (kbd "\C-w")))
@@ -257,6 +261,13 @@
 "A minor mode so that my key settings override annoying major modes."
 
 t " A-lock" 'attic-lock-minor-mode-map)
+(defun attic-lock-minibuffer-setup-hook ()
+	(attic-lock-minor-mode 0))
+
+(define-minor-mode attic-locker-minor-mode
+""
+
+t "" 'attic-locker-minor-mode-map)
 (defun attic-lock-minibuffer-setup-hook ()
 	(attic-lock-minor-mode 0))
 

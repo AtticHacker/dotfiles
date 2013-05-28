@@ -33,6 +33,7 @@
         pop-to-mark-command
         save-and-lock2
         select-window-1
+        sgml-slash
         shrink-window-if-larger-than-buffer
         tab-to-tab-stop
         transpose-words
