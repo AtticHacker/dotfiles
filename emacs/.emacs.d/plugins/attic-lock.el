@@ -22,6 +22,17 @@
 (define-key attic-locker-minor-mode-map (kbd "C-g")  'attic-rock-lock)
 (define-key attic-locker-minor-mode-map (kbd "C-x C-s")  'save-and-lock)
 
+
+(define-key attic-lock-minor-mode-map "1" 'digit-argument)
+(define-key attic-lock-minor-mode-map "2" 'digit-argument)
+(define-key attic-lock-minor-mode-map "3" 'digit-argument)
+(define-key attic-lock-minor-mode-map "4" 'digit-argument)
+(define-key attic-lock-minor-mode-map "5" 'digit-argument)
+(define-key attic-lock-minor-mode-map "6" 'digit-argument)
+(define-key attic-lock-minor-mode-map "7" 'digit-argument)
+(define-key attic-lock-minor-mode-map "8" 'digit-argument)
+(define-key attic-lock-minor-mode-map "9" 'digit-argument)
+
 (define-key attic-lock-minor-mode-map (kbd "q")   (key-binding (kbd "\C-q")))
 (define-key attic-lock-minor-mode-map (kbd "w")   (key-binding (kbd "\C-w")))
 (define-key attic-lock-minor-mode-map (kbd "e")   (key-binding (kbd "\C-e")))

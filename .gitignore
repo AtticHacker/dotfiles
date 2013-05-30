@@ -1,0 +1,6 @@
+*#
+.#*
+*~
+.*.swp
+dist/
+emacs/.emacs.d/auto-save-list/

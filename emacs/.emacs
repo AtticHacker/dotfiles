@@ -16,7 +16,6 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
-(add-to-list 'load-path "~/.emacs.d/plugins/evil")
 
 (require 'color-theme)
 (require 'redo+)
@@ -49,90 +48,18 @@
 (require 'wrap-region)
 (require 'workgroups)
 (require 'smex)
-(require 'evil)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Modes
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(global-linum-mode 1)
-(cua-mode t)
-(global-auto-complete-mode 1)
-(multiple-cursors-mode 1)
-(color-theme-midnight)
-(put 'downcase-region 'disabled nil)
-(modify-frame-parameters nil '((wait-for-wm . nil)))
-(global-rainbow-delimiters-mode)
-(workgroups-mode 1)
-(wrap-region-mode 1)
-(electric-pair-mode 1)
-(setq org-log-done t)
-(epa-file-enable)
-(window-numbering-mode 1)
-(ido-mode 1)
-(yas-global-mode 1)
-(smex-initialize)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Custom functions
-
-(defun load-haskell-workgroups ()
-  (interactive)
-  (setq b (current-buffer))
-  (message "%s" b)
-  (wg-load "~/.emacs.d/workgroups/Haskell")
-  (switch-to-buffer b))
-
-(defun ido-find-file-pane-3 ()
-  "Open file in panel 3"
-  (interactive)
-  (select-window-3)
-  (ido-find-file))
-
-(defun delete-trailing-whitespace-and-save ()
-  "Deletes trailing whitespace and saves"
-  (interactive)
-  (delete-trailing-whitespace)
-  (save-buffer))
-
-(defun zsh (buffer-name)
-  "Start a terminal and rename buffer."
-  (interactive "sbuffer name: ")
-  (shell)
-  (rename-buffer (format "%s%s" "$" buffer-name) t))
-
-(defun zsht (buffer-name)
-  "Start a terminal and rename buffer."
-  (interactive "sbuffer name: ")
-  (term "/bin/zsh")
-  (rename-buffer (format "%s%s" "$" buffer-name) t))
-
-(defun get-current-buffer-major-mode ()
-  (interactive)
-  (message "%s" major-mode))
-
-(defun hoogle-search (query)
-  "Search with hoogle commandline"
-  (interactive "sHoogle query: ")
-  (if (get-buffer "*Hoogle*")
-      (kill-buffer "*Hoogle*"))
-  ; get the version of hoogle so I don't have to manually adjust it for each update
-  (shell-command (format "version=`hoogle --version | head -n 1 | awk '{print $2}' | cut -c 2- | rev | cut -c 2- | rev`;
-                          data=\"/databases\";
-                          two=$version$data;
-                          hoogle \"%s\" --data=$HOME/.lazyVault/sandboxes/hoogle/cabal/share/hoogle-$two" query))
-  (switch-to-buffer "*Shell Command Output*")
-  (rename-buffer "*Hoogle*")
-  (haskell-mode)
-  (linum-mode 0)
-  (previous-buffer)
-)
+;personal Config
+(add-to-list 'load-path "~/.emacs.d/config")
+(require 'my-keys)
+(require 'my-functions)
+(require 'my-hooks)
+(require 'my-modes)
+(require 'my-colors)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
 
 (custom-set-variables
@@ -158,29 +85,6 @@
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(vc-follow-symlinks t))
 
-
-; Hooks
-
-(defun raw-modes ()
-  (set (make-local-variable 'linum-mode) nil)
-  (set (make-local-variable 'attic-lock-minor-mode) nil)
-  (set (make-local-variable 'attic-locker-minor-mode) nil))
-
-(add-hook 'inferior-haskell-mode-hook 'raw-modes)
-(add-hook 'term-mode-hook             'raw-modes)
-(add-hook 'speedbar-mode-hook         'raw-modes)
-(add-hook 'shell-mode-hook            'raw-modes)
-(add-hook 'magit-mode-hook            'raw-modes)
-(add-hook 'shell-command-mode-hook    'raw-modes)
-(add-hook 'lisp-interaction-mode-hook 'raw-modes)
-(add-hook 'fundamental-mode-hook      'raw-modes)
-(add-hook 'dired-mode-hook            'raw-modes)
-
-(add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
-(add-hook 'haskell-mode-hook 'turn-on-font-lock)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Settings
 (setq cua-enable-cua-keys nil)
@@ -215,126 +119,13 @@
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-; Some custom colors
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(flymake-errline ((t (:underline "red"))))
- '(flymake-warnline ((((class color)) (:underline "yellow")))))
-(set-face-foreground 'flymake-errline		"red"	)
-;(set-face-background 'flymake-errline		"red"	)
-;(set-face-background 'flymake-warnline		"yellow")
-(set-face-foreground 'flymake-warnline		"yellow")
-
-
-(set-face-foreground 'font-lock-string-face	"orange")
-(set-face-background 'region			"blue"	)
-(set-face-foreground 'region			"black"	)
-(set-face-foreground 'isearch			"white"	)
-(set-face-foreground 'linum			"gray"	)
-(set-face-background 'linum			"black"	)
-(set-face-foreground 'comint-highlight-prompt	"white"	)
-(set-face-background 'magit-section-title	"black"	)
-(set-face-background 'magit-branch		"black"	)
-(set-face-foreground 'magit-section-title	"white"	)
-(set-face-foreground 'magit-branch		"white"	)
-(set-face-foreground 'mc/cursor-face		"white"	)
-(set-face-background 'mc/cursor-face		"black"	)
-(set-face-foreground 'magit-diff-file-header	"black"	)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; KEY BINDINGS
-
-;; attic-lock
-
-(define-key attic-lock-minor-mode-map (kbd "c f")	'textmate-goto-file)
-(define-key attic-lock-minor-mode-map (kbd "x a a")	'ido-switch-buffer)
-(define-key attic-lock-minor-mode-map (kbd "x a o")	'org-agenda)
-(define-key attic-lock-minor-mode-map (kbd "x a c")	'org-cycle-agenda-files)
-(define-key attic-lock-minor-mode-map (kbd "x a m")	'magit-status)
-(define-key attic-lock-minor-mode-map (kbd "x f")	'ido-find-file)
-(define-key attic-lock-minor-mode-map (kbd "x a w")	'load-haskell-workgroups)
-(define-key attic-lock-minor-mode-map (kbd "q")		'backward-delete-char)
-(define-key attic-lock-minor-mode-map (kbd "g")		'attic-rock-lock)
-(define-key attic-lock-minor-mode-map (kbd "x s")       'save-and-lock)
-(define-key attic-lock-minor-mode-map (kbd "c c")       'comment-or-uncomment-region)
-(define-key attic-lock-minor-mode-map (kbd "c o")       'hoogle-search)
-
-(defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
-
-; Customs
-
-; Control hotkeys
-;(define-key attic-minor-mode-map (kbd "") 'keyboard-escape)
-(
- define-key attic-minor-mode-map (kbd "C-c C-f")	'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a <RET>")	'magit-status)
-(define-key attic-minor-mode-map (kbd "C-M-s")		'iy-go-to-char-backward)
-(define-key attic-minor-mode-map (kbd "C-x C-f")	'ido-find-file)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-w")	'load-haskell-workgroups)
-(define-key attic-minor-mode-map (kbd "C-q")		'backward-delete-char)
-;(define-key attic-minor-mode-map (kbd "C-x C-s")        'delete-trailing-whitespace-and-save)
-(define-key attic-minor-mode-map (kbd "C-c C-c")	'comment-or-uncomment-region)
-;(define-key attic-minor-mode-map (kbd "C-v C-v")	'cua-scroll-up)
-
-
-
-(define-key attic-minor-mode-map (kbd "C-x C-a C-a")	'ido-switch-buffer)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-o")	'org-agenda)
-(define-key attic-minor-mode-map (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
-
-(define-key attic-minor-mode-map (kbd "C-c C-o")        'hoogle-search)
-; Alt hotkeys
-
-
-(define-key attic-minor-mode-map (kbd "M-#")           'cua-set-rectangle-mark)
-(define-key attic-minor-mode-map (kbd "C-c C-f")       'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "M-<RET>")       'find-tag)
-(define-key attic-minor-mode-map (kbd "M-S")           'ace-jump-mode)
-(define-key attic-minor-mode-map (kbd "M-s")           'iy-go-to-char)
-(define-key attic-minor-mode-map (kbd "M-q")           'ace-jump-mode)
-(define-key attic-minor-mode-map (kbd "M-x")       'execute-extended-command)
-(define-key attic-minor-mode-map (kbd "M-+")	     'align-regexp)
-(define-key attic-minor-mode-map (kbd "M-@")	     'er/expand-region)
-(define-key attic-minor-mode-map (kbd "C-M-_")	     'redo)
-(define-key attic-minor-mode-map (kbd "M-t")	     'transpose-words)
-(define-key attic-minor-mode-map (kbd "M-T")	     'ghc-insert-template)
-(define-key attic-minor-mode-map (kbd "M-E")	     'mc/edit-lines)
-(define-key attic-minor-mode-map (kbd "M-x")	     'smex)
-(define-key attic-minor-mode-map (kbd "M-j")	     (lambda()
-                                                       (interactive)
-                                                       (join-line -1)))
-
-; Globals
-(global-set-key (kbd "C-x C-a C-a")	'ido-switch-buffer)
-(global-set-key (kbd "C-x C-a C-o")	'org-agenda)
-(global-set-key (kbd "C-x C-a C-c")	'org-cycle-agenda-files)
-
-
-
-(global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
-(global-set-key (kbd "M-N") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-*") 'mc/mark-all-like-this)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Define mode
-(define-minor-mode attic-minor-mode
-"A minor mode so that my key settings override annoying major modes."
-
-t " attic" 'attic-minor-mode-map)
-(defun attic-minibuffer-setup-hook ()
-	(attic-minor-mode 0))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ; Commands to start with
 (sr-speedbar-window-dedicated-only-one-p)
-;(zsh "term")
 (sr-speedbar-open)
 (sr-speedbar-close)
+
+
+
 (wg-load "~/.emacs.d/workgroups/Haskell")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -354,3 +145,4 @@ t " attic" 'attic-minor-mode-map)
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(put 'upcase-region 'disabled nil)
