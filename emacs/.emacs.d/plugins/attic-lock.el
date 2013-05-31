@@ -9,7 +9,11 @@
 (defun attic-rock-lock () (interactive)
   (setq attic-lock-minor-mode t)
   (mc/keyboard-quit)
-  (send-string-to-terminal "\033Ptmux;\033\033]12;White\007\033\\")
+  (if (getenv "TMUX")
+      (send-string-to-terminal "\033Ptmux;\033\033]12;White\007\033\\")
+      (send-string-to-terminal "\033]12;White\007")
+      )
+
   (keyboard-escape-quit)
 )
 (defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
@@ -284,7 +288,12 @@ t "" 'attic-locker-minor-mode-map)
 	(attic-lock-minor-mode 0))
 
 (defun attic-lock-disable () (interactive)
-  (send-string-to-terminal "\033Ptmux;\033\033]12;Green\007\033\\")
+  (if (getenv "TMUX")
+    (send-string-to-terminal "\033Ptmux;\033\033]12;Green\007\033\\")
+      (send-string-to-terminal "\033]12;Green\007")
+      )
+
+
   (setq attic-lock-minor-mode nil))
 
 (defun attic-lock-enable () (interactive)

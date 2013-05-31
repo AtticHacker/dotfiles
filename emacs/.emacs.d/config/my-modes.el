@@ -5,7 +5,6 @@
 (cua-mode t)
 (global-auto-complete-mode 1)
 (multiple-cursors-mode 1)
-(color-theme-midnight)
 (put 'downcase-region 'disabled nil)
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 (global-rainbow-delimiters-mode)

@@ -1,7 +1,7 @@
 ; Require plugins
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins")
-(add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/plugins/dirtree")
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme")
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
@@ -53,7 +53,6 @@
 (require 'erc-services)
 (epa-file-enable)
 
-
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
 (autoload 'w3m "w3m" "Interface for w3m on Emacs." t)
 (require 'w3m-load)
@@ -79,6 +78,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
+ '(custom-safe-themes (quote ("dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
  '(dirtree-windata (quote (frame left 0.15 delete)))
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
@@ -159,3 +159,10 @@
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (put 'upcase-region 'disabled nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-errline ((t (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
