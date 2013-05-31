@@ -10,7 +10,6 @@
 (add-to-list 'load-path "~/.ghc-mod/share/ghc-mod-1.11.3")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
-(add-to-list 'load-path "~/.emacs.d/plugins/gnus/lisp")
 (add-to-list 'load-path "~/.emacs.d/plugins/magit")
 (add-to-list 'load-path "~/.emacs.d/plugins/expand-region")
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
@@ -48,7 +47,10 @@
 (require 'wrap-region)
 (require 'workgroups)
 (require 'smex)
-
+(require 'epa-file)
+(require 'gnus)
+(require 'hackernews)
+(epa-file-enable)
 
 ;personal Config
 (add-to-list 'load-path "~/.emacs.d/config")
@@ -124,6 +126,8 @@
 (sr-speedbar-open)
 (sr-speedbar-close)
 
+
+(when (file-executable-p "/usr/bin/gpg1") (setq epg-gpg-program "/usr/bin/gpg1"))
 
 
 (wg-load "~/.emacs.d/workgroups/Haskell")

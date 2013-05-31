@@ -13,6 +13,10 @@
 (add-hook 'lisp-interaction-mode-hook 'raw-modes)
 (add-hook 'fundamental-mode-hook      'raw-modes)
 (add-hook 'dired-mode-hook            'raw-modes)
+(add-hook 'gnus-group-mode-hook            'raw-modes)
+(add-hook 'gnus-article-mode-hook            'raw-modes)
+(add-hook 'gnus-summary-mode-hook            'raw-modes)
+
 
 (add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
