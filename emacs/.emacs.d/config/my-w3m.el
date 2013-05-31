@@ -15,7 +15,8 @@
   (define-key w3m-mode-map (kbd "F")   'w3m-view-next-page)
   (define-key w3m-mode-map (kbd "B")   'w3m-view-previous-page)
   (define-key w3m-mode-map (kbd "M-m")   'w3m-open-in-new-tab)
-
+  (set-face-background 'w3m-header-line-location-content "brightblack")
+  (set-face-background 'w3m-header-line-location-title "brightblack")
 )
 
 
