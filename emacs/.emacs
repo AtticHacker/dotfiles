@@ -134,7 +134,7 @@
 (sr-speedbar-window-dedicated-only-one-p)
 (sr-speedbar-open)
 (sr-speedbar-close)
-
+(setenv (concat "GPG_AGENT_INFO" nil))
 
 (when (file-executable-p "/usr/bin/gpg1") (setq epg-gpg-program "/usr/bin/gpg1"))
 
