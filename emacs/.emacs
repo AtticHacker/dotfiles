@@ -15,6 +15,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/mark-multiple")
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
+(add-to-list 'load-path "~/.emacs.d/plugins/elim/elisp")
 
 (require 'color-theme)
 (require 'redo+)
@@ -49,8 +50,13 @@
 (require 'smex)
 (require 'epa-file)
 (require 'gnus)
-(require 'hackernews)
+(require 'erc-services)
 (epa-file-enable)
+
+
+(add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
+(autoload 'w3m "w3m" "Interface for w3m on Emacs." t)
+(require 'w3m-load)
 
 ;personal Config
 (add-to-list 'load-path "~/.emacs.d/config")
@@ -59,9 +65,12 @@
 (require 'my-hooks)
 (require 'my-modes)
 (require 'my-colors)
-
+(require 'my-w3m)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-library "garak")
+
+
 (setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
 
 (custom-set-variables

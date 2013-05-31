@@ -4,3 +4,4 @@
 .*.swp
 dist/
 emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/elim
