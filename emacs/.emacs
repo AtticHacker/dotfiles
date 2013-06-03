@@ -140,6 +140,8 @@
 
 
 (wg-load "~/.emacs.d/workgroups/Haskell")
+(setq wg-morph-on nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;haskell mode configuration
@@ -150,6 +152,7 @@
                 ("\\.hsc$"    . haskell-mode)
                 ("\\.chs$"    . haskell-mode)
                 ("\\.l[hg]s$" . literate-haskell-mode))))
+
 (autoload 'haskell-mode "haskell-mode"
   "Major mode for editing Haskell scripts." t)
 (autoload 'literate-haskell-mode "haskell-mode"

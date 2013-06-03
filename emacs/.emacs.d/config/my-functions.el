@@ -1,9 +1,16 @@
-
 (defun load-haskell-workgroups ()
   (interactive)
   (setq b (current-buffer))
   (message "%s" b)
   (wg-load "~/.emacs.d/workgroups/Haskell")
+  (switch-to-buffer b))
+
+(defun load-dynamic-workgroups ()
+  (interactive)
+  (setq b (current-buffer))
+  (message "%s" b)
+  (wg-load "~/.emacs.d/workgroups/Haskell")
+  (wg-switch-to-index-1)
   (switch-to-buffer b))
 
 (defun ido-find-file-pane-3 ()
