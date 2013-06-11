@@ -24,6 +24,7 @@
         ad-do-it
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
 
+
 (define-key attic-locker-minor-mode-map (kbd "C-g")  'attic-rock-lock)
 (define-key attic-locker-minor-mode-map (kbd "C-x C-s")  'save-and-lock)
 

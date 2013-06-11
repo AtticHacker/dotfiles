@@ -6,7 +6,6 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme")
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/plugins/haskell-mode")
-(add-to-list 'load-path "~/.emacs.d/plugins/erc")
 (add-to-list 'load-path "~/.ghc-mod/share/ghc-mod-1.11.3")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
@@ -28,7 +27,6 @@
 (require 'org-install)
 (require 'haskell-mode)
 (require 'haskell-ghci)
-(require 'erc)
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
@@ -50,7 +48,6 @@
 (require 'smex)
 (require 'epa-file)
 (require 'gnus)
-(require 'erc-services)
 (epa-file-enable)
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
@@ -71,6 +68,7 @@
 
 
 (setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '(".elm" . haskell-mode) auto-mode-alist))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
