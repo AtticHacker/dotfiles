@@ -52,7 +52,7 @@
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
 (autoload 'w3m "w3m" "Interface for w3m on Emacs." t)
-(require 'w3m-load)
+;(require 'w3m-load)
 
 ;personal Config
 (add-to-list 'load-path "~/.emacs.d/config")
@@ -67,17 +67,20 @@
 (load-library "garak")
 
 
-(setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '(".elm" . haskell-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '(".tpl" . html-mode    )
+                      (cons '(".elm" . haskell-mode )
+                            auto-mode-alist)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auth-source-save-behavior nil)
- '(custom-safe-themes (quote ("dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
+ '(custom-safe-themes (quote ("0a1eb1fb7c716c0eced08572fa5477e6cf80d145167590ab5a00697678b14c30" "dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
  '(dirtree-windata (quote (frame left 0.15 delete)))
+ '(fci-rule-color "#383838")
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
@@ -92,6 +95,9 @@
  '(sr-speedbar-right-side nil)
  '(sr-speedbar-skip-other-window-p t)
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3")
  '(vc-follow-symlinks t))
 
 
