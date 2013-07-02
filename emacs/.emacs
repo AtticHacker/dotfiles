@@ -15,6 +15,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
 (add-to-list 'load-path "~/.emacs.d/plugins/elim/elisp")
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.11/emacs")
 
 (require 'color-theme)
 (require 'redo+)
@@ -48,6 +49,8 @@
 (require 'smex)
 (require 'epa-file)
 (require 'gnus)
+(require 'erlang-start)
+
 (epa-file-enable)
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
@@ -67,8 +70,11 @@
 (load-library "garak")
 
 
-(setq auto-mode-alist (cons '(".tpl" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '(".elm" . haskell-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '(".tpl" . html-mode)
+      (cons '(".elm" . haskell-mode)
+            auto-mode-alist)))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
