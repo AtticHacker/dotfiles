@@ -58,6 +58,7 @@ addKeys = [ ((0, xF86XK_AudioRaiseVolume     ), spawn "amixer --quiet set Master
           , ((mod4, xK_f                     ), spawn "thunar")
           , ((mod4 .|. shiftMask, xK_m       ), spawn "terminal")
           , ((0, xK_Print                    ), spawn "scrot")
+          , ((mod4, xK_Print                 ), spawn "xfce4-screenshooter -r")
           , ((mod4, xK_n                     ), viewEmptyWorkspace)
           , ((mod4 .|. shiftMask, xK_n       ), tagToEmptyWorkspace)
           -- , ((modMask .|. shiftMask, xK_3 ), spawn "scrot")
