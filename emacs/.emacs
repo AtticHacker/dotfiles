@@ -59,16 +59,15 @@
 
 ;personal Config
 (add-to-list 'load-path "~/.emacs.d/config")
-(require 'my-keys)
 (require 'my-functions)
 (require 'my-hooks)
 (require 'my-modes)
 (require 'my-colors)
 (require 'my-w3m)
+(require 'my-keys)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-library "garak")
-
 
 (setq auto-mode-alist (cons '(".tpl" . html-mode    )
                       (cons '(".elm" . haskell-mode )
@@ -101,7 +100,7 @@
  '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
  '(vc-follow-symlinks t))
-
+ '(erlang-mode-hook (quote (wrap-region-mode)))
 
 ; Settings
 (setq cua-enable-cua-keys nil)

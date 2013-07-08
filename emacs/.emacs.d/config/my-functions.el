@@ -58,4 +58,16 @@
   (previous-buffer)
 )
 
+(defun erlang-get-error ()
+  (interactive)
+  (shell-command (format "~/.emacs.d/plugins/erlangscript %s" buffer-file-name))
+)
+
+(defun erlang-keys-hook ()
+  (local-set-key (kbd "M-?") 'erlang-get-error)
+  (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+  (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+)
+
+
 (provide 'my-functions)

@@ -23,6 +23,18 @@
 (add-hook 'minibuffer-setup-hook 'attic-lock-minibuffer-setup-hook)
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'erlang-mode-hook  'flymake-mode)
+(add-hook 'erlang-mode-hook  'wrap-region-mode)
+(add-hook 'erlang-mode-hook  'erlang-keys-hook)
+
+
+(defun flymake-erlang-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                          'flymake-create-temp-inplace))
+          (local-file (file-relative-name temp-file
+                                          (file-name-directory buffer-file-name))))
+    (list "~/.emacs.d/plugins/erlangscript" (list local-file))))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.erl\\'" flymake-erlang-init))
 
 
 (provide 'my-hooks)

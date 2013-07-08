@@ -18,5 +18,4 @@
 (yas-global-mode 1)
 (smex-initialize)
 
-
 (provide 'my-modes)

@@ -20,7 +20,7 @@
 (define-key attic-lock-minor-mode-map (kbd "j n")     'iy-go-to-char )
 (define-key attic-lock-minor-mode-map (kbd "j p")     'iy-go-to-char-backward)
 (define-key attic-lock-minor-mode-map (kbd "j j")     'ido-switch-buffer)
-(define-key attic-lock-minor-mode-map (kbd "j h")     'ace-jump-mode)
+(define-key attic-lock-minor-mode-map (kbd "j i")     'ace-jump-mode)
 (define-key attic-lock-minor-mode-map (kbd "j o")     'hoogle-search)
 (define-key attic-lock-minor-mode-map (kbd "j f")     'textmate-goto-file)
 (define-key attic-lock-minor-mode-map (kbd "j c")     'comment-or-uncomment-region)
@@ -87,10 +87,15 @@
 (global-set-key (kbd "C-j C-j")   'ido-switch-buffer)
 (global-set-key (kbd "C-j C-o")   'org-agenda)
 (global-set-key (kbd "C-j <RET>") 'magit-status)
-(global-set-key (kbd "C-j C-h")   'ace-jump-mode)
+(global-set-key (kbd "C-j C-i")   'ace-jump-mode)
 (global-set-key (kbd "C-j C-o")   'org-agenda)
 (global-set-key (kbd "C-j C-v")   'org-cycle-agenda-files)
 (global-set-key (kbd "C-j C-w")     'load-haskell-workgroups)
+(global-set-key (kbd "C-j C-<SPC>") 'pop-to-mark-command)
+(global-set-key (kbd "C-j C-n")     'iy-go-to-char )
+(global-set-key (kbd "C-j C-p")     'iy-go-to-char-backward)
+
+
 (global-set-key (kbd "C-j 1")     'wg-switch-to-index-0)
 (global-set-key (kbd "C-j 2")     'wg-switch-to-index-1)
 (global-set-key (kbd "C-j 3")     'wg-switch-to-index-2)
@@ -101,7 +106,6 @@
 (global-set-key (kbd "C-j 8")     'wg-switch-to-index-7)
 (global-set-key (kbd "C-j 9")     'wg-switch-to-index-8)
 (global-set-key (kbd "C-j 0")     'wg-switch-to-index-9)
-
 
 (define-key attic-minor-mode-map (kbd "C-j C-c") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "C-j C-o") 'hoogle-search)
@@ -124,12 +128,9 @@
 (define-key attic-minor-mode-map (kbd "C-j 9")     'wg-switch-to-index-8)
 (define-key attic-minor-mode-map (kbd "C-j 0")     'wg-switch-to-index-9)
 
-
-
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
-
 
 ; Define mode
 (define-minor-mode attic-minor-mode
