@@ -46,8 +46,8 @@ xfceLayout = xfceConfig
 
 addKeys :: [((KeyMask, KeySym), X ())]
 addKeys =
-    [ ((0, xF86XK_AudioRaiseVolume ), spawn "amixer --quiet set Master 1+")
-    , ((0, xF86XK_AudioLowerVolume ), spawn "amixer --quiet set Master 1-")
+    [ ((0, xF86XK_AudioRaiseVolume ), spawn "amixer --quiet set Master 10%+")
+    , ((0, xF86XK_AudioLowerVolume ), spawn "amixer --quiet set Master 10%-")
     , ((0, xF86XK_AudioMute        ), spawn "amixer --quiet set Master toggle")
     , ((0, xF86XK_KbdBrightnessUp  ), spawn "asus-kbd-backlight up")
     , ((0, xF86XK_KbdBrightnessDown), spawn "asus-kbd-backlight down")
