@@ -1,0 +1,5 @@
+#name: mac
+# --
+defmacro $1 do
+  $0
+end

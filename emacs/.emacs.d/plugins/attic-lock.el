@@ -25,10 +25,40 @@
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
 
 
-(define-key attic-locker-minor-mode-map (kbd "C-g")  'attic-rock-lock)
+; Disable (almost) all Control keys to forcefully use mode
+(define-key attic-locker-minor-mode-map (kbd "M-g")  'attic-rock-lock)
 (define-key attic-locker-minor-mode-map (kbd "C-x C-s")  'save-and-lock)
+(define-key attic-locker-minor-mode-map (kbd "M-s M-s")  'save-and-lock)
+(define-key attic-locker-minor-mode-map (kbd "C-q") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-w") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-e") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-r") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-t") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-y") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-u") 'undefined)
+;(define-key attic-locker-minor-mode-map (kbd "C-i") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-o") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-p") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-a") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-s") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-d") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-f") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-g") 'undefined)
+;(define-key attic-locker-minor-mode-map (kbd "C-h") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-j") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-k") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-l") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-z") 'undefined)
+;(define-key attic-locker-minor-mode-map (kbd "C-x") 'undefined)
+;(define-key attic-locker-minor-mode-map (kbd "C-c") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-v") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-b") 'undefined)
+(define-key attic-locker-minor-mode-map (kbd "C-n") 'undefined)
+;(define-key attic-locker-minor-mode-map (kbd "C-m") 'undefined)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+; Digital arguments
 (define-key attic-lock-minor-mode-map "1" 'digit-argument)
 (define-key attic-lock-minor-mode-map "2" 'digit-argument)
 (define-key attic-lock-minor-mode-map "3" 'digit-argument)
@@ -58,7 +88,7 @@
 (define-key attic-lock-minor-mode-map (kbd "j")   (key-binding (kbd "\C-j")))
 (define-key attic-lock-minor-mode-map (kbd "k")   (key-binding (kbd "\C-k")))
 (define-key attic-lock-minor-mode-map (kbd "l")   (key-binding (kbd "\C-l")))
-(define-key attic-lock-minor-mode-map (kbd "z")   'ido-switch-buffer)
+(define-key attic-lock-minor-mode-map (kbd "z")   (key-binding (kbd "\C-z")))
 (define-key attic-lock-minor-mode-map (kbd "v")   (key-binding (kbd "\C-v")))
 (define-key attic-lock-minor-mode-map (kbd "b")   (key-binding (kbd "\C-b")))
 (define-key attic-lock-minor-mode-map (kbd "n")   (key-binding (kbd "\C-n")))
@@ -285,8 +315,8 @@ t " A-lock" 'attic-lock-minor-mode-map)
 ""
 
 t "" 'attic-locker-minor-mode-map)
-(defun attic-lock-minibuffer-setup-hook ()
-	(attic-lock-minor-mode 0))
+(defun attic-locker-minibuffer-setup-hook ()
+	(attic-locker-minor-mode 0))
 
 (defun attic-lock-disable () (interactive)
   (if (getenv "TMUX")

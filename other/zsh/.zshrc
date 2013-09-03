@@ -15,9 +15,12 @@ ZSHRC=$HOME/.zshrc
 # Zsh Theme
 ZSH_THEME="kevin"
 
-export PATH=/usr/local/ghc/7.4.2/bin:$PATH:$HOME/.cabal/bin/
-export EDITOR="emacs -nw"
+export PATH=$PATH:$HOME/.cabal/bin/
 source $HOME/.lazyVault/binPaths
+export PATH=/usr/local/ghc/7.4.2/bin:$PATH
+
+export EDITOR="emacs -nw"
+
 # plugins=(git)
 
 ## OH MY ZSH options ##
@@ -104,6 +107,8 @@ alias htag='hasktags -e . > TAGS'
 
 alias rcd='recordmydesktop --no-cursor --width 1920 --height 1080 --device iec958:CARD=Microphone,DEV=0'
 
+
+alias bd='cabal build ; ./dist/build/project-end/project-end'
 function ignorefile {
     echo "*#\n.#*\n*~\n.*.swp" > .gitignore
 }
@@ -190,20 +195,11 @@ function remove_selected_file {
  rm $1
 }
 
-function agit {
-  ruby ~/.dotfiles/utils/attic-git/ruby.rb ${@}
-}
-
-function store_emacs_backups {
-  mkdir emacs_backup_files
-  find ./* | grep "#" | while read line;do mv $line ./emacs_backup_files/;done
-}
-
 function ogv2avi {
-  ffmpeg -i $1 -vcodec mpeg4 -sameq -acodec libmp3lame $2
+    ffmpeg -i $1 -vcodec mpeg4 -sameq -acodec libmp3lame $2
 }
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin

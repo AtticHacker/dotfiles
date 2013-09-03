@@ -69,6 +69,18 @@
   (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
   (local-set-key (kbd "M-q") 'backward-kill-word)
 )
+(defun elixir-keys-hook ()
+  (local-set-key (kbd "C-c C-l") (lambda()
+                                   (interactive)
+                                   (elixir-mode-compile-file)
+                                   (elixir-mode-iex)))
+)
 
+
+
+(defun underscores-to-camel-case (str)
+  "Converts STR, which is a word using underscores, to camel case."
+  (interactive "S")
+  (apply 'concat (mapcar 'capitalize (split-string str "_"))))
 
 (provide 'my-functions)

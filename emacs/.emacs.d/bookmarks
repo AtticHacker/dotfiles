@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Erlang"
+ (filename . "~/Programming/Erlang/")
+ (front-context-string . "Elixir.Foo.beam\n")
+ (rear-context-string . "96 Aug 13 19:18 ")
+ (position . 231))
+("Elixir"
+ (filename . "~/Programming/Elixir/")
+ (front-context-string)
+ (rear-context-string . "49 Aug 18 11:47 ")
+ (position . 224))
+("Haskell"
+ (filename . "~/Programming/Haskell/")
+ (front-context-string . "lazycasts-websit")
+ (rear-context-string . "96 Apr 20 14:48 ")
+ (position . 395))
+)

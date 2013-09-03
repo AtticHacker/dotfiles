@@ -52,7 +52,6 @@
 (require 'gnus)
 (require 'erlang-start)
 (require 'elixir-mode)
-
 (epa-file-enable)
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
@@ -124,7 +123,7 @@
   ido-ignore-buffers
   '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
     "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
-    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o")
+    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o" "^\!")
   ido-case-fold  t				; be case-insensitive
   ido-enable-last-directory-history nil		; don't remember last used dirs
   ido-max-work-directory-list 30		; should be enough

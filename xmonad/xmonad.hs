@@ -20,7 +20,7 @@ myManageHook = composeAll
     , className =? "Chromium"    --> doShift "3"
     , className =? "Thunar"      --> doShift "4"
     , className =? "Thunderbird" --> doShift "5"
-    , className =? "Turpial"     --> doShift "5"
+    , className =? "Birdie"      --> doShift "5"
     , className =? "Screenkey"   --> doIgnore
     ]
 

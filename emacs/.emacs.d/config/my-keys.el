@@ -1,6 +1,8 @@
 (provide 'my-keys)
 
 
+
+
 (define-key attic-lock-minor-mode-map (kbd "x f") 'ido-find-file)
 (define-key attic-lock-minor-mode-map (kbd "q"  ) 'backward-delete-char)
 (define-key attic-lock-minor-mode-map (kbd "g"  ) 'goto-line)
@@ -11,7 +13,7 @@
 (define-key attic-lock-minor-mode-map (kbd "c o") 'hoogle-search)
 (define-key attic-lock-minor-mode-map (kbd "c t") 'transpose-paragraphs)
 (define-key attic-lock-minor-mode-map (kbd "."  ) 'repeat)
-(define-key attic-lock-minor-mode-map (kbd ","  ) 'find-tag)
+(define-key attic-lock-minor-mode-map (kbd "l"  ) 'recenter-top-bottom)
 
 (define-prefix-command 'j-prefix)
 
@@ -58,7 +60,7 @@
 ; has to be global otherwise iy-go-to-char wont play nicely
 (global-set-key (kbd "M-q")            'backward-kill-word)
 
-
+(define-key attic-minor-mode-map (kbd "M-g") 'attic-rock-lock)
 (define-key attic-minor-mode-map (kbd "M-#")     'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
@@ -73,6 +75,8 @@
 (define-key attic-minor-mode-map (kbd "M-j")	 (lambda()
                                                    (interactive)
                                                    (join-line -1)))
+
+(define-key attic-minor-mode-map (kbd "C-j C-r") (key-binding (kbd "\C-xr")))
 
 ; Globals
 (define-prefix-command 'c-j-prefix)
@@ -131,6 +135,7 @@
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-g") 'undefined)
 
 ; Define mode
 (define-minor-mode attic-minor-mode

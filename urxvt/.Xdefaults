@@ -1,5 +1,5 @@
-urxvt*transparent: true
-urxvt*shading: 50
+! urxvt*transparent: true
+! urxvt*shading: 50
 urxvt*fading: 60
 urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15:antialias=true
 urxvt*pixelsize: 33
