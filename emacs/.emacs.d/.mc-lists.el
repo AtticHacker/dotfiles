@@ -34,9 +34,11 @@
         save-and-lock2
         select-window-1
         sgml-slash
+        sh-assignment
         shrink-window-if-larger-than-buffer
         tab-to-tab-stop
         transpose-words
+        undefined
         yas-expand
         ))
 
