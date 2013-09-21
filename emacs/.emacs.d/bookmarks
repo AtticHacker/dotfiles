@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Erlang"
+(("Emacs"
+ (filename . "~/.emacs.d/")
+ (front-context-string . ".mc-lists.el\n  -")
+ (rear-context-string . "32 Sep  4 13:04 ")
+ (position . 216))
+("Erlang"
  (filename . "~/Programming/Erlang/")
  (front-context-string . "Elixir.Foo.beam\n")
  (rear-context-string . "96 Aug 13 19:18 ")
