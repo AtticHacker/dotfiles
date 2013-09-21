@@ -7,13 +7,13 @@
 (define-key attic-lock-minor-mode-map (kbd "q"  ) 'backward-delete-char)
 (define-key attic-lock-minor-mode-map (kbd "g"  ) 'goto-line)
 (define-key attic-lock-minor-mode-map (kbd "z"  ) 'zap-to-char)
-(define-key attic-lock-minor-mode-map (kbd "u"  ) 'forward-word)
+(define-key attic-lock-minor-mode-map (kbd "l"  ) 'forward-word)
 (define-key attic-lock-minor-mode-map (kbd "h"  ) 'backward-word)
 (define-key attic-lock-minor-mode-map (kbd "x s") 'save-and-lock)
 (define-key attic-lock-minor-mode-map (kbd "c o") 'hoogle-search)
 (define-key attic-lock-minor-mode-map (kbd "c t") 'transpose-paragraphs)
 (define-key attic-lock-minor-mode-map (kbd "."  ) 'repeat)
-(define-key attic-lock-minor-mode-map (kbd "l"  ) 'recenter-top-bottom)
+(define-key attic-lock-minor-mode-map (kbd "u"  ) 'recenter-top-bottom)
 
 (define-prefix-command 'j-prefix)
 
