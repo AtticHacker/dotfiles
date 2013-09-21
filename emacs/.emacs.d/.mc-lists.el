@@ -14,17 +14,35 @@
         cua-copy-region
         cua-cut-region
         cua-delete-region
+        cua-exchange-point-and-mark
         cua-paste
         cua-paste-pop
         delete-trailing-whitespace-and-save
         end-of-buffer
+        erlang-electric-comma
+        evil-backward-char
+        evil-delete
+        evil-delete-char
+        evil-find-char
+        evil-forward-char
+        evil-forward-sentence
+        evil-insert
+        evil-normal-state
+        evil-substitute
+        forward-sentence
+        ghc-insert-template
         ghc-save-buffer
         haskell-indentation-delete-char
+        haskell-newline-and-indent
         ido-switch-buffer
         inferior-haskell-load-file
         iy-go-to-char
+        iy-go-to-char--command
         kbd-macro-query
         keyboard-escape-quit
+        kill-region
+        load-haskell-workgroups
+        magit-stage-item
         org-beginning-of-line
         org-delete-char
         org-end-of-line
@@ -37,6 +55,7 @@
         shrink-window-if-larger-than-buffer
         tab-to-tab-stop
         transpose-words
+        undefined
         yas-expand
         ))
 
