@@ -16,7 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
 (add-to-list 'load-path "~/.emacs.d/plugins/elim/elisp")
 (add-to-list 'load-path "~/.emacs.d/plugins/emacs-elixir")
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.11/emacs")
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.12/emacs")
 
 (require 'color-theme)
 (require 'redo+)
