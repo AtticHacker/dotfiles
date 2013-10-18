@@ -26,11 +26,11 @@
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'erlang-mode-hook  'flymake-mode)
-(add-hook 'erlang-mode-hook  'wrap-region-mode)
+;(add-hook 'erlang-mode-hook  'wrap-region-mode)
 (add-hook 'erlang-mode-hook  'erlang-keys-hook)
 
 (add-hook 'elixir-mode-hook  'elixir-keys-hook)
-(add-hook 'elixir-mode-hook  'wrap-region-mode)
+;(add-hook 'elixir-mode-hook  'wrap-region-mode)
 
 
 

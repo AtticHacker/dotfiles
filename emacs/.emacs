@@ -17,7 +17,8 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/elim/elisp")
 (add-to-list 'load-path "~/.emacs.d/plugins/emacs-elixir")
 (add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.12/emacs")
-
+(add-to-list 'load-path "~/.cabal/share/hlint-1.8.53")
+(require 'hs-lint)
 (require 'color-theme)
 (require 'redo+)
 (require 'attic-lock)

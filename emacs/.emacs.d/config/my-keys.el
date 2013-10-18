@@ -7,8 +7,8 @@
 (define-key attic-lock-minor-mode-map (kbd "q"  ) 'backward-delete-char)
 (define-key attic-lock-minor-mode-map (kbd "g"  ) 'goto-line)
 (define-key attic-lock-minor-mode-map (kbd "z"  ) 'zap-to-char)
-(define-key attic-lock-minor-mode-map (kbd "l"  ) 'forward-word)
-(define-key attic-lock-minor-mode-map (kbd "h"  ) 'backward-word)
+(define-key attic-lock-minor-mode-map (kbd "l"  ) 'forward-to-word)
+(define-key attic-lock-minor-mode-map (kbd "h"  ) 'backward-to-word)
 (define-key attic-lock-minor-mode-map (kbd "x s") 'save-and-lock)
 (define-key attic-lock-minor-mode-map (kbd "c o") 'hoogle-search)
 (define-key attic-lock-minor-mode-map (kbd "c t") 'transpose-paragraphs)
@@ -33,6 +33,7 @@
 (define-key attic-lock-minor-mode-map (kbd "[")   'kmacro-end-or-call-macro-repeat)
 (define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
 
+(define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
 
 (define-key attic-lock-minor-mode-map (kbd "j w")     'load-haskell-workgroups)
 (define-key attic-lock-minor-mode-map (kbd "j 1")     'wg-switch-to-index-0)
@@ -46,20 +47,19 @@
 (define-key attic-lock-minor-mode-map (kbd "j 9")     'wg-switch-to-index-8)
 (define-key attic-lock-minor-mode-map (kbd "j 0")     'wg-switch-to-index-9)
 
-(define-key attic-lock-minor-mode-map (kbd "M-f") 'undefined)
-(define-key attic-lock-minor-mode-map (kbd "M-b") 'undefined)
-
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 ; Customs
 
 ; Control hotkeys
+(define-key attic-minor-mode-map (kbd "C-x C-s") 'undefined)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
 
 ; has to be global otherwise iy-go-to-char wont play nicely
 (global-set-key (kbd "M-q")            'backward-kill-word)
 
+(define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
 (define-key attic-minor-mode-map (kbd "M-g") 'attic-rock-lock)
 (define-key attic-minor-mode-map (kbd "M-#")     'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
@@ -117,7 +117,6 @@
 (define-key attic-minor-mode-map (kbd "C-j C-j")   'ido-switch-buffer)
 (define-key attic-minor-mode-map (kbd "C-j C-o")   'org-agenda)
 (define-key attic-minor-mode-map (kbd "C-j <RET>") 'magit-status)
-(define-key attic-minor-mode-map (kbd "C-j C-h")   'ace-jump-mode)
 (define-key attic-minor-mode-map (kbd "C-j C-o")   'org-agenda)
 (define-key attic-minor-mode-map (kbd "C-j C-v")   'org-cycle-agenda-files)
 (define-key attic-minor-mode-map (kbd "C-j C-w")     'load-haskell-workgroups)
