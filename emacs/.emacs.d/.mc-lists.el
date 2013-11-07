@@ -36,6 +36,7 @@
         haskell-newline-and-indent
         ido-switch-buffer
         inferior-haskell-load-file
+        info
         iy-go-to-char
         iy-go-to-char--command
         kbd-macro-query

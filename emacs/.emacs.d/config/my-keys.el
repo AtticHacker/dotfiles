@@ -34,6 +34,7 @@
 (define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
 
 (define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
+(define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
 
 (define-key attic-lock-minor-mode-map (kbd "j w")     'load-haskell-workgroups)
 (define-key attic-lock-minor-mode-map (kbd "j 1")     'wg-switch-to-index-0)

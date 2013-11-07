@@ -10,18 +10,20 @@ import XMonad.Layout.NoBorders
 import XMonad.Actions.NoBorders
 import XMonad.Config.Xfce
 import Data.Monoid
+import XMonad.Actions.CopyWindow
 import XMonad.Layout.LayoutModifier
 
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "Skype"       --> doShift "2"
-    , className =? "Pidgin"      --> doShift "2"
-    , className =? "Firefox"     --> doShift "3"
-    , className =? "Chromium"    --> doShift "3"
-    , className =? "Thunar"      --> doShift "4"
-    , className =? "Thunderbird" --> doShift "5"
-    , className =? "Birdie"      --> doShift "5"
-    , className =? "Screenkey"   --> doIgnore
+    [ className =? "Skype"         --> doShift "2"
+    , className =? "Pidgin"        --> doShift "2"
+    , className =? "Firefox"       --> doShift "3"
+    , className =? "Chromium"      --> doShift "3"
+    , className =? "Thunar"        --> doShift "4"
+    , className =? "Thunderbird"   --> doShift "5"
+    , className =? "Hotot"         --> doShift "5"
+    , className =? "Screenkey"     --> doIgnore
+    , className =? "Xfce4-notifyd" --> doIgnore
     ]
 
 main :: IO ()
@@ -52,8 +54,13 @@ addKeys =
     , ((0, xF86XK_KbdBrightnessUp  ), spawn "asus-kbd-backlight up")
     , ((0, xF86XK_KbdBrightnessDown), spawn "asus-kbd-backlight down")
     , ((mod4, xK_F9                ), spawn disableTouch)
+
     , ((mod4, xK_F5                ), spawn "asus-screen-brightness down")
     , ((mod4, xK_F6                ), spawn "asus-screen-brightness up")
+
+    , ((mod4, xF86XK_MonBrightnessDown ), spawn "asus-screen-brightness down")
+    , ((mod4, xF86XK_MonBrightnessUp ), spawn "asus-screen-brightness up")
+
     , ((mod4, xK_f                 ), spawn "thunar")
     , ((mod4 .|. shiftMask, xK_m   ), spawn "terminal")
     , ((0, xK_Print                ), spawn "scrot")

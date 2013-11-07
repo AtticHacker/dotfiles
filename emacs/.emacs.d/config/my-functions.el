@@ -76,7 +76,10 @@
                                    (elixir-mode-iex)))
 )
 
-
+(defun run-haskell-test ()
+  (interactive)
+  (async-shell-command "~/.emacs.d/scripts/cabal-test")
+)
 
 (defun underscores-to-camel-case (str)
   "Converts STR, which is a word using underscores, to camel case."
