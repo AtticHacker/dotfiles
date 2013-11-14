@@ -14,6 +14,7 @@
 
 (set-face-foreground 'flymake-errline		"red"	)
 (set-face-foreground 'flymake-warnline		"yellow")
+(set-face-foreground 'flyspell-incorrect        "red")
 ;(set-face-foreground 'font-lock-string-face	"orange")
 ;(set-face-background 'region			"blue"	)
 ;(set-face-foreground 'region			"black"	)
