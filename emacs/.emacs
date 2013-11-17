@@ -16,6 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/wrap-region")
 (add-to-list 'load-path "~/.emacs.d/plugins/elim/elisp")
 (add-to-list 'load-path "~/.emacs.d/plugins/emacs-elixir")
+(add-to-list 'load-path "~/.emacs.d/plugins/coffee-mode")
 ;(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.12/emacs")
 ;(add-to-list 'load-path "~/.cabal/share/hlint-1.8.53")
 ;(require 'hs-lint)
@@ -55,6 +56,7 @@
 ;(require 'erlang-start)
 (require 'elixir-mode)
 (require 'xclip)
+(require 'coffee-mode)
 (epa-file-enable)
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
@@ -83,6 +85,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auth-source-save-behavior nil)
+ '(coffee-tab-width 4)
  '(custom-safe-themes (quote ("0a1eb1fb7c716c0eced08572fa5477e6cf80d145167590ab5a00697678b14c30" "dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
  '(dirtree-windata (quote (frame left 0.15 delete)))
  '(fci-rule-color "#383838")

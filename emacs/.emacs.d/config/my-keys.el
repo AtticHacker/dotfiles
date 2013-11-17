@@ -1,7 +1,9 @@
 (provide 'my-keys)
 
-
-
+(define-key attic-lock-minor-mode-map (kbd "J M-g g")   'undefined)
+(define-key attic-lock-minor-mode-map (kbd "L M-g g")   'undefined)
+(define-key attic-lock-minor-mode-map (kbd "J M-g M-g") 'undefined)
+(define-key attic-lock-minor-mode-map (kbd "L M-g M-g") 'undefined)
 
 (define-key attic-lock-minor-mode-map (kbd "x f") 'ido-find-file)
 (define-key attic-lock-minor-mode-map (kbd "q"  ) 'backward-delete-char)
@@ -35,6 +37,7 @@
 
 (define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
 (define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
+(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
 
 (define-key attic-lock-minor-mode-map (kbd "j w")     'load-haskell-workgroups)
 (define-key attic-lock-minor-mode-map (kbd "j 1")     'wg-switch-to-index-0)
