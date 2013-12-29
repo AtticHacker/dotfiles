@@ -1,3 +1,0 @@
-#name: rec
-# --
-defrecord $1, $0

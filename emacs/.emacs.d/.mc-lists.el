@@ -9,6 +9,7 @@
         attic-lock-disable
         attic-rock-lock
         backward-delete-char
+        backward-to-word
         comment-or-uncomment-region
         control-lock-enable
         cua-copy-region
@@ -54,6 +55,7 @@
         select-window-1
         sgml-slash
         sh-assignment
+        shm/:
         shrink-window-if-larger-than-buffer
         tab-to-tab-stop
         transpose-words

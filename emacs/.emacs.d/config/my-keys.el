@@ -31,8 +31,9 @@
 (define-key attic-lock-minor-mode-map (kbd "j v")     'org-cycle-agenda-files)
 (define-key attic-lock-minor-mode-map (kbd "j m")     'magit-status)
 (define-key attic-lock-minor-mode-map (kbd "j q")     'kmacro-start-macro)
+(define-key attic-lock-minor-mode-map (kbd "j e")     'kmacro-end-or-call-macro-repeat)
+
 (define-key attic-lock-minor-mode-map (kbd "j r") (key-binding (kbd "\C-xr")))
-(define-key attic-lock-minor-mode-map (kbd "[")   'kmacro-end-or-call-macro-repeat)
 (define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
 
 (define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
@@ -50,6 +51,15 @@
 (define-key attic-lock-minor-mode-map (kbd "j 8")     'wg-switch-to-index-7)
 (define-key attic-lock-minor-mode-map (kbd "j 9")     'wg-switch-to-index-8)
 (define-key attic-lock-minor-mode-map (kbd "j 0")     'wg-switch-to-index-9)
+
+(define-key attic-lock-minor-mode-map (kbd "j z z")     'cmus-pause)
+(define-key attic-lock-minor-mode-map (kbd "j z -")     'cmus-volume-down)
+(define-key attic-lock-minor-mode-map (kbd "j z =")     'cmus-volume-up)
+(define-key attic-lock-minor-mode-map (kbd "j z n")     'cmus-next)
+(define-key attic-lock-minor-mode-map (kbd "j z p")     'cmus-previous)
+
+
+
 
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 

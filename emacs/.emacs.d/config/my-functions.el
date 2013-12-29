@@ -86,4 +86,32 @@
   (interactive "S")
   (apply 'concat (mapcar 'capitalize (split-string str "_"))))
 
+
+
+; cmus functions
+
+(defun cmus-pause ()
+  (interactive)
+  (shell-command (format "cmus-remote --pause"))
+)
+
+(defun cmus-volume-down ()
+  (interactive)
+  (shell-command (format "cmus-remote --volume -10%"))
+)
+
+(defun cmus-volume-up ()
+  (interactive)
+  (shell-command (format "cmus-remote --volume +10%"))
+)
+
+(defun cmus-next ()
+  (interactive)
+  (shell-command (format "cmus-remote --next"))
+)
+(defun cmus-previous ()
+  (interactive)
+  (shell-command (format "cmus-remote --prev"))
+)
+
 (provide 'my-functions)

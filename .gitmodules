@@ -1,0 +1,36 @@
+[submodule "emacs/.emacs.d/plugins/auto-complete"]
+	path = emacs/.emacs.d/plugins/auto-complete
+	url = git@github.com:auto-complete/auto-complete.git
+[submodule "emacs/.emacs.d/plugins/coffee-mode"]
+	path = emacs/.emacs.d/plugins/coffee-mode
+	url = git@github.com:defunkt/coffee-mode.git
+[submodule "emacs/.emacs.d/plugins/emacs-elixir"]
+	path = emacs/.emacs.d/plugins/emacs-elixir
+	url = git@github.com:elixir-lang/emacs-elixir.git
+[submodule "emacs/.emacs.d/plugins/expand-region"]
+	path = emacs/.emacs.d/plugins/expand-region
+	url = git@github.com:magnars/expand-region.el.git
+[submodule "emacs/.emacs.d/plugins/ace-jump-mode"]
+	path = emacs/.emacs.d/plugins/ace-jump-mode
+	url = git@github.com:winterTTr/ace-jump-mode.git
+[submodule "emacs/.emacs.d/plugins/gnus"]
+	path = emacs/.emacs.d/plugins/gnus
+	url = git@github.com:emacsmirror/gnus.git
+[submodule "emacs/.emacs.d/plugins/magit"]
+	path = emacs/.emacs.d/plugins/magit
+	url = git@github.com:magit/magit.git
+[submodule "emacs/.emacs.d/plugins/git-modes"]
+	path = emacs/.emacs.d/plugins/git-modes
+	url = git@github.com:magit/git-modes.git
+[submodule "emacs/.emacs.d/plugins/multiple-cursors"]
+	path = emacs/.emacs.d/plugins/multiple-cursors
+	url = git@github.com:magnars/multiple-cursors.el.git
+[submodule "emacs/.emacs.d/plugins/wrap-region"]
+	path = emacs/.emacs.d/plugins/wrap-region
+	url = git@github.com:rejeep/wrap-region.el.git
+[submodule "emacs/.emacs.d/plugins/dash"]
+	path = emacs/.emacs.d/plugins/dash
+	url = git@github.com:magnars/dash.el.git
+[submodule "emacs/.emacs.d/plugins/yasnippet"]
+	path = emacs/.emacs.d/plugins/yasnippet
+	url = git@github.com:capitaomorte/yasnippet.git
