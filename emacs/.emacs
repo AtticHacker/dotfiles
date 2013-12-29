@@ -20,7 +20,9 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/emacs-elixir")
 (add-to-list 'load-path "~/.emacs.d/plugins/coffee-mode")
 (add-to-list 'load-path "~/.emacs.d/plugins/dash")
-;(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.12/emacs")
+(add-to-list 'load-path "~/.emacs.d/plugins/js2-mode")
+
+(require 'js2-mode)
 (require 'dash)
 (require 'haskell-cabal)
 (require 'color-theme)
@@ -74,7 +76,8 @@
 
 (setq auto-mode-alist (cons '(".tpl" . html-mode    )
                       (cons '(".elm" . haskell-mode )
-                            auto-mode-alist)))
+                      (cons '(".js" . js2-mode )
+                            auto-mode-alist))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

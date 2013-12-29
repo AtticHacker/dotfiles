@@ -150,6 +150,11 @@
 (global-set-key (kbd "M-*") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-g") 'undefined)
 
+
+(define-key js2-mode-map (kbd "M-n") 'js2-next-error)
+(define-key js2-mode-map (kbd "M-p") 'js2-previous-error)
+(define-key js2-mode-map (kbd "M-?") 'js2-display-error-list)
+
 ; Define mode
 (define-minor-mode attic-minor-mode
 "A minor mode so that my key settings override annoying major modes."
