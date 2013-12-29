@@ -37,3 +37,9 @@
 [submodule "emacs/.emacs.d/plugins/js2-mode"]
 	path = emacs/.emacs.d/plugins/js2-mode
 	url = git@github.com:mooz/js2-mode.git
+[submodule "emacs/.emacs.d/plugins/swank-js"]
+	path = emacs/.emacs.d/plugins/swank-js
+	url = git@github.com:swank-js/swank-js.git
+[submodule "emacs/.emacs.d/plugins/slime"]
+	path = emacs/.emacs.d/plugins/slime
+	url = git@github.com:nablaone/slime.git

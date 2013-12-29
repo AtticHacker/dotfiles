@@ -21,8 +21,11 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/coffee-mode")
 (add-to-list 'load-path "~/.emacs.d/plugins/dash")
 (add-to-list 'load-path "~/.emacs.d/plugins/js2-mode")
+(add-to-list 'load-path "~/.emacs.d/plugins/swank-js")
+(add-to-list 'load-path "~/.emacs.d/plugins/slime")
+(add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
 
-(require 'js2-mode)
+
 (require 'dash)
 (require 'haskell-cabal)
 (require 'color-theme)
@@ -57,6 +60,15 @@
 (require 'elixir-mode)
 (require 'xclip)
 (require 'coffee-mode)
+
+(require 'slime)
+(require 'js2-mode)
+(require 'slime-js)
+(slime-setup '(slime-js slime-repl))
+(setq slime-js-swank-command "/usr/local/bin/swank-js")
+(setq slime-js-swank-args '())
+
+
 (epa-file-enable)
 
 (add-to-list 'load-path "/usr/pbi/emacs-i386/share/emacs/site-lisp/w3m")
