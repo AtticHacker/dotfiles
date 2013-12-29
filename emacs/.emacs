@@ -6,7 +6,8 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme")
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/plugins/haskell-mode")
-(add-to-list 'load-path "~/.ghc-mod/share/ghc-mod-1.11.3")
+(add-to-list 'load-path
+    "~/.lazyVault/sandboxes/ghc-mod/cabal/share/ghc-mod-3.1.4")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ghc")
 (add-to-list 'load-path "~/.emacs.d/plugins/magit")
@@ -73,7 +74,6 @@
 (require 'my-keys)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-library "garak")
 
 (setq auto-mode-alist (cons '(".tpl" . html-mode    )
                       (cons '(".elm" . haskell-mode )
