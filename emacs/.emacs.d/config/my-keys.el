@@ -36,10 +36,6 @@
 (define-key attic-lock-minor-mode-map (kbd "j r") (key-binding (kbd "\C-xr")))
 (define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
 
-(define-key attic-lock-minor-mode-map (kbd "j h h")     'hs-toggle-hiding)
-(define-key attic-lock-minor-mode-map (kbd "j h a")     'hs-hide-all)
-(define-key attic-lock-minor-mode-map (kbd "j h s")     'hs-show-all)
-
 (define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
 ;(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
 
@@ -148,9 +144,6 @@
 (define-key attic-minor-mode-map (kbd "C-j 9")     'wg-switch-to-index-8)
 (define-key attic-minor-mode-map (kbd "C-j 0")     'wg-switch-to-index-9)
 
-(define-key attic-minor-mode-map (kbd "C-j C-h C-h") 'hs-toggle-hiding)
-(define-key attic-minor-mode-map (kbd "C-j C-h C-a") 'hs-hide-all)
-(define-key attic-minor-mode-map (kbd "C-j C-h C-s") 'hs-show-all)
 
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)
@@ -168,15 +161,25 @@
 
 
 (defun js2-keys-hook ()
-	(define-key js2-mode-map (kbd "M-n") 'js2-next-error)
-	(define-key js2-mode-map (kbd "M-p") 'js2-previous-error)
-	(define-key js2-mode-map (kbd "M-?") 'js2-display-error-list)
+  (define-key js2-mode-map (kbd "M-n") 'js2-next-error)
+  (define-key js2-mode-map (kbd "M-p") 'js2-previous-error)
+  (define-key js2-mode-map (kbd "M-?") 'js2-display-error-list)
 
-	(define-key attic-lock-minor-mode-map (kbd "j s s") 'slime-eval-buffer)
-	(define-key attic-lock-minor-mode-map (kbd "j s r") 'slime-eval-region)
-	(define-key attic-lock-minor-mode-map (kbd "j s c") 'slime-connect)
-	(define-key attic-lock-minor-mode-map (kbd "j s d") 'slime-disconnect)
-	(define-key attic-lock-minor-mode-map (kbd "j s e") 'slime-js-select-remote)
+  (define-key attic-lock-minor-mode-map (kbd "j s s") 'slime-eval-buffer)
+  (define-key attic-lock-minor-mode-map (kbd "j s r") 'slime-eval-region)
+  (define-key attic-lock-minor-mode-map (kbd "j s c") 'slime-connect)
+  (define-key attic-lock-minor-mode-map (kbd "j s d") 'slime-disconnect)
+  (define-key attic-lock-minor-mode-map (kbd "j s e") 'slime-js-select-remote)
+
+  (define-key js2-mode-map (kbd "C-j C-h C-h") 'hs-toggle-hiding)
+  (define-key js2-mode-map (kbd "C-j C-h C-a") 'hs-hide-all)
+  (define-key js2-mode-map (kbd "C-j C-h C-s") 'hs-show-all)
+
+  (define-key attic-lock-minor-mode-map (kbd "j h h") 'hs-toggle-hiding)
+  (define-key attic-lock-minor-mode-map (kbd "j h a") 'hs-hide-all)
+  (define-key attic-lock-minor-mode-map (kbd "j h s") 'hs-show-all)
+
+
 )
 
 (defun erlang-keys-hook ()
