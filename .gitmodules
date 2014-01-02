@@ -43,3 +43,6 @@
 [submodule "emacs/.emacs.d/plugins/slime"]
 	path = emacs/.emacs.d/plugins/slime
 	url = git@github.com:nablaone/slime.git
+[submodule "emacs/.emacs.d/plugins/zencoding"]
+	path = emacs/.emacs.d/plugins/zencoding
+	url = git@github.com:rooney/zencoding.git

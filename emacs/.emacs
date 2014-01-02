@@ -24,8 +24,9 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/swank-js")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
+(add-to-list 'load-path "~/.emacs.d/plugins/zencoding")
 
-
+(require 'zencoding-mode)
 (require 'dash)
 (require 'haskell-cabal)
 (require 'color-theme)
@@ -107,6 +108,8 @@
  '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(ido-separator "
            ")
+ '(js2-strict-missing-semi-warning nil)
+ '(linum-format (quote "%3d"))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -148,8 +151,8 @@
   ido-max-work-file-list      50		; remember many
   ido-use-filename-at-point nil			; don't use filename at point (annoying)
   ido-use-url-at-point nil			; don't use url at point (annoying)
-  ido-enable-flex-matching t			; try to be too smart
-  ido-max-prospects 15				; don't spam my minibuffer
+  ido-enable-flex-matching t
+  ido-max-prospects 25
   ido-confirm-unique-completion t)		; wait for RET, even with unique completion
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -38,7 +38,7 @@
 
 (define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
 (define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
-(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
+;(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
 
 (define-key attic-lock-minor-mode-map (kbd "j w")     'load-haskell-workgroups)
 (define-key attic-lock-minor-mode-map (kbd "j 1")     'wg-switch-to-index-0)
@@ -151,9 +151,33 @@
 (global-set-key (kbd "C-g") 'undefined)
 
 
-(define-key js2-mode-map (kbd "M-n") 'js2-next-error)
-(define-key js2-mode-map (kbd "M-p") 'js2-previous-error)
-(define-key js2-mode-map (kbd "M-?") 'js2-display-error-list)
+; JS Keys
+(defun erlang-keys-hook ()
+  (local-set-key (kbd "M-?") 'erlang-get-error)
+  (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+  (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+  (local-set-key (kbd "M-q") 'backward-kill-word)
+)
+
+
+(defun js2-keys-hook ()
+	(define-key js2-mode-map (kbd "M-n") 'js2-next-error)
+	(define-key js2-mode-map (kbd "M-p") 'js2-previous-error)
+	(define-key js2-mode-map (kbd "M-?") 'js2-display-error-list)
+
+	(define-key attic-lock-minor-mode-map (kbd "j s s") 'slime-eval-buffer)
+	(define-key attic-lock-minor-mode-map (kbd "j s r") 'slime-eval-region)
+	(define-key attic-lock-minor-mode-map (kbd "j s c") 'slime-connect)
+	(define-key attic-lock-minor-mode-map (kbd "j s d") 'slime-disconnect)
+	(define-key attic-lock-minor-mode-map (kbd "j s e") 'slime-js-select-remote)
+)
+
+(defun erlang-keys-hook ()
+  (local-set-key (kbd "M-?") 'erlang-get-error)
+  (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+  (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+  (local-set-key (kbd "M-q") 'backward-kill-word)
+)
 
 ; Define mode
 (define-minor-mode attic-minor-mode
