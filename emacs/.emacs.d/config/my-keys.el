@@ -36,7 +36,10 @@
 (define-key attic-lock-minor-mode-map (kbd "j r") (key-binding (kbd "\C-xr")))
 (define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
 
-(define-key attic-lock-minor-mode-map (kbd "j h")       'hs-lint)
+(define-key attic-lock-minor-mode-map (kbd "j h h")     'hs-toggle-hiding)
+(define-key attic-lock-minor-mode-map (kbd "j h a")     'hs-hide-all)
+(define-key attic-lock-minor-mode-map (kbd "j h s")     'hs-show-all)
+
 (define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
 ;(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
 
@@ -144,6 +147,10 @@
 (define-key attic-minor-mode-map (kbd "C-j 8")     'wg-switch-to-index-7)
 (define-key attic-minor-mode-map (kbd "C-j 9")     'wg-switch-to-index-8)
 (define-key attic-minor-mode-map (kbd "C-j 0")     'wg-switch-to-index-9)
+
+(define-key attic-minor-mode-map (kbd "C-j C-h C-h") 'hs-toggle-hiding)
+(define-key attic-minor-mode-map (kbd "C-j C-h C-a") 'hs-hide-all)
+(define-key attic-minor-mode-map (kbd "C-j C-h C-s") 'hs-show-all)
 
 (global-set-key (kbd "M-P") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-N") 'mc/mark-next-like-this)

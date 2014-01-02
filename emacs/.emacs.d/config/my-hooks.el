@@ -31,7 +31,12 @@
 ;(add-hook 'erlang-mode-hook  'wrap-region-mode)
 (add-hook 'erlang-mode-hook  'erlang-keys-hook)
 
-(add-hook 'js2-mode-hook  'js2-keys-hook)
+(add-hook 'js2-mode-hook
+          (lambda()
+            (js2-keys-hook)
+            (imenu-add-menubar-index)
+            (hs-minor-mode t)
+))
 
 
 (add-hook 'elixir-mode-hook  'elixir-keys-hook)
