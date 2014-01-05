@@ -1,7 +1,8 @@
 ! urxvt*transparent: true
 ! urxvt*shading: 50
 urxvt*fading: 60
-urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15:antialias=true
+!urxvt*font: xft:DeJaVu\ Sans\ Mono:style=bold:pixelsize=15:antialias=true
+urxvt*font: xft:Monaco:bold:pixelsize=15:antialias=true
 urxvt*pixelsize: 33
 urxvt*scrollBar: false
 urxvt*foreground: #f2f2f2
@@ -23,7 +24,7 @@ urxvt*color13: #ef0051
 urxvt*color14: #4bb8fd
 urxvt*color15: #a020f0
 
-Xft.dpi       : 100
+Xft.dpi       : 96
 Xft.antialias : true
 Xft.rgba      : rgb
 Xft.hinting   : true

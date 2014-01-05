@@ -17,9 +17,14 @@ ZSH_THEME="kevin"
 
 export PATH=$PATH:$HOME/.cabal/bin/
 source $HOME/.lazyVault/binPaths
-export PATH=/usr/local/ghc/7.4.2/bin:$PATH
+export PATH=/usr/local/ghc/7.6.3/bin:$PATH
+export PATH=$PATH:$HOME/Shortcuts/
 
 export EDITOR="emacs -nw"
+
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+
 
 # plugins=(git)
 
