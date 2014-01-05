@@ -60,7 +60,7 @@
 
 (defun erlang-get-error ()
   (interactive)
-  (shell-command (format "~/.emacs.d/plugins/erlangscript %s" buffer-file-name))
+  (shell-command (format "~/.emacs.d/scripts/erlangscript %s" buffer-file-name))
 )
 
 

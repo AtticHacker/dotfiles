@@ -5,7 +5,7 @@
 (define-key attic-lock-minor-mode-map (kbd "J M-g M-g") 'undefined)
 (define-key attic-lock-minor-mode-map (kbd "L M-g M-g") 'undefined)
 
-(define-key attic-lock-minor-mode-map (kbd "x f") 'ido-find-file)
+(define-key attic-lock-minor-mode-map (kbd "x f") 'helm-find-files)
 (define-key attic-lock-minor-mode-map (kbd "q"  ) 'backward-delete-char)
 (define-key attic-lock-minor-mode-map (kbd "g"  ) 'goto-line)
 (define-key attic-lock-minor-mode-map (kbd "z"  ) 'zap-to-char)
@@ -23,10 +23,10 @@
 (define-key attic-lock-minor-mode-map (kbd "j <SPC>") 'pop-to-mark-command)
 (define-key attic-lock-minor-mode-map (kbd "j n")     'iy-go-to-char )
 (define-key attic-lock-minor-mode-map (kbd "j p")     'iy-go-to-char-backward)
-(define-key attic-lock-minor-mode-map (kbd "j j")     'ido-switch-buffer)
+(define-key attic-lock-minor-mode-map (kbd "j j")     'helm-buffers-list)
 (define-key attic-lock-minor-mode-map (kbd "j i")     'ace-jump-mode)
 (define-key attic-lock-minor-mode-map (kbd "j o")     'hoogle-search)
-(define-key attic-lock-minor-mode-map (kbd "j f")     'textmate-goto-file)
+(define-key attic-lock-minor-mode-map (kbd "j f")     'helm-ls-git-ls)
 (define-key attic-lock-minor-mode-map (kbd "j c")     'comment-or-uncomment-region)
 (define-key attic-lock-minor-mode-map (kbd "j v")     'org-cycle-agenda-files)
 (define-key attic-lock-minor-mode-map (kbd "j m")     'magit-status)
@@ -34,7 +34,7 @@
 (define-key attic-lock-minor-mode-map (kbd "j e")     'kmacro-end-or-call-macro-repeat)
 
 (define-key attic-lock-minor-mode-map (kbd "j r") (key-binding (kbd "\C-xr")))
-(define-key attic-lock-minor-mode-map (kbd "x k") 'ido-kill-buffer)
+(define-key attic-lock-minor-mode-map (kbd "x k") 'kill-buffer)
 
 (define-key attic-lock-minor-mode-map (kbd "j t")       'run-haskell-test)
 ;(define-key attic-lock-minor-mode-map (kbd "j s")       'flyspell-mode)
@@ -57,16 +57,13 @@
 (define-key attic-lock-minor-mode-map (kbd "j z n")     'cmus-next)
 (define-key attic-lock-minor-mode-map (kbd "j z p")     'cmus-previous)
 
-
-
-
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 ; Customs
 
 ; Control hotkeys
 (define-key attic-minor-mode-map (kbd "C-x C-s") 'undefined)
-(define-key attic-minor-mode-map (kbd "C-x C-f") 'ido-find-file)
+(define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
 
 ; has to be global otherwise iy-go-to-char wont play nicely
@@ -101,7 +98,7 @@
 (global-set-key (kbd "C-j C-c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-j C-o") 'hoogle-search)
 (global-set-key (kbd "C-j C-f") 'textmate-goto-file)
-(global-set-key (kbd "C-j C-j")   'ido-switch-buffer)
+(global-set-key (kbd "C-j C-j")   'helm-buffers-list)
 (global-set-key (kbd "C-j C-o")   'org-agenda)
 (global-set-key (kbd "C-j <RET>") 'magit-status)
 (global-set-key (kbd "C-j C-i")   'ace-jump-mode)
@@ -124,10 +121,10 @@
 (global-set-key (kbd "C-j 9")     'wg-switch-to-index-8)
 (global-set-key (kbd "C-j 0")     'wg-switch-to-index-9)
 
-(define-key attic-minor-mode-map (kbd "C-j C-c") 'comment-or-uncomment-region)
-(define-key attic-minor-mode-map (kbd "C-j C-o") 'hoogle-search)
-(define-key attic-minor-mode-map (kbd "C-j C-f") 'textmate-goto-file)
-(define-key attic-minor-mode-map (kbd "C-j C-j")   'ido-switch-buffer)
+(define-key attic-minor-mode-map (kbd "C-j C-c")   'comment-or-uncomment-region)
+(define-key attic-minor-mode-map (kbd "C-j C-o")   'hoogle-search)
+(define-key attic-minor-mode-map (kbd "C-j C-f")   'helm-ls-git-ls)
+(define-key attic-minor-mode-map (kbd "C-j C-j")   'helm-buffers-list)
 (define-key attic-minor-mode-map (kbd "C-j C-o")   'org-agenda)
 (define-key attic-minor-mode-map (kbd "C-j <RET>") 'magit-status)
 (define-key attic-minor-mode-map (kbd "C-j C-o")   'org-agenda)
@@ -178,8 +175,6 @@
   (define-key attic-lock-minor-mode-map (kbd "j h h") 'hs-toggle-hiding)
   (define-key attic-lock-minor-mode-map (kbd "j h a") 'hs-hide-all)
   (define-key attic-lock-minor-mode-map (kbd "j h s") 'hs-show-all)
-
-
 )
 
 (defun erlang-keys-hook ()
@@ -188,6 +183,15 @@
   (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
   (local-set-key (kbd "M-q") 'backward-kill-word)
 )
+
+; Helm keys
+(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "M-f") 'helm-select-action)
+(define-key helm-map (kbd "M-s") 'helm-select-action)
+(define-key helm-map (kbd "M-b") 'undefined)
+(define-key helm-map (kbd "C-f") 'undefined)
+(define-key helm-map (kbd "C-b") 'undefined)
+(define-key helm-map (kbd "M-g") 'helm-exit-minibuffer)
 
 ; Define mode
 (define-minor-mode attic-minor-mode

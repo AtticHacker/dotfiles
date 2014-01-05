@@ -46,3 +46,24 @@
 [submodule "emacs/.emacs.d/plugins/zencoding"]
 	path = emacs/.emacs.d/plugins/zencoding
 	url = git@github.com:rooney/zencoding.git
+[submodule "emacs/.emacs.d/plugins/helm"]
+	path = emacs/.emacs.d/plugins/helm
+	url = git@github.com:emacs-helm/helm.git
+[submodule "emacs/.emacs.d/plugins/helm-ls-git"]
+	path = emacs/.emacs.d/plugins/helm-ls-git
+	url = git@github.com:emacs-helm/helm-ls-git.git
+[submodule "emacs/.emacs.d/plugins/rainbow-delimiters"]
+	path = emacs/.emacs.d/plugins/rainbow-delimiters
+	url = git@github.com:jlr/rainbow-delimiters.git
+[submodule "emacs/.emacs.d/plugins/smex"]
+	path = emacs/.emacs.d/plugins/smex
+	url = git@github.com:nonsequitur/smex.git
+[submodule "emacs/.emacs.d/plugins/sr-speedbar"]
+	path = emacs/.emacs.d/plugins/sr-speedbar
+	url = git@github.com:emacsmirror/sr-speedbar.git
+[submodule "emacs/.emacs.d/plugins/window-numbering"]
+	path = emacs/.emacs.d/plugins/window-numbering
+	url = git@github.com:nschum/window-numbering.el.git
+[submodule "emacs/.emacs.d/plugins/workgroups"]
+	path = emacs/.emacs.d/plugins/workgroups
+	url = git@github.com:tlh/workgroups.el.git
