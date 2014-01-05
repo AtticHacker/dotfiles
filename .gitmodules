@@ -67,3 +67,6 @@
 [submodule "emacs/.emacs.d/plugins/workgroups"]
 	path = emacs/.emacs.d/plugins/workgroups
 	url = git@github.com:tlh/workgroups.el.git
+[submodule "emacs/.emacs.d/plugins/god-mode"]
+	path = emacs/.emacs.d/plugins/god-mode
+	url = git@github.com:chrisdone/god-mode.git

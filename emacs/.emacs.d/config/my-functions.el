@@ -112,4 +112,34 @@
 (defun ca-with-comment (str)
   (format "%s%s%s" comment-start str comment-end))
 
+
+; God functions
+
+(defun god-mode-disable () (interactive)
+  (setq god-local-mode nil)
+  (if (getenv "TMUX")
+    (send-string-to-terminal "\033Ptmux;\033\033]12;Green\007\033\\")
+    (send-string-to-terminal "\033]12;Green\007")
+  )
+)
+
+(defun god-mode-enable () (interactive)
+  (setq god-local-mode t)
+  (mc/keyboard-quit)
+  (keyboard-escape-quit)
+  (if (getenv "TMUX")
+      (send-string-to-terminal "\033Ptmux;\033\033]12;White\007\033\\")
+      (send-string-to-terminal "\033]12;White\007")
+      )
+)
+(defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
+  (let (orig-one-window-p)
+    (fset 'orig-one-window-p (symbol-function 'one-window-p))
+    (fset 'one-window-p (lambda (&optional nomini all-frames) t))
+    (unwind-protect
+        ad-do-it
+      (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
+
+
+
 (provide 'my-functions)

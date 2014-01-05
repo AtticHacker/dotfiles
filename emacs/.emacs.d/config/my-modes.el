@@ -17,8 +17,9 @@
 (ido-mode 1)
 (yas-global-mode 1)
 (smex-initialize)
-
 (custom-set-variables '(linum-format (quote "%3d")))
+(god-mode)
+
 (define-globalized-minor-mode my-global-auto-complete-mode auto-complete-mode
   (lambda () (auto-complete-mode 1))
   (lambda () (wrap-region-mode 1))

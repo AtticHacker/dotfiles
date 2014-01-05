@@ -33,6 +33,8 @@
         forward-sentence
         ghc-insert-template
         ghc-save-buffer
+        god-mode-disable
+        god-mode-enable
         haskell-indentation-delete-char
         haskell-newline-and-indent
         ido-switch-buffer

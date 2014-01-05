@@ -7,6 +7,7 @@
 (let ((default-directory "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+(require 'god-mode)
 (require 'zencoding-mode)
 (require 'dash)
 (require 'helm)
@@ -14,7 +15,6 @@
 (require 'haskell-cabal)
 (require 'color-theme)
 (require 'redo+)
-(require 'attic-lock)
 (require 'auto-complete)
 (require 'misc)
 (require 'org-install)
@@ -56,12 +56,15 @@
 
 ;personal Config
 (add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d/config/other")
 (require 'my-functions)
 (require 'my-hooks)
 (require 'my-modes)
 (require 'my-colors)
 (require 'my-w3m)
 (require 'my-keys)
+; config/other
+(require 'registry-bindings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
