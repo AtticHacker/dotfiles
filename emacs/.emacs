@@ -63,8 +63,6 @@
 (require 'my-colors)
 (require 'my-w3m)
 (require 'my-keys)
-; config/other
-(require 'registry-bindings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
