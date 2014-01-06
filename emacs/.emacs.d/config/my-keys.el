@@ -6,6 +6,7 @@
 (define-key attic-minor-mode-map (kbd "C-.") 'repeat)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
 (define-key attic-minor-mode-map (kbd "C--") 'undo)
+(define-key attic-minor-mode-map (kbd "C-;") 'pop-to-mark-command)
 
 ;; Control Prefix Keys
 (define-key attic-minor-mode-map (kbd "C-M-_")	 'redo)
@@ -37,7 +38,6 @@
 (define-key attic-minor-mode-map (kbd "C-j") 'c-j-prefix)
 (define-key attic-minor-mode-map (kbd "C-j C-o") 'hoogle-search)
 (define-key attic-minor-mode-map (kbd "C-j C-t") 'transpose-paragraphs)
-(define-key attic-minor-mode-map (kbd "C-j C-;") 'pop-to-mark-command)
 (define-key attic-minor-mode-map (kbd "C-j C-n") 'iy-go-to-char )
 (define-key attic-minor-mode-map (kbd "C-j C-p") 'iy-go-to-char-backward)
 (define-key attic-minor-mode-map (kbd "C-j C-j") 'helm-buffers-list)
