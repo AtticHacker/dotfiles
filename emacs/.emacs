@@ -4,7 +4,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (let ((default-directory "~/.emacs.d/plugins/"))
   (normal-top-level-add-subdirs-to-load-path))
-(let ((default-directory "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
+(let ((default-directory
+    "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
   (normal-top-level-add-subdirs-to-load-path))
 
 (require 'undo-tree)
@@ -101,6 +102,7 @@
            ")
  '(js2-strict-missing-semi-warning nil)
  '(linum-format (quote "%3d"))
+ '(scroll-error-top-bottom t)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -120,9 +122,9 @@
 ;; Don't create ~ files
 (setq make-backup-files nil)
 (setq org-agenda-files
-      (list "~/org/notes.org"
-            "~/org/todos.org"
-            "~/org/LazyCasts.org"
+      (list "~/Documents/org/notes.org"
+            "~/Documents/org/todos.org"
+            "~/Documents/org/LazyCasts.org"
             ))
 
 ; Unset C-z

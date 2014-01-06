@@ -22,10 +22,6 @@ export PATH=$PATH:$HOME/Shortcuts/
 
 export EDITOR="emacs -nw --no-splash"
 
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-
-
 # plugins=(git)
 
 ## OH MY ZSH options ##

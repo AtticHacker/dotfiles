@@ -2,6 +2,10 @@
 
 ln -nfs "$(pwd)/emacs/.emacs"        "$HOME/.emacs"
 ln -nfs "$(pwd)/emacs/.emacs.d"      "$HOME/.emacs.d"
+
+ln -nfs "$(pwd)/tmux/.tmux"        "$HOME/.tmux"
+ln -nfs "$(pwd)/tmux/.tmux.conf"   "$HOME/.tmux.conf"
+
 sudo ln -nfs "$(pwd)/emacs/.emacs"   "/root/.emacs"
 sudo ln -nfs "$(pwd)/emacs/.emacs.d" "/root/.emacs.d"
 ln -nfs "$(pwd)/other/zsh/.zshrc"          "$HOME/.zshrc"
