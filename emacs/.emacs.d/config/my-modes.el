@@ -2,7 +2,6 @@
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (global-linum-mode 1)
-(cua-mode t)
 (auto-complete-mode 1)
 (multiple-cursors-mode 1)
 (put 'downcase-region 'disabled nil)

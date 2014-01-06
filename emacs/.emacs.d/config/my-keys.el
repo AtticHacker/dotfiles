@@ -5,7 +5,7 @@
 (define-key attic-minor-mode-map (kbd "C-z") 'zap-to-char)
 (define-key attic-minor-mode-map (kbd "C-.") 'repeat)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
-(define-key attic-minor-mode-map (kbd "C--")     'undo)
+(define-key attic-minor-mode-map (kbd "C--") 'undo)
 
 ;; Control Prefix Keys
 (define-key attic-minor-mode-map (kbd "C-M-_")	 'redo)
@@ -17,7 +17,6 @@
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
 
 (define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
-(define-key attic-minor-mode-map (kbd "M-#")     'cua-set-rectangle-mark)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-+")	 'align-regexp)
@@ -36,7 +35,6 @@
 ;; J Prefix Keys
 (define-prefix-command 'c-j-prefix)
 (define-key attic-minor-mode-map (kbd "C-j") 'c-j-prefix)
-(define-key attic-minor-mode-map (kbd "C-;")     'cua-set-mark)
 (define-key attic-minor-mode-map (kbd "C-j C-o") 'hoogle-search)
 (define-key attic-minor-mode-map (kbd "C-j C-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-j C-;") 'pop-to-mark-command)
@@ -119,7 +117,6 @@
 
 (define-key god-local-mode-map (kbd "C-l") 'forward-to-word)
 (define-key god-local-mode-map (kbd "C-h") 'backward-to-word)
-(define-key god-local-mode-map (kbd "C- ") 'cua-set-mark)
 
 (define-key god-local-mode-map (kbd "C-x C-s") (lambda()
     (interactive)

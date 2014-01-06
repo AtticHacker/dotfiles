@@ -111,7 +111,6 @@
  '(erlang-mode-hook (quote (wrap-region-mode)))
 
 ; Settings
-(setq cua-enable-cua-keys nil)
 (setq-default indent-tabs-mode nil)
 ;; Don't create ~ files
 (setq make-backup-files nil)

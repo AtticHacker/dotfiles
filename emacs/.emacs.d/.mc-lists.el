@@ -12,12 +12,6 @@
         backward-to-word
         comment-or-uncomment-region
         control-lock-enable
-        cua-copy-region
-        cua-cut-region
-        cua-delete-region
-        cua-exchange-point-and-mark
-        cua-paste
-        cua-paste-pop
         delete-trailing-whitespace-and-save
         end-of-buffer
         erlang-electric-comma
