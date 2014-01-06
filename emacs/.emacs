@@ -7,6 +7,7 @@
 (let ((default-directory "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+(require 'undo-tree)
 (require 'god-mode)
 (require 'zencoding-mode)
 (require 'dash)
@@ -15,7 +16,6 @@
 (require 'helm-swoop)
 (require 'haskell-cabal)
 (require 'color-theme)
-(require 'redo+)
 (require 'auto-complete)
 (require 'misc)
 (require 'org-install)

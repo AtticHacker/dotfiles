@@ -11,6 +11,7 @@
 (define-key attic-minor-mode-map (kbd "C-M-_")	 'redo)
 (define-key attic-minor-mode-map (kbd "C-x M-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
+(define-key attic-minor-mode-map (kbd "C-c C-v") 'undo-tree-visualize)
 
 ;; Meta Keys
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
