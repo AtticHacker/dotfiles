@@ -80,7 +80,7 @@
  '(ac-auto-start 60)
  '(ac-candidate-menu-min 2)
  '(ac-delay 60.0)
- '(ac-trigger-key "TAB")
+ '(ac-trigger-key "M-r")
  '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auth-source-save-behavior nil)
  '(coffee-tab-width 4)

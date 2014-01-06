@@ -140,6 +140,13 @@
         ad-do-it
       (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
 
+(defun fsize (font-size)
+  (interactive "sChoose your destiny: ")
+  (if (getenv "TMUX")
+    (send-string-to-terminal (format "\033Ptmux;\033\33]50;xft:Monaco:bold:antialias=true:pixelsize=%s\007\033\\" font-size))
+    (send-string-to-terminal (format "\33]50;xft:Monaco:bold:antialias=true:pixelsize=%s\007" font-size))
+  )
+)
 
 
 (provide 'my-functions)

@@ -18,6 +18,7 @@
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
 
 (define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
+(define-key attic-minor-mode-map (kbd "M-r")	 'auto-complete)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-+")	 'align-regexp)
@@ -103,7 +104,8 @@
 )
 
 ;; Helm keys
-(define-key helm-map (kbd "M-f") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "M-f") 'helm-select-action)
 (define-key helm-map (kbd "M-b") 'undefined)
 (define-key helm-map (kbd "C-f") 'undefined)
 (define-key helm-map (kbd "C-b") 'undefined)
