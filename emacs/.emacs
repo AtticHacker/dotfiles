@@ -76,6 +76,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-auto-show-menu 60.0)
+ '(ac-auto-start 60)
+ '(ac-candidate-menu-min 2)
+ '(ac-delay 60.0)
+ '(ac-trigger-key "TAB")
  '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auth-source-save-behavior nil)
  '(coffee-tab-width 4)
