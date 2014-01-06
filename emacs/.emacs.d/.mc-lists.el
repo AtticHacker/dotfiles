@@ -35,6 +35,7 @@
         ghc-save-buffer
         god-mode-disable
         god-mode-enable
+        god-mode-self-insert
         haskell-indentation-delete-char
         haskell-newline-and-indent
         ido-switch-buffer
