@@ -1,9 +1,9 @@
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
 ;; Control Keys
-(define-key attic-minor-mode-map (kbd "C-u") 'recenter-top-bottom)
+(define-key attic-minor-mode-map (kbd "C-u") 'repeat)
 (define-key attic-minor-mode-map (kbd "C-z") 'zap-to-char)
-(define-key attic-minor-mode-map (kbd "C-.") 'repeat)
+(define-key attic-minor-mode-map (kbd "C-.") 'helm-resume)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
 (define-key attic-minor-mode-map (kbd "C--") 'undo)
 (define-key attic-minor-mode-map (kbd "C-;") 'pop-to-mark-command)
@@ -12,6 +12,7 @@
 (define-key attic-minor-mode-map (kbd "C-M-_")	 'redo)
 (define-key attic-minor-mode-map (kbd "C-x M-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
+(define-key attic-minor-mode-map (kbd "C-x C-k") 'ido-kill-buffer)
 (define-key attic-minor-mode-map (kbd "C-c C-v") 'undo-tree-visualize)
 
 ;; Meta Keys
