@@ -148,5 +148,21 @@
   )
 )
 
+(defun toggle-linum-gutter ()
+  (interactive)
+  (if (and (boundp 'linum-mode) linum-mode)
+      (progn
+        (interactive)
+        (git-gutter)
+        (setq git-gutter t)
+        (setq linum-mode nil))
+      (progn
+        (interactive)
+        (setq git-gutter-mode nil)
+        (git-gutter:clear)
+        (setq linum-mode t))
+      ))
+
+
 
 (provide 'my-functions)

@@ -55,6 +55,7 @@
 (define-key attic-minor-mode-map (kbd "C-j C-s") 'helm-swoop)
 (define-key attic-minor-mode-map (kbd "C-j C-c") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "C-j C-f") 'helm-ls-git-ls)
+(define-key attic-minor-mode-map (kbd "C-j C-l") 'toggle-linum-gutter)
 
 (define-key attic-minor-mode-map (kbd "C-j C-g C-g") 'helm-do-grep)
 (define-key attic-minor-mode-map (kbd "C-j C-g C-r") (lambda () (interactive)

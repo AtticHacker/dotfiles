@@ -9,6 +9,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (require 'undo-tree)
+(require 'git-gutter)
 (require 'god-mode)
 (require 'zencoding-mode)
 (require 'dash)
