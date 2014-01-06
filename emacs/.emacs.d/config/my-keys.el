@@ -103,13 +103,12 @@
 )
 
 ;; Helm keys
-(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "M-f") 'helm-select-action)
-(define-key helm-map (kbd "M-s") 'helm-select-action)
+(define-key helm-map (kbd "M-f") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "M-b") 'undefined)
 (define-key helm-map (kbd "C-f") 'undefined)
 (define-key helm-map (kbd "C-b") 'undefined)
-(define-key helm-map (kbd "M-g") 'helm-exit-minibuffer)
+(define-prefix-command 'm-g-prefix)
+(define-key helm-map (kbd "M-g M-g") 'helm-keyboard-quit)
 
 ;; God mode
 (define-key god-local-mode-map   (kbd "i") 'god-mode-disable)

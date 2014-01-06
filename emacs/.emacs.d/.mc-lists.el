@@ -62,4 +62,5 @@
 
 (setq mc/cmds-to-run-once
       '(
+        god-mode-meta
         ))
