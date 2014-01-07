@@ -15,6 +15,7 @@
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key attic-minor-mode-map (kbd "C-x C-k") 'ido-kill-buffer)
 (define-key attic-minor-mode-map (kbd "C-c C-v") 'undo-tree-visualize)
+(define-key attic-minor-mode-map (kbd "C-c C-s") 'helm-swoop)
 
 ;; Meta Keys
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
@@ -52,7 +53,6 @@
 (define-key attic-minor-mode-map (kbd "C-j C-e")
     'kmacro-end-or-call-macro-repeat)
 (define-key attic-minor-mode-map (kbd "C-j C-w") 'load-haskell-workgroups)
-(define-key attic-minor-mode-map (kbd "C-j C-s") 'helm-swoop)
 (define-key attic-minor-mode-map (kbd "C-j C-c") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "C-j C-f") 'helm-ls-git-ls)
 (define-key attic-minor-mode-map (kbd "C-j C-l") 'toggle-linum-gutter)

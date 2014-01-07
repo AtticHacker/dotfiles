@@ -10,6 +10,65 @@
     "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
+
+(defvar mp-rad-packages
+  '(
+    redo+
+    iy-go-to-char
+    ace-jump-mode
+    auto-complete
+    coffee-mode
+    dash
+    elixir-mode
+    git-gutter
+    expand-region
+    gnus
+    god-mode
+    haskell-mode
+    helm
+    helm-ls-git
+    helm-swoop
+    js2-mode
+    linum-relative
+    magit
+    multiple-cursors
+    rainbow-delimiters
+    slime
+    smex
+    sr-speedbar
+    undo-tree
+    window-numbering
+    workgroups
+    wrap-region
+    yasnippet
+    zencoding-mode
+    git-commit-mode
+    git-rebase-mode
+    gitconfig-mode
+    gitignore-mode
+    ))
+
+(defun mp-install-rad-packages ()
+  "Install only the sweetest of packages."
+  (interactive)
+  (package-refresh-contents)
+  (mapc #'(lambda (package)
+            (unless (package-installed-p package)
+              (package-install package)))
+        mp-rad-packages))
+
+
+(defun mp-build-rad-packages ()
+  (interactive)
+  (mapc #'(lambda (package)
+            (package-build-archive package))
+        mp-rad-packages))
+
 (require 'undo-tree)
 (require 'redo+)
 (require 'linum-relative)
@@ -20,7 +79,6 @@
 (require 'helm)
 (require 'helm-ls-git)
 (require 'helm-swoop)
-(require 'color-theme)
 (require 'auto-complete)
 (require 'misc)
 (require 'org-install)
@@ -45,7 +103,6 @@
 (require 'coffee-mode)
 (require 'slime)
 (require 'js2-mode)
-(require 'slime-js)
 
 (slime-setup '(slime-js slime-repl))
 (setq slime-js-swank-command "/usr/local/bin/swank-js")

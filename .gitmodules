@@ -10,9 +10,6 @@
 [submodule "emacs/.emacs.d/plugins/expand-region"]
 	path = emacs/.emacs.d/plugins/expand-region
 	url = git@github.com:magnars/expand-region.el.git
-[submodule "emacs/.emacs.d/plugins/ace-jump-mode"]
-	path = emacs/.emacs.d/plugins/ace-jump-mode
-	url = git@github.com:winterTTr/ace-jump-mode.git
 [submodule "emacs/.emacs.d/plugins/gnus"]
 	path = emacs/.emacs.d/plugins/gnus
 	url = git@github.com:emacsmirror/gnus.git

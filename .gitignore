@@ -6,3 +6,4 @@ dist/
 emacs/.emacs.d/auto-save-list/
 emacs/.emacs.d/elim
 emacs/.emacs.d/ac-comphist.dat
+emacs/.emacs.d/elpa
