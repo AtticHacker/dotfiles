@@ -19,7 +19,6 @@
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
 
 (define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
-(define-key attic-minor-mode-map (kbd "M-r")	 'auto-complete)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-+")	 'align-regexp)
@@ -108,9 +107,9 @@
 ;; Helm keys
 (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "M-f") 'helm-select-action)
-(define-key helm-map (kbd "M-b") 'undefined)
-(define-key helm-map (kbd "C-f") 'undefined)
-(define-key helm-map (kbd "C-b") 'undefined)
+(define-key helm-map (kbd "M-b") 'nil)
+(define-key helm-map (kbd "C-f") 'nil)
+(define-key helm-map (kbd "C-b") 'nil)
 (define-prefix-command 'm-g-prefix)
 (define-key helm-map (kbd "M-g M-g") 'helm-keyboard-quit)
 
@@ -130,6 +129,9 @@
 (global-set-key (kbd "C-x C-2") 'split-window-below)
 (global-set-key (kbd "C-x C-3") 'split-window-right)
 (global-set-key (kbd "C-x C-0") 'delete-window)
+
+; auto-complete
+(define-key ac-complete-mode-map "\r" nil)
 
 ; Define mode
 (define-minor-mode attic-minor-mode
