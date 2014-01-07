@@ -1,4 +1,5 @@
 ; Require plugins
+
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -9,6 +10,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (require 'undo-tree)
+(require 'linum-relative)
 (require 'git-gutter)
 (require 'god-mode)
 (require 'zencoding-mode)
@@ -69,10 +71,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq auto-mode-alist (cons '(".tpl" . html-mode    )
-                      (cons '(".elm" . haskell-mode )
-                      (cons '(".js" . js2-mode )
-                            auto-mode-alist))))
+(setq auto-mode-alist
+      (cons '(".tpl" . html-mode    )
+      (cons '(".elm" . haskell-mode )
+      (cons '(".js" . js2-mode )
+      (cons '(".splash" . (lambda()
+        (lisp-interaction-mode)
+        (read-only-mode)
+        (set (make-local-variable 'linum-mode) nil)
+        ))
+
+auto-mode-alist)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,6 +95,7 @@
  '(custom-safe-themes (quote ("0a1eb1fb7c716c0eced08572fa5477e6cf80d145167590ab5a00697678b14c30" "dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
  '(dirtree-windata (quote (frame left 0.15 delete)))
  '(fci-rule-color "#383838")
+ '(global-hl-line-mode t)
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
@@ -97,8 +108,10 @@
  '(helm-split-window-in-side-p t)
  '(ido-separator "
            ")
+ '(initial-buffer-choice "~/.emacs.d/splash/doge.splash")
  '(js2-strict-missing-semi-warning nil)
- '(linum-format (quote "%3d"))
+ '(linum-format (quote "%2d"))
+ '(linum-relative-format "%2s")
  '(scroll-error-top-bottom t)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
@@ -185,4 +198,8 @@
  ;; If there is more than one, they won't work right.
  '(flymake-errline ((t (:underline "red"))))
  '(flymake-warnline ((((class color)) (:underline "yellow"))))
- '(helm-ff-directory ((t (:background "color-233" :foreground "color-251")))))
+ '(helm-ff-directory ((t (:background "color-233" :foreground "color-251"))))
+ '(hl-line ((t (:inherit highlight :background "color-234"))))
+ '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold)))))
+
+(setq linum-format 'linum-relative)
