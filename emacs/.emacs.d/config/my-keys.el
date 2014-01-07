@@ -134,6 +134,10 @@
 ; auto-complete
 (define-key ac-complete-mode-map "\r" nil)
 
+; Global Keys
+(global-set-key [f8] 'copy-to-clipboard)
+(global-set-key [f9] 'paste-from-clipboard)
+
 ; Define mode
 (define-minor-mode attic-minor-mode
 "A minor mode so that my key settings override annoying major modes."

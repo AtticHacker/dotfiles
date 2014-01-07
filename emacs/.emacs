@@ -42,7 +42,6 @@
 (require 'gnus)
 (require 'erlang-start)
 (require 'elixir-mode)
-(require 'xclip)
 (require 'coffee-mode)
 (require 'slime)
 (require 'js2-mode)
