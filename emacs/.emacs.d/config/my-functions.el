@@ -125,13 +125,18 @@
 
 (defun god-mode-enable () (interactive)
   (setq god-local-mode t)
-  (mc/keyboard-quit)
   (keyboard-escape-quit)
   (if (getenv "TMUX")
       (send-string-to-terminal "\033Ptmux;\033\033]12;White\007\033\\")
       (send-string-to-terminal "\033]12;White\007")
       )
 )
+
+(defun keyboard-escape-quit-mc () (interactive)
+  (mc/keyboard-quit)
+  (keyboard-escape-quit)
+)
+
 (defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
   (let (orig-one-window-p)
     (fset 'orig-one-window-p (symbol-function 'one-window-p))

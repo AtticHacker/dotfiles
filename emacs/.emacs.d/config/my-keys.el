@@ -18,7 +18,7 @@
 
 ;; Meta Keys
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
-
+(global-set-key (kbd "M-g") 'god-mode-enable)
 (define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
 (define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
@@ -115,9 +115,9 @@
 (define-key helm-map (kbd "M-g M-g") 'helm-keyboard-quit)
 
 ;; God mode
-(define-key god-local-mode-map   (kbd "i") 'god-mode-disable)
-(define-key attic-minor-mode-map (kbd "M-g") 'god-mode-enable)
 
+(define-key god-local-mode-map (kbd "i")   'god-mode-disable)
+(define-key god-local-mode-map (kbd "M-g") 'keyboard-escape-quit-mc)
 (define-key god-local-mode-map (kbd "C-l") 'forward-to-word)
 (define-key god-local-mode-map (kbd "C-h") 'backward-to-word)
 
