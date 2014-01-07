@@ -82,3 +82,6 @@
 [submodule "emacs/.emacs.d/plugins/linum-relative"]
 	path = emacs/.emacs.d/plugins/linum-relative
 	url = git@github.com:coldnew/linum-relative.git
+[submodule "emacs/.emacs.d/plugins/haskell-mode"]
+	path = emacs/.emacs.d/plugins/haskell-mode
+	url = git@github.com:haskell/haskell-mode.git

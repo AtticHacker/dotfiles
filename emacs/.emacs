@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.13/emacs")
 (let ((default-directory "~/.emacs.d/plugins/"))
   (normal-top-level-add-subdirs-to-load-path))
 (let ((default-directory
@@ -19,17 +20,14 @@
 (require 'helm)
 (require 'helm-ls-git)
 (require 'helm-swoop)
-(require 'haskell-cabal)
 (require 'color-theme)
 (require 'auto-complete)
 (require 'misc)
 (require 'org-install)
-(require 'haskell-mode)
-(require 'haskell-ghci)
+(require 'haskell-mode-autoloads)
 (require 'yasnippet)
 (require 'sr-speedbar)
 (require 'window-numbering)
-(require 'inf-haskell)
 (require 'flymake)
 (require 'magit)
 (require 'iy-go-to-char)
@@ -42,14 +40,14 @@
 (require 'smex)
 (require 'epa-file)
 (require 'gnus)
-;(require 'erlang-start)
+(require 'erlang-start)
 (require 'elixir-mode)
 (require 'xclip)
 (require 'coffee-mode)
-
 (require 'slime)
 (require 'js2-mode)
 (require 'slime-js)
+
 (slime-setup '(slime-js slime-repl))
 (setq slime-js-swank-command "/usr/local/bin/swank-js")
 (setq slime-js-swank-args '())
@@ -70,7 +68,7 @@
 (require 'my-w3m)
 (require 'my-keys)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq auto-mode-alist
       (cons '(".tpl" . html-mode    )
@@ -158,7 +156,7 @@ auto-mode-alist)))))
   ido-max-prospects 25
   ido-confirm-unique-completion t)		; wait for RET, even with unique completion
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Commands to start with
 (sr-speedbar-window-dedicated-only-one-p)
@@ -172,25 +170,14 @@ auto-mode-alist)))))
 (wg-load "~/.emacs.d/workgroups/Haskell")
 (setq wg-morph-on nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;haskell mode configuration
-(setq auto-mode-alist
-      (append auto-mode-alist
-              '(("\\.[hg]s$"  . haskell-mode)
-                ("\\.hic?$"   . haskell-mode)
-                ("\\.hsc$"    . haskell-mode)
-                ("\\.chs$"    . haskell-mode)
-                ("\\.l[hg]s$" . literate-haskell-mode))))
-
-(autoload 'haskell-mode "haskell-mode"
-  "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-  "Major mode for editing literate Haskell scripts." t)
-
+; Haskell flymake
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (put 'upcase-region 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
