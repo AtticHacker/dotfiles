@@ -10,6 +10,7 @@
 
 ;; Control Prefix Keys
 (define-key attic-minor-mode-map (kbd "C-M-_")	 'redo)
+(define-key attic-minor-mode-map (kbd "C-M--")	 'redo)
 (define-key attic-minor-mode-map (kbd "C-x M-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key attic-minor-mode-map (kbd "C-x C-k") 'ido-kill-buffer)

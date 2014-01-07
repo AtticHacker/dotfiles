@@ -10,6 +10,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (require 'undo-tree)
+(require 'redo+)
 (require 'linum-relative)
 (require 'git-gutter)
 (require 'god-mode)
