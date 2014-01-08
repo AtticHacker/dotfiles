@@ -51,6 +51,7 @@
     git-rebase-mode
     gitconfig-mode
     gitignore-mode
+    emms
     ))
 
 (defun mp-install-rad-packages ()
@@ -69,6 +70,8 @@
             (package-build-archive package))
         mp-rad-packages))
 
+(require 'elim)
+(require 'garak)
 (require 'undo-tree)
 (require 'redo+)
 (require 'linum-relative)
@@ -103,7 +106,12 @@
 (require 'coffee-mode)
 (require 'slime)
 (require 'js2-mode)
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
 
+
+(setq elim-executable "/usr/bin/elim-client")
 (slime-setup '(slime-js slime-repl))
 (setq slime-js-swank-command "/usr/local/bin/swank-js")
 (setq slime-js-swank-args '())

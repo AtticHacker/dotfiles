@@ -21,7 +21,6 @@
 (global-set-key (kbd "M-q") 'backward-kill-word) ; global for iy-go-to-char
 (global-set-key (kbd "M-g") 'god-mode-enable)
 (define-key attic-minor-mode-map (kbd "M-o")	 'er/expand-region)
-(define-key attic-minor-mode-map (kbd "M-<RET>") 'find-tag)
 (define-key attic-minor-mode-map (kbd "M-x")     'execute-extended-command)
 (define-key attic-minor-mode-map (kbd "M-+")	 'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-@")	 'er/expand-region)
@@ -62,7 +61,6 @@
     (let ((current-prefix-arg '(1)))
       (call-interactively 'helm-do-grep))))
 
-
 (define-key attic-minor-mode-map (kbd "C-j C-r") (key-binding (kbd "\C-xr")))
 
 (define-key attic-minor-mode-map (kbd "C-j C-1")     'wg-switch-to-index-0)
@@ -75,6 +73,17 @@
 (define-key attic-minor-mode-map (kbd "C-j C-8")     'wg-switch-to-index-7)
 (define-key attic-minor-mode-map (kbd "C-j C-9")     'wg-switch-to-index-8)
 (define-key attic-minor-mode-map (kbd "C-j C-0")     'wg-switch-to-index-9)
+
+(define-key attic-minor-mode-map (kbd "C-j 1")     'wg-switch-to-index-0)
+(define-key attic-minor-mode-map (kbd "C-j 2")     'wg-switch-to-index-1)
+(define-key attic-minor-mode-map (kbd "C-j 3")     'wg-switch-to-index-2)
+(define-key attic-minor-mode-map (kbd "C-j 4")     'wg-switch-to-index-3)
+(define-key attic-minor-mode-map (kbd "C-j 5")     'wg-switch-to-index-4)
+(define-key attic-minor-mode-map (kbd "C-j 6")     'wg-switch-to-index-5)
+(define-key attic-minor-mode-map (kbd "C-j 7")     'wg-switch-to-index-6)
+(define-key attic-minor-mode-map (kbd "C-j 8")     'wg-switch-to-index-7)
+(define-key attic-minor-mode-map (kbd "C-j 9")     'wg-switch-to-index-8)
+(define-key attic-minor-mode-map (kbd "C-j 0")     'wg-switch-to-index-9)
 
 ;; Erlang Keys
 (defun erlang-keys-hook ()
@@ -133,6 +142,10 @@
 
 ; auto-complete
 (define-key ac-complete-mode-map "\r" nil)
+
+; Garak Mode
+(define-key garak-mode-map (kbd "\r") nil)
+(define-key garak-mode-map (kbd "M-<RET>") 'lui-send-input)
 
 ; Global Keys
 (global-set-key [f8] 'copy-to-clipboard)
