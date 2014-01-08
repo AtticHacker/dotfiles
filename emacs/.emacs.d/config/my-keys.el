@@ -121,6 +121,8 @@
 (define-key helm-map (kbd "M-b") 'nil)
 (define-key helm-map (kbd "C-f") 'nil)
 (define-key helm-map (kbd "C-b") 'nil)
+(define-key helm-buffer-map (kbd "C-a")
+  'helm-buffers-toggle-show-hidden-buffers)
 (define-prefix-command 'm-g-prefix)
 (define-key helm-map (kbd "M-g M-g") 'helm-keyboard-quit)
 
