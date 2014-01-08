@@ -63,6 +63,8 @@
               (package-install package)))
         mp-rad-packages))
 
+(require 'tramp)
+(setq tramp-default-method "scp")
 (require 'elim)
 (require 'garak)
 (require 'undo-tree)
