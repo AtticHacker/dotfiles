@@ -19,7 +19,7 @@
 (defvar mp-rad-packages
   '(
     redo+
-    iy-go-to-char
+    jump-char
     ace-jump-mode
     auto-complete
     coffee-mode
@@ -91,7 +91,6 @@
 (require 'window-numbering)
 (require 'flymake)
 (require 'magit)
-(require 'iy-go-to-char)
 (require 'expand-region)
 (require 'ace-jump-mode)
 (require 'multiple-cursors)
@@ -107,6 +106,7 @@
 (require 'slime)
 (require 'js2-mode)
 (require 'emms-setup)
+(require 'jump-char)
 (emms-standard)
 (emms-default-players)
 

@@ -20,7 +20,7 @@ source $HOME/.lazyVault/binPaths
 export PATH=/usr/local/ghc/7.6.3/bin:$PATH
 export PATH=$PATH:$HOME/Shortcuts/
 
-export EDITOR="emacs -nw --no-splash"
+export EDITOR="emacs -nw"
 
 # plugins=(git)
 
