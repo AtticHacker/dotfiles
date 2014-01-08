@@ -63,13 +63,6 @@
               (package-install package)))
         mp-rad-packages))
 
-
-(defun mp-build-rad-packages ()
-  (interactive)
-  (mapc #'(lambda (package)
-            (package-build-archive package))
-        mp-rad-packages))
-
 (require 'elim)
 (require 'garak)
 (require 'undo-tree)
