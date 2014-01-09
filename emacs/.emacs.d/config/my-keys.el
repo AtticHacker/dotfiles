@@ -139,7 +139,7 @@
 
 (define-key god-local-mode-map (kbd "C-x C-s") (lambda()
     (interactive)
-    (delete-trailing-whitespace-and-save)
+    (save-buffer)
     (god-mode-enable)))
 
 (global-set-key (kbd "C-x C-1") 'delete-other-windows)

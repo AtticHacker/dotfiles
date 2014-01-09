@@ -19,12 +19,6 @@
   (select-window-3)
   (ido-find-file))
 
-(defun delete-trailing-whitespace-and-save ()
-  "Deletes trailing whitespace and saves"
-  (interactive)
-  (delete-trailing-whitespace)
-  (save-buffer))
-
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."
   (interactive "sbuffer name: ")

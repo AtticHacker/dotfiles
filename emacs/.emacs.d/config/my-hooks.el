@@ -22,6 +22,8 @@
 (add-hook 'erlang-mode-hook  'flymake-mode)
 (add-hook 'erlang-mode-hook  'erlang-keys-hook)
 
+(add-hook 'before-save-hook (lambda() (delete-trailing-whitespace)))
+
 (add-hook 'js2-mode-hook
           (lambda()
             (js2-keys-hook)

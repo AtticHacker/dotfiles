@@ -157,7 +157,7 @@ auto-mode-alist)))))
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)) t)
  '(helm-always-two-windows nil)
  '(helm-full-frame nil)
  '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
@@ -187,8 +187,6 @@ auto-mode-alist)))))
 
 ; Settings
 (setq-default indent-tabs-mode nil)
-;; Don't create ~ files
-(setq make-backup-files nil)
 (setq org-agenda-files
       (list "~/Documents/org/notes.org"
             "~/Documents/org/todos.org"
@@ -247,6 +245,9 @@ auto-mode-alist)))))
  '(flymake-warnline ((((class color)) (:underline "yellow"))))
  '(helm-ff-directory ((t (:background "color-233" :foreground "color-251"))))
  '(hl-line ((t (:inherit highlight :background "color-234"))))
- '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold)))))
+ '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold))))
+ '(show-paren-match ((t (:background "color-239" :foreground "#7CB8BB" :weight bold)))))
 
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(fset 'yes-or-no-p 'y-or-n-p) ; y / n instead of yes / no
 (setq linum-format 'linum-relative)

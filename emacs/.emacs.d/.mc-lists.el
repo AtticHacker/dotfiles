@@ -12,7 +12,6 @@
         backward-to-word
         comment-or-uncomment-region
         control-lock-enable
-        delete-trailing-whitespace-and-save
         end-of-buffer
         erlang-electric-comma
         evil-backward-char
