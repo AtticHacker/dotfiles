@@ -34,7 +34,7 @@
     haskell-mode
     helm
     helm-ls-git
-    helm-swoop
+;    helm-swoop
     js2-mode
     linum-relative
     magit
@@ -113,8 +113,6 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'"    . web-mode))
 
-
-
 (emms-standard)
 (emms-default-players)
 
@@ -143,7 +141,7 @@
 
 (setq auto-mode-alist
       (cons '(".tpl" . html-mode    )
-      (cons '(".elm" . haskell-mode )
+;      (cons '(".elm" . haskell-mode ) conflicts with git commit?
       (cons '(".js" . js2-mode )
       (cons '(".splash" . (lambda()
         (lisp-interaction-mode)
@@ -151,48 +149,8 @@
         (set (make-local-variable 'linum-mode) nil)
         ))
 
-auto-mode-alist)))))
+auto-mode-alist))))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(auth-source-save-behavior nil)
- '(coffee-tab-width 4)
- '(custom-safe-themes (quote ("0a1eb1fb7c716c0eced08572fa5477e6cf80d145167590ab5a00697678b14c30" "dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
- '(dirtree-windata (quote (frame left 0.15 delete)))
- '(fci-rule-color "#383838")
- '(global-hl-line-mode t)
- '(haskell-indentation-layout-offset 4)
- '(haskell-indentation-left-offset 4)
- '(haskell-indentation-where-post-offset 4)
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)) t)
- '(helm-always-two-windows nil)
- '(helm-full-frame nil)
- '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
- '(helm-reuse-last-window-split-state nil)
- '(helm-split-window-default-side (quote below))
- '(helm-split-window-in-side-p t)
- '(initial-buffer-choice "~/.emacs.d/splash/doge.splash")
- '(js2-strict-missing-semi-warning nil)
- '(linum-format (quote "%2d"))
- '(linum-relative-format "%2s")
- '(scroll-error-top-bottom t)
- '(send-mail-function (quote smtpmail-send-it))
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 587)
- '(speedbar-default-position (quote left))
- '(speedbar-show-unknown-files t)
- '(sr-speedbar-right-side nil)
- '(sr-speedbar-skip-other-window-p t)
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3")
- '(vc-follow-symlinks t))
- '(erlang-mode-hook (quote (wrap-region-mode)))
 
 ; Settings
 (setq-default indent-tabs-mode nil)
@@ -230,6 +188,62 @@ auto-mode-alist)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (put 'upcase-region 'disabled nil)
+
+; Backup ~ files in seperate directory
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+; y / n instead of yes / no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+; Use relative
+(setq linum-format 'linum-relative)
+
+ ; Don't resize minibuffer
+(setq resize-mini-windows nil)
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
+ '(auth-source-save-behavior nil)
+ '(coffee-tab-width 4)
+ '(custom-safe-themes (quote ("0a1eb1fb7c716c0eced08572fa5477e6cf80d145167590ab5a00697678b14c30" "dc3d6a554b626775e02c17da54e7b7f9378ccfd3cbadab62397f8a6ddf33490f" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "eecdec02a43c2dfdf388d7d27cb00af310b350d4ea6f923ebc82197d348cf383" default)))
+ '(dirtree-windata (quote (frame left 0.15 delete)))
+ '(fci-rule-color "#383838")
+ '(global-hl-line-mode t)
+ '(haskell-indentation-layout-offset 4)
+ '(haskell-indentation-left-offset 4)
+ '(haskell-indentation-where-post-offset 4)
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)) t)
+ '(helm-always-two-windows nil)
+ '(helm-full-frame nil)
+ '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
+ '(helm-reuse-last-window-split-state nil)
+ '(helm-split-window-default-side (quote below))
+ '(helm-split-window-in-side-p t)
+; '(initial-buffer-choice "~/.emacs.d/splash/doge.splash")
+ '(js2-strict-missing-semi-warning nil)
+ '(linum-format (quote "%2d"))
+ '(linum-relative-format "%2s")
+ '(scroll-error-top-bottom t)
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 587)
+ '(speedbar-default-position (quote left))
+ '(speedbar-show-unknown-files t)
+ '(sr-speedbar-right-side nil)
+ '(sr-speedbar-skip-other-window-p t)
+ '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3")
+ '(vc-follow-symlinks t))
+ '(erlang-mode-hook (quote (wrap-region-mode)))
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -241,7 +255,3 @@ auto-mode-alist)))))
  '(hl-line ((t (:inherit highlight :background "color-234"))))
  '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold))))
  '(show-paren-match ((t (:background "color-239" :foreground "#7CB8BB" :weight bold)))))
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(fset 'yes-or-no-p 'y-or-n-p) ; y / n instead of yes / no
-(setq linum-format 'linum-relative)
