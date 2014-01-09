@@ -105,7 +105,6 @@
 (require 'jump-char)
 (require 'web-mode)
 
-
 (emms-standard)
 (emms-default-players)
 
@@ -184,6 +183,15 @@
  ; Don't resize minibuffer
 (setq resize-mini-windows nil)
 
+; ido for rinari until I find a helm alternative
+(setq
+  ido-ignore-buffers
+  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
+    "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
+    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o")
+  ido-enable-flex-matching t)
+
+(setq confirm-nonexistent-file-or-buffer nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
