@@ -14,7 +14,6 @@
 (define-key attic-minor-mode-map (kbd "C-x M-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key attic-minor-mode-map (kbd "C-c C-v") 'undo-tree-visualize)
-(define-key attic-minor-mode-map (kbd "C-c C-s") 'helm-swoop)
 
 ;; Meta Keys
 (global-set-key (kbd "M-g") 'god-mode-enable)
@@ -57,6 +56,8 @@
 (define-key attic-minor-mode-map (kbd "C-j C-l") 'toggle-linum-gutter)
 
 (define-key attic-minor-mode-map (kbd "C-j C-g C-g") 'helm-do-grep)
+(define-key attic-minor-mode-map (kbd "C-j C-g C-s") 'helm-swoop)
+(define-key attic-minor-mode-map (kbd "C-j C-g C-m") 'helm-multi-swoop)
 (define-key attic-minor-mode-map (kbd "C-j C-g C-r") (lambda () (interactive)
     (let ((current-prefix-arg '(1)))
       (call-interactively 'helm-do-grep))))
