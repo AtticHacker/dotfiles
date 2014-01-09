@@ -18,6 +18,8 @@
 
 (defvar mp-rad-packages
   '(
+    rinari
+    web-mode
     redo+
     jump-char
     ace-jump-mode
@@ -39,7 +41,6 @@
     multiple-cursors
     rainbow-delimiters
     slime
-    smex
     sr-speedbar
     undo-tree
     window-numbering
@@ -92,7 +93,6 @@
 (require 'rainbow-delimiters)
 (require 'wrap-region)
 (require 'workgroups)
-(require 'smex)
 (require 'epa-file)
 (require 'gnus)
 (require 'erlang-start)
@@ -100,11 +100,23 @@
 (require 'coffee-mode)
 (require 'slime)
 (require 'js2-mode)
+(require 'rinari)
 (require 'emms-setup)
 (require 'jump-char)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'"     . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'"   . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'"    . web-mode))
+
+
+
 (emms-standard)
 (emms-default-players)
-
 
 (setq elim-executable "/usr/bin/elim-client")
 (slime-setup '(slime-js slime-repl))
@@ -146,7 +158,6 @@ auto-mode-alist)))))
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-auto-show-menu 0.0)
  '(ansi-color-names-vector ["#111111" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(auth-source-save-behavior nil)
  '(coffee-tab-width 4)
@@ -164,8 +175,6 @@ auto-mode-alist)))))
  '(helm-reuse-last-window-split-state nil)
  '(helm-split-window-default-side (quote below))
  '(helm-split-window-in-side-p t)
- '(ido-separator "
-           ")
  '(initial-buffer-choice "~/.emacs.d/splash/doge.splash")
  '(js2-strict-missing-semi-warning nil)
  '(linum-format (quote "%2d"))
@@ -197,21 +206,6 @@ auto-mode-alist)))))
 (dolist (key '("\C-z"))
   (global-unset-key key))
 
-(ido-mode 'both) ;; for buffers and files
-(setq
-  ido-ignore-buffers
-  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
-    "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
-    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o" "^\!")
-  ido-case-fold  t				; be case-insensitive
-  ido-enable-last-directory-history nil		; don't remember last used dirs
-  ido-max-work-directory-list 30		; should be enough
-  ido-max-work-file-list      50		; remember many
-  ido-use-filename-at-point nil			; don't use filename at point (annoying)
-  ido-use-url-at-point nil			; don't use url at point (annoying)
-  ido-enable-flex-matching t
-  ido-max-prospects 25
-  ido-confirm-unique-completion t)		; wait for RET, even with unique completion
  (setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

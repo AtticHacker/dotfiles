@@ -31,13 +31,13 @@
         god-mode-self-insert
         haskell-indentation-delete-char
         haskell-newline-and-indent
-        ido-switch-buffer
         inferior-haskell-load-file
         info
         iy-go-to-char
         iy-go-to-char--command
         kbd-macro-query
         keyboard-escape-quit
+        keyboard-escape-quit-mc
         kill-region
         load-haskell-workgroups
         magit-stage-item

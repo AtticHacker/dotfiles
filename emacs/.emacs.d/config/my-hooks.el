@@ -48,19 +48,4 @@
         (if (not (string-match "/$" name))
             (rename-buffer (concat "!" name) t))))
 
-; Calm auto-complete down
-(defun ac-handle-post-command ()
-  (condition-case var
-      (when (and ac-triggered
-                 (not (ido-active)) ;; Disable auto pop-up in ido mode
-                 (or ac-auto-start
-                     ac-completing)
-                 (not isearch-mode))
-        (setq ac-last-point (point))
-        (ac-start :requires (unless ac-completing ac-auto-start))
-        (ac-inline-update))
-    (error (ac-error var))))
-
-
-
 (provide 'my-hooks)

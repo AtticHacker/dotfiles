@@ -13,7 +13,6 @@
 (define-key attic-minor-mode-map (kbd "C-M--")	 'redo)
 (define-key attic-minor-mode-map (kbd "C-x M-t") 'transpose-paragraphs)
 (define-key attic-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
-(define-key attic-minor-mode-map (kbd "C-x C-k") 'ido-kill-buffer)
 (define-key attic-minor-mode-map (kbd "C-c C-v") 'undo-tree-visualize)
 (define-key attic-minor-mode-map (kbd "C-c C-s") 'helm-swoop)
 
@@ -27,7 +26,7 @@
 (define-key attic-minor-mode-map (kbd "M-t") 'transpose-words)
 (define-key attic-minor-mode-map (kbd "M-T") 'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E") 'mc/edit-lines)
-(define-key attic-minor-mode-map (kbd "M-x") 'smex)
+(define-key attic-minor-mode-map (kbd "M-x") 'helm-M-x)
 (define-key attic-minor-mode-map (kbd "M-P")'mc/mark-previous-like-this)
 
 (define-key attic-minor-mode-map (kbd "M-N") 'mc/mark-next-like-this)

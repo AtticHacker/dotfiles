@@ -13,12 +13,6 @@
   (wg-switch-to-index-1)
   (switch-to-buffer b))
 
-(defun ido-find-file-pane-3 ()
-  "Open file in panel 3"
-  (interactive)
-  (select-window-3)
-  (ido-find-file))
-
 (defun zsh (buffer-name)
   "Start a terminal and rename buffer."
   (interactive "sbuffer name: ")
