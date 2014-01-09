@@ -59,13 +59,13 @@
   "Install only the sweetest of packages."
   (interactive)
   (package-refresh-contents)
+
   (mapc #'(lambda (package)
             (unless (package-installed-p package)
               (package-install package)))
         mp-rad-packages))
 
 (require 'tramp)
-(setq tramp-default-method "scp")
 (require 'elim)
 (require 'garak)
 (require 'undo-tree)
@@ -103,20 +103,15 @@
 (require 'rinari)
 (require 'emms-setup)
 (require 'jump-char)
-
 (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'"   . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'"    . web-mode))
+
 
 (emms-standard)
 (emms-default-players)
 
 (setq elim-executable "/usr/bin/elim-client")
+(setq tramp-default-method "scp")
+
 (slime-setup '(slime-js slime-repl))
 (setq slime-js-swank-command "/usr/local/bin/swank-js")
 (setq slime-js-swank-args '())
@@ -137,20 +132,12 @@
 (require 'my-w3m)
 (require 'my-keys)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq auto-mode-alist
-      (cons '(".tpl" . html-mode    )
-;      (cons '(".elm" . haskell-mode ) conflicts with git commit?
-      (cons '(".js" . js2-mode )
-      (cons '(".splash" . (lambda()
-        (lisp-interaction-mode)
-        (read-only-mode)
-        (set (make-local-variable 'linum-mode) nil)
-        ))
-
-auto-mode-alist))))
-
+(setq auto-mode-alist (append '(
+    ("\\.tpl\\'" . html-mode)
+    ("\\.erb\\'" . web-mode)
+    ("\\.js\\'"  . js2-mode)
+    ("\\.elm\\'" . haskell-mode)
+    ) auto-mode-alist))
 
 ; Settings
 (setq-default indent-tabs-mode nil)
@@ -179,13 +166,9 @@ auto-mode-alist))))
 (wg-load "~/.emacs.d/workgroups/Haskell")
 (setq wg-morph-on nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ; Haskell flymake
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (put 'upcase-region 'disabled nil)
 
@@ -218,11 +201,7 @@ auto-mode-alist))))
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)) t)
- '(helm-always-two-windows nil)
- '(helm-full-frame nil)
  '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
- '(helm-reuse-last-window-split-state nil)
- '(helm-split-window-default-side (quote below))
  '(helm-split-window-in-side-p t)
  '(helm-swoop-split-with-multiple-windows t)
  '(js2-strict-missing-semi-warning nil)

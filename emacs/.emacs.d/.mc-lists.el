@@ -10,6 +10,8 @@
         attic-rock-lock
         backward-delete-char
         backward-to-word
+        c-electric-delete-forward
+        c-electric-slash
         comment-or-uncomment-region
         control-lock-enable
         end-of-buffer
@@ -35,6 +37,8 @@
         info
         iy-go-to-char
         iy-go-to-char--command
+        jump-char-forward
+        jump-char-process-char
         kbd-macro-query
         keyboard-escape-quit
         keyboard-escape-quit-mc
