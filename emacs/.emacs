@@ -245,5 +245,5 @@
  '(helm-ff-file ((t (:inherit default))))
  '(hl-line ((t (:inherit highlight :background "color-234"))))
  '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold))))
- '(region ((t (:background "color-242"))))
+ '(region ((t (:background "color-240" :foreground "#FFF"))))
  '(show-paren-match ((t (:background "color-239" :foreground "#7CB8BB" :weight bold)))))
