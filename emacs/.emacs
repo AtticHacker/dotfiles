@@ -104,7 +104,6 @@
 (require 'emms-setup)
 (require 'jump-char)
 (require 'web-mode)
-
 (emms-standard)
 (emms-default-players)
 
@@ -177,8 +176,8 @@
 ; y / n instead of yes / no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-; Use relative
-(setq linum-format 'linum-relative)
+; No splash screen
+(setq inhibit-startup-message t)
 
  ; Don't resize minibuffer
 (setq resize-mini-windows nil)
@@ -192,6 +191,11 @@
   ido-enable-flex-matching t)
 
 (setq confirm-nonexistent-file-or-buffer nil)
+
+'(linum-format (quote "%2d"))
+'(linum-relative-format (quote "%2d"))
+; Use relative
+(setq linum-format 'linum-relative)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -213,8 +217,7 @@
  '(helm-split-window-in-side-p t)
  '(helm-swoop-split-with-multiple-windows t)
  '(js2-strict-missing-semi-warning nil)
- '(linum-format (quote "%2d"))
- '(linum-relative-format "%2s")
+ '(linum-format (quote "%3d"))
  '(scroll-error-top-bottom t)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
@@ -227,9 +230,9 @@
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(vc-follow-symlinks t))
+ '(vc-follow-symlinks t)
+ '(wg-mode-line-on nil))
  '(erlang-mode-hook (quote (wrap-region-mode)))
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -238,7 +241,9 @@
  ;; If there is more than one, they won't work right.
  '(flymake-errline ((t (:underline "red"))))
  '(flymake-warnline ((((class color)) (:underline "yellow"))))
- '(helm-ff-directory ((t (:background "color-233" :foreground "color-251"))))
+ '(helm-ff-directory ((t (:background "color-233" :foreground "cyan"))))
+ '(helm-ff-file ((t (:inherit default))))
  '(hl-line ((t (:inherit highlight :background "color-234"))))
  '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold))))
+ '(region ((t (:background "color-242"))))
  '(show-paren-match ((t (:background "color-239" :foreground "#7CB8BB" :weight bold)))))

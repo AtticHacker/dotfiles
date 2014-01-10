@@ -1,0 +1,48 @@
+*#
+.#*
+*~
+.*.swp
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/log
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/tmp
+/test/tmp/
+/db/*.sqlite3
+/public/system
+/test/version_tmp/
+/tmp/
+/vendor/bundle
+
+**.orig
+rerun.txt
+pickle-email-*.html
+config/initializers/secret_token.rb
+config/secrets.yml
+
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+## Environment normalisation:
+/.bundle/
+/lib/bundler/man/
+
+# for a library or gem, you might want to ignore these files since the code is
+# intended to run in multiple environments; otherwise, check them in:
+# Gemfile.lock
+# .ruby-version
+# .ruby-gemset
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
