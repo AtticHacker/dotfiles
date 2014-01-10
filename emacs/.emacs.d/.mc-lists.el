@@ -48,9 +48,11 @@
         org-beginning-of-line
         org-delete-char
         org-end-of-line
+        org-force-self-insert
         org-self-insert-command
         orgtbl-self-insert-command
         pop-to-mark-command
+        repeat
         save-and-lock2
         select-window-1
         sgml-slash

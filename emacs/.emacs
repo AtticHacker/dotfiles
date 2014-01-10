@@ -65,6 +65,7 @@
               (package-install package)))
         mp-rad-packages))
 
+(require 'powerline)
 (require 'tramp)
 (require 'elim)
 (require 'garak)
@@ -130,11 +131,13 @@
 (require 'my-w3m)
 (require 'my-keys)
 
+(powerline-my-theme)
 (setq auto-mode-alist (append '(
     ("\\.tpl\\'" . html-mode)
     ("\\.erb\\'" . web-mode)
     ("\\.js\\'"  . js2-mode)
     ("\\.elm\\'" . haskell-mode)
+    ("Gemfile" . ruby-mode)
     ) auto-mode-alist))
 
 ; Settings
@@ -220,7 +223,6 @@
  '(helm-split-window-in-side-p t)
  '(helm-swoop-split-with-multiple-windows t)
  '(js2-strict-missing-semi-warning nil)
- '(linum-format (quote "%3d"))
  '(scroll-error-top-bottom t)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")

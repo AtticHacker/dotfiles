@@ -15,9 +15,9 @@
 (epa-file-enable)
 (window-numbering-mode 1)
 (yas-global-mode 1)
-(custom-set-variables '(linum-format (quote "%3d")))
 (god-mode)
 (undo-tree-mode 1)
+(column-number-mode 1)
 (define-globalized-minor-mode my-global-auto-complete-mode auto-complete-mode
   (lambda () (auto-complete-mode 1))
   (lambda () (wrap-region-mode 1))

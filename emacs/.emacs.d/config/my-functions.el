@@ -61,7 +61,7 @@
 
 (defun run-haskell-test ()
   (interactive)
-  (async-shell-command "~/.emacs.d/scripts/cabal-test")
+  (async-shell-command "~/.emacs.d/scripts/cabal-test" "[Haskell Tests]")
 )
 
 (defun underscores-to-camel-case (str)
@@ -184,5 +184,10 @@
     (insert (shell-command-to-string "xsel -o -b"))
     )
   )
+
+(defun guard ()
+  (interactive)
+  (async-shell-command "~/.emacs.d/scripts/my-guard" "[Guard]")
+)
 
 (provide 'my-functions)

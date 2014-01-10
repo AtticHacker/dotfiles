@@ -2,7 +2,6 @@
 
 ;; Control Keys
 (define-key attic-minor-mode-map (kbd "C-u") 'repeat)
-(define-key attic-minor-mode-map (kbd "C-z") 'zap-to-char)
 (define-key attic-minor-mode-map (kbd "C-.") 'helm-resume)
 (define-key attic-minor-mode-map (kbd "C-q") 'backward-delete-char)
 (define-key attic-minor-mode-map (kbd "C--") 'undo)
@@ -26,6 +25,7 @@
 (define-key attic-minor-mode-map (kbd "M-T") 'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E") 'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x") 'helm-M-x)
+(define-key attic-minor-mode-map (kbd "M-k") 'kill-this-buffer)
 (define-key attic-minor-mode-map (kbd "M-P")'mc/mark-previous-like-this)
 
 (define-key attic-minor-mode-map (kbd "M-N") 'mc/mark-next-like-this)
@@ -183,6 +183,9 @@
 (global-set-key [f7] 'get-current-buffer-major-mode)
 (global-set-key [f8] 'copy-to-clipboard)
 (global-set-key [f9] 'paste-from-clipboard)
+
+; Web Mode
+(define-key web-mode-map (kbd "C-z") 'zencoding-expand-yas)
 
 ; Define mode
 (define-minor-mode attic-minor-mode
