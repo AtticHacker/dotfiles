@@ -21,7 +21,6 @@
     rinari
     web-mode
     redo+
-    jump-char
     ace-jump-mode
     auto-complete
     coffee-mode
@@ -34,7 +33,7 @@
     haskell-mode
     helm
     helm-ls-git
-;    helm-swoop
+    helm-swoop
     js2-mode
     linum-relative
     magit
@@ -53,6 +52,7 @@
     gitconfig-mode
     gitignore-mode
     emms
+    iy-go-to-char
     ))
 
 (defun mp-install-rad-packages ()
@@ -102,8 +102,8 @@
 (require 'js2-mode)
 (require 'rinari)
 (require 'emms-setup)
-(require 'jump-char)
 (require 'web-mode)
+(require 'iy-go-to-char)
 (emms-standard)
 (emms-default-players)
 
@@ -181,6 +181,9 @@
 
  ; Don't resize minibuffer
 (setq resize-mini-windows nil)
+
+; Make mc work better with iy-go-to-char
+(add-to-list 'mc/cursor-specific-vars 'iy-go-to-char-start-pos)
 
 ; ido for rinari until I find a helm alternative
 (setq
