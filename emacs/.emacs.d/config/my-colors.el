@@ -24,8 +24,7 @@
       (format "[VISUAL]")
       (if (and (boundp 'god-local-mode) god-local-mode)
                (format "[NORMAL]")
-               (format "[INSERT]"))
-))
+               (format "[INSERT]"))))
 
 (defun my-powerline-theme ()
   "Setup the default mode-line."
@@ -73,5 +72,8 @@
                  (powerline-render rhs)
 ))))))
 
+
+; Enable my theme
+(my-powerline-theme)
 
 (provide 'my-colors)
