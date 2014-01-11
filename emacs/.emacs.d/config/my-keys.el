@@ -175,10 +175,6 @@
 (define-key attic-minor-mode-map (kbd "C-j C-r C-u") 'rinari-find-public)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-z") 'rinari-find-script)
 
-; Garak Mode
-(define-key garak-mode-map (kbd "\r") nil)
-(define-key garak-mode-map (kbd "M-<RET>") 'lui-send-input)
-
 ; Global Keys
 (global-set-key [f7] 'get-current-buffer-major-mode)
 (global-set-key [f8] 'copy-to-clipboard)
