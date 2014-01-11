@@ -1,5 +1,9 @@
 (defvar attic-minor-mode-map (make-keymap) "attic-minor-mode keymap.")
 
+; Unset Keys
+(dolist (key '("\C-z"))
+  (global-unset-key key))
+
 ;; Control Keys
 (define-key attic-minor-mode-map (kbd "C-u") 'repeat)
 (define-key attic-minor-mode-map (kbd "C-.") 'helm-resume)
@@ -22,7 +26,7 @@
 (define-key attic-minor-mode-map (kbd "M-+") 'align-regexp)
 (define-key attic-minor-mode-map (kbd "M-@") 'er/expand-region)
 (define-key attic-minor-mode-map (kbd "M-t") 'transpose-words)
-(define-key attic-minor-mode-map (kbd "M-T") 'ghc-insert-template)
+;(define-key attic-minor-mode-map (kbd "M-T") 'ghc-insert-template)
 (define-key attic-minor-mode-map (kbd "M-E") 'mc/edit-lines)
 (define-key attic-minor-mode-map (kbd "M-x") 'helm-M-x)
 (define-key attic-minor-mode-map (kbd "M-k") 'kill-this-buffer)
@@ -50,7 +54,7 @@
 (define-key attic-minor-mode-map (kbd "C-j C-q") 'kmacro-start-macro)
 (define-key attic-minor-mode-map (kbd "C-j C-e")
     'kmacro-end-or-call-macro-repeat)
-(define-key attic-minor-mode-map (kbd "C-j C-w") 'load-haskell-workgroups)
+(define-key attic-minor-mode-map (kbd "C-j C-w") 'load-attic-workgroups)
 (define-key attic-minor-mode-map (kbd "C-j C-c") 'comment-or-uncomment-region)
 (define-key attic-minor-mode-map (kbd "C-j C-f") 'helm-ls-git-ls)
 (define-key attic-minor-mode-map (kbd "C-j C-l") 'toggle-linum-gutter)

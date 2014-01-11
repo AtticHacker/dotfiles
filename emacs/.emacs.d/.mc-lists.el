@@ -43,7 +43,6 @@
         keyboard-escape-quit
         keyboard-escape-quit-mc
         kill-region
-        load-haskell-workgroups
         magit-stage-item
         org-beginning-of-line
         org-delete-char
@@ -63,9 +62,4 @@
         transpose-words
         undefined
         yas-expand
-        ))
-
-(setq mc/cmds-to-run-once
-      '(
-        god-mode-meta
         ))

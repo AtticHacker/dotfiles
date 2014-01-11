@@ -11,7 +11,7 @@
 (workgroups-mode 1)
 (show-paren-mode t)
 (electric-pair-mode 1)
-(setq org-log-done t)
+
 (epa-file-enable)
 (window-numbering-mode 1)
 (yas-global-mode 1)

@@ -22,10 +22,6 @@
   (set-face-background 'w3m-header-line-location-title "brightblack")
 )
 
-
-
-
-
 (epa-file-enable)
 
 (emms-standard)
@@ -36,6 +32,7 @@
 (define-key garak-mode-map (kbd "\r") nil)
 (define-key garak-mode-map (kbd "M-<RET>") 'lui-send-input)
 
+(setq org-log-done t)
 (setq org-agenda-files
       (list "~/Documents/org/notes.org"
             "~/Documents/org/todos.org"
@@ -46,4 +43,4 @@
 
 
 
-(provide 'extras)
+(provide 'my-extras)

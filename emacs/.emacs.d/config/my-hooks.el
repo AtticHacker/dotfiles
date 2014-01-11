@@ -19,6 +19,7 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'flymake-haskell-multi-load)
 (add-hook 'erlang-mode-hook  'flymake-mode)
 (add-hook 'erlang-mode-hook  'erlang-keys-hook)
 
@@ -32,20 +33,6 @@
 
 (add-hook 'elixir-mode-hook  'elixir-keys-hook)
 
-(defun flymake-erlang-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-    'flymake-create-temp-inplace))
-         (local-file (file-relative-name temp-file
-            (file-name-directory buffer-file-name))))
-    (list "~/.emacs.d/plugins/erlangscript" (list local-file))))
-(add-to-list 'flymake-allowed-file-name-masks
-    '("\\.erl\\'" flymake-erlang-init))
-
 (add-hook 'dired-mode-hook 'ensure-buffer-name-begins-with-exl)
-(defun ensure-buffer-name-begins-with-exl ()
-    "change buffer name to end with slash"
-    (let ((name (buffer-name)))
-        (if (not (string-match "/$" name))
-            (rename-buffer (concat "!" name) t))))
 
 (provide 'my-hooks)

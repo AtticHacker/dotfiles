@@ -1,16 +1,8 @@
-(defun load-haskell-workgroups ()
+(defun load-attic-workgroups ()
   (interactive)
   (setq b (current-buffer))
   (message "%s" b)
-  (wg-load "~/.emacs.d/workgroups/Haskell")
-  (switch-to-buffer b))
-
-(defun load-dynamic-workgroups ()
-  (interactive)
-  (setq b (current-buffer))
-  (message "%s" b)
-  (wg-load "~/.emacs.d/workgroups/Haskell")
-  (wg-switch-to-index-1)
+  (wg-load "~/.emacs.d/workgroups/Attic")
   (switch-to-buffer b))
 
 (defun zsh (buffer-name)
@@ -46,11 +38,25 @@
   (previous-buffer)
 )
 
+(defun flymake-erlang-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+    'flymake-create-temp-inplace))
+         (local-file (file-relative-name temp-file
+            (file-name-directory buffer-file-name))))
+    (list "~/.emacs.d/plugins/erlangscript" (list local-file))))
+(add-to-list 'flymake-allowed-file-name-masks
+    '("\\.erl\\'" flymake-erlang-init))
+
+(defun ensure-buffer-name-begins-with-exl ()
+    "change buffer name to end with slash"
+    (let ((name (buffer-name)))
+        (if (not (string-match "/$" name))
+            (rename-buffer (concat "!" name) t))))
+
 (defun erlang-get-error ()
   (interactive)
   (shell-command (format "~/.emacs.d/scripts/erlangscript %s" buffer-file-name))
 )
-
 
 (defun elixir-keys-hook ()
   (local-set-key (kbd "C-c C-l") (lambda()
@@ -68,8 +74,6 @@
   "Converts STR, which is a word using underscores, to camel case."
   (interactive "S")
   (apply 'concat (mapcar 'capitalize (split-string str "_"))))
-
-
 
 ; cmus functions
 

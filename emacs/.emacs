@@ -1,26 +1,4 @@
-; Require plugins
-
-(add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/plugins")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-
-(add-to-list 'load-path "~/.emacs.d/config")
-(add-to-list 'load-path "~/.emacs.d/config/other")
-
-(let ((default-directory "~/.emacs.d/plugins/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
-(let ((default-directory
-    "~/.lazyVault/sandboxes/ghc-mod/cabal/share/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
-(require 'package)
-
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(package-initialize)
-
+;; List of packages to install
 (defvar my-packages
   '(
     powerline
@@ -61,6 +39,12 @@
     flymake-haskell-multi
     ))
 
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
+
 (defun my-install-packages ()
   (interactive)
   (package-refresh-contents)
@@ -68,6 +52,13 @@
             (unless (package-installed-p package)
               (package-install package)))
         my-packages))
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(add-to-list 'load-path "~/.emacs.d/config")
+(let ((default-directory "~/.emacs.d/plugins/"))
+  (normal-top-level-add-subdirs-to-load-path))
+
 
 (require 'powerline)
 (require 'tramp)
@@ -82,7 +73,6 @@
 (require 'helm-swoop)
 (require 'auto-complete)
 (require 'misc)
-(require 'org-install)
 (require 'haskell-mode-autoloads)
 (require 'yasnippet)
 (require 'sr-speedbar)
@@ -107,8 +97,82 @@
 (require 'iy-go-to-char)
 (require 'rails)
 (require 'rails-speedbar-feature)
-(require 'extras)
 
+;(require 'my-extras)
+(require 'my-functions)
+(require 'my-modes)
+(require 'my-colors)
+(require 'my-keys)
+(require 'my-hooks)
+
+ ;;Don't move speedbar
+(sr-speedbar-window-dedicated-only-one-p)
+;;Open speedbar at startup
+(sr-speedbar-open)
+;;Close it again or else it will duplicate when loading workgroup
+(sr-speedbar-close)
+;;Load my custom workgroup
+(wg-load "~/.emacs.d/workgroups/Attic")
+
+;;Make mc work better with iy-go-to-char
+(add-to-list 'mc/cursor-specific-vars 'iy-go-to-char-start-pos)
+
+;;Always display 2 columns in linum mode (no stuttering)
+'(linum-format (quote "%2d"))
+'(linum-relative-format (quote "%2d"))
+
+;;My powerline theme
+(my-powerline-theme)
+
+;;Allow upcase-region function
+(put 'upcase-region 'disabled nil)
+
+;;Prevent Extraneous Tabs
+(setq-default indent-tabs-mode nil)
+
+;;No confirmation when creating new buffer
+(setq confirm-nonexistent-file-or-buffer nil)
+
+;;Backup ~ files in seperate directory
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;;No splash screen
+(setq inhibit-startup-message t)
+
+ ;;Don't resize minibuffer
+(setq resize-mini-windows nil)
+
+;;Use relative
+(setq linum-format 'linum-relative)
+
+;;Don't ask when creating new buffer
+(setq confirm-nonexistent-file-or-buffer nil)
+
+;;No animation when loading workgroups
+(setq wg-morph-on nil)
+
+;;y / n instead of yes / no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;ido for rinari until I find a helm alternative
+(setq
+  ido-ignore-buffers
+  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
+    "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
+    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o")
+  ido-enable-flex-matching t)
+
+;;Load mode on certain functions
+(setq auto-mode-alist (append '(
+    ("\\.tpl\\'" . html-mode)
+    ("\\.erb\\'" . web-mode)
+    ("\\.js\\'"  . js2-mode)
+    ("\\.elm\\'" . haskell-mode)
+    ("Gemfile" . ruby-mode)
+    ) auto-mode-alist))
+
+
+;And all the emacs auto adjustments
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -124,8 +188,9 @@
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)) t)
+; '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
+ '(helm-reuse-last-window-split-state t)
  '(helm-split-window-in-side-p t)
  '(helm-swoop-split-with-multiple-windows t)
  '(js2-strict-missing-semi-warning nil)
@@ -143,8 +208,6 @@
  '(vc-annotate-very-old-color "#DC8CC3")
  '(vc-follow-symlinks t)
  '(wg-mode-line-on nil))
- '(erlang-mode-hook (quote (wrap-region-mode)))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -158,80 +221,3 @@
  '(linum-relative-current-face ((t (:inherit linum :background "color-234" :foreground "#707070" :weight bold))))
  '(region ((t (:background "color-240" :foreground "#FFF"))))
  '(show-paren-match ((t (:background "color-239" :foreground "#7CB8BB" :weight bold)))))
-
-
-
-
-
-
-
-
-
-(setq tramp-default-method "scp")
-
-(require 'my-functions)
-(require 'my-hooks)
-(require 'my-modes)
-(require 'my-colors)
-(require 'my-keys)
-
-(add-hook 'haskell-mode-hook 'flymake-haskell-multi-load)
-
-(powerline-my-theme)
-
-(setq auto-mode-alist (append '(
-    ("\\.tpl\\'" . html-mode)
-    ("\\.erb\\'" . web-mode)
-    ("\\.js\\'"  . js2-mode)
-    ("\\.elm\\'" . haskell-mode)
-    ("Gemfile" . ruby-mode)
-    ) auto-mode-alist))
-
-; Settings
-(setq-default indent-tabs-mode nil)
-
-; Unset C-z
-(dolist (key '("\C-z"))
-  (global-unset-key key))
-
-(setq confirm-nonexistent-file-or-buffer nil)	; no confirmation
-
-; Commands to start with
-(sr-speedbar-window-dedicated-only-one-p)
-(sr-speedbar-open)
-(sr-speedbar-close)
-
-(wg-load "~/.emacs.d/workgroups/Haskell")
-(setq wg-morph-on nil)
-
-(put 'upcase-region 'disabled nil)
-
-; Backup ~ files in seperate directory
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
-; y / n instead of yes / no
-(fset 'yes-or-no-p 'y-or-n-p)
-
-; No splash screen
-(setq inhibit-startup-message t)
-
- ; Don't resize minibuffer
-(setq resize-mini-windows nil)
-
-; Make mc work better with iy-go-to-char
-(add-to-list 'mc/cursor-specific-vars 'iy-go-to-char-start-pos)
-
-; ido for rinari until I find a helm alternative
-(setq
-  ido-ignore-buffers
-  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
-    "^\*compilation" "^\*GTAGS" "^session\.*" ".newsrc-dribble"
-    "^\*scr" "^\*" "notes.org" "todos.org" "*.hi" "*.o")
-  ido-enable-flex-matching t)
-
-(setq confirm-nonexistent-file-or-buffer nil)
-
-'(linum-format (quote "%2d"))
-'(linum-relative-format (quote "%2d"))
-; Use relative
-(setq linum-format 'linum-relative)
