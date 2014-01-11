@@ -94,8 +94,6 @@
 (require 'emms-setup)
 (require 'web-mode)
 (require 'iy-go-to-char)
-(require 'rails)
-(require 'rails-speedbar-feature)
 
 ;(require 'my-extras)
 (require 'my-functions)

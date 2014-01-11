@@ -20,9 +20,12 @@
 (set-face-foreground 'linum			"#707070")
 
 (defpowerline god-mode-bar
-  (if (and (boundp 'god-local-mode) god-local-mode)
-           (format "[NORMAL]")
-           (format "[INSERT]")))
+  (if mark-active
+      (format "[VISUAL]")
+      (if (and (boundp 'god-local-mode) god-local-mode)
+               (format "[NORMAL]")
+               (format "[INSERT]"))
+))
 
 (defun my-powerline-theme ()
   "Setup the default mode-line."
@@ -62,7 +65,7 @@
                          (powerline-raw "%3l:%2c " face1 'l)
                          (funcall separator-right face1 mode-line)
                          (powerline-raw " ")
-                         (powerline-raw "%6p" nil 'r)
+                         (powerline-raw "%7p" nil 'r)
                          (powerline-hud face2 face1)
 )))
          (concat (powerline-render lhs)
