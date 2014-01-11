@@ -24,7 +24,6 @@
     slime
     sr-speedbar
     undo-tree
-    window-numbering
     workgroups
     wrap-region
     yasnippet
@@ -75,7 +74,6 @@
 (require 'haskell-mode-autoloads)
 (require 'yasnippet)
 (require 'sr-speedbar)
-(require 'window-numbering)
 (require 'flymake)
 (require 'magit)
 (require 'expand-region)
@@ -95,7 +93,7 @@
 (require 'web-mode)
 (require 'iy-go-to-char)
 
-;(require 'my-extras)
+(require 'my-extras)
 (require 'my-functions)
 (require 'my-modes)
 (require 'my-colors)
@@ -185,7 +183,6 @@
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
  '(haskell-indentation-where-post-offset 4)
-; '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-font-lock turn-on-haskell-doc-mode auto-complete-mode wrap-region-mode imenu-add-menubar-index)))
  '(helm-grep-default-recurse-command "grep --exclude-dir=\"dist\" -a -d recurse %e -n%cH -e %p %f")
  '(helm-reuse-last-window-split-state t)
  '(helm-split-window-in-side-p t)
