@@ -1,6 +1,7 @@
 ;; List of packages to install
 (defvar my-packages
   '(
+    column-enforce-mode
     powerline
     rinari
     web-mode
