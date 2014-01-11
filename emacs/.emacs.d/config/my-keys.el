@@ -165,7 +165,7 @@
 (define-key attic-minor-mode-map (kbd "C-j C-r C-e") 'rinari-find-environment)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-h") 'rinari-find-helper)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-j") 'rinari-find-javascript)
-(define-key attic-minor-mode-map (kbd "C-j C-r C-t") 'rinari-find-test)
+(define-key attic-minor-mode-map (kbd "C-j C-r C-t") 'rinari-find-rspec)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-p") 'rinari-find-plugin)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-g") 'rinari-find-migration)
 (define-key attic-minor-mode-map (kbd "C-j C-r C-f") 'rinari-find-cofiguration)
