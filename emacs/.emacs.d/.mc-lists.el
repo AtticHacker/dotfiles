@@ -30,6 +30,7 @@
         ghc-save-buffer
         god-mode-disable
         god-mode-enable
+        god-mode-meta
         god-mode-self-insert
         haskell-indentation-delete-char
         haskell-newline-and-indent
@@ -62,4 +63,8 @@
         transpose-words
         undefined
         yas-expand
+        ))
+
+(setq mc/cmds-to-run-once
+      '(
         ))

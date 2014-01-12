@@ -4,6 +4,7 @@
     column-enforce-mode
     powerline
     rinari
+    helm-rails
     web-mode
     redo+
     ace-jump-mode
@@ -70,6 +71,7 @@
 (require 'zencoding-mode)
 (require 'helm)
 (require 'helm-ls-git)
+(require 'helm-rails)
 (require 'helm-swoop)
 (require 'auto-complete)
 (require 'misc)
