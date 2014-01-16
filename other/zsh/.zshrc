@@ -18,7 +18,7 @@ export PATH=$PATH:$HOME/Shortcuts/
 
 export EDITOR="emacs -nw"
 
-# plugins=(git)
+DISABLE_CORRECTION="true"
 
 ## OH MY ZSH options ##
 DISABLE_AUTO_UPDATE="true"
@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 alias emacs='/usr/bin/emacs -nw'
+alias e='/usr/bin/emacsclient -nw -t'
 
 # Git pull
 alias pull='git pull'
