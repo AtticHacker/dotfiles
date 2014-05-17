@@ -69,5 +69,5 @@ function ogv2avi {
     ffmpeg -i $1 -vcodec mpeg4 -sameq -acodec libmp3lame $2
 }
 
-source /usr/share/chruby/chruby.sh
-chruby ruby-2.1
+#source /usr/share/chruby/chruby.sh
+#chruby ruby-2.1
