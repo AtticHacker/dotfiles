@@ -17,6 +17,7 @@ export PATH=/usr/local/ghc/7.6.3/bin:$PATH
 export PATH=$PATH:$HOME/Shortcuts/
 
 export EDITOR="emacs -nw"
+export PULSE_LATENCY_MSEC=60
 
 DISABLE_CORRECTION="true"
 
