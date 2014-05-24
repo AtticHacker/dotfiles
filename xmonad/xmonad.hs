@@ -39,7 +39,7 @@ xfceLayout = xfceConfig
              , workspaces = map show ([1..9] :: [Int])
              , manageHook = myManageHook <+> manageHook xfceConfig
              , borderWidth        = 1
-             , terminal           = "urxvt"
+             , terminal           = "terminator"
              , normalBorderColor  = "#000000"
              , focusFollowsMouse  = False
              , layoutHook = toggleLayouts (noBorders Full) $
@@ -64,7 +64,7 @@ addKeys =
        spawn "asus-screen-brightness up")
     , ((mod4 .|. shiftMask, xK_f  ), spawn "thunar")
     , ((mod4, xK_f), spawn "firefox -firetrayShowHide")
-    , ((mod4 .|. shiftMask, xK_m   ), spawn "terminal")
+    , ((mod4, xK_e   ), spawn "emacsclient -c")
     , ((0, xK_Print                ), spawn "scrot")
     , ((mod4, xK_Print             ), spawn "xfce4-screenshooter -r")
     , ((mod4, xK_n                 ), viewEmptyWorkspace)

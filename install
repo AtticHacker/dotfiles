@@ -1,11 +1,9 @@
 #! /bin/bash
 
 mkdir $HOME/.xmonad
-sudo cp "$(pwd)/urxvt/clipboard" "/usr/lib/urxvt/perl/clipboard"
-
 ln -nfs "$(pwd)/tmux/.tmux"           "$HOME/.tmux"
 ln -nfs "$(pwd)/tmux/.tmux.conf"      "$HOME/.tmux.conf"
 ln -nfs "$(pwd)/other/zsh/.zshrc"     "$HOME/.zshrc"
 ln -nfs "$(pwd)/other/zsh/.zsh"       "$HOME/.zsh"
 ln -nfs "$(pwd)/xmonad/xmonad.hs"     "$HOME/.xmonad/xmonad.hs"
-ln -nfs "$(pwd)/urxvt/.Xdefaults"     "$HOME/.Xdefaults"
+ln -nfs "$(pwd)/other/terminator"     "$HOME/.config/terminator"

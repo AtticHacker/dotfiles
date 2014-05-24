@@ -1,0 +1,69 @@
+[global_config]
+  window_state = hidden
+  enabled_plugins = ,
+  always_split_with_profile = True
+  title_inactive_fg_color = "#1c1c1c"
+  borderless = True
+  geometry_hinting = False
+  tab_position = hidden
+[keybindings]
+  cycle_prev = None
+  next_tab = None
+  close_window = None
+  group_tab = None
+  move_tab_right = None
+  resize_left = None
+  rotate_ccw = None
+  reset_clear = None
+  go_right = None
+  new_tab = None
+  resize_right = None
+  resize_down = None
+  toggle_zoom = None
+  scaled_zoom = None
+  group_all = None
+  full_screen = None
+  prev_tab = None
+  split_vert = None
+  ungroup_all = None
+  ungroup_tab = None
+  paste = <Primary><Shift>v
+  cycle_next = None
+  go_prev = None
+  close_term = None
+  new_terminator = None
+  go_next = None
+  go_left = None
+  hide_window = None
+  reset = None
+  search = None
+  go_up = None
+  resize_up = None
+  rotate_cw = None
+  split_horiz = None
+  go_down = None
+  new_window = None
+  move_tab_left = None
+  toggle_scrollbar = None
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    background_image = None
+    use_system_font = False
+    foreground_color = "#e5e3e3"
+    icon_bell = False
+    show_titlebar = False
+    font = Fira Mono OT Bold 12
+    background_color = "#1c1c1c"
+    cursor_blink = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
