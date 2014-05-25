@@ -1,6 +1,10 @@
 #!/bin/sh
 
-xmodmap ~/.Xmodmap
+if `lsusb | grep -q HHKB`; then
+   echo "Don't use xmodmap"
+else
+    xmodmap ~/.Xmodmap
+fi
 unclutter -idle 3&
 xsetroot -cursor_name left_ptr
 xset r rate 300 35

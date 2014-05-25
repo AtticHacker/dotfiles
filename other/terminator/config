@@ -47,16 +47,17 @@
   toggle_scrollbar = None
 [profiles]
   [[default]]
-    scrollbar_position = hidden
+    foreground_color = "#e5e3e3"
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
     background_image = None
     use_system_font = False
-    foreground_color = "#e5e3e3"
-    icon_bell = False
-    show_titlebar = False
-    font = Fira Mono OT Bold 12
-    background_color = "#1c1c1c"
     cursor_blink = False
+    icon_bell = False
+    scrollbar_position = hidden
+    show_titlebar = False
+    font = Fira Mono Bold 12
+    background_color = "#1c1c1c"
+    allow_bold = False
 [layouts]
   [[default]]
     [[[child1]]]
