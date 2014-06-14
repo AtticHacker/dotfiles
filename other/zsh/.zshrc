@@ -14,11 +14,15 @@ ZSH_THEME="kevin"
 export PATH=$PATH:$HOME/.cabal/bin/
 source $HOME/.lazyVault/binPaths
 export PATH=/usr/local/ghc/7.6.3/bin:$PATH
-export PATH=$PATH:$HOME/Shortcuts/
+export PATH=$PATH:$HOME/Shortcuts/:$HOME/.gem/ruby/2.1.0/bin
+
 
 export EDITOR="emacs -nw"
 export ALTERNATE_EDITOR=""
-export TERM="xterm-256color"
+if ! [ -z "$DISPLAY" ] ;then;
+    export TERM="xterm-256color";
+fi
+
 export PULSE_LATENCY_MSEC=60
 
 DISABLE_CORRECTION="true"
@@ -74,3 +78,24 @@ function ogv2avi {
 
 #source /usr/share/chruby/chruby.sh
 #chruby ruby-2.1
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0222222" #black
+    echo -en "\e]P8222222" #darkgrey
+    echo -en "\e]P1803232" #darkred
+    echo -en "\e]P9982b2b" #red
+    echo -en "\e]P25b762f" #darkgreen
+    echo -en "\e]PA89b83f" #green
+    echo -en "\e]P3aa9943" #brown
+    echo -en "\e]PBefef60" #yellow
+    echo -en "\e]P4324c80" #darkblue
+    echo -en "\e]PC2b4f98" #blue
+    echo -en "\e]P5706c9a" #darkmagenta
+    echo -en "\e]PD826ab1" #magenta
+    echo -en "\e]P692b19e" #darkcyan
+    echo -en "\e]PEa1cdcd" #cyan
+    echo -en "\e]P7ffffff" #lightgrey
+    echo -en "\e]PFdedede" #white
+    clear #for background artifacting
+fi
+
+export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'

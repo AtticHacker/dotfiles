@@ -1,9 +1,10 @@
 #! /bin/bash
 
 mkdir $HOME/.xmonad
-ln -nfs "$(pwd)/tmux/.tmux"           "$HOME/.tmux"
-ln -nfs "$(pwd)/tmux/.tmux.conf"      "$HOME/.tmux.conf"
-ln -nfs "$(pwd)/other/zsh/.zshrc"     "$HOME/.zshrc"
-ln -nfs "$(pwd)/other/zsh/.zsh"       "$HOME/.zsh"
-ln -nfs "$(pwd)/xmonad/xmonad.hs"     "$HOME/.xmonad/xmonad.hs"
-ln -nfs "$(pwd)/other/terminator"     "$HOME/.config/terminator"
+ln -nfs "$(pwd)/tmux/.tmux"             "$HOME/.tmux"
+ln -nfs "$(pwd)/tmux/.tmux.conf"        "$HOME/.tmux.conf"
+ln -nfs "$(pwd)/other/zsh/.zshrc"       "$HOME/.zshrc"
+ln -nfs "$(pwd)/other/zsh/.zsh"         "$HOME/.zsh"
+ln -nfs "$(pwd)/xmonad/xmonad.hs"       "$HOME/.xmonad/xmonad.hs"
+ln -nfs "$(pwd)/other/terminator"       "$HOME/.config/terminator"
+ln -nfs "$(pwd)/other/fbterm/.fbtermrc" "$HOME/.fbtermrc"
