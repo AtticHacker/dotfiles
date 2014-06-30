@@ -39,7 +39,7 @@ xfceLayout = xfceConfig
              , workspaces = map show ([1..9] :: [Int])
              , manageHook = myManageHook <+> manageHook xfceConfig
              , borderWidth        = 1
-             , terminal           = "terminator"
+             , terminal           = "urxvt"
              , normalBorderColor  = "#000000"
              , focusFollowsMouse  = False
              , layoutHook = toggleLayouts (noBorders Full) $
@@ -48,22 +48,14 @@ xfceLayout = xfceConfig
 
 addKeys :: [((KeyMask, KeySym), X ())]
 addKeys =
-    [ ((0, xF86XK_AudioRaiseVolume), spawn "amixer --quiet set Master 10%+")
-    , ((mod4, xK_bracketright), spawn "amixer --quiet set Master 10%+")
-    , ((0, xF86XK_AudioLowerVolume), spawn "amixer --quiet set Master 10%-")
+    [ ((mod4, xK_bracketright), spawn "amixer --quiet set Master 10%+")
     , ((mod4, xK_bracketleft), spawn "amixer --quiet set Master 10%-")
-    , ((0, xF86XK_AudioMute), spawn "amixer --quiet set Master toggle")
+    , ((mod4, xK_quoteright), spawn "amixer --quiet set Master toggle")
     , ((0, xF86XK_KbdBrightnessUp  ), spawn "asus-kbd-backlight up")
     , ((0, xF86XK_KbdBrightnessDown), spawn "asus-kbd-backlight down")
     , ((mod4, xK_F9), spawn disableTouch)
     , ((mod4 .|. shiftMask, xK_bracketright), spawn "asus-screen-brightness up")
     , ((mod4 .|. shiftMask, xK_bracketleft), spawn "asus-screen-brightness down")
-    , ((mod4, xK_F5), spawn "asus-screen-brightness down")
-    , ((mod4, xK_F6), spawn "asus-screen-brightness up")
-    , ((mod4, xF86XK_MonBrightnessDown),
-        spawn "asus-screen-brightness down")
-    , ((mod4, xF86XK_MonBrightnessUp),
-       spawn "asus-screen-brightness up")
     , ((mod4 .|. shiftMask, xK_f  ), spawn "thunar")
     , ((mod4, xK_f), spawn "firefox -firetrayShowHide")
     , ((mod4, xK_e   ), spawn "emacsclient -c")
