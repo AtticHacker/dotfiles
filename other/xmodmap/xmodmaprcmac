@@ -24,24 +24,3 @@ keysym Control_R = Super_R
 
 add mod4         = Super_R
 add Control      = Control_R
-
-
-keycode  29 = bracketleft braceleft bracketleft braceleft
-keycode  30 = bracketright braceright bracketright braceright
-keycode  31 = y Y y Y
-keycode  32 = u U u U
-keycode  33 = i I i I
-keycode  34 = o O o O
-keycode  35 = p P p P
-
-keycode  43 = semicolon colon semicolon colon
-keycode  44 = apostrophe quotedbl apostrophe quotedbl
-keycode  45 = h H h H
-keycode  46 = j J j J
-keycode  47 = k K k K
-keycode  48 = l L l L
-
-keycode  57 = comma less comma less
-keycode  58 = period greater period greater
-keycode  59 = n N n N
-keycode  60 = m M m M
