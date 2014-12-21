@@ -20,8 +20,8 @@ myManageHook = composeAll
     , className =? "Firefox"       --> doShift "3"
     , className =? "Chromium"      --> doShift "3"
     , className =? "Thunar"        --> doShift "4"
-    , className =? "Thunderbird"   --> doShift "5"
-    , className =? "Hotot"         --> doShift "5"
+    , className =? "Thunderbird"   --> doShift "4"
+    , className =? "Hotot"         --> doShift "4"
     , className =? "Screenkey"     --> doIgnore
     , className =? "Xfce4-notifyd" --> doIgnore
     ]
@@ -34,12 +34,13 @@ xfceLayout :: XConfig (ToggleLayouts (ModifiedLayout WithBorder Full)
                       (ModifiedLayout AvoidStruts
                       (Choose Tall (Choose (Mirror Tall) Full)))))
 
-xfceLayout = xfceConfig
+-- xfceLayout = xfceConfig
+xfceLayout = defaultConfig
              { modMask = mod4Mask
              , workspaces = map show ([1..9] :: [Int])
              , manageHook = myManageHook <+> manageHook xfceConfig
              , borderWidth        = 1
-             , terminal           = "urxvt"
+             , terminal           = "gnome-terminal"
              , normalBorderColor  = "#000000"
              , focusFollowsMouse  = False
              , layoutHook = toggleLayouts (noBorders Full) $
@@ -51,13 +52,12 @@ addKeys =
     [ ((mod4, xK_bracketright), spawn "amixer --quiet set Master 10%+")
     , ((mod4, xK_bracketleft), spawn "amixer --quiet set Master 10%-")
     , ((mod4, xK_quoteright), spawn "amixer --quiet set Master toggle")
-    , ((0, xF86XK_KbdBrightnessUp  ), spawn "asus-kbd-backlight up")
-    , ((0, xF86XK_KbdBrightnessDown), spawn "asus-kbd-backlight down")
+    , ((0, xF86XK_MonBrightnessUp  ), spawn "xbacklight -inc 5")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 5")
     , ((mod4, xK_F9), spawn disableTouch)
-    , ((mod4 .|. shiftMask, xK_bracketright), spawn "asus-screen-brightness up")
-    , ((mod4 .|. shiftMask, xK_bracketleft), spawn "asus-screen-brightness down")
+    , ((mod4 .|. shiftMask, xK_bracketright), spawn "xbacklight -inc 5")
+    , ((mod4 .|. shiftMask, xK_bracketleft), spawn  "xbacklight -dec 5")
     , ((mod4 .|. shiftMask, xK_f  ), spawn "thunar")
-    , ((mod4, xK_f), spawn "firefox -firetrayShowHide")
     , ((mod4, xK_e   ), spawn "emacsclient -c")
     , ((0, xK_Print                ), spawn "scrot")
     , ((mod4, xK_Print             ), spawn "xfce4-screenshooter -r")
@@ -69,7 +69,7 @@ addKeys =
     , ((mod4 .|. shiftMask, xK_x   ), sendMessage ToggleLayout)
     , ((mod4, xK_x                 ), withFocused toggleBorder)
     , ((mod4, xK_q                 ), undefined)
-    , ((mod4, xK_p                 ), spawn "dmenu_run")
+    , ((mod4, xK_p                 ), spawn "dmenu_run -i")
     , ((mod4, xK_d                 ), spawn "xfce4-dict")
     ] where mod4         = mod4Mask
             disableTouch = "synclient TouchpadOff=$(synclient -l" ++
