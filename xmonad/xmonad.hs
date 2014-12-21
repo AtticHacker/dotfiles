@@ -47,16 +47,15 @@ xfceLayout = defaultConfig
                             avoidStruts $ layoutHook xfceConfig
              } `additionalKeys` addKeys
 
+
 addKeys :: [((KeyMask, KeySym), X ())]
 addKeys =
-    [ ((mod4, xK_bracketright), spawn "amixer --quiet set Master 10%+")
-    , ((mod4, xK_bracketleft), spawn "amixer --quiet set Master 10%-")
+    [ ((mod4, xK_bracketright), spawn "amixer --quiet set Master 5%+ ; amixer get Master | egrep -o \"[0-9]+%\" | head -1 | dzen2 -p 1")
+    , ((mod4, xK_bracketleft), spawn "amixer --quiet set Master 5%- ; amixer get Master | egrep -o \"[0-9]+%\" | head -1 | dzen2 -p 1")
     , ((mod4, xK_quoteright), spawn "amixer --quiet set Master toggle")
-    , ((0, xF86XK_MonBrightnessUp  ), spawn "xbacklight -inc 5")
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 5")
+    , ((0, xF86XK_MonBrightnessUp  ), spawn "xbacklight -inc 3")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 3")
     , ((mod4, xK_F9), spawn disableTouch)
-    , ((mod4 .|. shiftMask, xK_bracketright), spawn "xbacklight -inc 5")
-    , ((mod4 .|. shiftMask, xK_bracketleft), spawn  "xbacklight -dec 5")
     , ((mod4 .|. shiftMask, xK_f  ), spawn "thunar")
     , ((mod4, xK_e   ), spawn "emacsclient -c")
     , ((0, xK_Print                ), spawn "scrot")
@@ -67,6 +66,7 @@ addKeys =
     , ((mod4, xK_w                 ), nextScreen)
     , ((mod1Mask, xK_Tab           ), windows W.focusDown)
     , ((mod4 .|. shiftMask, xK_x   ), sendMessage ToggleLayout)
+    , ((mod4 .|. shiftMask, xK_z   ), spawn "slock")
     , ((mod4, xK_x                 ), withFocused toggleBorder)
     , ((mod4, xK_q                 ), undefined)
     , ((mod4, xK_p                 ), spawn "dmenu_run -i")
