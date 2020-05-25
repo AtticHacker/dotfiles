@@ -1,7 +1,0 @@
-bar_count=`ps aux | grep xmobar | wc | awk '{print $1}'` 
-if [[ $bar_count != 1 ]];then
-  xmobar_id=`ps aux | grep xmobar | awk '{print $2}' | head -1`
-  kill -9 $xmobar_id
-else
-  xmobar /home/kevin/.xmobarrc&
-fi

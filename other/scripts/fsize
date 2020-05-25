@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ -z "$TMUX" ]] ; then
-    printf "\33]50;%s%d\007" "xft:Monaco:bold:antialias=true:pixelsize=" $1
-else
-    printf "\033Ptmux;\033\33]50;%s%d\007\033\\" "xft:Monaco:bold:antialias=true:pixelsize=" $1
-fi
