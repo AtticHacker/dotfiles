@@ -50,9 +50,14 @@ gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']
 gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Shift><Super>Return']"
 
 ## Sound
+
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Shift><Super>q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Super>bracketleft']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Super>bracketright']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys previous "['<Super>semicolon']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys next "['<Super>apostrophe']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys play "['<Shift><Super>quotedbl']"
+
+## Utils
+
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>x']"
