@@ -39,6 +39,11 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Su
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>numbersign']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>dollar']"
 
+### Monitors
+
+gsettings setg org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super>m']"
+gsettings setg org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Shift><Super>m']"
+
 ### Windows
 
 gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Shift><Super>l']"
