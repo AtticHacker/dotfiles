@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Install Packages
-sudo apt install $(cat apt-packages.list)
-sudo flatpak install $(cat flatpak-packages.list)
+sudo apt install -y $(cat apt-packages.list)
+flatpak install -y $(cat flatpak-packages.list)
 
 # Change shell to zsh
 chsh -s /usr/bin/zsh

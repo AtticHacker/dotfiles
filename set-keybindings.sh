@@ -41,8 +41,8 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Su
 
 ### Monitors
 
-gsettings setg org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super>m']"
-gsettings setg org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Shift><Super>m']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super>m']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Shift><Super>m']"
 
 ### Windows
 
