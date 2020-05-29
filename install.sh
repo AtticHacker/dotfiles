@@ -10,13 +10,15 @@ chsh -s /usr/bin/zsh
 # Only allow alt+tab in current workspace
 gsettings set org.gnome.shell.app-switcher current-workspace-only true
 
-
 # Set default Terminal
-gsettings set org.gnome.desktop.default-applications.terminal exec 'tilix'
+gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 
 # Set key repeat
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+
+# Add user to Docker group
+sudo usermod -a -G docker $USER
 
 # Setup keybindings
 ./set-keybindings.sh
