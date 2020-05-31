@@ -22,3 +22,8 @@ sudo usermod -a -G docker $USER
 
 # Setup keybindings
 ./set-keybindings.sh
+
+# Add terminator symlink
+mkdir -p $HOME/.config/terminator
+rm $HOME/.config/terminator/config
+ln -nfs $HOME/.dotfiles/terminator-config $HOME/.config/terminator/config

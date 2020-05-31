@@ -1,0 +1,55 @@
+[global_config]
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+[keybindings]
+  go_next = None
+  go_prev = None
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  split_horiz = <Shift><Alt>j
+  split_vert = <Shift><Alt>l
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  switch_to_tab_10 = <Alt>0
+  layout_launcher = None
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#2b2d2e"
+    background_darkness = 0.95
+    background_type = transparent
+    cursor_blink = False
+    cursor_shape = underline
+    cursor_color = "#aaaaaa"
+    foreground_color = "#d2d8d9"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+  [[Chalk]]
+    icon_bell = False
+    background_color = "#2b2d2e"
+    cursor_blink = False
+    cursor_color = "#708284"
+    foreground_color = "#d2d8d9"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scroll_on_keystroke = False
+    scrollback_infinite = True
+    palette = "#7d8b8f:#b23a52:#789b6a:#b9ac4a:#2a7fac:#bd4f5a:#44a799:#d2d8d9:#888888:#f24840:#80c470:#ffeb62:#4196ff:#fc5275:#53cdbd:#d2d8d9"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
