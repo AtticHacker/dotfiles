@@ -145,3 +145,5 @@ function nvm {
 alias j=autojump
 
 alias open='xdg-open &>/dev/null'
+
+export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-20.1.0/lib/installer/bin:/usr/lib/jvm/graalvm/bin/

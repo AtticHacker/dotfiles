@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install Packages
+sudo apt update
 sudo apt install -y $(cat apt-packages.list)
 flatpak install -y $(cat flatpak-packages.list)
 
