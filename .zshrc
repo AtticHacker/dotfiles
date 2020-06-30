@@ -114,7 +114,9 @@ function repl() {
   DEP_REBEL="com.bhauman/rebel-readline {:mvn/version \"0.1.4\"}"
   DEP_EDAMAME="borkdude/edamame {:mvn/version \"0.0.11-alpha.1\"}"
   DEP_MATRIX="net.mikera/core.matrix {:mvn/version \"0.62.0\"}"
-  DEPS="$DEP_INSTAPARSE $DEP_CRITERIUM $DEP_MALLI $DEP_REBEL $DEP_EDAMAME $DEP_MATRIX"
+  DEP_HICCUP="hiccup {:mvn/version \"1.0.5\"}"
+  DEPS="$DEP_INSTAPARSE $DEP_CRITERIUM $DEP_MALLI $DEP_REBEL $DEP_EDAMAME $DEP_MATRIX $DEP_HICCUP"
+
   clojure -Sdeps "{:deps { $DEPS $@ }}" -m rebel-readline.main
 }
 
@@ -147,3 +149,10 @@ alias j=autojump
 alias open='xdg-open &>/dev/null'
 
 export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-20.1.0/lib/installer/bin:/usr/lib/jvm/graalvm/bin/
+
+alias change-java='sudo update-alternatives --config javac'
+
+# Move current window to bottom right
+# xdotool getactivewindow windowsize 1920 1020 windowmove 1920 1100
+unsetopt share_history
+
