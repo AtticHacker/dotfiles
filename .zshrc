@@ -156,3 +156,6 @@ alias change-java='sudo update-alternatives --config javac'
 # xdotool getactivewindow windowsize 1920 1020 windowmove 1920 1100
 unsetopt share_history
 
+# Remap PgUp / PgDown to Left / Right
+xmodmap -e "keycode 112 = Left"
+xmodmap -e "keycode 117 = Right"
