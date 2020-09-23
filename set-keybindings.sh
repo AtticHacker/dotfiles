@@ -52,6 +52,7 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Shift><Super
 gsettings set org.gnome.desktop.wm.keybindings close "['<Shift><Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings switch-group "['<Super>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Shift><Super>Return']"
 
 ## Sound

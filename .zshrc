@@ -148,8 +148,6 @@ alias j=autojump
 
 alias open='xdg-open &>/dev/null'
 
-export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-20.1.0/lib/installer/bin:/usr/lib/jvm/graalvm/bin/
-
 alias change-java='sudo update-alternatives --config javac'
 
 # Move current window to bottom right
@@ -159,3 +157,8 @@ unsetopt share_history
 # Remap PgUp / PgDown to Left / Right
 xmodmap -e "keycode 112 = Left"
 xmodmap -e "keycode 117 = Right"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
