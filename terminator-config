@@ -24,7 +24,7 @@
 [profiles]
   [[default]]
     icon_bell = False
-    background_color = "#2b2d2e"
+    background_color = "#191a2a"
     background_darkness = 1.0
     background_type = transparent
     cursor_blink = False
