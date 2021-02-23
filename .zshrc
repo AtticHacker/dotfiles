@@ -1,3 +1,4 @@
+export NODE_PATH=/usr/lib/nodejs:/usr/share/nodejs
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:$HOME/.yarn/bin
@@ -17,26 +18,34 @@ function graalvm() {
     export JAVA_HOME=/opt/graalvm11
 }
 
- export LC_ALL=en_US.UTF-8
+function graalvm8() {
+    export PATH=/opt/graalvm8/bin:$PATH
+    export GRAALVM_HOME=/opt/graalvm8
+    export JAVA_HOME=/opt/graalvm8
+}
+
+export LC_ALL=en_US.UTF-8
 
 function repl() {
-  DEP_INSTAPARSE="instaparse {:mvn/version \"1.4.10\"}"
-  DEP_CRITERIUM="criterium {:mvn/version \"0.4.4\"}" 
-  DEP_MALLI="malli {:git/url \"https://github.com/metosin/malli\" :sha \"f5a8f0265283c4236a304297e7732efa9fb90ce6\"}"
-  DEP_REBEL="com.bhauman/rebel-readline {:mvn/version \"0.1.4\"}"
-  DEP_EDAMAME="borkdude/edamame {:mvn/version \"0.0.11-alpha.1\"}"
-  DEP_MATRIX="net.mikera/core.matrix {:mvn/version \"0.62.0\"}"
-  DEP_HICCUP="hiccup {:mvn/version \"1.0.5\"}"
-  DEP_LEIN="leiningen {:mvn/version \"2.9.4\"}"
-  DEP_NIPPY="com.taoensso/nippy {:mvn/version \"3.1.1\"}"
-  DEP_HASCH="io.replikativ/hasch {:mvn/version \"0.3.7\"}"
-  DEPS="$DEP_INSTAPARSE $DEP_CRITERIUM $DEP_MALLI $DEP_REBEL $DEP_EDAMAME $DEP_MATRIX $DEP_HICCUP $DEP_LEIN $DEP_NIPPY $DEP_HASCH"
+    DEP_INSTAPARSE="instaparse {:mvn/version \"1.4.10\"}"
+    DEP_CRITERIUM="criterium {:mvn/version \"0.4.4\"}"
+    DEP_MALLI="malli {:git/url \"https://github.com/metosin/malli\" :sha \"c97967996cd6ddb5a587a34a96e53dd76f9509ac\"}"
+    DEP_REBEL="com.bhauman/rebel-readline {:mvn/version \"0.1.4\"}"
+    DEP_EDAMAME="borkdude/edamame {:mvn/version \"0.0.11-alpha.1\"}"
+    DEP_MATRIX="net.mikera/core.matrix {:mvn/version \"0.62.0\"}"
+    DEP_HICCUP="hiccup {:mvn/version \"1.0.5\"}"
+    DEP_LEIN="leiningen {:mvn/version \"2.9.4\"}"
+    DEP_NIPPY="com.taoensso/nippy {:mvn/version \"3.1.1\"}"
+    DEP_HASCH="io.replikativ/hasch {:mvn/version \"0.3.7\"}"
+    DEP_REWRITE_EDN="borkdude/rewrite-edn {:mvn/version \"0.0.1-alpha.2\"}"
+    DEP_GRAM="kwrooijen/gram {:mvn/version \"0.0.1-SNAPSHOT\"}"
+    DEPS="$DEP_INSTAPARSE $DEP_CRITERIUM $DEP_MALLI $DEP_REBEL $DEP_EDAMAME $DEP_MATRIX $DEP_HICCUP $DEP_LEIN $DEP_NIPPY $DEP_HASCH $DEP_REWRITE_EDN $DEP_GRAM"
 
-  clojure -Sdeps "{:deps { $DEPS $@ }}" -m rebel-readline.main
+    clojure -Sdeps "{:deps { $DEPS $@ }}" -m rebel-readline.main
 }
 
 function lsport() {
-  sudo lsof -PiTCP -sTCP:LISTEN
+    sudo lsof -PiTCP -sTCP:LISTEN
 }
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
@@ -44,20 +53,22 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
 
 function start-kubernetes() {
-  export PROJECT=mediquest-staging-test
-  gcloud compute start-iap-tunnel kubernetes-master-proxy-kmk1 8443 \
-      --project=$PROJECT \
-      --zone=europe-west4-a \
-      --local-host-port 127.0.0.1:8443
+    # gcloud container clusters get-credentials production --project mediquest-production --region=europe-west4
+    export PROJECT=mediquest-staging-test
+    # export PROJECT=mediquest-production
+    gcloud compute start-iap-tunnel kubernetes-master-proxy-kmk1 8443 \
+           --project=$PROJECT \
+           --zone=europe-west4-a \
+           --local-host-port 127.0.0.1:8443
 }
 
 # export https_proxy=localhost:8443
 export PATH="/usr/local/sbin:$PATH"
 
 function nvm {
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
-  nvm
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+    nvm
 }
 alias j=autojump
 
@@ -80,4 +91,4 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export clojars_user=kwrooijen
 
 # Key repeat
-xset r rate 220 40
+xset r rate 320 40
